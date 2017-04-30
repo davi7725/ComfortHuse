@@ -34,7 +34,7 @@ namespace ComforthuseUserstoryTests
 
 
         [TestMethod]
-        public void LoadCase()
+        public void GetCase()
         {
             // Arrange
 
