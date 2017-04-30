@@ -23,10 +23,9 @@ namespace ComforthuseUserstoryTests
         }
 
         [TestMethod]
-        public void CaseCreateFails()
+        public void CreateCaseUnsuccessful()
         {
             // Arrange
-
 
             // Act 
 
