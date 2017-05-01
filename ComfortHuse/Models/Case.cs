@@ -8,31 +8,34 @@ namespace Comforthuse.Models
 {
     public class Case : ICase 
     {
-        public Case()
-        {
-        }
-
         public int CaseNumber { get; set; }
+        private bool _isSold = true;
 
+        public string Sold => _isSold ? "Yes" : "No";
+        public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
         public ICustomer Customer { get; set; }
-        public List<IProductCategory> 
-
+        public DateTime DateOfCreation { get; set; }
+        public int AmountOfRevisions { get; set; }
+        public DateTime DateOfLastRevision { get; set; }
+        public string HouseType { get; set; }
         public float Price => CalculatePrice();
 
         private float CalculatePrice()
         {
-            foreach ( in COLLECTION)
-            {
-                
-            }
+            return 0;
         }
 
-        public override string ToString() => string.Format($"CaseNumber: {OfferNumber}, OfferNb: {}");
+        public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");
     }
 
     public interface ICase
     {
+        string Title { get; }
+        string Sold { get; }
         int CaseNumber { get; set; }
-        ICustomer customer { get; set; }
+        float Price { get; }
+        ICustomer Customer { get; set; }
+        DateTime DateOfLastRevision { get; set; }
+        DateTime DateOfCreation { get; set; }
     }
 }

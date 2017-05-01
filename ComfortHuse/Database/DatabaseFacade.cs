@@ -6,5 +6,20 @@
         {
             throw new System.NotImplementedException();
         }
+
+        public void InsertCase()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void GetAllCases()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool GetNextCaseId()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace Comforthuse.Utility
         void Create();
         void Save();
         List<ICase> GetAllCases();
+        void Add(ICase caseObj);
     }
 }

@@ -12,12 +12,12 @@ namespace ComforthuseUserstoryTests
         [TestMethod]
         public void CaseListIsNotEmpty()
         {
-            CaseRepository caseRepository = new CaseRepository();
+            ICaseRepository caseRepository = new CaseRepository();
 
             caseRepository.Add(new Case());
             caseRepository.Add(new Case());
 
-            List<Case> listOfCases = caseRepository.GetListOfCases();
+            List<ICase> listOfCases = caseRepository.GetAllCases();
 
             Assert.IsTrue(listOfCases.Count > 0);
 
@@ -28,22 +28,22 @@ namespace ComforthuseUserstoryTests
         [ExpectedException(typeof(Exception))]
         public void CaseListIsEmpty()
         {
-            CaseRepository caseRepository = new CaseRepository();
+            ICaseRepository caseRepository = new CaseRepository();
 
-            List<Case> listOfCases = caseRepository.GetListOfCases();
+            List<ICase> listOfCases = caseRepository.GetAllCases();
         }
 
         [TestMethod]
         public void CheckIfListHasCorrectNumberOfCases()
         {
 
-            CaseRepository caseRepository = new CaseRepository();
+            ICaseRepository caseRepository = new CaseRepository();
 
             caseRepository.Add(new Case());
             caseRepository.Add(new Case());
             caseRepository.Add(new Case());
 
-            List<Case> listOfCases = caseRepository.GetListOfCases();
+            List<ICase> listOfCases = caseRepository.GetAllCases();
 
             Assert.AreEqual(3, listOfCases.Count);
         }

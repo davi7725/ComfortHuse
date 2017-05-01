@@ -5,17 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EmployeeGUI.Views"
         mc:Ignorable="d"
-        Title="CaseSelectionWindow" Height="300" Width="300">
+        Title="CaseSelectionWindow" Height="500" Width="500">
     <Grid>
-        <ListView HorizontalAlignment="Left" Height="139" Margin="28,63,0,0" VerticalAlignment="Top" Width="240">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
+
+        <ListView Name="UserGrid" Height="146" Margin="27,90,23,0" VerticalAlignment="Top" ItemsSource="{Binding Cases}"  >
+            <ListView.View >
+                <GridView x:Name="grdTest">
+                    <GridViewColumn Header="Case Nb" DisplayMemberBinding="{Binding CaseNumber}"  Width="50"/>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"  Width="50"/>
+                    <GridViewColumn Header="Created" DisplayMemberBinding="{Binding DateOfCreation}"  Width="100"/>
+                    <GridViewColumn Header="Last revision" DisplayMemberBinding="{Binding DateOfLastRevision}"  Width="100"/>
+                    <GridViewColumn Header="Amount of Revisions" DisplayMemberBinding="{Binding AmountOfRevisions}"  Width="100"/>
+                    <GridViewColumn Header="House Price" DisplayMemberBinding="{Binding Price}" Width="100" />
+                    <GridViewColumn Header="Sold" DisplayMemberBinding="{Binding Sold}" Width="100" />
                 </GridView>
             </ListView.View>
-            <TextBlock TextWrapping="Wrap" Text="TextBlock"/>
         </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="67,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button HorizontalAlignment="Left"   Content="Create a new case" Margin="281,245,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label HorizontalAlignment="Left" Margin="27,49,0,0" VerticalAlignment="Top">
+            <Label Content="Select a case:"/>
+        </Label>
+        <Button HorizontalAlignment="Left" Content="Refresh" Margin="390,245,0,0" VerticalAlignment="Top" Width="75" />
+
+
 
     </Grid>
 </Window>

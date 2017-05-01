@@ -14,17 +14,18 @@ namespace EmployeeGUI.ViewModels
 {
     class CaseSelectionViewModel
     {
-        private IEmployeeFacade facade = new DomainFacade();
+        private readonly IEmployeeFacade _facade = new DomainFacade();
         private ICommand _updateCommand;
         private ObservableCollection<ICase> _cases;
 
-        public ObservableCollection<ICase> Cases => _cases ?? (_cases = new ObservableCollection<ICase>());
+        public ObservableCollection<ICase> Cases => _cases ?? (_cases = new ObservableCollection<ICase>(_facade.GetAllCases()));
 
-        public ICommand GetWinnersCommand => _updateCommand ?? (_updateCommand = new RelayCommand<object>(GetCases));
+        public ICommand GetCasesCommand => _updateCommand ?? (_updateCommand = new RelayCommand<object>(GetAllCases));
 
-        private void GetCases(object obj)
+        private void GetAllCases(object obj)
         {
-            facade.GetCases();
+            // Use try-catch
+            _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
         }
     }
 }
