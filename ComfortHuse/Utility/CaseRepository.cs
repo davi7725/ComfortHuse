@@ -7,41 +7,69 @@ namespace Comforthuse.Utility
 {
     public class CaseRepository : ICaseRepository
     {
-        private List<Case> listOfCases = new List<Case>();
-        IDbEmployee db = new DatabaseFacade();
+        private readonly List<ICase> _cases = new List<ICase>();
+
+        IDbEmployee _db = new DatabaseFacade();
+        private List<ICase> _currentCases;
 
         public CaseRepository()
         {
-            //db.CreateCase();
+         
+        }
 
+        public void Load(int caseID)
+        {
+            
+        }
+
+        public void Save(int caseId)
+        {
+            // Save
+            throw new NotImplementedException();
+        }
+
+
+        public void Add(ICase caseObj)
+        {
+            _cases.Add(caseObj);
         }
 
         public void Load()
         {
-
+            throw new NotImplementedException();
         }
 
-        public void AddCase(Case caseObj)
+        public void Create()
         {
-            listOfCases.Add(caseObj);
+           ICase newCase = new Case(){CaseNumber = GetNextId()};
+           Add(newCase);
         }
 
-        public bool Create()
+        private int GetNextId()
         {
-            return true;
-           // throw new System.NotImplementedException();
+           // return _db.GetNextCaseId();
+            return 1;
         }
 
-        public List<Case> GetListOfCases()
+        public List<ICase> GetAllCases()
         {
-            if(listOfCases.Count > 0)
+            /*
+            if(_cases.Count > 0)
             {
-                return listOfCases;
+                return _cases;
             }
             else
             {
                 throw new Exception("The list is empty");
             }
+            */
+            List<ICase> li = new List<ICase>()
+            {
+                new Case(){CaseNumber = 1, Customer = new Customer("Jens", "Jensen", "Odense", "Vollmose Allé 12", "5250", "60606060","","","")},
+                new Case(){CaseNumber = 2, Customer = new Customer("Sigurd", "Sigurdson", "Fredericia", "Blåbærvænget 12", "3250", "60606060","","","")}
+            };
+
+            return li;
         }
     }
 }

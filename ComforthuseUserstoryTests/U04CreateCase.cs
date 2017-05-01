@@ -5,7 +5,7 @@ using Comforthuse.Models;
 namespace ComforthuseUserstoryTests
 {
     [TestClass]
-    public class UC04CreateCase
+    public class UC04_CreateCase
     {
         
         [TestMethod]

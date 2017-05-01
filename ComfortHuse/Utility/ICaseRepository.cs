@@ -1,8 +1,13 @@
-﻿namespace Comforthuse.Utility
+﻿using System.Collections.Generic;
+using Comforthuse.Models;
+
+namespace Comforthuse.Utility
 {
     public interface ICaseRepository
     {
         void Load();
-        bool Create();
+        void Create();
+        void Save();
+        List<ICase> GetAllCases();
     }
 }

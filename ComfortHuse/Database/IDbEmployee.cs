@@ -2,6 +2,8 @@
 {
     public interface IDbEmployee
     {
-        void CreateCase();
+        void InsertCase();
+        void GetAllCases();
+        bool GetNextCaseId();
     }
 }

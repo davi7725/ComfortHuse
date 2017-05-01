@@ -14,8 +14,8 @@ namespace ComforthuseUserstoryTests
         {
             CaseRepository caseRepository = new CaseRepository();
 
-            caseRepository.AddCase(new Case());
-            caseRepository.AddCase(new Case());
+            caseRepository.Add(new Case());
+            caseRepository.Add(new Case());
 
             List<Case> listOfCases = caseRepository.GetListOfCases();
 
@@ -39,9 +39,9 @@ namespace ComforthuseUserstoryTests
 
             CaseRepository caseRepository = new CaseRepository();
 
-            caseRepository.AddCase(new Case());
-            caseRepository.AddCase(new Case());
-            caseRepository.AddCase(new Case());
+            caseRepository.Add(new Case());
+            caseRepository.Add(new Case());
+            caseRepository.Add(new Case());
 
             List<Case> listOfCases = caseRepository.GetListOfCases();
 

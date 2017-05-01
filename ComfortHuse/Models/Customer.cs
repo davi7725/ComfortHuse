@@ -1,6 +1,19 @@
 ﻿namespace Comforthuse.Models
 {
-    public class Customer
+    public interface ICustomer
+    {
+        string FirstName { get; set; }
+        string LastName { get; set; }
+        string City { get; set; }
+        string Address { get; set; }
+        string Zipcode { get; set; }
+        string PhoneNr1 { get; set; }
+        string PhoneNr2 { get; set; }
+        string PhoneNr3 { get; set; }
+        string PhoneNr4 { get; set; }
+    }
+
+    public class Customer : ICustomer
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
