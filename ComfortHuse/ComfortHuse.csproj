@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Database\DatabaseController.cs" />
-    <Compile Include="Database\DatabaseFacade.cs" />
     <Compile Include="Database\IDbAdmin.cs" />
     <Compile Include="Database\IDbEmployee.cs" />
     <Compile Include="Facade\DomainFacade.cs" />
