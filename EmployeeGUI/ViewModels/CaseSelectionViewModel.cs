@@ -33,22 +33,19 @@ namespace EmployeeGUI.ViewModels
 
             try
             {
-                throw new Exception("Test");
+
                 //_facade.CreateCase();
                 var win = new CaseWindow();
                 win.Show();
             }
             catch (Exception e)
             {
-                string message = e.ToString();
+                string message = e.Message;
                 string caption = "Ok";
                 MessageBoxButton buttons = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Error;
                 MessageBox.Show(message, caption, buttons, icon);
-                throw;
             }
-
-
 
         }
     }

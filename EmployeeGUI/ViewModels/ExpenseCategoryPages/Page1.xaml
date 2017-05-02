@@ -1,11 +1,10 @@
-﻿<Page x:Class="EmployeeGUI.Views.ProductCategoryPages.HouseType"
+﻿<Page x:Class="EmployeeGUI.Views.ExpenseCategoryPages.Page1.xaml"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:EmployeeGUI.Views.ProductCategoryPages"
+      xmlns:d="http://schemas.microsoft.com/expressiodn/blend/2008"
       mc:Ignorable="d" 
-      Title="HouseType">
+      Title="House">
     <Grid Height="433 " Width="555" Background="#FFE5E5E5" RenderTransformOrigin="0.779,0.538" >
         <Button Content="Statement" HorizontalAlignment="Left" Margin="10,438,0,0" VerticalAlignment="Top" Width="182"/>
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

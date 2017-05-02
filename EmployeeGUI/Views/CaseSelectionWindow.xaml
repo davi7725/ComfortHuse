@@ -19,7 +19,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button HorizontalAlignment="Left" Content="Open new case" Command="{Binding CreateCase}" Margin="436,280,0,0" VerticalAlignment="Top" Width="104"/>
+        <Button HorizontalAlignment="Left" Content="Open new case" Command="{Binding CreateCaseCommand}" Margin="436,280,0,0" VerticalAlignment="Top" Width="104"/>
         <Label HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top">
             <Label Content="Select a case:" FontWeight="Bold" FontSize="14"/>
         </Label>
