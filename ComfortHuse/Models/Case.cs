@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Comforthuse.Models
 {
-    public class Case : ICase 
+    public class Case : ICase
     {
+        private List<IExpenseCategory> _expenseCategories = new List<IExpenseCategory>();
+
         public int CaseNumber { get; set; }
         private bool _isSold = true;
 
@@ -22,7 +21,12 @@ namespace Comforthuse.Models
 
         private float CalculatePrice()
         {
-            return 0;
+            float price = 0;
+            foreach (IExpenseCategory c in _expenseCategories)
+            {
+                price += c.Price;
+            }
+            return (float)price;
         }
 
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");

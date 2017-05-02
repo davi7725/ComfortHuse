@@ -1,16 +1,20 @@
 ﻿using Comforthuse.Facade;
 using Comforthuse.Models;
 using EmployeeGUI.Helpers;
+using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EmployeeGUI.ViewModels
 {
     class CaseSelectionViewModel
     {
-        private readonly IEmployeeFacade _facade = new DomainFacade();
         private ICommand _updateCommand;
         private ICommand _createCaseCommand;
+
+        private readonly IEmployeeFacade _facade = new DomainFacade();
+
         private ObservableCollection<ICase> _cases;
 
         public ObservableCollection<ICase> Cases => _cases ?? (_cases = new ObservableCollection<ICase>(_facade.GetAllCases()));
@@ -26,8 +30,25 @@ namespace EmployeeGUI.ViewModels
 
         private void CreateCase(object obj)
         {
-            // Use try-catch
-            _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
+
+            try
+            {
+                throw new Exception("Test");
+                //_facade.CreateCase();
+                var win = new CaseWindow();
+                win.Show();
+            }
+            catch (Exception e)
+            {
+                string message = e.ToString();
+                string caption = "Ok";
+                MessageBoxButton buttons = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Error;
+                MessageBox.Show(message, caption, buttons, icon);
+                throw;
+            }
+
+
 
         }
     }

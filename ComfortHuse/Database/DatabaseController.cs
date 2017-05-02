@@ -21,9 +21,9 @@ namespace Comforthuse.Database
 
         public List<ICase> GetAllCases()
         {
-            List <ICase> list = new List<ICase>();
+            List<ICase> list = new List<ICase>();
 
-            return 
+            return list;
         }
 
         public int GetNextCaseId()
