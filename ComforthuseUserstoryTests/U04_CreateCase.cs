@@ -1,24 +1,29 @@
-﻿using Comforthuse.Utility;
+﻿using Comforthuse.Facade;
+using Comforthuse.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using Comforthuse.Models;
 namespace ComforthuseUserstoryTests
 {
     [TestClass]
     public class UC04_CreateCase
     {
-        
+
         [TestMethod]
-        public void CreateCase()
+        public void CreateCaseWillReturnId()
         {
             // Arrange
             ICaseRepository caseRep = new CaseRepository();
+            DomainFacade df = new DomainFacade(caseRep);
+
+
 
             // Act
-            caseRep.Create();
+            int id = df.CreateCase();
+            
+
 
             // Assert
-            //AssertAreEqual();
+
+            AssertAreEqual(id, 1);
 
         }
 

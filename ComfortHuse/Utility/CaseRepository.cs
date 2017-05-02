@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using Comforthuse.Database;
+﻿using Comforthuse.Database;
 using Comforthuse.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Comforthuse.Utility
 {
     public class CaseRepository : ICaseRepository
     {
+
+        private static CaseRepository _instance;
+
+        private CaseRepository() { }
+
+        public static CaseRepository Instance => _instance ?? (_instance = new CaseRepository());
+
         private readonly List<ICase> _cases = new List<ICase>();
-
-        IDbEmployee _db = new DatabaseFacade();
+        IDbEmployee _db = new DatabaseController();
         private List<ICase> _currentCases = new List<ICase>();
-
-        public void Load(int caseID)
-        {
-            
-        }
-
-        public void Save(int caseId)
-        {
-            // Save
-            throw new NotImplementedException();
-        }
 
 
         public void Add(ICase caseObj)
@@ -29,25 +24,27 @@ namespace Comforthuse.Utility
             _cases.Add(caseObj);
         }
 
-        public void Load()
+        public ICase Load(int caseId)
         {
-            throw new NotImplementedException();
+            return _db.GetCase(caseId);
         }
 
-        public void Create()
+        public int Create()
         {
-           ICase newCase = new Case(){CaseNumber = GetNextId()};
-           _currentCases.Add(newCase);
+            int nextId = DateTime.Now.Year + GetNextId();
+            ICase newCase = new Case() { CaseNumber = nextId };
+            _currentCases.Add(newCase);
+            return nextId;
         }
 
-        public void Save()
+        public void Save(int caseId)
         {
-            throw new NotImplementedException();
+
         }
 
         private int GetNextId()
         {
-           // return _db.GetNextCaseId();
+            // return _db.GetNextCaseId();
             return 1;
         }
 
@@ -72,6 +69,11 @@ namespace Comforthuse.Utility
             };
 
             return li;
+        }
+
+        public void Save(ICase obj)
+        {
+            _db.SaveCase(obj);
         }
 
     }

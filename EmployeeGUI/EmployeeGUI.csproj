@@ -82,9 +82,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\BindableBase.cs" />
+    <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="ViewModels\CaseSelectionViewModel.cs" />
+    <Compile Include="ViewModels\CaseViewModel.cs" />
+    <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="Views\CaseSelectionWindow.xaml.cs">
       <DependentUpon>CaseSelectionWindow.xaml</DependentUpon>
     </Compile>

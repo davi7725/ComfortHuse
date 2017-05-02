@@ -57,7 +57,7 @@
                     <Button Content="Extra construction" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="182"/>
                     <Button Content="Other" HorizontalAlignment="Left" Margin="10,418,0,0" VerticalAlignment="Top" Width="182"/>
                     <Button Content="Statement" HorizontalAlignment="Left" Margin="10,438,0,0" VerticalAlignment="Top" Width="182"/>
-                    <ListBox HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="361" Margin="205,97,0,0" VerticalAlignment="Top" Width="308" Name="ListBoxProductCatergories" FontFamily="Lato">
+                    <ListBox HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Height="416" Margin="205,42,0,0" VerticalAlignment="Top" Width="550" Name="ListBoxProductCatergories" FontFamily="Lato">
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="{x:Type ListBoxItem}">
                                 <Setter Property="Padding" Value="0" />
@@ -67,18 +67,18 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0">
-                                        <Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="50"></ColumnDefinition>   
-                                   </Grid.ColumnDefinitions>
-                  
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
                                     <TextBlock Margin="0" Padding="0" Text="{Binding Title}" Foreground="White"></TextBlock>
                                     <TextBlock Margin="0" Padding="0" Grid.Column="1" Text="{Binding Price}" Foreground="White"></TextBlock>
-                                    
+
 
                                 </Grid>
-                           </DataTemplate>
-                       </ListBox.ItemTemplate>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
                 </Grid>
             </TabItem>
