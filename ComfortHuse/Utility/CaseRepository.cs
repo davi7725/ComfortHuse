@@ -10,7 +10,6 @@ namespace Comforthuse.Utility
 
         private static CaseRepository _instance;
 
-        private CaseRepository() { }
 
         public static CaseRepository Instance => _instance ?? (_instance = new CaseRepository());
 
@@ -48,22 +47,22 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            /*
-            if(_cases.Count > 0)
+
+            if (_cases.Count > 0)
             {
-                return _cases;
+                _db.GetAllCases();
             }
             else
             {
                 throw new Exception("The list is empty");
             }
-            */
+
             var li = new List<ICase>()
             {
                 new Case(){CaseNumber = 1, AmountOfRevisions = 1, HouseType = "HouseType A", DateOfLastRevision = new DateTime(2017, 6, 18),DateOfCreation = new DateTime(2017, 5, 18),
-                    Customer = new Customer("Jens", "Jensen", "Odense", "Vollmose Allé 2", "5250", "60606060","","","")},
-                new Case(){CaseNumber = 2, AmountOfRevisions = 2,HouseType = "HouseType B", DateOfLastRevision = new DateTime(2017, 6, 18), DateOfCreation = new DateTime(2017, 2, 18),Customer = new Customer("Sigurd", "Sigurdson", "Fredericia", "Blåbærvænget 12", "3250", "60606060","","","")},
-                new Case(){CaseNumber = 3, AmountOfRevisions = 4,HouseType = "HouseType A", DateOfLastRevision = new DateTime(2017, 6, 18), DateOfCreation = new DateTime(2017, 1, 18),Customer = new Customer("Magnus", "Magnusen", "Århus", "Rønnebærvænget 14", "3250", "60606060","","","")}
+                    Customer = new Customer("Jens", "Jensen", "Odense", "Vollmose Allé 2", "5250", "60606060","")},
+                new Case(){CaseNumber = 2, AmountOfRevisions = 2,HouseType = "HouseType B", DateOfLastRevision = new DateTime(2017, 6, 18), DateOfCreation = new DateTime(2017, 2, 18),Customer = new Customer("Sigurd", "Sigurdson", "Fredericia", "Blåbærvænget 12", "3250", "60606060","")},
+                new Case(){CaseNumber = 3, AmountOfRevisions = 4,HouseType = "HouseType A", DateOfLastRevision = new DateTime(2017, 6, 18), DateOfCreation = new DateTime(2017, 1, 18),Customer = new Customer("Magnus", "Magnusen", "Århus", "Rønnebærvænget 14", "3250", "60606060","")}
             };
 
             return li;

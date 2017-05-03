@@ -12,7 +12,7 @@ namespace Comforthuse.Utility
             Customer customer;
             if (firstName != "" && lastName != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
             {
-                customer = new Customer(StandardizeName(firstName), StandardizeName(lastName), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2), StandardizePhoneNr(phoneNr2), StandardizePhoneNr(phoneNr2));
+                customer = new Customer(StandardizeName(firstName), StandardizeName(lastName), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2));
             }
             else
             {

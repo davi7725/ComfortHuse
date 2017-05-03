@@ -3,6 +3,6 @@
     public interface IExpenseCategory
     {
         ProductCategory Category { get; }
-        float Price { get; set; }
+        decimal Price { get; }
     }
 }

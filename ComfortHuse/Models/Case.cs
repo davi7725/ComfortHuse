@@ -15,23 +15,35 @@ namespace Comforthuse.Models
             DateOfCreation = DateTime.Now;
         }
 
-        public string Sold => _isSold ? "Yes" : "No";
+        public string Sold
+        {
+            get
+            {
+                if (_isSold) return "Yes";
+                return "No";
+            }
+        }
+
         public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; internal set; }
         public int AmountOfRevisions { get; set; }
         public DateTime DateOfLastRevision { get; internal set; }
         public string HouseType { get; set; }
-        public float Price => CalculatePrice();
 
-        private float CalculatePrice()
+        public decimal Price
         {
-            float price = 0;
+            get { return CalculatePrice(); }
+        }
+
+        private decimal CalculatePrice()
+        {
+            decimal price = 0;
             foreach (IExpenseCategory c in _expenseCategories)
             {
                 price += c.Price;
             }
-            return (float)price;
+            return price;
         }
 
         public void RegisterRevision()
@@ -41,6 +53,18 @@ namespace Comforthuse.Models
         }
 
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");
+
+        public override bool Equals(object o)
+        {
+            bool isEqual = false;
+            Case thisCase = (Case)o;
+            if (thisCase.CaseNumber == this.CaseNumber)
+            {
+                isEqual = true;
+            }
+
+            return isEqual;
+        }
     }
 
     public interface ICase
@@ -48,7 +72,7 @@ namespace Comforthuse.Models
         string Title { get; }
         string Sold { get; }
         int CaseNumber { get; set; }
-        float Price { get; }
+        decimal Price { get; }
         int AmountOfRevisions { get; }
         ICustomer Customer { get; set; }
         DateTime DateOfLastRevision { get; }

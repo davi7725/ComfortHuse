@@ -6,14 +6,14 @@
         public int Area { get; set; }
         public string Bet { get; set; }
         public int WallMaterial { get; set; }
-        public float PricePerSqM { get; set; }
+        public decimal PricePerSqM { get; set; }
         public float MoneySetAsideForInterior { get; set; }
-        public double UnitPriceSkeletonFyn { get; set; }
-        public double UnitPriceSkeletonSjaelland { get; set; }
-        public double SkeletonPriceFyn => UnitPriceSkeletonFyn * Area;
-        public double PriceSjaelland => UnitPriceSkeletonFyn * Area;
-        public double TotalPriceFyn => PricePerSqM * Area;
-        public double TotalPriceSjaelland => PricePerSqM * Area * 1.175;
-        public double SelectionPriceTotal => PricePerSqM * Area * 1.175;
+        public decimal UnitPriceSkeletonFyn { get; set; }
+        public decimal UnitPriceSkeletonSjaelland { get; set; }
+        public decimal SkeletonPriceFyn => UnitPriceSkeletonFyn * Area;
+        public decimal PriceSjaelland => UnitPriceSkeletonFyn * Area;
+        public decimal TotalPriceFyn => PricePerSqM * Area;
+        public decimal TotalPriceSjaelland => PricePerSqM * Area * 1.175m;
+        public decimal SelectionPriceTotal => PricePerSqM * Area * 1.175m;
     }
 }
