@@ -34,8 +34,8 @@ namespace EmployeeGUI.ViewModels
             try
             {
 
-                //_facade.CreateCase();
-                var win = new CaseWindow();
+                ICase newCase = _facade.CreateCase();
+                var win = new CaseWindow(newCase);
                 win.Show();
             }
             catch (Exception e)

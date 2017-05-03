@@ -1,4 +1,5 @@
-﻿using EmployeeGUI.Helpers;
+﻿using Comforthuse.Models;
+using EmployeeGUI.Helpers;
 using SimpleMVVMExample;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -11,10 +12,12 @@ namespace EmployeeGUI.ViewModels
         private ICommand _changePageCommand;
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
+        private ICase _activeCase = null;
 
 
-        public CaseViewModel()
+        public CaseViewModel(ICase activeCase)
         {
+            _activeCase = activeCase;
             // Add available pages
             //PageViewModels.Add(new HomeViewModel());
 

@@ -29,12 +29,11 @@ namespace Comforthuse.Utility
             return _db.GetCase(caseId);
         }
 
-        public int Create()
+        public ICase Create()
         {
-            int nextId = DateTime.Now.Year + GetNextId();
-            ICase newCase = new Case() { CaseNumber = nextId };
-            _currentCases.Add(newCase);
-            return nextId;
+            ICase newCase = new Case();
+            //  _currentCases.Add(newCase);
+            return newCase;
         }
 
         public void Save(int caseId)

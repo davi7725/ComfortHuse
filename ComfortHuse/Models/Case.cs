@@ -10,12 +10,17 @@ namespace Comforthuse.Models
         public int CaseNumber { get; set; }
         private bool _isSold = true;
 
+        public Case()
+        {
+            DateOfCreation = DateTime.Now;
+        }
+
         public string Sold => _isSold ? "Yes" : "No";
         public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
         public ICustomer Customer { get; set; }
-        public DateTime DateOfCreation { get; set; }
+        public DateTime DateOfCreation { get; internal set; }
         public int AmountOfRevisions { get; set; }
-        public DateTime DateOfLastRevision { get; set; }
+        public DateTime DateOfLastRevision { get; internal set; }
         public string HouseType { get; set; }
         public float Price => CalculatePrice();
 
@@ -29,6 +34,12 @@ namespace Comforthuse.Models
             return (float)price;
         }
 
+        public void RegisterRevision()
+        {
+            AmountOfRevisions = AmountOfRevisions++;
+            DateOfLastRevision = DateOfLastRevision;
+        }
+
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");
     }
 
@@ -38,8 +49,9 @@ namespace Comforthuse.Models
         string Sold { get; }
         int CaseNumber { get; set; }
         float Price { get; }
+        int AmountOfRevisions { get; }
         ICustomer Customer { get; set; }
-        DateTime DateOfLastRevision { get; set; }
-        DateTime DateOfCreation { get; set; }
+        DateTime DateOfLastRevision { get; }
+        DateTime DateOfCreation { get; }
     }
 }

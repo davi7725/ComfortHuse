@@ -6,7 +6,7 @@ namespace Comforthuse.Utility
     public interface ICaseRepository
     {
         ICase Load(int caseId);
-        int Create();
+        ICase Create();
         void Save(int caseId);
         void Save(ICase obj);
         List<ICase> GetAllCases();

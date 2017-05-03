@@ -8,7 +8,7 @@ namespace Comforthuse.Facade
     {
         private readonly ICaseRepository _caseRep = CaseRepository.Instance;
 
-        public int CreateCase()
+        public ICase CreateCase()
         {
             return _caseRep.Create();
         }
@@ -25,7 +25,7 @@ namespace Comforthuse.Facade
 
     public interface IEmployeeFacade
     {
-        int CreateCase();
+        ICase CreateCase();
         List<ICase> GetAllCases();
     }
 }
