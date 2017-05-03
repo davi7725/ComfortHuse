@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace Comforthuse.Models
 {
-    public class Case : ICase 
+    public class Case : ICase
     {
-        public int CaseNumber { get; set; }
         private bool _isSold = true;
+
 
         public string Sold => _isSold ? "Yes" : "No";
         public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
+        public float Price => CalculatePrice();
+
+        public int CaseNumber { get; set; }
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; set; }
         public int AmountOfRevisions { get; set; }
         public DateTime DateOfLastRevision { get; set; }
         public string HouseType { get; set; }
-        public float Price => CalculatePrice();
 
         private float CalculatePrice()
         {

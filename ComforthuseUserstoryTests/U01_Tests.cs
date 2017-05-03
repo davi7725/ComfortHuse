@@ -26,7 +26,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr, phoneNr, phoneNr);
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual(fName, customer.FirstName);
             Assert.AreEqual(lName, customer.LastName);
@@ -35,8 +35,6 @@ namespace ComforthuseUserstoryTests
             Assert.AreEqual(zipcode, customer.Zipcode);
             Assert.AreEqual(phoneNr, customer.PhoneNr1);
             Assert.AreEqual(phoneNr, customer.PhoneNr2);
-            Assert.AreEqual(phoneNr, customer.PhoneNr3);
-            Assert.AreEqual(phoneNr, customer.PhoneNr4);
         }
 
         [TestMethod]
@@ -53,7 +51,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr, phoneNr, phoneNr);
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
             
         }
 
@@ -70,7 +68,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr, phoneNr, phoneNr);
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("Jane", customer.FirstName);
             Assert.AreEqual("Doe", customer.LastName);
@@ -90,7 +88,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr, phoneNr, phoneNr);
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("No Street, 12309", customer.Address);
         }
@@ -108,7 +106,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr, phoneNr, phoneNr);
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("52O0DA", customer.Zipcode);
         }
@@ -125,12 +123,46 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr, phoneNr, phoneNr);
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("30525485", customer.PhoneNr1);
             Assert.AreEqual("30525485", customer.PhoneNr2);
-            Assert.AreEqual("30525485", customer.PhoneNr3);
-            Assert.AreEqual("30525485", customer.PhoneNr4);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void CheckIfExceptionIsThrownOnPhoneWithLetters()
+        {
+            string fName = "";
+            string lName = "Doe";
+            string city = "Odense";
+            string address = "";
+            string zipcode = "5200";
+            string phoneNr = "31525a85";
+
+
+            ValidateCustomer vc = new ValidateCustomer();
+
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void CheckIfExceptionIsThrownOnNameWithNumbers()
+        {
+            string fName = "";
+            string lName = "D0e";
+            string city = "Odense";
+            string address = "";
+            string zipcode = "5200";
+            string phoneNr = "31525485";
+
+
+            ValidateCustomer vc = new ValidateCustomer();
+
+            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
         }
     }
