@@ -5,14 +5,14 @@ using System.Globalization;
 
 namespace Comforthuse.Utility
 {
-    public class ValidateCustomer: Validator
+    public class ValidateCustomer : Validator
     {
         public Customer CreateCustomer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
         {
             Customer customer;
             if (firstName != "" && lastName != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
             {
-               customer = new Customer(StandardizeName(firstName), StandardizeName(lastName), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2));
+                customer = new Customer(StandardizeName(firstName), StandardizeName(lastName), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2), StandardizePhoneNr(phoneNr2), StandardizePhoneNr(phoneNr2));
             }
             else
             {
@@ -41,10 +41,10 @@ namespace Comforthuse.Utility
         private string StandardizePhoneNr(string phoneNr)
         {
             string standardized = "";
-            
-            foreach(char c in phoneNr)
+
+            foreach (char c in phoneNr)
             {
-                if(c != ' ')
+                if (c != ' ')
                 {
                     standardized += c;
                 }
@@ -57,11 +57,11 @@ namespace Comforthuse.Utility
 
         private void OnlyContainsNumbers(string numbers)
         {
-            List<char> listOfNumbers = new List<char>(){ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+            List<char> listOfNumbers = new List<char>() { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            foreach(char digit in numbers)
+            foreach (char digit in numbers)
             {
-                if(listOfNumbers.Contains(digit) == false)
+                if (listOfNumbers.Contains(digit) == false)
                 {
                     throw new Exception("Does not contain only numbers");
                 }
@@ -70,7 +70,7 @@ namespace Comforthuse.Utility
 
         private void OnlyContainsValidNameCharacters(string name)
         {
-            List<char> listOfAcceptedCharacters = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å', ' '};
+            List<char> listOfAcceptedCharacters = new List<char>() { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å', ' ' };
 
             foreach (char character in name.ToLower())
             {

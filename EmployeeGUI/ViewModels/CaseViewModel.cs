@@ -12,8 +12,7 @@ namespace EmployeeGUI.ViewModels
         private ICommand _changePageCommand;
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
-        private ICase _activeCase = null;
-
+        private ICase _activeCase;
 
         public CaseViewModel(ICase activeCase)
         {

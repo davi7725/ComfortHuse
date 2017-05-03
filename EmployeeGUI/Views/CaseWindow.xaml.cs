@@ -1,6 +1,4 @@
-﻿using Comforthuse.Models;
-using EmployeeGUI.ViewModels;
-using System.Windows;
+﻿using System.Windows;
 
 namespace EmployeeGUI
 {
@@ -9,11 +7,10 @@ namespace EmployeeGUI
     /// </summary>
     public partial class CaseWindow : Window
     {
-        public CaseWindow(ICase theCase)
+        public CaseWindow()
         {
             InitializeComponent();
-
-            this.Content = new CaseViewModel(theCase);
+            //  this.Content = new CaseViewModel();
         }
 
     }
