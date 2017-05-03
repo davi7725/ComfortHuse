@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
-using Comforthuse.Models;
+﻿using Comforthuse.Models;
+using System.Collections.Generic;
 
 namespace Comforthuse.Utility
 {
     public interface ICaseRepository
     {
-        void Load();
-        void Create();
-        void Save();
+        ICase Load(int caseId);
+        int Create();
+        void Save(int caseId);
+        void Save(ICase obj);
         List<ICase> GetAllCases();
         void Add(ICase caseObj);
     }

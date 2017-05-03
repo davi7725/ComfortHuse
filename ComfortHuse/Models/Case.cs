@@ -1,30 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Comforthuse.Models
 {
     public class Case : ICase
     {
-        private bool _isSold = true;
+        private List<IExpenseCategory> _expenseCategories = new List<IExpenseCategory>();
 
+        public int CaseNumber { get; set; }
+        private bool _isSold = true;
 
         public string Sold => _isSold ? "Yes" : "No";
         public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
-        public float Price => CalculatePrice();
-
-        public int CaseNumber { get; set; }
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; set; }
         public int AmountOfRevisions { get; set; }
         public DateTime DateOfLastRevision { get; set; }
         public string HouseType { get; set; }
+        public float Price => CalculatePrice();
 
         private float CalculatePrice()
         {
-            return 0;
+            float price = 0;
+            foreach (IExpenseCategory c in _expenseCategories)
+            {
+                price += c.Price;
+            }
+            return (float)price;
         }
 
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");

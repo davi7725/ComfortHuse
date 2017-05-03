@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Comforthuse.Models;
+﻿using Comforthuse.Models;
 using Comforthuse.Utility;
+using System.Collections.Generic;
 
 namespace Comforthuse.Facade
 {
     public class DomainFacade : IEmployeeFacade, IAdministratorFacade
     {
-        private readonly ICaseRepository _caseRep = new CaseRepository();
+        private readonly ICaseRepository _caseRep = CaseRepository.Instance;
 
-        public void CreateCase()
+        public int CreateCase()
         {
+            return _caseRep.Create();
         }
 
         List<ICase> IEmployeeFacade.GetAllCases()
@@ -26,7 +25,7 @@ namespace Comforthuse.Facade
 
     public interface IEmployeeFacade
     {
-        void CreateCase();
+        int CreateCase();
         List<ICase> GetAllCases();
     }
 }

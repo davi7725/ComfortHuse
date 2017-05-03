@@ -1,9 +1,14 @@
-﻿namespace Comforthuse.Database
+﻿using Comforthuse.Models;
+using System.Collections.Generic;
+
+namespace Comforthuse.Database
 {
     public interface IDbEmployee
     {
         void InsertCase();
-        void GetAllCases();
-        bool GetNextCaseId();
+        List<ICase> GetAllCases();
+        int GetNextCaseId();
+        ICase GetCase(int caseId);
+        void SaveCase(ICase @case);
     }
 }
