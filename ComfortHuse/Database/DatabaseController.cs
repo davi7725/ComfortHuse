@@ -4,8 +4,21 @@ using System.Collections.Generic;
 
 namespace Comforthuse.Database
 {
-    class DatabaseController : IDbAdmin, IDbEmployee
+    internal class DatabaseController : IDbAdmin, IDbEmployee
     {
+
+        private static DatabaseController _instance = null;
+
+        private DatabaseController() { }
+
+        public static DatabaseController Instance
+        {
+            get
+            {
+                if (_instance == null) _instance = new DatabaseController();
+                return _instance;
+            }
+        }
 
         public void InsertCase()
         {

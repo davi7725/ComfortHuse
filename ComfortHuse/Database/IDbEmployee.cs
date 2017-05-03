@@ -10,5 +10,7 @@ namespace Comforthuse.Database
         int GetNextCaseId();
         ICase GetCase(int caseId);
         void SaveCase(ICase @case);
+        List<ICustomer> GetAllCustomersByName();
+        void SearchForCustomer(string query);
     }
 }
