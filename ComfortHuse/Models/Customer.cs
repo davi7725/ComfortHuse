@@ -25,7 +25,7 @@
         {
 
         }
-        public Customer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public Customer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2, string phoneNr3, string phoneNr4)
         {
             FirstName = firstName;
             LastName = lastName;
