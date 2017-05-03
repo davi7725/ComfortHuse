@@ -54,5 +54,15 @@ namespace Comforthuse.Database
         {
             throw new System.NotImplementedException();
         }
+
+        public List<ICustomer> GetAllCustomersByName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchForCustomer(string query)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

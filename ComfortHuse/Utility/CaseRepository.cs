@@ -15,7 +15,7 @@ namespace Comforthuse.Utility
         public static CaseRepository Instance => _instance ?? (_instance = new CaseRepository());
 
         private List<ICase> _cases = new List<ICase>();
-        IDbEmployee _db = new DatabaseController();
+        private IDbEmployee _db = DatabaseController.Instance;
         private List<ICase> _currentCases = new List<ICase>();
 
 
