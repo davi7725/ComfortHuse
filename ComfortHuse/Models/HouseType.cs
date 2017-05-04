@@ -4,7 +4,6 @@
     {
         public string Name { get; set; }
         public int Area { get; set; }
-        public string Bet { get; set; }
         public int WallMaterial { get; set; }
         public decimal PricePerSqM { get; set; }
         public float MoneySetAsideForInterior { get; set; }
