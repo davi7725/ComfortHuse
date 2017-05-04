@@ -7,12 +7,40 @@ namespace Comforthuse.Utility
 {
     public class ValidateCustomer : Validator
     {
-        public Customer CreateCustomer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public ICustomer CreateCustomer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
         {
-            Customer customer;
+            ICustomer customer;
             if (firstName != "" && lastName != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
             {
-                customer = new Customer(StandardizeName(firstName), StandardizeName(lastName), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2), StandardizePhoneNr(phoneNr2), StandardizePhoneNr(phoneNr2));
+                customer = CustomerRepository.Instance.Create(StandardizeName(firstName), StandardizeName(lastName), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2));
+            }
+            else
+            {
+                throw new Exception("Not all the fields have input");
+            }
+            return customer;
+        }
+
+        public ICustomer Edit(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2, string old_PhoneNr)
+        {
+            ICustomer customer = CustomerRepository.Instance.Load(StandardizePhoneNr(old_PhoneNr));
+            if (firstName != "" && lastName != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
+            {
+                string newFirstName = StandardizeName(firstName);
+                string newLastName = StandardizeName(lastName);
+                string newCity = StandardizeName(city);
+                string newAddress = StandardizeAddress(address);
+                string newZipcode = StandardizeZipcode(zipcode);
+                string newPhoneNr1 = StandardizePhoneNr(phoneNr1);
+                string newPhoneNr2 = StandardizePhoneNr(phoneNr2);
+
+                customer.FirstName = newFirstName;
+                customer.LastName = newLastName;
+                customer.City = newCity;
+                customer.Address = newAddress;
+                customer.Zipcode = newZipcode;
+                customer.PhoneNr1 = newPhoneNr1;
+                customer.PhoneNr2 = newPhoneNr2;
             }
             else
             {

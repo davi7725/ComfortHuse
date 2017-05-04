@@ -56,6 +56,7 @@
     <Compile Include="U04_CreateCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="U06_Tests.cs" />
+    <Compile Include="U02_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Comforthuse\Comforthuse.csproj">

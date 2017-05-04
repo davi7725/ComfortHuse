@@ -13,6 +13,11 @@ namespace ComforthuseUserstoryTests
     [TestClass]
     public class U01_Tests
     {
+        [TestInitialize]
+        public void CleanRepository()
+        {
+            CustomerRepository.Instance.Clear();
+        }
         [TestMethod]
         public void CheckIfAllFieldsHaveValues()
         {
@@ -26,7 +31,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual(fName, customer.FirstName);
             Assert.AreEqual(lName, customer.LastName);
@@ -36,6 +41,7 @@ namespace ComforthuseUserstoryTests
             Assert.AreEqual(phoneNr, customer.PhoneNr1);
             Assert.AreEqual(phoneNr, customer.PhoneNr2);
         }
+
 
         [TestMethod]
         [ExpectedException (typeof(Exception))]
@@ -51,7 +57,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
             
         }
 
@@ -68,7 +74,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("Jane", customer.FirstName);
             Assert.AreEqual("Doe", customer.LastName);
@@ -88,7 +94,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("No Street, 12309", customer.Address);
         }
@@ -106,7 +112,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("52O0DA", customer.Zipcode);
         }
@@ -123,7 +129,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("30525485", customer.PhoneNr1);
             Assert.AreEqual("30525485", customer.PhoneNr2);
@@ -144,7 +150,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
         }
 
@@ -162,7 +168,7 @@ namespace ComforthuseUserstoryTests
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            Customer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, city, address, zipcode, phoneNr, phoneNr);
 
         }
     }
