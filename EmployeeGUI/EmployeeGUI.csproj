@@ -139,6 +139,7 @@
   <ItemGroup>
     <Folder Include="Resources\Graphics\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Views\Partition\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
