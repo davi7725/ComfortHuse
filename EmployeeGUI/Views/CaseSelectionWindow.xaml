@@ -4,25 +4,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="CaseSelectionWindow" Height="347.2" Width="661.6">
-    <Grid Margin="0,0,-52.4,8.4">
-        <ListView Name="UserGrid" Height="216" Margin="27,45,86.6,0" VerticalAlignment="Top" ItemsSource="{Binding Cases}">
+        Title="CaseSelectionWindow" MinHeight="500" MinWidth="840">
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="200*" />
+            <ColumnDefinition Width="25" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="361*" />
+            <RowDefinition Height="26*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Name="UserGrid" VerticalAlignment="Stretch" ItemsSource="{Binding Cases}">
             <ListView.View >
                 <GridView x:Name="GridSelectCase">
                     <GridViewColumn Header="Case Nb" DisplayMemberBinding="{Binding CaseNumber}"  Width="75"/>
-                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" />
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" Width="200" />
                     <GridViewColumn Header="Created" DisplayMemberBinding="{Binding DateOfCreation}"  Width="100"/>
                     <GridViewColumn Header="Last revision" DisplayMemberBinding="{Binding DateOfLastRevision}"  Width="100"/>
                     <GridViewColumn Header="Revisions" DisplayMemberBinding="{Binding AmountOfRevisions}"  Width="75"/>
-                    <GridViewColumn Header="House Price" DisplayMemberBinding="{Binding Price}" Width="100" />
-                    <GridViewColumn Header="Sold" DisplayMemberBinding="{Binding Sold}" Width="100" />
+                    <GridViewColumn Header="House Price" DisplayMemberBinding="{Binding Price}" Width="150" />
+                    <GridViewColumn Header="Sold" DisplayMemberBinding="{Binding Sold}" Width="50" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button HorizontalAlignment="Left" Content="Open new case" Command="{Binding CreateCaseCommand}" Margin="436,280,0,0" VerticalAlignment="Top" Width="104"/>
-        <Label HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top">
-            <Label Content="Select a case:" FontWeight="Bold" FontSize="14"/>
+
+
+        <Label Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="160">
+            <Label Content="Select a case:" FontWeight="Bold" FontSize="14" Height="25" Width="249"/>
         </Label>
-        <Button HorizontalAlignment="Left" Content="Refresh" Margin="546,280,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,100,0" Content="Open new case" Command="{Binding CreateCaseCommand}" VerticalAlignment="Bottom" Width="104" Height="18" />
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Content="Refresh"  VerticalAlignment="Bottom" Width="75" Height="18"/>
     </Grid>
 </Window>
