@@ -1,6 +1,6 @@
 ﻿namespace Comforthuse.Models
 {
-    internal class TechnicalSpecification
+    public class TechnicalSpecification
     {
     }
 }

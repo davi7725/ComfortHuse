@@ -1,5 +1,4 @@
-﻿using Comforthuse.Facade;
-using Comforthuse.Utility;
+﻿using Comforthuse.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ComforthuseUserstoryTests
 {
@@ -11,21 +10,32 @@ namespace ComforthuseUserstoryTests
         public void CreateCaseWillReturnId()
         {
             // Arrange
-         //   ICaseRepository caseRep = new CaseRepository();
-           // DomainFacade df = new DomainFacade(caseRep);
+            ICaseRepository caseRep = new CaseRepository();
+            //var df = new DomainFacade(caseRep);
 
 
 
             // Act
-         //   int id = df.CreateCase();
-            
+            //   int id = df.CreateCase();
+
 
 
             // Assert
 
-           // AssertAreEqual(id, 1);
+            // AssertAreEqual(id, 1);
 
         }
+
+        [TestMethod]
+        public void CreateNewCasel()
+        {
+            // Arrange
+            //ObjectFactory.CreateCase();
+            // Act 
+
+            // Assert
+        }
+
 
         [TestMethod]
         public void CreateCaseUnsuccessful()
@@ -46,7 +56,6 @@ namespace ComforthuseUserstoryTests
             // Act 
 
             // Assert
-
         }
     }
 }
