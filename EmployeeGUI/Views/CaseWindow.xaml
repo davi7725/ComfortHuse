@@ -15,26 +15,43 @@
         <Image x:Name="image" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="185" Source="..\Resources\Graphics\Logo.png" Margin="10,30,0,0" Grid.Column="1"/>
         <TabControl HorizontalAlignment="Left" Height="512" Margin="0,87,0,0" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="2">
             <TabItem Header="Customer ">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-11">
+                <Grid Background="#FFE5E5E5" Margin="0,-29,-9.6,17.4">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="104*"/>
-                        <RowDefinition Height="137*"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="220*"/>
+                        <RowDefinition Height="220*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="label_customerinformation" Content="Customer information" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="24" FontFamily="Lat'"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="141,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="141,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
-                    <Label Content="Name: &#xD;&#xA;" HorizontalAlignment="Left" Margin="89,124,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Adresse&#xA;" HorizontalAlignment="Left" Margin="89,151,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Adresse&#xA;" HorizontalAlignment="Left" Margin="89,0,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="141,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="141,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Row="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="142,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Grid.Row="1"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="270,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="141,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="142,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="141,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="141,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Grid.Row="1" RenderTransformOrigin="0.5,0.5"/>
-                    <Label Content="Tilbudsnr:&#xA;" HorizontalAlignment="Left" Margin="74,92,0,0" VerticalAlignment="Top"/>
+
+                    <Label Grid.ColumnSpan="2" Grid.Row="1"  x:Name="label_customerinformation" Content="Customer information" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="24" FontFamily="Lat'" Height="38" Width="243"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_FirstName" Content="First name:" HorizontalAlignment="Left" Height="25" Margin="0,38,0,170.6" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_FirstName" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,42,0,171.6"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_LastName" Content="Last name:" HorizontalAlignment="Left" Height="25" Margin="0,63,0,145.6" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_LastName" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,67,0,146.6"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_City" Content="City:" HorizontalAlignment="Left" Height="25" Margin="0,88,0,120.6" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_City" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,92,0,121.6"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_Address" Content="Address:" HorizontalAlignment="Left" Height="25" Margin="0,113,0,95.6" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_Address" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,117,0,96.6"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_Zipcode" Content="Zipcode:" HorizontalAlignment="Left" Height="25" Margin="0,138,0,70.6" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_Zipcode" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,142,0,71.6"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_PhoneNr1" Content="Phone 1:" HorizontalAlignment="Left" Height="25" Margin="0,163,0,45.6" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_Phone1" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,167,0,46.6"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_PhoneNr2" Content="Phone 2:" HorizontalAlignment="Left" Height="25" Margin="0,188,0,20.6" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_Phone2" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,192,0,21.6"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Material Selection" Height="22" VerticalAlignment="Bottom" Margin="-2,-2,-2,2">
