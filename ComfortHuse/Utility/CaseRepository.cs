@@ -28,15 +28,15 @@ namespace Comforthuse.Utility
             //return _db.GetCase(caseId);
             ICase loadedCase = null;
 
-            foreach(ICase cs in _cases)
+            foreach (ICase cs in _cases)
             {
-                if(cs.CaseNumber == caseId)
+                if (cs.CaseNumber == caseId)
                 {
                     loadedCase = cs;
                 }
             }
 
-            if(loadedCase != null)
+            if (loadedCase != null)
             {
                 return loadedCase;
             }
@@ -44,7 +44,7 @@ namespace Comforthuse.Utility
             {
                 throw new Exception("Case not found");
             }
-            
+
         }
 
         public ICase Create()
@@ -67,7 +67,7 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-
+            /*
             if (_cases.Count > 0)
             {
                 _db.GetAllCases();
@@ -76,7 +76,7 @@ namespace Comforthuse.Utility
             {
                 throw new Exception("The list is empty");
             }
-
+            */
             var li = new List<ICase>()
             {
                 new Case(){CaseNumber = 1, AmountOfRevisions = 1, HouseType = "HouseType A", DateOfLastRevision = new DateTime(2017, 6, 18),DateOfCreation = new DateTime(2017, 5, 18),

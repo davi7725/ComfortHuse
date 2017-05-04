@@ -12,8 +12,6 @@ namespace ComforthuseUserstoryTests
         public void ObjectFactoryCanCreateNewCase()
         {
 
-            //**Expand later once all the classes are done so it instanciate all expensecategory classes with preset options
-
             // Arrange
             ObjectFactory objectFactory = new ObjectFactory();
 
