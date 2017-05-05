@@ -143,6 +143,25 @@ namespace ComforthuseUserstoryTests
         }
 
         [TestMethod]
+        public void CheckIfEmailGetStandardized()
+        {
+            string fName = "jANe";
+            string lName = "DOe";
+            string email = "aBC@dCe.com";
+            string city = "oDeNSE";
+            string address = "no street, 12309";
+            string zipcode = "52o0da";
+            string phoneNr = "30 52 54 85";
+
+            ValidateCustomer vc = new ValidateCustomer();
+
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+
+            Assert.AreEqual("abc@dce.com", customer.Email);
+
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void CheckIfExceptionIsThrownOnPhoneWithLetters()
         {
@@ -165,7 +184,7 @@ namespace ComforthuseUserstoryTests
         [ExpectedException(typeof(Exception))]
         public void CheckIfExceptionIsThrownOnNameWithNumbers()
         {
-            string fName = "";
+            string fName = "J1ohn";
             string lName = "D0e";
             string email = "abc@dce.com";
             string city = "Odense";
@@ -173,6 +192,24 @@ namespace ComforthuseUserstoryTests
             string zipcode = "5200";
             string phoneNr = "31525485";
 
+
+            ValidateCustomer vc = new ValidateCustomer();
+
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void CheckIfExceptionIsThrownOnEmailWithInvalidCharacters()
+        {
+            string fName = "Jon";
+            string lName = "Doe";
+            string email = "ab c@dce.com";
+            string city = "Odense";
+            string address = "City Center, 10";
+            string zipcode = "5200";
+            string phoneNr = "31525485";
 
             ValidateCustomer vc = new ValidateCustomer();
 

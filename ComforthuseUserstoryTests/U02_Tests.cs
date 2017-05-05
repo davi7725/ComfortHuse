@@ -139,6 +139,35 @@ namespace ComforthuseUserstoryTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void ShouldNotEditIfEmailIsIncorrect()
+        {
+            string old_fName = "Jon";
+            string old_lName = "Doe";
+            string old_email = "abc@dce.com";
+            string old_city = "Odense";
+            string old_address = "City Center, 10";
+            string old_zipcode = "5200";
+            string old_phoneNr = "31525485";
+
+
+            ValidateCustomer vc = new ValidateCustomer();
+
+            ICustomer customer = vc.CreateCustomer(old_fName, old_lName, old_email, old_city, old_address, old_zipcode, old_phoneNr, old_phoneNr);
+
+
+            string new_fName = "Ben";
+            string new_lName = "Ten";
+            string new_email = "ab+c@dce.com";
+            string new_city = "Aarhus";
+            string new_address = "City Center, 12";
+            string new_zipcode = "8765";
+            string new_phoneNr = "12131415";
+
+            vc.Edit(new_fName, new_lName, new_email, new_city, new_address, new_zipcode, new_phoneNr, new_phoneNr, customer.Email);
+        }
+
+        [TestMethod]
         public void ShouldStandardizeEveryInput()
         {
             string old_fName = "Jon";

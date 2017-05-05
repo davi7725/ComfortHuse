@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Comforthuse.Utility
 {
@@ -21,9 +22,9 @@ namespace Comforthuse.Utility
             return customer;
         }
 
-        public ICustomer Edit(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2, string old_PhoneNr)
+        public ICustomer Edit(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2, string old_email)
         {
-            ICustomer customer = CustomerRepository.Instance.Load(StandardizeEmail(email));
+            ICustomer customer = CustomerRepository.Instance.Load(StandardizeEmail(old_email));
             if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
             {
                 string newFirstName = StandardizeName(firstName);
@@ -58,6 +59,8 @@ namespace Comforthuse.Utility
 
         private string StandardizeEmail(string email)
         {
+
+            CheckForInvalidEmailCharacters(email);
             return email.ToLower();
         }
 
@@ -88,6 +91,21 @@ namespace Comforthuse.Utility
             OnlyContainsNumbers(standardized);
 
             return standardized;
+        }
+
+
+
+        private void CheckForInvalidEmailCharacters(string email)
+        {
+            List<char> listOfInvalidCharacters = new List<char>() { '*', 'ç', ' ', '+', '!', '"', '#', '$', '%', '&', '/', '(', ')', '=', '?', '£', '§', '{', '[', ']', '}', '\'', '«', '»', '<', '>', ':', ',', ';', 'º','ª','á', 'é', 'ó', 'à', 'è', 'ò', 'ä', 'ë', 'ö', 'ü', 'â', 'ê', 'î','ô','û','ã','õ','\\','|' };
+
+            foreach (char character in email.ToLower())
+            {
+                if (listOfInvalidCharacters.Contains(character) == true)
+                {
+                    throw new Exception("Invalid characters found");
+                }
+            }
         }
 
         private void OnlyContainsNumbers(string numbers)

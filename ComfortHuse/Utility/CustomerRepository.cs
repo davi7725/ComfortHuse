@@ -70,7 +70,7 @@ namespace Comforthuse.Models
             }
             else
             {
-                throw new Exception("Customer with this phone number does not exist");
+                throw new Exception("Customer with this email does not exist");
             }
         }
 
