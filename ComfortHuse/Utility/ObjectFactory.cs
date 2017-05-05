@@ -45,7 +45,7 @@ public class HouseTypeExpenses : Expenses
     public bool HouseExpansion { get; set; }
 }
 
-internal class ObjectFactory
+public class ObjectFactory
 {
     /*
     private static ObjectFactory _instance = null;

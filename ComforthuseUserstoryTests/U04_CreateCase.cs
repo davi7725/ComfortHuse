@@ -1,61 +1,55 @@
-﻿using Comforthuse.Utility;
+﻿using Comforthuse.Facade;
+using Comforthuse.Models;
+using Comforthuse.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ComforthuseUserstoryTests
 {
     [TestClass]
-    public class UC04_CreateCase
+    public class UC04CreateCase
     {
 
         [TestMethod]
-        public void CreateCaseWillReturnId()
+        public void ObjectFactoryCanCreateNewCase()
         {
+
             // Arrange
-            ICaseRepository caseRep = new CaseRepository();
-            //var df = new DomainFacade(caseRep);
-
-
+            ObjectFactory objectFactory = new ObjectFactory();
 
             // Act
-            //   int id = df.CreateCase();
-
-
+            ICase thiscase = objectFactory.CreateNewCase();
 
             // Assert
 
-            // AssertAreEqual(id, 1);
 
-        }
-
-        [TestMethod]
-        public void CreateNewCasel()
-        {
-            // Arrange
-            //ObjectFactory.CreateCase();
-            // Act 
-
-            // Assert
+            Assert.AreEqual(0, thiscase.CaseNumber);
         }
 
 
-        [TestMethod]
-        public void CreateCaseUnsuccessful()
-        {
-            // Arrange
 
-            // Act 
+        [TestMethod]
+        public void CaseRepositoryCanCreateCase()
+        {
+            // Act
+            ICaseRepository cr = CaseRepository.Instance;
 
             // Assert
+            ICase thiscase = cr.Create();
+
+            // Assert
+            Assert.AreEqual(0, thiscase.CaseNumber);
         }
 
-
+        // Integration test
         [TestMethod]
-        public void GetCase()
+        public void EmployeeCanCreateNewCase()
         {
             // Arrange
-
+            IEmployeeFacade facade = new DomainFacade();
             // Act 
+            ICase thiscase = facade.CreateCase();
 
             // Assert
+            Assert.AreEqual(0, thiscase.CaseNumber);
         }
     }
 }
