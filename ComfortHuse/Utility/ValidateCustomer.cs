@@ -7,12 +7,12 @@ namespace Comforthuse.Utility
 {
     public class ValidateCustomer : Validator
     {
-        public ICustomer CreateCustomer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public ICustomer CreateCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
         {
             ICustomer customer;
-            if (firstName != "" && lastName != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
+            if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
             {
-                customer = CustomerRepository.Instance.Create(StandardizeName(firstName), StandardizeName(lastName), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2));
+                customer = CustomerRepository.Instance.Create(StandardizeName(firstName), StandardizeName(lastName), StandardizeEmail(email), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2));
             }
             else
             {
@@ -21,13 +21,14 @@ namespace Comforthuse.Utility
             return customer;
         }
 
-        public ICustomer Edit(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2, string old_PhoneNr)
+        public ICustomer Edit(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2, string old_PhoneNr)
         {
-            ICustomer customer = CustomerRepository.Instance.Load(StandardizePhoneNr(old_PhoneNr));
-            if (firstName != "" && lastName != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
+            ICustomer customer = CustomerRepository.Instance.Load(StandardizeEmail(email));
+            if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
             {
                 string newFirstName = StandardizeName(firstName);
                 string newLastName = StandardizeName(lastName);
+                string newEmail = StandardizeEmail(email);
                 string newCity = StandardizeName(city);
                 string newAddress = StandardizeAddress(address);
                 string newZipcode = StandardizeZipcode(zipcode);
@@ -36,6 +37,7 @@ namespace Comforthuse.Utility
 
                 customer.FirstName = newFirstName;
                 customer.LastName = newLastName;
+                customer.Email = newEmail;
                 customer.City = newCity;
                 customer.Address = newAddress;
                 customer.Zipcode = newZipcode;
@@ -52,6 +54,11 @@ namespace Comforthuse.Utility
         private string StandardizeAddress(string address)
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(address.ToLower());
+        }
+
+        private string StandardizeEmail(string email)
+        {
+            return email.ToLower();
         }
 
         private string StandardizeName(string name)

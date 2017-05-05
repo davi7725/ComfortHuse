@@ -52,6 +52,9 @@
                     <Label Grid.Column="0" Grid.Row="1" x:Name="label_PhoneNr2" Content="Phone 2:" HorizontalAlignment="Left" Height="25" Margin="0,188,0,20.6" />
                     <TextBox Grid.Row="1" x:Name="txtBox_Phone2" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,192,0,21.6"/>
 
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_Email" Content="Email:" HorizontalAlignment="Left" Height="25" Margin="0,212,0,229.4" Grid.RowSpan="2" />
+                    <TextBox Grid.Row="1" x:Name="txtBox_Email" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,217,0,229.4" Grid.RowSpan="2"/>
+
                 </Grid>
             </TabItem>
             <TabItem Header="Material Selection" Height="22" VerticalAlignment="Bottom" Margin="-2,-2,-2,2">

@@ -284,9 +284,9 @@ internal class ObjectFactory
         return new Customer();
     }
 
-    public ICustomer CreateExistingCustomer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+    public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
     {
-        return new Customer(firstName, lastName, city, address, zipcode, phoneNr1, phoneNr2);
+        return new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
     }
 
 }
