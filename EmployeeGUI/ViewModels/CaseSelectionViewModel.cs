@@ -5,6 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.Win32;
 
 namespace EmployeeGUI.ViewModels
 {
@@ -30,22 +31,33 @@ namespace EmployeeGUI.ViewModels
 
         private void CreateCase(object obj)
         {
-
             try
             {
                 ICase newCase = _facade.CreateCase();
-                var win = new CaseWindow();
-                win.Show();
+                OpenNewWindow(newCase);
             }
             catch (Exception e)
             {
-                string message = e.Message;
-                string caption = "Ok";
-                MessageBoxButton buttons = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, buttons, icon);
+                DisplayErrorMessage(e.Message);
+                throw;
             }
-
         }
+
+        private void OpenNewWindow(ICase c)
+        {
+            var win = new CaseWindow();
+            win.DataContext = new CaseViewModel(c);
+            win.Show();
+        }
+
+        private void DisplayErrorMessage(string msg)
+        {
+            string caption = "Ok";
+            MessageBoxButton buttons = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Error;
+            MessageBox.Show(msg, caption, buttons, icon);
+        }
+
+
     }
 }

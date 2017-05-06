@@ -2,6 +2,7 @@
 using Comforthuse.Models;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
 namespace Comforthuse.Utility
 {
@@ -9,9 +10,14 @@ namespace Comforthuse.Utility
     {
 
         private static CaseRepository _instance;
-
-
-        public static CaseRepository Instance => _instance ?? (_instance = new CaseRepository());
+        public static CaseRepository Instance
+        {
+            get
+            {
+                if (_instance == null) _instance = new CaseRepository();
+                return _instance;
+            }
+        }
 
         private List<ICase> _cases = new List<ICase>();
         private IDbEmployee _db = DatabaseController.Instance;
