@@ -19,8 +19,14 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Name="UserGrid" VerticalAlignment="Stretch" ItemsSource="{Binding Cases}">
-            <ListView.View >
+        <ListView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Name="CaseList" VerticalAlignment="Stretch" ItemsSource="{Binding Cases}" MouseDoubleClick="CaseList_OnMouseDoubleClick">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Name="MenuItemEdit" Header="Edit" Click="MenuItemEdit_OnClick"></MenuItem>
+                    <MenuItem Name="MenuItemPrint" Click="MenuItemPrint_OnClick" Header="Print docouments"></MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
                 <GridView x:Name="GridSelectCase">
                     <GridViewColumn Header="Case Nb" DisplayMemberBinding="{Binding CaseNumber}"  Width="75"/>
                     <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" Width="200" />

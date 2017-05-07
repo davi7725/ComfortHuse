@@ -47,7 +47,7 @@ public class HouseTypeExpenses : Expenses
 
 public class ObjectFactory
 {
-
+    
     private static ObjectFactory _instance = null;
 
     private ObjectFactory() { }
@@ -66,27 +66,26 @@ public class ObjectFactory
 
 
 
-
-
     public ICase CreateNewCase()
     {
+        /*
         // Instanciate objects for a new case ----
-        List<IExpenseCategory> _categories = new List<IExpenseCategory>
-            {
-            new HouseTypeExpenses(),
-            new CarportGarageExpenses(),
-            new WindowsAndDoorsExpenses(),
-            new MaterialsInsideExpenses(),
-            new InteriorExpenses(),
-            new FlooringExpenses(),
-            new CarpenterExpenses(),
-            new BrickLayerExpenses(),
-            new PainterExpenses(),
-            new PlumberExpenses(),
-            new VentilationExpenses(),
-            new ExtraConstructionExpenses(),
-            new OtherExpenses(),
-        };
+        List<IExpenseCategory> _categories = new List<IExpenseCategory>();
+/*
+        _categories.Add(new HouseTypeExpenses());
+        _categories.Add(new CarportGarageExpenses());
+        _categories.Add(new WindowsAndDoorsExpenses());
+        _categories.Add(new MaterialsInsideExpenses());
+        _categories.Add(new InteriorExpenses());
+        _categories.Add(new FlooringExpenses());
+        _categories.Add(new CarpenterExpenses());
+        _categories.Add(new BrickLayerExpenses());
+        _categories.Add(new PainterExpenses());
+        _categories.Add(new PlumberExpenses());
+        _categories.Add(new VentilationExpenses());
+        _categories.Add(new ExtraConstructionExpenses());
+        _categories.Add(new OtherExpenses());
+        */
 
         Case thisCase = new Case();
 
@@ -284,9 +283,9 @@ public class ObjectFactory
         return new Customer();
     }
 
-    public ICustomer CreateExistingCustomer(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+    public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
     {
-        return new Customer(firstName, lastName, city, address, zipcode, phoneNr1, phoneNr2);
+        return new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
     }
 
 }

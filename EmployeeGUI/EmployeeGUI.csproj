@@ -52,8 +52,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,11 +70,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\CaseViewModel - Copy.cs" />
-    <Compile Include="ViewModels\ExpenseCategoryPages\HouseTypeViewModel.cs" />
+    <Compile Include="Helpers\MessageHandling.cs" />
+    <Compile Include="ViewModels\ExpenseCategoryPages\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ExpenseCategoryPages\HouseTypePage.xaml.cs">
       <DependentUpon>HouseTypePage.xaml</DependentUpon>
     </Compile>
+    <Page Include="ViewModels\ExpenseCategoryPages\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CaseSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

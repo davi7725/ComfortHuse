@@ -10,7 +10,7 @@ namespace Comforthuse.Models
         List<ICustomer> GetAllCustomersByName();
         List<ICustomer> Search(string query);
         ICustomer Load(string phoneNr);
-        ICustomer Create(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2);
+        ICustomer Create(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2);
         void Save(ICustomer customer);
     }
 
@@ -42,10 +42,10 @@ namespace Comforthuse.Models
         {
             listOfCustomers.Clear();
         }
-        public ICustomer Create(string firstName, string lastName, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public ICustomer Create(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
         {
-            ICustomer newCustomer = new Customer(firstName, lastName, city, address, zipcode, phoneNr1, phoneNr2);
-            listOfCustomers.Add(phoneNr1, newCustomer);
+            ICustomer newCustomer = new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
+            listOfCustomers.Add(email, newCustomer);
 
             return newCustomer;
         }
@@ -62,15 +62,15 @@ namespace Comforthuse.Models
             throw new NotImplementedException();
         }
 
-        public ICustomer Load(string phoneNr)
+        public ICustomer Load(string email)
         {
-            if(listOfCustomers.ContainsKey(phoneNr) == true)
+            if(listOfCustomers.ContainsKey(email) == true)
             {
-                return listOfCustomers[phoneNr];
+                return listOfCustomers[email];
             }
             else
             {
-                throw new Exception("Customer with this phone number does not exist");
+                throw new Exception("Customer with this email does not exist");
             }
         }
 

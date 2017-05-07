@@ -25,15 +25,19 @@ namespace Comforthuse.Models
         }
 
         public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
+
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; internal set; }
         public int AmountOfRevisions { get; set; }
         public DateTime DateOfLastRevision { get; internal set; }
         public string HouseType { get; set; }
 
-        public decimal Price
+        public decimal Price 
         {
-            get { return CalculatePrice(); }
+            get
+            {
+                return CalculatePrice();
+            }
         }
 
         private decimal CalculatePrice()
