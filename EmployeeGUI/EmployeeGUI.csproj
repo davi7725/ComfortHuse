@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\MessageHandling.cs" />
+    <Compile Include="ViewModels\CustomerInformationViewModel.cs" />
     <Compile Include="ViewModels\TechnicalSpecificationViewModel.cs" />
     <Compile Include="Views\ExpenseCategoryPages\HouseTypePage.xaml.cs">
       <DependentUpon>HouseTypePage.xaml</DependentUpon>

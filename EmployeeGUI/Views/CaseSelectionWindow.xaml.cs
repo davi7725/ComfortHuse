@@ -1,7 +1,6 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using EmployeeGUI.Helpers;
+using System.Windows;
 using System.Windows.Input;
-using EmployeeGUI.Helpers;
 
 
 namespace EmployeeGUI.Views
@@ -41,7 +40,7 @@ namespace EmployeeGUI.Views
         private void MenuItemPrint_OnClick(object sender, RoutedEventArgs e)
         {
             MessageHandling.DisplayErrorMessage("Not implemented yet.");
-           // OpenPrintWindow();
+            // OpenPrintWindow();
         }
     }
 }

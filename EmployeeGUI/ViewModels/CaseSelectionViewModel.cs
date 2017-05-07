@@ -75,7 +75,6 @@ namespace EmployeeGUI.ViewModels
                 DisplayError(e);
                 throw;
             }
-
         }
 
         private void DisplayError(Exception e)
@@ -90,13 +89,14 @@ namespace EmployeeGUI.ViewModels
         private void EditCase()
         {
             MessageHandling.DisplayErrorMessage("Functionality not implemented yet.");
+            // OpenCase(_facade.EditCase());
             //_facade.GetCase()
             //OpenCase();
         }
 
         private void OpenCase(ICase c)
         {
-            CaseWindow win = new CaseWindow();
+            CaseWindow win = new CaseWindow(c);
             win.Content = new CaseViewModel(c);
             win.Show();
         }
