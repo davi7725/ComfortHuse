@@ -71,16 +71,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\MessageHandling.cs" />
-    <Compile Include="ViewModels\ExpenseCategoryPages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ExpenseCategoryPages\HouseTypePage.xaml.cs">
       <DependentUpon>HouseTypePage.xaml</DependentUpon>
     </Compile>
-    <Page Include="ViewModels\ExpenseCategoryPages\Page1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\CaseSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +133,7 @@
   <ItemGroup>
     <Folder Include="Resources\Graphics\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="ViewModels\ExpenseCategoryPages\" />
     <Folder Include="Views\Partial\" />
   </ItemGroup>
   <ItemGroup>

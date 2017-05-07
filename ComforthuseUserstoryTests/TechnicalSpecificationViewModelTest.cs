@@ -1,5 +1,4 @@
 ﻿using Comforthuse.Models;
-using EmployeeGUI.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
