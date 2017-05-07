@@ -12,10 +12,10 @@ namespace ComforthuseUserstoryTests
         public void ObjectFactoryCanCreateNewCase()
         {
             // Arrange
-            ObjectFactory objectFactory = new ObjectFactory();
-
+            
+        
             // Act
-            ICase thiscase = objectFactory.CreateNewCase();
+            ICase thiscase = ObjectFactory.Instance.CreateNewCase();
 
             // Assert
             Assert.AreEqual(0, thiscase.CaseNumber);
@@ -33,29 +33,6 @@ namespace ComforthuseUserstoryTests
             // Assert
             Assert.AreEqual(0, thiscase.CaseNumber);
         }
-
-
-        /*
-        [TestMethod]
-        public void CaseRepositoryCanAssignLocalCaseId
-        {
-
-        }
-        */
-
-        [TestMethod]
-        public void CaseRepositoryCanAddCaseToListOfCurrentLocalCases()
-        {
-            // Arrange
-            ICaseRepository cr = CaseRepository.Instance;
-
-            // Act
-            ICase thiscase = cr.Create();
-
-            // Assert
-            Assert.AreEqual(0, thiscase.CaseNumber);
-        }
-
 
         // Integration test
         [TestMethod]

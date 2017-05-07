@@ -1,4 +1,7 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using EmployeeGUI.Helpers;
 
 
 namespace EmployeeGUI.Views
@@ -18,5 +21,27 @@ namespace EmployeeGUI.Views
             this.DataContext = vm;
         }
 
+        private void CaseList_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ExecuteEditCaseCommand();
+        }
+
+        private void MenuItemEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            ExecuteEditCaseCommand();
+        }
+
+        private void ExecuteEditCaseCommand()
+        {
+            ICommand cm = vm.CreateCaseCommand;
+            cm.Execute(null);
+        }
+
+
+        private void MenuItemPrint_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageHandling.DisplayErrorMessage("Not implemented yet.");
+           // OpenPrintWindow();
+        }
     }
 }

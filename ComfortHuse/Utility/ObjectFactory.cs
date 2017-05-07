@@ -47,12 +47,12 @@ public class HouseTypeExpenses : Expenses
 
 public class ObjectFactory
 {
-    /*
+    
     private static ObjectFactory _instance = null;
 
     private ObjectFactory() { }
 
-    private static ObjectFactory Instance
+    public static ObjectFactory Instance
     {
         get
         {
@@ -63,30 +63,29 @@ public class ObjectFactory
             return _instance;
         }
     }
-    */
-
 
 
 
     public ICase CreateNewCase()
     {
+        /*
         // Instanciate objects for a new case ----
-        List<IExpenseCategory> _categories = new List<IExpenseCategory>
-            {
-            new HouseTypeExpenses(),
-            new CarportGarageExpenses(),
-            new WindowsAndDoorsExpenses(),
-            new MaterialsInsideExpenses(),
-            new InteriorExpenses(),
-            new FlooringExpenses(),
-            new CarpenterExpenses(),
-            new BrickLayerExpenses(),
-            new PainterExpenses(),
-            new PlumberExpenses(),
-            new VentilationExpenses(),
-            new ExtraConstructionExpenses(),
-            new OtherExpenses(),
-        };
+        List<IExpenseCategory> _categories = new List<IExpenseCategory>();
+/*
+        _categories.Add(new HouseTypeExpenses());
+        _categories.Add(new CarportGarageExpenses());
+        _categories.Add(new WindowsAndDoorsExpenses());
+        _categories.Add(new MaterialsInsideExpenses());
+        _categories.Add(new InteriorExpenses());
+        _categories.Add(new FlooringExpenses());
+        _categories.Add(new CarpenterExpenses());
+        _categories.Add(new BrickLayerExpenses());
+        _categories.Add(new PainterExpenses());
+        _categories.Add(new PlumberExpenses());
+        _categories.Add(new VentilationExpenses());
+        _categories.Add(new ExtraConstructionExpenses());
+        _categories.Add(new OtherExpenses());
+        */
 
         Case thisCase = new Case();
 

@@ -38,7 +38,7 @@ namespace EmployeeGUI.ViewModels
             }
             catch (Exception e)
             {
-                DisplayErrorMessage(e.Message);
+                MessageHandling.DisplayErrorMessage(e.Message);
                 throw;
             }
         }
@@ -49,15 +49,5 @@ namespace EmployeeGUI.ViewModels
             win.DataContext = new CaseViewModel(c);
             win.Show();
         }
-
-        private void DisplayErrorMessage(string msg)
-        {
-            string caption = "Ok";
-            MessageBoxButton buttons = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Error;
-            MessageBox.Show(msg, caption, buttons, icon);
-        }
-
-
     }
 }
