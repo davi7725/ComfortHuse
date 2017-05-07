@@ -14,6 +14,8 @@ namespace EmployeeGUI.ViewModels
         private List<IPageViewModel> _pageViewModels;
         private ICase _activeCase;
 
+        public ICase Case { get { return _activeCase; } set { _activeCase = value; } }
+
         public CaseViewModel(ICase activeCase)
         {
             _activeCase = activeCase;
@@ -25,6 +27,11 @@ namespace EmployeeGUI.ViewModels
             // Set starting page
             CurrentPageViewModel = PageViewModels[0];
         }
+
+        public CaseViewModel()
+        {
+        }
+
         public ICommand ChangePageCommand
         {
             get

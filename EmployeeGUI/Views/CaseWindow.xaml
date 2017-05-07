@@ -31,29 +31,29 @@
 
                     <Label Grid.ColumnSpan="2" Grid.Row="1"  x:Name="label_customerinformation" Content="Customer information" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="18" FontFamily="Lat'" Height="38" Width="243"/>
 
-                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_FirstName" Content="First name:" HorizontalAlignment="Left" Height="25" Margin="0,38,0,170.6" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_FirstName" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,42,0,171.6"/>
+                    <Label  Grid.Column="0" Grid.Row="1" x:Name="label_FirstName" Content="First name:" HorizontalAlignment="Left" Height="25" Margin="0,38,0,170.6" />
+                    <TextBox Text="{Binding FirstName}" Grid.Row="1" x:Name="txtBox_FirstName" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,42,0,171.6"/>
 
                     <Label Grid.Column="0" Grid.Row="1" x:Name="label_LastName" Content="Last name:" HorizontalAlignment="Left" Height="25" Margin="0,63,0,145.6" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_LastName" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,67,0,146.6"/>
+                    <TextBox Text="{Binding LastName}" Grid.Row="1" x:Name="txtBox_LastName" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,67,0,146.6"/>
 
                     <Label Grid.Column="0" Grid.Row="1" x:Name="label_City" Content="City:" HorizontalAlignment="Left" Height="25" Margin="0,88,0,120.6" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_City" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,92,0,121.6"/>
+                    <TextBox Text="{Binding City}" Grid.Row="1" x:Name="txtBox_City" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,92,0,121.6"/>
 
                     <Label Grid.Column="0" Grid.Row="1" x:Name="label_Address" Content="Address:" HorizontalAlignment="Left" Height="25" Margin="0,113,0,95.6" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_Address" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,117,0,96.6"/>
+                    <TextBox Text="{Binding Address}" Grid.Row="1" x:Name="txtBox_Address" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,117,0,96.6"/>
 
                     <Label Grid.Column="0" Grid.Row="1" x:Name="label_Zipcode" Content="Zipcode:" HorizontalAlignment="Left" Height="25" Margin="0,138,0,70.6" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_Zipcode" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,142,0,71.6"/>
+                    <TextBox Text="{Binding Zipcode}" Grid.Row="1" x:Name="txtBox_Zipcode" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,142,0,71.6"/>
 
                     <Label Grid.Column="0" Grid.Row="1" x:Name="label_PhoneNr1" Content="Phone 1:" HorizontalAlignment="Left" Height="25" Margin="0,163,0,45.6" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_Phone1" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,167,0,46.6"/>
+                    <TextBox Text="{Binding Phone1}" Grid.Row="1" x:Name="txtBox_Phone1" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,167,0,46.6"/>
 
                     <Label Grid.Column="0" Grid.Row="1" x:Name="label_PhoneNr2" Content="Phone 2:" HorizontalAlignment="Left" Height="25" Margin="0,188,0,20.6" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_Phone2" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,192,0,21.6"/>
+                    <TextBox Text="{Binding Phone2}" Grid.Row="1" x:Name="txtBox_Phone2" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,192,0,21.6"/>
 
-                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_Email" Content="Email:" HorizontalAlignment="Left" Height="25" Margin="0,212,0,229.4" Grid.RowSpan="2" />
-                    <TextBox Grid.Row="1" x:Name="txtBox_Email" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,217,0,229.4" Grid.RowSpan="2"/>
+                    <Label Grid.Column="0" Grid.Row="1" x:Name="label_Email" Content="{Binding Email}:" HorizontalAlignment="Left" Height="25" Margin="0,212,0,229.4" Grid.RowSpan="2" />
+                    <TextBox Text="{Binding Email}" Grid.Row="1" x:Name="txtBox_Email" HorizontalAlignment="Left" Height="20" Width="200" Grid.ColumnSpan="2" Margin="79,217,0,229.4" Grid.RowSpan="2"/>
 
                 </Grid>
             </TabItem>

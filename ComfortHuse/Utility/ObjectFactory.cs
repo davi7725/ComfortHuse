@@ -1,9 +1,68 @@
 ﻿using Comforthuse.Models;
-using Comforthuse.Utility;
 using System.Collections.Generic;
 
 namespace Comforthuse.Utility
 {
+    public class ObjectFactory
+    {
+        private static ObjectFactory _instance = null;
+        private ObjectFactory()
+        {
+        }
+
+        public static ObjectFactory Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ObjectFactory();
+                }
+                return _instance;
+            }
+        }
+
+        public ICase CreateNewCase()
+        {
+            /*
+            // Instanciate objects for a new case ----
+            List<IExpenseCategory> _categories = new List<IExpenseCategory>();
+    /*
+            _categories.Add(new HouseTypeExpenses());
+            _categories.Add(new CarportGarageExpenses());
+            _categories.Add(new WindowsAndDoorsExpenses());
+            _categories.Add(new MaterialsInsideExpenses());
+            _categories.Add(new InteriorExpenses());
+            _categories.Add(new FlooringExpenses());
+            _categories.Add(new CarpenterExpenses());
+            _categories.Add(new BrickLayerExpenses());
+            _categories.Add(new PainterExpenses());
+            _categories.Add(new PlumberExpenses());
+            _categories.Add(new VentilationExpenses());
+            _categories.Add(new ExtraConstructionExpenses());
+            _categories.Add(new OtherExpenses());
+            */
+
+            Case thisCase = new Case();
+
+            return thisCase;
+        }
+
+        public ICase CreateExistingCase()
+        {
+            return new Case();
+        }
+
+        public ICustomer CreateNewCustomer()
+        {
+            return new Customer();
+        }
+
+        public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        {
+            return new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
+        }
+    }
     public abstract class Expenses : IExpenseCategory
     {
         public abstract decimal Price { get; }
@@ -36,61 +95,13 @@ namespace Comforthuse.Utility
 
         protected List<TechnicalSpecification> _tecnSpecifications = new List<TechnicalSpecification>();
     }
-}
 
-public class HouseTypeExpenses : Expenses
-{
-    public override decimal Price { get; }
-    public HouseTypeExpenses HouseType { get; set; }
-    public bool HouseExpansion { get; set; }
-}
 
-public class ObjectFactory
-{
-    
-    private static ObjectFactory _instance = null;
-
-    private ObjectFactory() { }
-
-    public static ObjectFactory Instance
+    public class HouseTypeExpenses : Expenses
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new ObjectFactory();
-            }
-            return _instance;
-        }
-    }
-
-
-
-    public ICase CreateNewCase()
-    {
-        /*
-        // Instanciate objects for a new case ----
-        List<IExpenseCategory> _categories = new List<IExpenseCategory>();
-/*
-        _categories.Add(new HouseTypeExpenses());
-        _categories.Add(new CarportGarageExpenses());
-        _categories.Add(new WindowsAndDoorsExpenses());
-        _categories.Add(new MaterialsInsideExpenses());
-        _categories.Add(new InteriorExpenses());
-        _categories.Add(new FlooringExpenses());
-        _categories.Add(new CarpenterExpenses());
-        _categories.Add(new BrickLayerExpenses());
-        _categories.Add(new PainterExpenses());
-        _categories.Add(new PlumberExpenses());
-        _categories.Add(new VentilationExpenses());
-        _categories.Add(new ExtraConstructionExpenses());
-        _categories.Add(new OtherExpenses());
-        */
-
-        Case thisCase = new Case();
-
-        return thisCase;
-
+        public override decimal Price { get; }
+        public HouseTypeExpenses HouseType { get; set; }
+        public bool HouseExpansion { get; set; }
     }
 
     public class WindowsAndDoorsExpenses : Expenses
@@ -272,20 +283,4 @@ public class ObjectFactory
             }
         }
     }
-
-    public ICase CreateExistingCase()
-    {
-        return new Case();
-    }
-
-    public ICustomer CreateNewCustomer()
-    {
-        return new Customer();
-    }
-
-    public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
-    {
-        return new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
-    }
-
 }

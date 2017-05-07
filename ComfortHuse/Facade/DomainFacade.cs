@@ -10,7 +10,8 @@ namespace Comforthuse.Facade
 
         public ICase CreateCase()
         {
-            return _caseRep.Create();
+            return new Case();
+            //return _caseRep.Create();
         }
 
         public List<ICase> GetAllCases()

@@ -59,7 +59,7 @@ namespace EmployeeGUI.ViewModels
             }
             catch (Exception e)
             {
-                DisplayError(e);
+                MessageHandling.DisplayErrorMessage(e.Message);
             }
         }
 
@@ -72,7 +72,7 @@ namespace EmployeeGUI.ViewModels
             }
             catch (Exception e)
             {
-                DisplayError(e);
+                MessageHandling.DisplayErrorMessage(e.Message);
                 throw;
             }
         }
@@ -96,9 +96,10 @@ namespace EmployeeGUI.ViewModels
 
         private void OpenCase(ICase c)
         {
-            CaseWindow win = new CaseWindow(c);
-            win.Content = new CaseViewModel(c);
+            CaseWindow win = new CaseWindow();
+            win.DataContext = new CaseViewModel() { Case = c };
             win.Show();
+
         }
 
     }

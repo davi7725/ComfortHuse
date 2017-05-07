@@ -19,9 +19,9 @@ namespace Comforthuse.Utility
             }
         }
 
-        private List<ICase> _cases = new List<ICase>();
+        private readonly List<ICase> _cases = new List<ICase>();
         private IDbEmployee _db = DatabaseController.Instance;
-        private List<ICase> _currentCases = new List<ICase>();
+        private readonly List<ICase> _currentCases = new List<ICase>();
 
 
         public void Add(ICase caseObj)
