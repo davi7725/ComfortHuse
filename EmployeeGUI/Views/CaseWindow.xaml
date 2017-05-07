@@ -56,24 +56,25 @@
             </TabItem>
             <TabItem Header="Material Selection" Height="22" VerticalAlignment="Bottom" Margin="-2,-2,-2,2">
                 <Grid Background="#FFE5E5E5">
-                    <Button Content="Windows and doors" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Materials(inside)" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Interiors" HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Floors" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Power" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Home appliances" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Carpenter" HorizontalAlignment="Left" Margin="10,298,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Builder" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Painter" HorizontalAlignment="Left" Margin="10,338,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Material(outside)" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Plot" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="House type" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Garage/carport" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="VVS" HorizontalAlignment="Left" Margin="10,358,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Ventilation" HorizontalAlignment="Left" Margin="10,378,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Extra construction" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Other" HorizontalAlignment="Left" Margin="10,418,0,0" VerticalAlignment="Top" Width="182"/>
-                    <Button Content="Statement" HorizontalAlignment="Left" Margin="10,438,0,0" VerticalAlignment="Top" Width="182"/>
+                    <Button Content="Windows and doors" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Materials(inside)" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Interiors" HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Floors" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Power" HorizontalAlignment="Left" Margin="10,258,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Home appliances" HorizontalAlignment="Left" Margin="10,278,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Carpenter" HorizontalAlignment="Left" Margin="10,298,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Builder" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Painter" HorizontalAlignment="Left" Margin="10,338,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Material(outside)" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Plot" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="House type" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Garage/carport" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="VVS" HorizontalAlignment="Left" Margin="10,358,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Ventilation" HorizontalAlignment="Left" Margin="10,378,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Extra construction" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Other" HorizontalAlignment="Left" Margin="10,418,0,0" VerticalAlignment="Top" Width="128"/>
+                    <Button Content="Statement" HorizontalAlignment="Left" Margin="10,438,0,0" VerticalAlignment="Top" Width="128"/>
+                    <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="182,97,0,0" VerticalAlignment="Top" Height="352" Width="586"/>
                 </Grid>
             </TabItem>
         </TabControl>

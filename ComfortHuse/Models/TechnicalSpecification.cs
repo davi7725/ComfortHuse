@@ -1,6 +1,7 @@
 ﻿namespace Comforthuse.Models
 {
-    public class TechnicalSpecification
+    public class TechnicalSpecification : Specification
     {
+        public string Description { get; set; }
     }
 }

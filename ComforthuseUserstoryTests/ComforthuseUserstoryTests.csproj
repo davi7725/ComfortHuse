@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TechnicalSpecificationViewModelTest.cs" />
     <Compile Include="U01_Tests.cs" />
     <Compile Include="U04_CreateCase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\Comforthuse\Comforthuse.csproj">
       <Project>{472da718-9fdf-4775-ae40-c09076ae1e51}</Project>
       <Name>Comforthuse</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmployeeGUI\EmployeeGUI.csproj">
+      <Project>{e4e9d042-f631-496c-88ef-3ed295946b54}</Project>
+      <Name>EmployeeGUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

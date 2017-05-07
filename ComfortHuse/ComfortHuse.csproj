@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Specification.cs" />
     <Compile Include="Types\Category.cs" />
     <Compile Include="Database\DatabaseController.cs" />
     <Compile Include="Database\IDbAdmin.cs" />

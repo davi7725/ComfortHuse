@@ -8,7 +8,6 @@ namespace EmployeeGUI.Views
     /// </summary>
     public partial class CaseSelectionWindow : Window
     {
-
         private ViewModels.CaseSelectionViewModel vm;
 
         public CaseSelectionWindow()
@@ -17,6 +16,5 @@ namespace EmployeeGUI.Views
             vm = new ViewModels.CaseSelectionViewModel();
             this.DataContext = vm;
         }
-
     }
 }

@@ -10,22 +10,58 @@ namespace EmployeeGUI.ViewModels
 {
     class CaseSelectionViewModel
     {
-        private ICommand _updateCommand;
+        private ICommand _getCasesCommand;
         private ICommand _createCaseCommand;
 
         private readonly IEmployeeFacade _facade = new DomainFacade();
 
         private ObservableCollection<ICase> _cases;
 
-        public ObservableCollection<ICase> Cases => _cases ?? (_cases = new ObservableCollection<ICase>(_facade.GetAllCases()));
+        public ObservableCollection<ICase> Cases
+        {
+            get
+            {
+                if (_cases == null)
+                {
+                    _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
+                }
+                return _cases;
+            }
+        }
 
-        public ICommand GetCasesCommand => _updateCommand ?? (_updateCommand = new RelayCommand(GetAllCases));
-        public ICommand CreateCaseCommand => _createCaseCommand ?? (_createCaseCommand = new RelayCommand(CreateCase));
+        public ICommand GetCasesCommand
+        {
+            get
+            {
+                if (_getCasesCommand == null) _getCasesCommand = new RelayCommand(GetAllCases);
+                return _getCasesCommand;
+            }
+        }
+
+        public ICommand CreateCaseCommand
+        {
+            get
+            {
+                if (_createCaseCommand == null)
+                {
+
+                    _createCaseCommand = new RelayCommand(CreateCase);
+                }
+                return _createCaseCommand;
+            }
+        }
 
         private void GetAllCases(object obj)
         {
             // Use try-catch
-            _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
+            try
+            {
+                _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
+            }
+            catch (Exception e)
+            {
+                DisplayError(e);
+            }
         }
 
         private void CreateCase(object obj)
@@ -34,18 +70,36 @@ namespace EmployeeGUI.ViewModels
             try
             {
                 ICase newCase = _facade.CreateCase();
-                var win = new CaseWindow();
-                win.Show();
+                OpenCase(newCase);
             }
             catch (Exception e)
             {
-                string message = e.Message;
-                string caption = "Ok";
-                MessageBoxButton buttons = MessageBoxButton.OK;
-                MessageBoxImage icon = MessageBoxImage.Error;
-                MessageBox.Show(message, caption, buttons, icon);
+                DisplayError(e);
             }
 
         }
+
+        private void DisplayError(Exception e)
+        {
+            string message = e.Message;
+            string caption = "Ok";
+            MessageBoxButton buttons = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Error;
+            MessageBox.Show(message, caption, buttons, icon);
+        }
+
+        private void EditCase()
+        {
+            //_facade.GetCase()
+            //OpenCase();
+        }
+
+        private void OpenCase(ICase c)
+        {
+            CaseWindow win = new CaseWindow();
+            win.Content = new CaseViewModel(c);
+            win.Show();
+        }
+
     }
 }

@@ -10,7 +10,6 @@ namespace EmployeeGUI
         public CaseWindow()
         {
             InitializeComponent();
-            //  this.Content = new CaseViewModel();
         }
 
     }

@@ -49,8 +49,8 @@ namespace Comforthuse.Utility
 
         public ICase Create()
         {
-            ICase newCase = new Case();
-            _cases.Add(newCase);
+            ICase newCase = ObjectFactory.Instance.CreateNewCase();
+            _currentCases.Add(newCase);
             return newCase;
         }
 

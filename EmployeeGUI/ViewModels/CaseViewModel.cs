@@ -3,10 +3,11 @@ using EmployeeGUI.Helpers;
 using SimpleMVVMExample;
 using System.Collections.Generic;
 using System.Windows.Input;
+using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 
 namespace EmployeeGUI.ViewModels
 {
-    public class CaseViewModel : ObservableObject
+    public partial class CaseViewModel : ObservableObject
     {
 
         private ICommand _changePageCommand;
@@ -18,7 +19,9 @@ namespace EmployeeGUI.ViewModels
         {
             _activeCase = activeCase;
             // Add available pages
-            //PageViewModels.Add(new HomeViewModel());
+
+            //PageViewModels.Add(new HouseTypeViewModel());
+
 
 
             // Set starting page

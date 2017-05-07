@@ -13,7 +13,7 @@ namespace Comforthuse.Facade
             return _caseRep.Create();
         }
 
-        List<ICase> IEmployeeFacade.GetAllCases()
+        public List<ICase> GetAllCases()
         {
             return _caseRep.GetAllCases();
         }

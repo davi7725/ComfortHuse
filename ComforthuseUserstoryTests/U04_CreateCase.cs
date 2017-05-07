@@ -12,13 +12,12 @@ namespace ComforthuseUserstoryTests
         public void ObjectFactoryCanCreateNewCase()
         {
 
-            // Arrange
-            ObjectFactory objectFactory = new ObjectFactory();
+           
+            ObjectFactory objectFactory = ObjectFactory.Instance;
 
-            // Act
             ICase thiscase = objectFactory.CreateNewCase();
 
-            // Assert
+     
 
 
             Assert.AreEqual(0, thiscase.CaseNumber);
@@ -29,13 +28,11 @@ namespace ComforthuseUserstoryTests
         [TestMethod]
         public void CaseRepositoryCanCreateCase()
         {
-            // Act
+          
             ICaseRepository cr = CaseRepository.Instance;
 
-            // Assert
             ICase thiscase = cr.Create();
 
-            // Assert
             Assert.AreEqual(0, thiscase.CaseNumber);
         }
 
@@ -43,12 +40,11 @@ namespace ComforthuseUserstoryTests
         [TestMethod]
         public void EmployeeCanCreateNewCase()
         {
-            // Arrange
+      
             IEmployeeFacade facade = new DomainFacade();
-            // Act 
+     
             ICase thiscase = facade.CreateCase();
 
-            // Assert
             Assert.AreEqual(0, thiscase.CaseNumber);
         }
     }

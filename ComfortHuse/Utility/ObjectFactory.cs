@@ -47,12 +47,12 @@ public class HouseTypeExpenses : Expenses
 
 public class ObjectFactory
 {
-    /*
+
     private static ObjectFactory _instance = null;
 
     private ObjectFactory() { }
 
-    private static ObjectFactory Instance
+    public static ObjectFactory Instance
     {
         get
         {
@@ -63,7 +63,7 @@ public class ObjectFactory
             return _instance;
         }
     }
-    */
+
 
 
 

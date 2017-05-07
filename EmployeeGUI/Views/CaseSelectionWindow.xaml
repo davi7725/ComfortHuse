@@ -35,9 +35,9 @@
 
 
         <Label Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="46" Width="160">
-            <Label Content="Select a case:" FontWeight="Bold" FontSize="14" Height="25" Width="249"/>
+            <Label Content="Select a case:" FontWeight="Bold" FontSize="14" Height="29" Width="249"/>
         </Label>
         <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,100,0" Content="Open new case" Command="{Binding CreateCaseCommand}" VerticalAlignment="Bottom" Width="104" Height="18" />
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Content="Refresh"  VerticalAlignment="Bottom" Width="75" Height="18"/>
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Content="Refresh"  Command="{Binding UpdateCommand}" VerticalAlignment="Bottom" Width="75" Height="18"/>
     </Grid>
 </Window>
