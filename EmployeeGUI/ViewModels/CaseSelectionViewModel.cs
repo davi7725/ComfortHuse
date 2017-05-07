@@ -53,7 +53,6 @@ namespace EmployeeGUI.ViewModels
 
         private void GetAllCases(object obj)
         {
-            // Use try-catch
             try
             {
                 _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
@@ -66,7 +65,6 @@ namespace EmployeeGUI.ViewModels
 
         private void CreateCase(object obj)
         {
-
             try
             {
                 ICase newCase = _facade.CreateCase();
@@ -75,6 +73,7 @@ namespace EmployeeGUI.ViewModels
             catch (Exception e)
             {
                 DisplayError(e);
+                throw;
             }
 
         }
@@ -90,6 +89,7 @@ namespace EmployeeGUI.ViewModels
 
         private void EditCase()
         {
+            MessageHandling.DisplayErrorMessage("Functionality not implemented yet.");
             //_facade.GetCase()
             //OpenCase();
         }

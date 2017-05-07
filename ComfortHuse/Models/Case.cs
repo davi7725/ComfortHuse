@@ -32,7 +32,7 @@ namespace Comforthuse.Models
         public DateTime DateOfLastRevision { get; internal set; }
         public string HouseType { get; set; }
 
-        public decimal Price 
+        public decimal Price
         {
             get
             {

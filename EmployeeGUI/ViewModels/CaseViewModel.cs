@@ -3,7 +3,6 @@ using EmployeeGUI.Helpers;
 using SimpleMVVMExample;
 using System.Collections.Generic;
 using System.Windows.Input;
-using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 
 namespace EmployeeGUI.ViewModels
 {
