@@ -1,7 +1,7 @@
-﻿using System;
-using Comforthuse.Models;
+﻿using Comforthuse.Models;
 using Comforthuse.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace ComforthuseUserstoryTests
 {
@@ -47,12 +47,12 @@ namespace ComforthuseUserstoryTests
             Assert.AreEqual(customer.Address, new_address);
             Assert.AreEqual(customer.Zipcode, new_zipcode);
             Assert.AreEqual(customer.PhoneNb1, new_phoneNr);
-            Assert.AreEqual(customer.PhoneNr2, new_phoneNr);
+            Assert.AreEqual(customer.PhoneNb2, new_phoneNr);
 
         }
 
         [TestMethod]
-        [ExpectedException (typeof(Exception))]
+        [ExpectedException(typeof(Exception))]
         public void ShouldNotEditIfEmptyFields()
         {
             string old_fName = "Jon";
@@ -201,7 +201,7 @@ namespace ComforthuseUserstoryTests
             Assert.AreEqual(customer.Address, "City Center, 12");
             Assert.AreEqual(customer.Zipcode, "8765ASD");
             Assert.AreEqual(customer.PhoneNb1, "12131415");
-            Assert.AreEqual(customer.PhoneNr2, "16171819");
+            Assert.AreEqual(customer.PhoneNb2, "16171819");
         }
 
         [TestMethod]

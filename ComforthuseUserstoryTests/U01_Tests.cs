@@ -1,9 +1,7 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Comforthuse.Models;
+﻿using Comforthuse.Models;
 using Comforthuse.Utility;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace ComforthuseUserstoryTests
 {
@@ -40,12 +38,12 @@ namespace ComforthuseUserstoryTests
             Assert.AreEqual(address, customer.Address);
             Assert.AreEqual(zipcode, customer.Zipcode);
             Assert.AreEqual(phoneNr, customer.PhoneNb1);
-            Assert.AreEqual(phoneNr, customer.PhoneNr2);
+            Assert.AreEqual(phoneNr, customer.PhoneNb2);
         }
 
 
         [TestMethod]
-        [ExpectedException (typeof(Exception))]
+        [ExpectedException(typeof(Exception))]
         public void CheckIfSomeFieldsAreEmpty()
         {
             string fName = "";
@@ -60,7 +58,7 @@ namespace ComforthuseUserstoryTests
             ValidateCustomer vc = new ValidateCustomer();
 
             ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
-            
+
         }
 
         [TestMethod]
@@ -138,7 +136,7 @@ namespace ComforthuseUserstoryTests
             ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
 
             Assert.AreEqual("30525485", customer.PhoneNb1);
-            Assert.AreEqual("30525485", customer.PhoneNr2);
+            Assert.AreEqual("30525485", customer.PhoneNb2);
 
         }
 

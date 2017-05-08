@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="ViewModels\Partial\TechnicalExpensesViewModel.cs" />
     <Compile Include="ViewModels\Partial\TechnicalSpecificationViewModel.cs" />
+    <Compile Include="ViewModels\TechnicalSpecificationViewModel.cs" />
     <Compile Include="Views\ExpenseCategoryPages\CarpentryPage.xaml.cs">
       <DependentUpon>CarpentryPage.xaml</DependentUpon>
     </Compile>
@@ -149,6 +150,9 @@
     </Compile>
     <Compile Include="Views\ExpenseCategoryPages\WindowsDoorsPage.xaml.cs">
       <DependentUpon>WindowsDoorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\TechnicalSpecificationPage.xaml.cs">
+      <DependentUpon>TechnicalSpecificationPage.xaml</DependentUpon>
     </Compile>
     <Page Include="ViewModels\Partial\TechnicalExpenses.xaml">
       <SubType>Designer</SubType>
@@ -250,6 +254,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Partial\TechnicalSpecificationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -281,7 +289,6 @@
   <ItemGroup>
     <Folder Include="Resources\Graphics\" />
     <Folder Include="Resources\Images\" />
-    <Folder Include="Views\Partial\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -6,7 +6,35 @@
              xmlns:local="clr-namespace:EmployeeGUI.Views.ExpenseCategoryPages"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="1" Grid.Row="1" FontSize="20" Content="House Type" />
+        <Label Grid.Column="1" Grid.Row="2" Content="Tecnical Information" ></Label>
+        <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding TechnicalSpecifications}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox IsChecked="{Binding Ticked, Mode=TwoWay}"/>
+                        <TextBox Width="200" Text="{Binding Description}" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

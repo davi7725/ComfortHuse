@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace Comforthuse.Utility
 {
@@ -13,7 +12,7 @@ namespace Comforthuse.Utility
             ICustomer customer;
             if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNb1 != "" && phoneNb2 != "")
             {
-                customer = CustomerRepository.Instance.Create(StandardizeName(firstName), StandardizeName(lastName), StandardizeEmail(email), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNb1), StandardizePhoneNr(phoneNb2));
+                customer = CustomerRepository.Instance.Create(StandardizeName(firstName), StandardizeName(lastName), StandardizeEmail(email), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNb(phoneNb1), StandardizePhoneNb(phoneNb2));
             }
             else
             {
@@ -33,8 +32,8 @@ namespace Comforthuse.Utility
                 string newCity = StandardizeName(city);
                 string newAddress = StandardizeAddress(address);
                 string newZipcode = StandardizeZipcode(zipcode);
-                string newPhoneNr1 = StandardizePhoneNr(phoneNb1);
-                string newPhoneNr2 = StandardizePhoneNr(phoneNb2);
+                string newPhoneNr1 = StandardizePhoneNb(phoneNb1);
+                string newPhoneNr2 = StandardizePhoneNb(phoneNb2);
 
                 customer.FirstName = newFirstName;
                 customer.LastName = newLastName;
@@ -97,7 +96,7 @@ namespace Comforthuse.Utility
 
         private void CheckForInvalidEmailCharacters(string email)
         {
-            List<char> listOfInvalidCharacters = new List<char>() { '*', 'ç', ' ', '+', '!', '"', '#', '$', '%', '&', '/', '(', ')', '=', '?', '£', '§', '{', '[', ']', '}', '\'', '«', '»', '<', '>', ':', ',', ';', 'º','ª','á', 'é', 'ó', 'à', 'è', 'ò', 'ä', 'ë', 'ö', 'ü', 'â', 'ê', 'î','ô','û','ã','õ','\\','|' };
+            List<char> listOfInvalidCharacters = new List<char>() { '*', 'ç', ' ', '+', '!', '"', '#', '$', '%', '&', '/', '(', ')', '=', '?', '£', '§', '{', '[', ']', '}', '\'', '«', '»', '<', '>', ':', ',', ';', 'º', 'ª', 'á', 'é', 'ó', 'à', 'è', 'ò', 'ä', 'ë', 'ö', 'ü', 'â', 'ê', 'î', 'ô', 'û', 'ã', 'õ', '\\', '|' };
 
             foreach (char character in email.ToLower())
             {

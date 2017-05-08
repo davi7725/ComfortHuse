@@ -1,4 +1,6 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse;
+using Comforthuse.Interfaces;
+using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
@@ -33,11 +35,13 @@ namespace EmployeeGUI.ViewModels
         {
             _caseCustomer = _activeCase.Customer;
         }
-
         public CaseViewModel()
         {
-            // Add available pages
-            PageViewModels.Add(new HouseTypeExpenseViewModel());
+            // Instanciate and add avaliable pages
+            PageViewModels.Add(new HouseTypeExpenseViewModel()
+            {
+                HouseTypeExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType)
+            });
             PageViewModels.Add(new GarageCarportExpenseViewModel());
             PageViewModels.Add(new PlotExpenseViewModel());
             PageViewModels.Add(new MaterialsOutsideExpenseViewModel());
@@ -157,14 +161,12 @@ namespace EmployeeGUI.ViewModels
         public string PhoneNr1
         {
             get { return _caseCustomer.PhoneNb1; }
-            set { _caseCustomer.PhoneNr2 = value; }
+            set { _caseCustomer.PhoneNb1 = value; }
         }
         public string PhoneNr2
         {
-            get { return _caseCustomer.PhoneNr2; }
-            set { _caseCustomer.PhoneNr2 = value; }
+            get { return _caseCustomer.PhoneNb2; }
+            set { _caseCustomer.PhoneNb2 = value; }
         }
-
     }
-
 }
