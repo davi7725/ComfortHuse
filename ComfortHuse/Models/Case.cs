@@ -6,19 +6,15 @@ namespace Comforthuse.Models
     public class Case : ICase
     {
         private List<IExpenseCategory> _expenseCategories = new List<IExpenseCategory>();
-
-        public int CaseNumber { get; set; }
         private bool _isSold = true;
 
-        public List<IExpenseCategory> ExpenseCategories
-        {
-            get { return _expenseCategories; }
-        }
-
-
-        public Case()
-        {
-        }
+        public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
+        public ICustomer Customer { get; set; }
+        public DateTime DateOfCreation { get; internal set; }
+        public DateTime DateOfLastRevision { get; internal set; }
+        public int AmountOfRevisions { get; set; }
+        public string HouseType { get; set; }
+        public int CaseNumber { get; set; }
 
         public string Sold
         {
@@ -28,21 +24,18 @@ namespace Comforthuse.Models
                 return "No";
             }
         }
-
-        public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
-
-        public ICustomer Customer { get; set; }
-        public DateTime DateOfCreation { get; internal set; }
-        public int AmountOfRevisions { get; set; }
-        public DateTime DateOfLastRevision { get; internal set; }
-        public string HouseType { get; set; }
-
         public decimal Price
         {
             get
             {
                 return CalculatePrice();
             }
+        }
+        
+
+        public Case()
+        {
+            DateOfCreation = DateTime.Now;
         }
 
         private decimal CalculatePrice()

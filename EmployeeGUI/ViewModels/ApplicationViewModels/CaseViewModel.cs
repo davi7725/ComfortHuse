@@ -156,7 +156,7 @@ namespace EmployeeGUI.ViewModels
         }
         public string PhoneNr1
         {
-            get { return _caseCustomer.PhoneNr1; }
+            get { return _caseCustomer.PhoneNb1; }
             set { _caseCustomer.PhoneNr2 = value; }
         }
         public string PhoneNr2

@@ -8,12 +8,12 @@ namespace Comforthuse.Utility
 {
     public class ValidateCustomer : Validator
     {
-        public ICustomer CreateCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public ICustomer CreateCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2)
         {
             ICustomer customer;
-            if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
+            if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNb1 != "" && phoneNb2 != "")
             {
-                customer = CustomerRepository.Instance.Create(StandardizeName(firstName), StandardizeName(lastName), StandardizeEmail(email), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNr1), StandardizePhoneNr(phoneNr2));
+                customer = CustomerRepository.Instance.Create(StandardizeName(firstName), StandardizeName(lastName), StandardizeEmail(email), StandardizeName(city), StandardizeAddress(address), StandardizeZipcode(zipcode), StandardizePhoneNr(phoneNb1), StandardizePhoneNr(phoneNb2));
             }
             else
             {
@@ -22,10 +22,10 @@ namespace Comforthuse.Utility
             return customer;
         }
 
-        public ICustomer Edit(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2, string old_email)
+        public ICustomer Edit(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2, string old_email)
         {
             ICustomer customer = CustomerRepository.Instance.Load(StandardizeEmail(old_email));
-            if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNr1 != "" && phoneNr2 != "")
+            if (firstName != "" && lastName != "" && email != "" && city != "" && address != "" && zipcode != "" && phoneNb1 != "" && phoneNb2 != "")
             {
                 string newFirstName = StandardizeName(firstName);
                 string newLastName = StandardizeName(lastName);
@@ -33,8 +33,8 @@ namespace Comforthuse.Utility
                 string newCity = StandardizeName(city);
                 string newAddress = StandardizeAddress(address);
                 string newZipcode = StandardizeZipcode(zipcode);
-                string newPhoneNr1 = StandardizePhoneNr(phoneNr1);
-                string newPhoneNr2 = StandardizePhoneNr(phoneNr2);
+                string newPhoneNr1 = StandardizePhoneNr(phoneNb1);
+                string newPhoneNr2 = StandardizePhoneNr(phoneNb2);
 
                 customer.FirstName = newFirstName;
                 customer.LastName = newLastName;
@@ -42,8 +42,8 @@ namespace Comforthuse.Utility
                 customer.City = newCity;
                 customer.Address = newAddress;
                 customer.Zipcode = newZipcode;
-                customer.PhoneNr1 = newPhoneNr1;
-                customer.PhoneNr2 = newPhoneNr2;
+                customer.PhoneNb1 = newPhoneNr1;
+                customer.PhoneNb2 = newPhoneNr2;
             }
             else
             {
@@ -76,11 +76,11 @@ namespace Comforthuse.Utility
             return zipcode.ToUpper();
         }
 
-        private string StandardizePhoneNr(string phoneNr)
+        private string StandardizePhoneNb(string phoneNb)
         {
             string standardized = "";
 
-            foreach (char c in phoneNr)
+            foreach (char c in phoneNb)
             {
                 if (c != ' ')
                 {
