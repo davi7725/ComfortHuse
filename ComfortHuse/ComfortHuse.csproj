@@ -61,7 +61,7 @@
     <Compile Include="Utility\CustomerRepository.cs" />
     <Compile Include="Models\SpecificationDerivatives\ExpenseSpecification.cs" />
     <Compile Include="Models\HouseType.cs" />
-    <Compile Include="Models\IExpenseCategory.cs" />
+    <Compile Include="Interfaces\IExpenseCategory.cs" />
     <Compile Include="Models\ProductOption.cs" />
     <Compile Include="Models\ProductType.cs" />
     <Compile Include="Models\SpecificationDerivatives\TechnicalSpecification.cs" />
