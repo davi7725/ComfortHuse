@@ -1,6 +1,6 @@
 ﻿namespace Comforthuse.Models
 {
-    public class Specification
+    public abstract class Specification
     {
         public bool Ticked { get; set; }
     }

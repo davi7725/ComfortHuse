@@ -1,10 +1,10 @@
 ﻿using Comforthuse.Models;
 using EmployeeGUI.Helpers;
+using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 
 namespace EmployeeGUI.ViewModels
 {
@@ -37,9 +37,17 @@ namespace EmployeeGUI.ViewModels
         public CaseViewModel()
         {
             // Add available pages
-
             PageViewModels.Add(new HouseTypeExpenseViewModel());
-            PageViewModels.Add(new GarageCarportExpenseVIewModel());
+            PageViewModels.Add(new GarageCarportExpenseViewModel());
+            PageViewModels.Add(new HomeApplianceExpenseViewModel());
+            PageViewModels.Add(new HouseTypeExpenseViewModel());
+            PageViewModels.Add(new InteriorExpenseViewModel());
+            PageViewModels.Add(new MaterialInsideExpenseViewModel());
+            PageViewModels.Add(new MaterialsOutsideExpenseViewModel());
+            PageViewModels.Add(new PlotExpenseViewModel());
+            PageViewModels.Add(new PowerExpenseViewModel());
+            PageViewModels.Add(new TilesExpenseViewModel());
+            PageViewModels.Add(new WindowsDoorsExpenseViewModel());
 
             // Set starting page
             CurrentPageViewModel = PageViewModels[0];
@@ -94,6 +102,11 @@ namespace EmployeeGUI.ViewModels
                     OnPropertyChanged("CurrentPageViewModel");
                 }
             }
+        }
+
+        public string CaseID
+        {
+            get { return "Case Number: " + _activeCase.DateOfCreation.Year + "-" + _activeCase.CaseNumber.ToString(); }
         }
 
         public string FirstName

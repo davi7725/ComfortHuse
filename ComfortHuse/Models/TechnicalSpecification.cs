@@ -2,11 +2,13 @@
 {
     public class TechnicalSpecification : Specification
     {
-        public TechnicalSpecification(string v1, bool v2)
+        public TechnicalSpecification(string description)
         {
-     
+            this.Description = description;
         }
 
         public string Description { get; set; }
+
+
     }
 }

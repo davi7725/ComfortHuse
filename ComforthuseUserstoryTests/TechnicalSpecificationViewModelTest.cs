@@ -1,14 +1,11 @@
-﻿using Comforthuse.Models;
-using EmployeeGUI.ViewModels;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using EmployeeGUI.ViewModels.Partial;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ComforthuseUserstoryTests
 {
     [TestClass]
     public class TechnicalSpecificationViewModelTest
     {
+        /*
         //
         [TestMethod]
         public void CanRetrieveListOfTechnicalSpecifications()
@@ -32,5 +29,6 @@ namespace ComforthuseUserstoryTests
             Assert.AreEqual(vm.TechnicalSpecifications[2].Description, "Spec3");
             Assert.AreEqual(vm.TechnicalSpecifications[2].Ticked, true);
         }
+        */
     }
 }

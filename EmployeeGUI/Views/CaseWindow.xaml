@@ -4,16 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EmployeeGUI"
-        xmlns:expenseCategoryPages="clr-namespace:EmployeeGUI.ViewModels.ExpenseCategoryPages"
+        xmlns:expenseCategoryViewModels="clr-namespace:EmployeeGUI.ViewModels.ExpenseCategoryPages"
         xmlns:expenseCategoryViews="clr-namespace:EmployeeGUI.Views.ExpenseCategoryPages"
         mc:Ignorable="d"
         Title="Case" MinHeight="500" MinWidth="840">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:HouseTypeExpenseViewModel}">
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:HouseTypeExpenseViewModel}">
             <expenseCategoryViews:HouseTypePage />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:GarageCarportExpenseVIewModel}">
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:GarageCarportExpenseViewModel}">
             <expenseCategoryViews:GarageCarportPage />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:FloorExpenseViewModel}">
+            <expenseCategoryViews:FloorPage />
         </DataTemplate>
     </Window.Resources>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -28,12 +32,12 @@
             <RowDefinition Height="300*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="label" Content="Case number:" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="29" Width="169" FontFamily="Lato Black" Grid.Column="0" Grid.Row="1"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="185" Source="..\Resources\Graphics\Logo.png" Margin="10,30,0,0" Grid.Column="1"/>
-        <TabControl Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" MinHeight="300" MinWidth="840" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+        <Label x:Name="label" Content="{Binding CaseID}" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="29" Width="169" FontFamily="Lato Black" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="185" Source="..\Resources\Graphics\Logo.png" Margin="10,30,0,0" Grid.Column="0"/>
+        <Rectangle Fill="DimGray" Grid.Row="2" Grid.Column="1"></Rectangle>
+        <TabControl Background="#FFE5E5E5" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" MinHeight="300" MinWidth="840" VerticalAlignment="Stretch">
             <TabItem Header="Customer ">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="45*"/>
@@ -42,7 +46,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="28"/>
-                        <RowDefinition Height="220*"/>
+                        <RowDefinition Height="320"/>
                         <RowDefinition Height="220*"/>
                     </Grid.RowDefinitions>
 
@@ -74,7 +78,7 @@
 
                 </Grid>
             </TabItem>
-           <TabItem Header="Material Selection" Height="22" VerticalAlignment="Bottom" Margin="-2,-2,-2,2">
+           <TabItem Header="Material Selection" Height="22" VerticalAlignment="Bottom">
                 <DockPanel>
                     <Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0">
                         <ItemsControl ItemsSource="{Binding PageViewModels}">
