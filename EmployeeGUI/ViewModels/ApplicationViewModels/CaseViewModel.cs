@@ -48,6 +48,12 @@ namespace EmployeeGUI.ViewModels
             PageViewModels.Add(new PowerExpenseViewModel());
             PageViewModels.Add(new TilesExpenseViewModel());
             PageViewModels.Add(new WindowsDoorsExpenseViewModel());
+            PageViewModels.Add(new CarpentryExpenseViewModel());
+            PageViewModels.Add(new WallingExpenseViewModel());
+            PageViewModels.Add(new PlumbingExpenseViewModel());
+            PageViewModels.Add(new VentilationExpenseViewModel());
+            PageViewModels.Add(new ExtraContructionPage());
+            PageViewModels.Add(new OtherExpenseViewModel());
 
             // Set starting page
             CurrentPageViewModel = PageViewModels[0];

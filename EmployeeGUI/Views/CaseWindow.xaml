@@ -15,9 +15,26 @@
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:GarageCarportExpenseViewModel}">
             <expenseCategoryViews:GarageCarportPage />
         </DataTemplate>
-
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:FloorExpenseViewModel}">
             <expenseCategoryViews:FloorPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryPages:CarpentryExpenseViewModel}">
+            <expenseCategoryViews:GarageCarportPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryPages:WallingExpenseViewModel}">
+            <expenseCategoryViews:GarageCarportPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryPages:PlumbingExpenseViewModel}">
+            <expenseCategoryViews:GarageCarportPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryPages:VentilationExpenseViewModel}">
+            <expenseCategoryViews:GarageCarportPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryPages:ExtraContructionPage}">
+            <expenseCategoryViews:GarageCarportPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryPages:OtherExpenseViewModel}">
+            <expenseCategoryViews:GarageCarportPage />
         </DataTemplate>
     </Window.Resources>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
