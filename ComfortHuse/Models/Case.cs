@@ -53,7 +53,7 @@ namespace Comforthuse.Models
         public void RegisterRevision()
         {
             AmountOfRevisions = AmountOfRevisions++;
-            DateOfLastRevision = DateOfLastRevision;
+            DateOfLastRevision = DateTime.Now;
         }
 
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");

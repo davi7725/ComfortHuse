@@ -72,10 +72,24 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\MessageHandling.cs" />
     <Compile Include="ViewModels\CustomerInformationViewModel.cs" />
-    <Compile Include="ViewModels\TechnicalSpecificationViewModel.cs" />
+    <Compile Include="ViewModels\ExpenseCategoryPages\BaseExpenseViewModel.cs" />
+    <Compile Include="ViewModels\ExpenseCategoryPages\GarageCarportExpenseVIewModel.cs" />
+    <Compile Include="ViewModels\ExpenseCategoryPages\HouseTypeExpenseViewModel.cs" />
+    <Compile Include="ViewModels\Partial\TechnicalExpenses.xaml.cs">
+      <DependentUpon>TechnicalExpenses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Partial\TechnicalExpensesViewModel.cs" />
+    <Compile Include="ViewModels\Partial\TechnicalSpecificationViewModel.cs" />
+    <Compile Include="Views\ExpenseCategoryPages\GarageCarportPage.xaml.cs">
+      <DependentUpon>GarageCarportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ExpenseCategoryPages\HouseTypePage.xaml.cs">
       <DependentUpon>HouseTypePage.xaml</DependentUpon>
     </Compile>
+    <Page Include="ViewModels\Partial\TechnicalExpenses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CaseSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,8 +104,8 @@
     </Compile>
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="ViewModels\CaseSelectionViewModel.cs" />
-    <Compile Include="ViewModels\CaseViewModel.cs" />
+    <Compile Include="ViewModels\ApplicationViewModels\CaseSelectionViewModel.cs" />
+    <Compile Include="ViewModels\ApplicationViewModels\CaseViewModel.cs" />
     <Compile Include="ViewModels\IPageViewModel.cs" />
     <Compile Include="Views\CaseSelectionWindow.xaml.cs">
       <DependentUpon>CaseSelectionWindow.xaml</DependentUpon>
@@ -100,6 +114,10 @@
       <DependentUpon>CaseWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ExpenseCategoryPages\GarageCarportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ExpenseCategoryPages\HouseTypePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,7 +153,6 @@
   <ItemGroup>
     <Folder Include="Resources\Graphics\" />
     <Folder Include="Resources\Images\" />
-    <Folder Include="ViewModels\ExpenseCategoryPages\" />
     <Folder Include="Views\Partial\" />
   </ItemGroup>
   <ItemGroup>

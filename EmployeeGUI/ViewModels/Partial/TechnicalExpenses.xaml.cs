@@ -13,16 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EmployeeGUI.Views.ExpenseCategoryPages
+namespace EmployeeGUI.ViewModels.Partial
 {
     /// <summary>
-    /// Interaction logic for HouseTypePage.xaml
+    /// Interaction logic for TechnicalExpenses.xaml
     /// </summary>
-    public partial class HouseTypePage : UserControl
+    public partial class TechnicalExpenses : UserControl
     {
-        public HouseTypePage()
+        private string v1;
+        private bool v2;
+
+        public TechnicalExpenses()
         {
             InitializeComponent();
+        }
+
+        public TechnicalExpenses(string v1, bool v2)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
         }
     }
 }

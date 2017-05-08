@@ -24,10 +24,10 @@ namespace Comforthuse.Utility
 
         public ICase CreateNewCase()
         {
-            /*
+            
             // Instanciate objects for a new case ----
             List<IExpenseCategory> _categories = new List<IExpenseCategory>();
-    /*
+    
             _categories.Add(new HouseTypeExpenses());
             _categories.Add(new CarportGarageExpenses());
             _categories.Add(new WindowsAndDoorsExpenses());
@@ -41,9 +41,8 @@ namespace Comforthuse.Utility
             _categories.Add(new VentilationExpenses());
             _categories.Add(new ExtraConstructionExpenses());
             _categories.Add(new OtherExpenses());
-            */
-
-            Case thisCase = new Case();
+          
+            Case thisCase = new Case(){Customer = new Customer("Allan","Heboe","alexale@fsdasd.com", "Odense", "Address", "5200", "60669041", "50505050")};
 
             return thisCase;
         }

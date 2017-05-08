@@ -2,7 +2,9 @@
 using EmployeeGUI.Helpers;
 using SimpleMVVMExample;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
+using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 
 namespace EmployeeGUI.ViewModels
 {
@@ -14,22 +16,33 @@ namespace EmployeeGUI.ViewModels
         private List<IPageViewModel> _pageViewModels;
         private ICase _activeCase;
 
-        public ICase Case { get { return _activeCase; } set { _activeCase = value; } }
-
-        public CaseViewModel(ICase activeCase)
+        public ICase Case
         {
-            _activeCase = activeCase;
-            _caseCustomer = activeCase.Customer;
-            // Add available pages
+            get
+            {
+                return _activeCase;
+            }
+            set
+            {
+                _activeCase = value;
+                InstanciateViewModel();
+            }
+        }
 
-            //PageViewModels.Add(new HouseTypeViewModel());
-
-            // Set starting page
-            CurrentPageViewModel = PageViewModels[0];
+        private void InstanciateViewModel()
+        {
+            _caseCustomer = _activeCase.Customer;
         }
 
         public CaseViewModel()
         {
+            // Add available pages
+
+            PageViewModels.Add(new HouseTypeExpenseViewModel());
+            PageViewModels.Add(new GarageCarportExpenseVIewModel());
+
+            // Set starting page
+            CurrentPageViewModel = PageViewModels[0];
         }
 
         public ICommand ChangePageCommand
@@ -47,9 +60,13 @@ namespace EmployeeGUI.ViewModels
             }
         }
 
-        private void ChangeViewModel(IPageViewModel pageViewModel)
+        private void ChangeViewModel(IPageViewModel viewModel)
         {
+            if (!PageViewModels.Contains(viewModel))
+                PageViewModels.Add(viewModel);
 
+            CurrentPageViewModel = PageViewModels
+                .FirstOrDefault(vm => vm == viewModel);
         }
 
         public List<IPageViewModel> PageViewModels
@@ -78,7 +95,6 @@ namespace EmployeeGUI.ViewModels
                 }
             }
         }
-
 
         public string FirstName
         {

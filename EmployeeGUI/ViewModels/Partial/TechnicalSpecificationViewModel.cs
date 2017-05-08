@@ -1,7 +1,7 @@
 ﻿using Comforthuse.Models;
 using System.Collections.Generic;
 
-namespace EmployeeGUI.ViewModels
+namespace EmployeeGUI.ViewModels.Partial
 {
     public class TechnicalSpecificationViewModel
     {

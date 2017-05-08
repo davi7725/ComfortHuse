@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EmployeeGUI.Views.ExpenseCategoryPages
 {
     /// <summary>
-    /// Interaction logic for HouseTypePage.xaml
+    /// Interaction logic for GarageCarportPage.xaml
     /// </summary>
-    public partial class HouseTypePage : UserControl
+    public partial class GarageCarportPage : UserControl
     {
-        public HouseTypePage()
+        public GarageCarportPage()
         {
             InitializeComponent();
         }

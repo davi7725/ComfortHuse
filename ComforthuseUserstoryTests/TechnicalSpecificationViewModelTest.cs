@@ -2,6 +2,7 @@
 using EmployeeGUI.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using EmployeeGUI.ViewModels.Partial;
 
 namespace ComforthuseUserstoryTests
 {
