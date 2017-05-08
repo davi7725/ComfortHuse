@@ -10,9 +10,14 @@ namespace Comforthuse.Models
         public int CaseNumber { get; set; }
         private bool _isSold = true;
 
+        public List<IExpenseCategory> ExpenseCategories
+        {
+            get { return _expenseCategories; }
+        }
+
+
         public Case()
         {
-            DateOfCreation = DateTime.Now;
         }
 
         public string Sold

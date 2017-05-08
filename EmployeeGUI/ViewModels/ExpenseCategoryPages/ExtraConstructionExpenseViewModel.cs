@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
+﻿namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 {
-    public class ExtraContructionPage : BaseExpenseViewModel
+    public class ExtraContructionViewModel : BaseExpenseViewModel
     {
-        public ExtraContructionPage()
+        public ExtraContructionViewModel()
         {
             Name = "Extra Contruction";
         }

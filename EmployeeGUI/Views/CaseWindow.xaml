@@ -9,32 +9,59 @@
         mc:Ignorable="d"
         Title="Case" MinHeight="500" MinWidth="840">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type expenseCategoryViewModels:HouseTypeExpenseViewModel}">
-            <expenseCategoryViews:HouseTypePage />
-        </DataTemplate>
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:GarageCarportExpenseViewModel}">
             <expenseCategoryViews:GarageCarportPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:PlotExpenseViewModel}">
+            <expenseCategoryViews:PlotPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:HouseTypeExpenseViewModel}">
+            <expenseCategoryViews:HouseTypePage />
         </DataTemplate>
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:FloorExpenseViewModel}">
             <expenseCategoryViews:FloorPage />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:CarpentryExpenseViewModel}">
-            <expenseCategoryViews:GarageCarportPage />
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:HomeApplianceExpenseViewModel}">
+            <expenseCategoryViews:HomeAppliancePage />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:WallingExpenseViewModel}">
-            <expenseCategoryViews:GarageCarportPage />
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:InteriorExpenseViewModel}">
+            <expenseCategoryViews:InteriorPage />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:PlumbingExpenseViewModel}">
-            <expenseCategoryViews:GarageCarportPage />
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:MaterialInsideExpenseViewModel}">
+            <expenseCategoryViews:MaterialInsidePage />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:VentilationExpenseViewModel}">
-            <expenseCategoryViews:GarageCarportPage />
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:MaterialsOutsideExpenseViewModel}">
+            <expenseCategoryViews:MaterialOutsidePage />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:ExtraContructionPage}">
-            <expenseCategoryViews:GarageCarportPage />
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:PowerExpenseViewModel}">
+            <expenseCategoryViews:PowerPage />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type expenseCategoryPages:OtherExpenseViewModel}">
-            <expenseCategoryViews:GarageCarportPage />
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:TilesExpenseViewModel}">
+            <expenseCategoryViews:TilesPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:CarpentryExpenseViewModel}">
+            <expenseCategoryViews:CarpentryPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:WallingExpenseViewModel}">
+            <expenseCategoryViews:WallingPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:PaintExpenseViewModel}">
+            <expenseCategoryViews:PaintPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:PlumbingExpenseViewModel}">
+            <expenseCategoryViews:PlumbingPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:VentilationExpenseViewModel}">
+            <expenseCategoryViews:VentilationPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:ExtraContructionViewModel}">
+            <expenseCategoryViews:ExtraConstructionPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:OtherExpenseViewModel}">
+            <expenseCategoryViews:OtherPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type expenseCategoryViewModels:WindowsDoorsExpenseViewModel}">
+            <expenseCategoryViews:WindowsDoorsPage />
         </DataTemplate>
     </Window.Resources>
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

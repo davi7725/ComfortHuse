@@ -39,20 +39,24 @@ namespace EmployeeGUI.ViewModels
             // Add available pages
             PageViewModels.Add(new HouseTypeExpenseViewModel());
             PageViewModels.Add(new GarageCarportExpenseViewModel());
-            PageViewModels.Add(new HomeApplianceExpenseViewModel());
-            PageViewModels.Add(new HouseTypeExpenseViewModel());
-            PageViewModels.Add(new InteriorExpenseViewModel());
-            PageViewModels.Add(new MaterialInsideExpenseViewModel());
-            PageViewModels.Add(new MaterialsOutsideExpenseViewModel());
             PageViewModels.Add(new PlotExpenseViewModel());
-            PageViewModels.Add(new PowerExpenseViewModel());
-            PageViewModels.Add(new TilesExpenseViewModel());
+            PageViewModels.Add(new MaterialsOutsideExpenseViewModel());
             PageViewModels.Add(new WindowsDoorsExpenseViewModel());
+            PageViewModels.Add(new MaterialInsideExpenseViewModel());
+            PageViewModels.Add(new InteriorExpenseViewModel());
+            PageViewModels.Add(new FloorExpenseViewModel());
+            PageViewModels.Add(new PowerExpenseViewModel());
+
+
+            PageViewModels.Add(new HomeApplianceExpenseViewModel());
+            PageViewModels.Add(new TilesExpenseViewModel());
             PageViewModels.Add(new CarpentryExpenseViewModel());
+            PageViewModels.Add(new PaintExpenseViewModel());
             PageViewModels.Add(new WallingExpenseViewModel());
+            //Add painting viewmodel
             PageViewModels.Add(new PlumbingExpenseViewModel());
             PageViewModels.Add(new VentilationExpenseViewModel());
-            PageViewModels.Add(new ExtraContructionPage());
+            PageViewModels.Add(new ExtraContructionViewModel());
             PageViewModels.Add(new OtherExpenseViewModel());
 
             // Set starting page

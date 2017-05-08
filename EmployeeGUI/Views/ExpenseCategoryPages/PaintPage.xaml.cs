@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace EmployeeGUI.Views.ExpenseCategoryPages
 {
     /// <summary>
-    /// Interaction logic for TilesPages.xaml
+    /// Interaction logic for PaintPage.xaml
     /// </summary>
-    public partial class TilesPages : UserControl
+    public partial class PaintPage : UserControl
     {
-        public TilesPages()
+        public PaintPage()
         {
             InitializeComponent();
         }
