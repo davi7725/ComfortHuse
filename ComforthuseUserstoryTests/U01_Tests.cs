@@ -39,7 +39,7 @@ namespace ComforthuseUserstoryTests
             Assert.AreEqual(city, customer.City);
             Assert.AreEqual(address, customer.Address);
             Assert.AreEqual(zipcode, customer.Zipcode);
-            Assert.AreEqual(phoneNr, customer.PhoneNr1);
+            Assert.AreEqual(phoneNr, customer.PhoneNb1);
             Assert.AreEqual(phoneNr, customer.PhoneNr2);
         }
 
@@ -137,7 +137,7 @@ namespace ComforthuseUserstoryTests
 
             ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
 
-            Assert.AreEqual("30525485", customer.PhoneNr1);
+            Assert.AreEqual("30525485", customer.PhoneNb1);
             Assert.AreEqual("30525485", customer.PhoneNr2);
 
         }
