@@ -3,11 +3,11 @@
 namespace EmployeeGUI.Views.ExpenseCategoryPages
 {
     /// <summary>
-    /// Interaction logic for ExtraConstruction.xaml
+    /// Interaction logic for TilesPages.xaml
     /// </summary>
-    public partial class ExtraConstructionPage : UserControl
+    public partial class TilesPage : UserControl
     {
-        public ExtraConstructionPage()
+        public TilesPage()
         {
             InitializeComponent();
         }

@@ -80,6 +80,7 @@
     <Compile Include="ViewModels\ExpenseCategoryPages\HomeApplianceExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\HouseTypeExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\InteriorExpenseViewModel.cs" />
+    <Compile Include="ViewModels\ExpenseCategoryPages\PaintExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\MaterialInsideExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\MaterialsOutsideExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\OtherExpenseViewModel.cs" />
@@ -95,6 +96,7 @@
     </Compile>
     <Compile Include="ViewModels\Partial\TechnicalExpensesViewModel.cs" />
     <Compile Include="ViewModels\Partial\TechnicalSpecificationViewModel.cs" />
+    <Compile Include="ViewModels\TechnicalSpecificationViewModel.cs" />
     <Compile Include="Views\ExpenseCategoryPages\CarpentryPage.xaml.cs">
       <DependentUpon>CarpentryPage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +127,9 @@
     <Compile Include="Views\ExpenseCategoryPages\OtherPage.xaml.cs">
       <DependentUpon>OtherPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ExpenseCategoryPages\PaintPage.xaml.cs">
+      <DependentUpon>PaintPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ExpenseCategoryPages\PlotPage.xaml.cs">
       <DependentUpon>PlotPage.xaml</DependentUpon>
     </Compile>
@@ -134,14 +139,20 @@
     <Compile Include="Views\ExpenseCategoryPages\PowerPage.xaml.cs">
       <DependentUpon>PowerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ExpenseCategoryPages\TilesPages.xaml.cs">
-      <DependentUpon>TilesPages.xaml</DependentUpon>
+    <Compile Include="Views\ExpenseCategoryPages\TilesPage.xaml.cs">
+      <DependentUpon>TilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExpenseCategoryPages\VentilationPage.xaml.cs">
+      <DependentUpon>VentilationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ExpenseCategoryPages\WallingPage.xaml.cs">
       <DependentUpon>WallingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ExpenseCategoryPages\WindowsDoorsPage.xaml.cs">
       <DependentUpon>WindowsDoorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Partial\TechnicalSpecificationPage.xaml.cs">
+      <DependentUpon>TechnicalSpecificationPage.xaml</DependentUpon>
     </Compile>
     <Page Include="ViewModels\Partial\TechnicalExpenses.xaml">
       <SubType>Designer</SubType>
@@ -211,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ExpenseCategoryPages\PaintPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ExpenseCategoryPages\PlotPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,7 +238,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ExpenseCategoryPages\TilesPages.xaml">
+    <Page Include="Views\ExpenseCategoryPages\TilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExpenseCategoryPages\VentilationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,6 +251,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ExpenseCategoryPages\WindowsDoorsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Partial\TechnicalSpecificationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -266,7 +289,6 @@
   <ItemGroup>
     <Folder Include="Resources\Graphics\" />
     <Folder Include="Resources\Images\" />
-    <Folder Include="Views\Partial\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

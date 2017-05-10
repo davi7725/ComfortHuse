@@ -22,13 +22,20 @@ namespace Comforthuse.Utility
             }
         }
 
+
+        public IEmployee CreateEmployee(string FirstName, string LastName, string Email, string PhoneNb)
+        {
+            return new Employee(FirstName, LastName, Email, PhoneNb);
+        }
+
+
         public ICase CreateNewCase()
         {
-            
+
             // Instanciate objects for a new case ----
             List<IExpenseCategory> _categories = new List<IExpenseCategory>();
-    
-            _categories.Add(new HouseTypeExpenses());
+            List<ITechnicalSpecification> tspec = new List<ITechnicalSpecification>() { new TechnicalSpecification(), new TechnicalSpecification(), new TechnicalSpecification() };
+            _categories.Add(new HouseTypeExpenses() { TechnicalSpecifications = tspec });
             _categories.Add(new CarportGarageExpenses());
             _categories.Add(new WindowsAndDoorsExpenses());
             _categories.Add(new MaterialsInsideExpenses());
@@ -41,8 +48,8 @@ namespace Comforthuse.Utility
             _categories.Add(new VentilationExpenses());
             _categories.Add(new ExtraConstructionExpenses());
             _categories.Add(new OtherExpenses());
-          
-            Case thisCase = new Case(){Customer = new Customer("Allan","Heboe","alexale@fsdasd.com", "Odense", "Address", "5200", "60669041", "50505050")};
+
+            Case thisCase = new Case() { Customer = new Customer("Allan", "Heboe", "alexale@fsdasd.com", "Odense", "Address", "5200", "60669041", "50505050") };
 
             return thisCase;
         }
@@ -57,230 +64,10 @@ namespace Comforthuse.Utility
             return new Customer();
         }
 
-        public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2)
+        public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
         {
-            return new Customer(firstName, lastName, email, city, address, zipcode, phoneNb1, phoneNb2);
-        }
-    }
-    public abstract class Expenses : IExpenseCategory
-    {
-
-        protected List<ExpenseSpecification> _extras = new List<ExpenseSpecification>();
-
-        protected List<TechnicalSpecification> _tecnSpecifications = new List<TechnicalSpecification>();
-
-        public abstract decimal Price { get; }
-        public ProductCategory Category { get; }
-
-        public List<ExpenseSpecification> ExtraExpenses
-        {
-            get { return _extras; }
-        }
-
-        public List<TechnicalSpecification> TechnicalSpecifications
-        {
-            get { return _tecnSpecifications; }
-        }
-
-        protected decimal PriceExtraExpenses
-        {
-            get
-            {
-                decimal price = 0;
-                foreach (ExpenseSpecification exp in _extras)
-                {
-                    price += exp.Price;
-                }
-                return price;
-            }
+            return new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
         }
     }
 
-
-    public class HouseTypeExpenses : Expenses
-    {
-        public override decimal Price { get; }
-        public HouseTypeExpenses HouseType { get; set; }
-        public bool HouseExpansion { get; set; }
-    }
-
-    public class WindowsAndDoorsExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class OtherExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class ExtraConstructionExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class VentilationExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class PlumberExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class PainterExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class BrickLayerExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class CarpenterExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class FlooringExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class InteriorExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class MaterialsInsideExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
-
-    public class CarportGarageExpenses : Expenses
-    {
-        public override decimal Price
-        {
-            get
-            {
-                //NOT FINISHED !!!! ADD ALL EXPENSES 
-                decimal price = 0;
-                price += this.PriceExtraExpenses;
-
-                return price;
-            }
-        }
-    }
 }

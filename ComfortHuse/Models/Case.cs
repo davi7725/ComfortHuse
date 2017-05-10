@@ -5,10 +5,21 @@ namespace Comforthuse.Models
 {
     public class Case : ICase
     {
-        private List<IExpenseCategory> _expenseCategories = new List<IExpenseCategory>();
+        private Dictionary<Category, IExpenseCategory> _expenseCategories;
+
+        public IExpenseCategory GetExpenseCategory(Category category)
+        {
+            return _expenseCategories[category];
+        }
+
         private bool _isSold = true;
 
-        public string Title => HouseType + " for " + Customer.FirstName + " " + Customer.LastName;
+        public string Title
+        {
+            get { return HouseType + " for " + Customer.FirstName + " " + Customer.LastName; }
+        }
+
+        public IEmployee Employee { get; internal set; }
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; internal set; }
         public DateTime DateOfLastRevision { get; internal set; }
@@ -16,13 +27,9 @@ namespace Comforthuse.Models
         public string HouseType { get; set; }
         public int CaseNumber { get; set; }
 
-        public string Sold
+        public bool Sold
         {
-            get
-            {
-                if (_isSold) return "Yes";
-                return "No";
-            }
+            get { return _isSold; }
         }
         public decimal Price
         {
@@ -31,7 +38,7 @@ namespace Comforthuse.Models
                 return CalculatePrice();
             }
         }
-        
+
 
         public Case()
         {
@@ -41,9 +48,9 @@ namespace Comforthuse.Models
         private decimal CalculatePrice()
         {
             decimal price = 0;
-            foreach (IExpenseCategory c in _expenseCategories)
+            foreach (KeyValuePair<Category, IExpenseCategory> c in _expenseCategories)
             {
-                price += c.Price;
+                price += c.Value.Price;
             }
             return price;
         }
@@ -72,11 +79,12 @@ namespace Comforthuse.Models
     public interface ICase
     {
         string Title { get; }
-        string Sold { get; }
+        bool Sold { get; }
         int CaseNumber { get; set; }
         decimal Price { get; }
         int AmountOfRevisions { get; }
         ICustomer Customer { get; set; }
+        IExpenseCategory GetExpenseCategory(Category category);
         DateTime DateOfLastRevision { get; }
         DateTime DateOfCreation { get; }
     }

@@ -1,13 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Comforthuse
+﻿namespace Comforthuse
 {
     public enum Category
     {
-        
+        HouseType,
+        CarportGarage,
+        Plot,
+        MaterialOutside,
+        WindowsDoors,
+        MaterialInside,
+        Interior,
+        Flooring,
+        Power,
+        Appliances,
+        Tiles,
+        Carpentry,
+        Painting,
+        Plumbing,
+        Ventilation,
+        BuildOn,
+        Other
     }
 }

@@ -7,6 +7,6 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
     {
         public string Name { get; protected set; }
 
-        public virtual double Price { get; protected set; }
+        public double Price { get; protected set; }
     }
 }

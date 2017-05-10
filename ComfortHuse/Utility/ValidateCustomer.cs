@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace Comforthuse.Utility
 {
@@ -97,7 +96,7 @@ namespace Comforthuse.Utility
 
         private void CheckForInvalidEmailCharacters(string email)
         {
-            List<char> listOfInvalidCharacters = new List<char>() { '*', 'ç', ' ', '+', '!', '"', '#', '$', '%', '&', '/', '(', ')', '=', '?', '£', '§', '{', '[', ']', '}', '\'', '«', '»', '<', '>', ':', ',', ';', 'º','ª','á', 'é', 'ó', 'à', 'è', 'ò', 'ä', 'ë', 'ö', 'ü', 'â', 'ê', 'î','ô','û','ã','õ','\\','|' };
+            List<char> listOfInvalidCharacters = new List<char>() { '*', 'ç', ' ', '+', '!', '"', '#', '$', '%', '&', '/', '(', ')', '=', '?', '£', '§', '{', '[', ']', '}', '\'', '«', '»', '<', '>', ':', ',', ';', 'º', 'ª', 'á', 'é', 'ó', 'à', 'è', 'ò', 'ä', 'ë', 'ö', 'ü', 'â', 'ê', 'î', 'ô', 'û', 'ã', 'õ', '\\', '|' };
 
             foreach (char character in email.ToLower())
             {
