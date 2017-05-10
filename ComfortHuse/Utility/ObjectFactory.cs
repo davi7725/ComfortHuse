@@ -57,13 +57,18 @@ namespace Comforthuse.Utility
             return new Customer();
         }
 
-        public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2)
         {
-            return new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
+            return new Customer(firstName, lastName, email, city, address, zipcode, phoneNb1, phoneNb2);
         }
     }
     public abstract class Expenses : IExpenseCategory
     {
+
+        protected List<ExpenseSpecification> _extras = new List<ExpenseSpecification>();
+
+        protected List<TechnicalSpecification> _tecnSpecifications = new List<TechnicalSpecification>();
+
         public abstract decimal Price { get; }
         public ProductCategory Category { get; }
 
@@ -89,10 +94,6 @@ namespace Comforthuse.Utility
                 return price;
             }
         }
-
-        protected List<ExpenseSpecification> _extras = new List<ExpenseSpecification>();
-
-        protected List<TechnicalSpecification> _tecnSpecifications = new List<TechnicalSpecification>();
     }
 
 
