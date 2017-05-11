@@ -49,7 +49,7 @@ namespace Comforthuse.Utility
             _categories.Add(new ExtraConstructionExpenses());
             _categories.Add(new OtherExpenses());
 
-            Case thisCase = new Case() { Customer = new Customer("Allan", "Heboe", "alexale@fsdasd.com", "Odense", "Address", "5200", "60669041", "50505050") };
+            Case thisCase = new Case() { Customer = new Customer() };
 
             return thisCase;
         }

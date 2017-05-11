@@ -156,12 +156,12 @@ namespace EmployeeGUI.ViewModels
             get { return _caseCustomer.Zipcode; }
             set { _caseCustomer.Zipcode = value; }
         }
-        public string PhoneNr1
+        public string PhoneNb1
         {
             get { return _caseCustomer.PhoneNb1; }
             set { _caseCustomer.PhoneNb1 = value; }
         }
-        public string PhoneNr2
+        public string PhoneNb2
         {
             get { return _caseCustomer.PhoneNb2; }
             set { _caseCustomer.PhoneNb2 = value; }

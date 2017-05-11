@@ -22,12 +22,12 @@ namespace ComforthuseUserstoryTests
             string old_city = "Odense";
             string old_address = "City Center, 10";
             string old_zipcode = "5200";
-            string old_phoneNr = "31525485";
+            string old_phoneNb = "31525485";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(old_fName, old_lName, old_email, old_city, old_address, old_zipcode, old_phoneNr, old_phoneNr);
+            ICustomer customer = vc.CreateCustomer(old_fName, old_lName, old_email, old_city, old_address, old_zipcode, old_phoneNb, old_phoneNb);
 
 
             string new_fName = "Ben";
