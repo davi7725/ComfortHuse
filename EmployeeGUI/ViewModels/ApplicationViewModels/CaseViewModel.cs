@@ -1,6 +1,4 @@
-﻿using Comforthuse;
-using Comforthuse.Interfaces;
-using Comforthuse.Models;
+﻿using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
@@ -40,7 +38,7 @@ namespace EmployeeGUI.ViewModels
             // Instanciate and add avaliable pages
             PageViewModels.Add(new HouseTypeExpenseViewModel()
             {
-                HouseTypeExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType)
+                // HouseTypeExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType)
             });
             PageViewModels.Add(new GarageCarportExpenseViewModel());
             PageViewModels.Add(new PlotExpenseViewModel());
