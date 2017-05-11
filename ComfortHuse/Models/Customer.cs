@@ -8,8 +8,8 @@
         string City { get; set; }
         string Address { get; set; }
         string Zipcode { get; set; }
-        string PhoneNr1 { get; set; }
-        string PhoneNr2 { get; set; }
+        string PhoneNb1 { get; set; }
+        string PhoneNb2 { get; set; }
     }
 
     public class Customer : ICustomer
@@ -20,14 +20,14 @@
         public string City { get; set; }
         public string Address { get; set; }
         public string Zipcode { get; set; }
-        public string PhoneNr1 { get; set; }
-        public string PhoneNr2 { get; set; }
+        public string PhoneNb1 { get; set; }
+        public string PhoneNb2 { get; set; }
 
         public Customer()
         {
 
         }
-        public Customer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public Customer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -35,8 +35,8 @@
             City = city;
             Address = address;
             Zipcode = zipcode;
-            PhoneNr1 = phoneNr1;
-            PhoneNr2 = phoneNr2;
+            PhoneNb1 = phoneNb1;
+            PhoneNb2 = phoneNb2;
         }
     }
 }

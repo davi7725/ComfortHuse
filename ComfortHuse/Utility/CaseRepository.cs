@@ -10,6 +10,10 @@ namespace Comforthuse.Utility
     {
 
         private static CaseRepository _instance;
+        private readonly List<ICase> _cases = new List<ICase>();
+        private IDbEmployee _db = DatabaseController.Instance;
+        private readonly List<ICase> _currentCases = new List<ICase>();
+
         public static CaseRepository Instance
         {
             get
@@ -19,9 +23,6 @@ namespace Comforthuse.Utility
             }
         }
 
-        private readonly List<ICase> _cases = new List<ICase>();
-        private IDbEmployee _db = DatabaseController.Instance;
-        private readonly List<ICase> _currentCases = new List<ICase>();
 
 
         public void Add(ICase caseObj)

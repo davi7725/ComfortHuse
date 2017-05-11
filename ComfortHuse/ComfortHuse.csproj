@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Specification.cs" />
+    <Compile Include="Interfaces\IHouseTypeExpenses.cs" />
+    <Compile Include="Interfaces\IEmployee.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Plot.cs" />
+    <Compile Include="Models\SpecificationDerivatives\Specification.cs" />
     <Compile Include="Types\Category.cs" />
     <Compile Include="Database\DatabaseController.cs" />
     <Compile Include="Database\IDbAdmin.cs" />
@@ -48,26 +54,37 @@
     <Compile Include="Facade\DomainFacade.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ExpensesDerivatives\BrickLayerExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\CarpenterExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\CarportGarageExpenses.cs" />
     <Compile Include="Utility\CustomerRepository.cs" />
-    <Compile Include="Models\ExpenseSpecification.cs" />
+    <Compile Include="Models\SpecificationDerivatives\ExpenseSpecification.cs" />
     <Compile Include="Models\HouseType.cs" />
-    <Compile Include="Models\HouseTypeExpenses.cs" />
-    <Compile Include="Models\IExpenseCategory.cs" />
+    <Compile Include="Interfaces\IExpenseCategory.cs" />
     <Compile Include="Models\ProductOption.cs" />
     <Compile Include="Models\ProductType.cs" />
-    <Compile Include="Models\TechnicalSpecification.cs" />
+    <Compile Include="Models\SpecificationDerivatives\TechnicalSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\CaseRepository.cs" />
+    <Compile Include="Models\Expenses.cs" />
     <Compile Include="Utility\ExportToPDF.cs" />
+    <Compile Include="Models\ExpensesDerivatives\ExtraConstructionExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\FlooringExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\HouseTypeExpenses.cs" />
     <Compile Include="Utility\ICaseRepository.cs" />
+    <Compile Include="Models\ExpensesDerivatives\InteriorExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\MaterialsInsideExpenses.cs" />
     <Compile Include="Utility\ObjectFactory.cs" />
+    <Compile Include="Models\ExpensesDerivatives\OtherExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\PainterExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\PlumberExpenses.cs" />
     <Compile Include="Utility\ValidateCustomer.cs" />
     <Compile Include="Utility\Validator.cs" />
+    <Compile Include="Models\ExpensesDerivatives\VentilationExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\WindowsAndDoorsExpenses.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\ExpensesDerivatives\" />
-    <Folder Include="Models\SpecificationDerivatives\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

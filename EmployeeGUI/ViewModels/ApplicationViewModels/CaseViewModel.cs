@@ -33,26 +33,32 @@ namespace EmployeeGUI.ViewModels
         {
             _caseCustomer = _activeCase.Customer;
         }
-
         public CaseViewModel()
         {
-            // Add available pages
-            PageViewModels.Add(new HouseTypeExpenseViewModel());
+            // Instanciate and add avaliable pages
+            PageViewModels.Add(new HouseTypeExpenseViewModel()
+            {
+                // HouseTypeExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType)
+            });
             PageViewModels.Add(new GarageCarportExpenseViewModel());
-            PageViewModels.Add(new HomeApplianceExpenseViewModel());
-            PageViewModels.Add(new HouseTypeExpenseViewModel());
-            PageViewModels.Add(new InteriorExpenseViewModel());
-            PageViewModels.Add(new MaterialInsideExpenseViewModel());
-            PageViewModels.Add(new MaterialsOutsideExpenseViewModel());
             PageViewModels.Add(new PlotExpenseViewModel());
-            PageViewModels.Add(new PowerExpenseViewModel());
-            PageViewModels.Add(new TilesExpenseViewModel());
+            PageViewModels.Add(new MaterialsOutsideExpenseViewModel());
             PageViewModels.Add(new WindowsDoorsExpenseViewModel());
+            PageViewModels.Add(new MaterialInsideExpenseViewModel());
+            PageViewModels.Add(new InteriorExpenseViewModel());
+            PageViewModels.Add(new FloorExpenseViewModel());
+            PageViewModels.Add(new PowerExpenseViewModel());
+
+
+            PageViewModels.Add(new HomeApplianceExpenseViewModel());
+            PageViewModels.Add(new TilesExpenseViewModel());
             PageViewModels.Add(new CarpentryExpenseViewModel());
+            PageViewModels.Add(new PaintExpenseViewModel());
             PageViewModels.Add(new WallingExpenseViewModel());
+            //Add painting viewmodel
             PageViewModels.Add(new PlumbingExpenseViewModel());
             PageViewModels.Add(new VentilationExpenseViewModel());
-            PageViewModels.Add(new ExtraContructionPage());
+            PageViewModels.Add(new ExtraContructionViewModel());
             PageViewModels.Add(new OtherExpenseViewModel());
 
             // Set starting page
@@ -152,15 +158,13 @@ namespace EmployeeGUI.ViewModels
         }
         public string PhoneNr1
         {
-            get { return _caseCustomer.PhoneNr1; }
-            set { _caseCustomer.PhoneNr2 = value; }
+            get { return _caseCustomer.PhoneNb1; }
+            set { _caseCustomer.PhoneNb1 = value; }
         }
         public string PhoneNr2
         {
-            get { return _caseCustomer.PhoneNr2; }
-            set { _caseCustomer.PhoneNr2 = value; }
+            get { return _caseCustomer.PhoneNb2; }
+            set { _caseCustomer.PhoneNb2 = value; }
         }
-
     }
-
 }
