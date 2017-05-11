@@ -6,11 +6,7 @@ namespace Comforthuse.Models
     public class Case : ICase
     {
         private Dictionary<Category, IExpenseCategory> _expenseCategories;
-
-        public IExpenseCategory GetExpenseCategory(Category category)
-        {
-            return _expenseCategories[category];
-        }
+        
 
         private bool _isSold = true;
 
@@ -59,6 +55,10 @@ namespace Comforthuse.Models
         {
             AmountOfRevisions = AmountOfRevisions++;
             DateOfLastRevision = DateTime.Now;
+        }
+        public IExpenseCategory GetExpenseCategory(Category category)
+        {
+            return _expenseCategories[category];
         }
 
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");

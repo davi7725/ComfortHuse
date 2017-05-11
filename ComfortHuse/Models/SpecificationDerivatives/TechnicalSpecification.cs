@@ -2,6 +2,11 @@
 {
     public class TechnicalSpecification : Specification, ITechnicalSpecification
     {
+
+        public string Description { get; set; }
+
+        public bool Editable { get; internal set; }
+
         public TechnicalSpecification()
         {
         }
@@ -11,15 +16,12 @@
             this.Description = description;
         }
 
-        public string Description { get; set; }
-
-        public bool EditAble { get; internal set; }
 
     }
 
     public interface ITechnicalSpecification
     {
         string Description { get; set; }
-        bool EditAble { get; }
+        bool Editable { get; }
     }
 }
