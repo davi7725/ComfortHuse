@@ -1,6 +1,7 @@
 ﻿using EmployeeGUI.Helpers;
 using System.Windows;
 using System.Windows.Input;
+using Comforthuse.Models;
 
 
 namespace EmployeeGUI.Views
@@ -32,8 +33,8 @@ namespace EmployeeGUI.Views
 
         private void ExecuteEditCaseCommand()
         {
-            ICommand cm = vm.CreateCaseCommand;
-            cm.Execute(null);
+            ICommand cm = vm.EditCaseCommand;
+            cm.Execute(CaseList.SelectedItem);
         }
 
 

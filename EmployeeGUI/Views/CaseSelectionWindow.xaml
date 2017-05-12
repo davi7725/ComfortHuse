@@ -27,7 +27,7 @@
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>
-                <GridView x:Name="GridSelectCase">
+                <GridView  x:Name="GridSelectCase">
                     <GridViewColumn Header="Case Nb" DisplayMemberBinding="{Binding CaseNumber}"  Width="75"/>
                     <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" Width="200" />
                     <GridViewColumn Header="Created" DisplayMemberBinding="{Binding DateOfCreation}"  Width="100"/>

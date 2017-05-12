@@ -12,6 +12,7 @@ namespace EmployeeGUI.ViewModels
     {
         private ICommand _getCasesCommand;
         private ICommand _createCaseCommand;
+        private ICommand _editCaseCommand;
 
         private readonly IEmployeeFacade _facade = new DomainFacade();
 
@@ -51,6 +52,19 @@ namespace EmployeeGUI.ViewModels
             }
         }
 
+        public ICommand EditCaseCommand
+        {
+            get
+            {
+                if (_editCaseCommand == null)
+                {
+
+                    _editCaseCommand = new RelayCommand(EditCase);
+                }
+                return _editCaseCommand;
+            }
+        }
+
         private void GetAllCases(object obj)
         {
             try
@@ -69,6 +83,20 @@ namespace EmployeeGUI.ViewModels
             {
                 ICase newCase = _facade.CreateCase();
                 OpenCase(newCase);
+            }
+            catch (Exception e)
+            {
+                MessageHandling.DisplayErrorMessage(e.Message);
+                throw;
+            }
+        }
+
+        private void EditCase(object obj)
+        {
+            try
+            {
+                ICase c = (ICase)obj;
+                OpenCase(c);
             }
             catch (Exception e)
             {
