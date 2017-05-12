@@ -4,6 +4,7 @@
     {
         public TechnicalSpecification()
         {
+            EditAble = true;
         }
 
         public TechnicalSpecification(string description)
@@ -13,13 +14,7 @@
 
         public string Description { get; set; }
 
-        public bool EditAble { get; internal set; }
+        public bool EditAble { get; set; }
 
-    }
-
-    public interface ITechnicalSpecification
-    {
-        string Description { get; set; }
-        bool EditAble { get; }
     }
 }

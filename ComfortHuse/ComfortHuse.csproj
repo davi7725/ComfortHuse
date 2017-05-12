@@ -46,6 +46,7 @@
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Plot.cs" />
+    <Compile Include="Interfaces\ITechnicalSpecification.cs" />
     <Compile Include="Models\SpecificationDerivatives\Specification.cs" />
     <Compile Include="Types\Category.cs" />
     <Compile Include="Database\DatabaseController.cs" />

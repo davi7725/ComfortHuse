@@ -1,10 +1,10 @@
-﻿namespace SimpleMVVMExample
+﻿using Comforthuse.Models;
+
+namespace SimpleMVVMExample
 {
-    public interface IPageViewModel
+    public interface IPageViewModel : IExpenseCategory
     {
         string Name { get; }
-
-        double Price { get; }
     }
 }
 

@@ -1,14 +1,22 @@
-﻿using System;
+﻿using Comforthuse.Utility;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Comforthuse.Models
 {
     public class Case : ICase
     {
-        private Dictionary<Category, IExpenseCategory> _expenseCategories;
+        private Dictionary<Category, IExpenseCategory> _expenseCategories = new Dictionary<Category, IExpenseCategory>() { { Category.HouseType, new HouseTypeExpenses() } };
+
+        public Case(Dictionary<Category, IExpenseCategory> categories)
+        {
+            _expenseCategories = categories;
+        }
 
         public IExpenseCategory GetExpenseCategory(Category category)
         {
+            Debug.WriteLine(_expenseCategories[category]);
             return _expenseCategories[category];
         }
 

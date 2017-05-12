@@ -14,24 +14,23 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="50*" />
             <ColumnDefinition Width="50*" />
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Label Grid.Column="1" Grid.Row="1" FontSize="20" Content="House Type" />
-        <Label Grid.Column="1" Grid.Row="2" Content="Tecnical Information" ></Label>
+        <Label Grid.Column="1" Grid.Row="2" Content="Technical Information" ></Label>
         <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="3" ItemsSource="{Binding TechnicalSpecifications}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="10*" />
-                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="90*" />
                         </Grid.ColumnDefinitions>
-                        <CheckBox IsChecked="{Binding Ticked, Mode=TwoWay}"/>
-                        <TextBox Width="200" Text="{Binding Description}" />
+                         <CheckBox Grid.Column="0" IsChecked="{Binding Ticked, Mode=TwoWay}"/>
+                        <TextBox IsEnabled="{Binding EditAble}" Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding Description}" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

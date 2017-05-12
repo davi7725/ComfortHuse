@@ -35,10 +35,12 @@ namespace EmployeeGUI.ViewModels
         }
         public CaseViewModel()
         {
+
             // Instanciate and add avaliable pages
             PageViewModels.Add(new HouseTypeExpenseViewModel()
             {
-                // HouseTypeExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType)
+                TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
+                //_activeCase.GetExpenseCategory(Category.HouseType).TechnicalSpecifications 
             });
             PageViewModels.Add(new GarageCarportExpenseViewModel());
             PageViewModels.Add(new PlotExpenseViewModel());
@@ -48,14 +50,11 @@ namespace EmployeeGUI.ViewModels
             PageViewModels.Add(new InteriorExpenseViewModel());
             PageViewModels.Add(new FloorExpenseViewModel());
             PageViewModels.Add(new PowerExpenseViewModel());
-
-
             PageViewModels.Add(new HomeApplianceExpenseViewModel());
             PageViewModels.Add(new TilesExpenseViewModel());
             PageViewModels.Add(new CarpentryExpenseViewModel());
             PageViewModels.Add(new PaintExpenseViewModel());
             PageViewModels.Add(new WallingExpenseViewModel());
-            //Add painting viewmodel
             PageViewModels.Add(new PlumbingExpenseViewModel());
             PageViewModels.Add(new VentilationExpenseViewModel());
             PageViewModels.Add(new ExtraContructionViewModel());
@@ -156,12 +155,12 @@ namespace EmployeeGUI.ViewModels
             get { return _caseCustomer.Zipcode; }
             set { _caseCustomer.Zipcode = value; }
         }
-        public string PhoneNr1
+        public string PhoneNb1
         {
             get { return _caseCustomer.PhoneNb1; }
             set { _caseCustomer.PhoneNb1 = value; }
         }
-        public string PhoneNr2
+        public string PhoneNb2
         {
             get { return _caseCustomer.PhoneNb2; }
             set { _caseCustomer.PhoneNb2 = value; }

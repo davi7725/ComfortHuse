@@ -11,10 +11,12 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
         {
             Name = "House Type";
         }
-
+        /*
         public IHouseTypeExpenses HouseTypeExpenses
         {
             set { _houseTypeExpensesModel = value; }
         }
+        */
+
     }
 }

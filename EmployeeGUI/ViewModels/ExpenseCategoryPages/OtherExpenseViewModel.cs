@@ -8,9 +8,6 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 { 
 public class OtherExpenseViewModel : BaseExpenseViewModel
     {
-        public OtherExpenseViewModel()
-        {
-            Name = "Other";
-        }
+
     }
 }
