@@ -25,20 +25,20 @@ namespace ComforthuseUserstoryTests
             string city = "Odense";
             string address = "City Center, 10";
             string zipcode = "5200";
-            string phoneNr = "31525485";
+            string phoneNb = "31525485";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
             Assert.AreEqual(fName, customer.FirstName);
             Assert.AreEqual(lName, customer.LastName);
             Assert.AreEqual(city, customer.City);
             Assert.AreEqual(address, customer.Address);
             Assert.AreEqual(zipcode, customer.Zipcode);
-            Assert.AreEqual(phoneNr, customer.PhoneNb1);
-            Assert.AreEqual(phoneNr, customer.PhoneNb2);
+            Assert.AreEqual(phoneNb, customer.PhoneNb1);
+            Assert.AreEqual(phoneNb, customer.PhoneNb2);
         }
 
 
@@ -52,12 +52,12 @@ namespace ComforthuseUserstoryTests
             string city = "Odense";
             string address = "";
             string zipcode = "5200";
-            string phoneNr = "31525485";
+            string phoneNb = "31525485";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
         }
 
@@ -70,12 +70,12 @@ namespace ComforthuseUserstoryTests
             string city = "oDeNSE";
             string address = "no street";
             string zipcode = "5200";
-            string phoneNr = "31525485";
+            string phoneNb = "31525485";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
             Assert.AreEqual("Jane", customer.FirstName);
             Assert.AreEqual("Doe", customer.LastName);
@@ -91,12 +91,12 @@ namespace ComforthuseUserstoryTests
             string city = "oDeNSE";
             string address = "no street, 12309";
             string zipcode = "5200";
-            string phoneNr = "31525485";
+            string phoneNb = "31525485";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
             Assert.AreEqual("No Street, 12309", customer.Address);
         }
@@ -110,18 +110,18 @@ namespace ComforthuseUserstoryTests
             string city = "oDeNSE";
             string address = "no street, 12309";
             string zipcode = "52o0da";
-            string phoneNr = "31525485";
+            string phoneNb = "31525485";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
             Assert.AreEqual("52O0DA", customer.Zipcode);
         }
 
         [TestMethod]
-        public void CheckIfPhoneNrsGetStandardized()
+        public void CheckIfPhoneNbsGetStandardized()
         {
             string fName = "jANe";
             string lName = "DOe";
@@ -129,11 +129,11 @@ namespace ComforthuseUserstoryTests
             string city = "oDeNSE";
             string address = "no street, 12309";
             string zipcode = "52o0da";
-            string phoneNr = "30 52 54 85";
+            string phoneNb = "30 52 54 85";
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
             Assert.AreEqual("30525485", customer.PhoneNb1);
             Assert.AreEqual("30525485", customer.PhoneNb2);
@@ -149,11 +149,11 @@ namespace ComforthuseUserstoryTests
             string city = "oDeNSE";
             string address = "no street, 12309";
             string zipcode = "52o0da";
-            string phoneNr = "30 52 54 85";
+            string phoneNb = "30 52 54 85";
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
             Assert.AreEqual("abc@dce.com", customer.Email);
 
@@ -169,12 +169,12 @@ namespace ComforthuseUserstoryTests
             string city = "Odense";
             string address = "";
             string zipcode = "5200";
-            string phoneNr = "31525a85";
+            string phoneNb = "31525a85";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
         }
 
@@ -188,12 +188,12 @@ namespace ComforthuseUserstoryTests
             string city = "Odense";
             string address = "";
             string zipcode = "5200";
-            string phoneNr = "31525485";
+            string phoneNb = "31525485";
 
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
         }
 
@@ -207,11 +207,11 @@ namespace ComforthuseUserstoryTests
             string city = "Odense";
             string address = "City Center, 10";
             string zipcode = "5200";
-            string phoneNr = "31525485";
+            string phoneNb = "31525485";
 
             ValidateCustomer vc = new ValidateCustomer();
 
-            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNr, phoneNr);
+            ICustomer customer = vc.CreateCustomer(fName, lName, email, city, address, zipcode, phoneNb, phoneNb);
 
         }
     }

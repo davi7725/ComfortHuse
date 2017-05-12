@@ -9,8 +9,8 @@ namespace Comforthuse.Models
         void Clear();
         List<ICustomer> GetAllCustomersByName();
         List<ICustomer> Search(string query);
-        ICustomer Load(string phoneNr);
-        ICustomer Create(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2);
+        ICustomer Load(string phoneNb);
+        ICustomer Create(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2);
         void Save(ICustomer customer);
     }
 
@@ -42,9 +42,9 @@ namespace Comforthuse.Models
         {
             listOfCustomers.Clear();
         }
-        public ICustomer Create(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        public ICustomer Create(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2)
         {
-            ICustomer newCustomer = new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
+            ICustomer newCustomer = new Customer(firstName, lastName, email, city, address, zipcode, phoneNb1, phoneNb2);
             listOfCustomers.Add(email, newCustomer);
 
             return newCustomer;
@@ -64,7 +64,7 @@ namespace Comforthuse.Models
 
         public ICustomer Load(string email)
         {
-            if(listOfCustomers.ContainsKey(email) == true)
+            if (listOfCustomers.ContainsKey(email) == true)
             {
                 return listOfCustomers[email];
             }

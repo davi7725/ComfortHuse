@@ -17,8 +17,6 @@ namespace ComforthuseUserstoryTests
 
             ICase thiscase = objectFactory.CreateNewCase();
 
-     
-
 
             Assert.AreEqual(0, thiscase.CaseNumber);
         }

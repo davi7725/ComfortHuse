@@ -50,7 +50,7 @@ namespace Comforthuse.Database
             throw new System.NotImplementedException();
         }
 
-        public void SaveCase(ICase @case)
+        public void SaveCase(ICase c)
         {
             throw new System.NotImplementedException();
         }

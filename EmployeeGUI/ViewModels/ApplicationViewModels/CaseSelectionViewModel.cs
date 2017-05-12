@@ -3,12 +3,13 @@ using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
+using Comforthuse;
+using Comforthuse.Interfaces;
 
 namespace EmployeeGUI.ViewModels
 {
-    class CaseSelectionViewModel
+    public class CaseSelectionViewModel
     {
         private ICommand _getCasesCommand;
         private ICommand _createCaseCommand;
@@ -105,30 +106,17 @@ namespace EmployeeGUI.ViewModels
             }
         }
 
-        private void DisplayError(Exception e)
-        {
-            string message = e.Message;
-            string caption = "Ok";
-            MessageBoxButton buttons = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Error;
-            MessageBox.Show(message, caption, buttons, icon);
-        }
-
-        private void EditCase()
-        {
-            MessageHandling.DisplayErrorMessage("Functionality not implemented yet.");
-            // OpenCase(_facade.EditCase());
-            //_facade.GetCase()
-            //OpenCase();
-        }
-
         private void OpenCase(ICase c)
         {
             CaseWindow win = new CaseWindow();
-            win.DataContext = new CaseViewModel() { Case = c };
+            CaseViewModel vm = new CaseViewModel() {Case = c};
+            vm.InjectExpenseCategories();
+            win.DataContext = vm;
             win.Show();
 
         }
+
+
 
     }
 }

@@ -19,7 +19,7 @@ namespace Comforthuse.Utility
             get { return _extras; }
         }
 
-        public List<ITechnicalSpecification> TechnicalSpecifications { get; internal set; }
+        public List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
 
         protected decimal PriceExtraExpenses
         {

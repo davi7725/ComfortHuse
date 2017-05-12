@@ -1,5 +1,6 @@
 ﻿namespace Comforthuse.Models
 {
+    //To be removed
     public class HouseType
     {
         public string Name { get; set; }

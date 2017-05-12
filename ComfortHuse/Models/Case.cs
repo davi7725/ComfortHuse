@@ -1,13 +1,11 @@
-﻿using Comforthuse.Utility;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Comforthuse.Models
 {
     public class Case : ICase
     {
-        private Dictionary<Category, IExpenseCategory> _expenseCategories = new Dictionary<Category, IExpenseCategory>() { { Category.HouseType, new HouseTypeExpenses() } };
+        private Dictionary<Category, IExpenseCategory> _expenseCategories;
 
         public Case(Dictionary<Category, IExpenseCategory> categories)
         {
@@ -16,7 +14,7 @@ namespace Comforthuse.Models
 
         public IExpenseCategory GetExpenseCategory(Category category)
         {
-            Debug.WriteLine(_expenseCategories[category]);
+
             return _expenseCategories[category];
         }
 
@@ -24,7 +22,7 @@ namespace Comforthuse.Models
 
         public string Title
         {
-            get { return HouseType + " for " + Customer.FirstName + " " + Customer.LastName; }
+            get { return "HouseType" + " for " + Customer.FirstName + " " + Customer.LastName; }
         }
 
         public IEmployee Employee { get; internal set; }
@@ -32,7 +30,6 @@ namespace Comforthuse.Models
         public DateTime DateOfCreation { get; internal set; }
         public DateTime DateOfLastRevision { get; internal set; }
         public int AmountOfRevisions { get; set; }
-        public string HouseType { get; set; }
         public int CaseNumber { get; set; }
 
         public bool Sold
@@ -56,10 +53,11 @@ namespace Comforthuse.Models
         private decimal CalculatePrice()
         {
             decimal price = 0;
-            foreach (KeyValuePair<Category, IExpenseCategory> c in _expenseCategories)
+            /*foreach (KeyValuePair<Category, IExpenseCategory> c in _expenseCategories)
             {
                 price += c.Value.Price;
             }
+            */
             return price;
         }
 
@@ -75,7 +73,7 @@ namespace Comforthuse.Models
         {
             bool isEqual = false;
             Case thisCase = (Case)o;
-            if (thisCase.CaseNumber == this.CaseNumber)
+            if (thisCase.CaseNumber == CaseNumber)
             {
                 isEqual = true;
             }
