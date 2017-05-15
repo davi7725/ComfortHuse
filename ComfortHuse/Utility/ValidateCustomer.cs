@@ -32,8 +32,8 @@ namespace Comforthuse.Utility
                 string newCity = StandardizeName(city);
                 string newAddress = StandardizeAddress(address);
                 string newZipcode = StandardizeZipcode(zipcode);
-                string newPhoneNr1 = StandardizePhoneNb(phoneNb1);
-                string newPhoneNr2 = StandardizePhoneNb(phoneNb2);
+                string newPhoneNb1 = StandardizePhoneNb(phoneNb1);
+                string newPhoneNb2 = StandardizePhoneNb(phoneNb2);
 
                 customer.FirstName = newFirstName;
                 customer.LastName = newLastName;
@@ -41,8 +41,8 @@ namespace Comforthuse.Utility
                 customer.City = newCity;
                 customer.Address = newAddress;
                 customer.Zipcode = newZipcode;
-                customer.PhoneNb1 = newPhoneNr1;
-                customer.PhoneNb2 = newPhoneNr2;
+                customer.PhoneNb1 = newPhoneNb1;
+                customer.PhoneNb2 = newPhoneNb2;
             }
             else
             {

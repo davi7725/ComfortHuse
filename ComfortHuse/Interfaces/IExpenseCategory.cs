@@ -7,7 +7,7 @@ namespace Comforthuse.Models
     {
         ProductCategory Category { get; }
         decimal Price { get; }
-        List<ITechnicalSpecification> TechnicalSpecifications { get; }
+        List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
         List<IExpenseSpecification> ExtraExpenses { get; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse;
+using Comforthuse.Interfaces;
+using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
@@ -37,11 +39,7 @@ namespace EmployeeGUI.ViewModels
         {
 
             // Instanciate and add avaliable pages
-            PageViewModels.Add(new HouseTypeExpenseViewModel()
-            {
-                TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
-                //_activeCase.GetExpenseCategory(Category.HouseType).TechnicalSpecifications 
-            });
+            PageViewModels.Add(new HouseTypeExpenseViewModel());
             PageViewModels.Add(new GarageCarportExpenseViewModel());
             PageViewModels.Add(new PlotExpenseViewModel());
             PageViewModels.Add(new MaterialsOutsideExpenseViewModel());
@@ -164,6 +162,13 @@ namespace EmployeeGUI.ViewModels
         {
             get { return _caseCustomer.PhoneNb2; }
             set { _caseCustomer.PhoneNb2 = value; }
+        }
+
+        public void InjectExpenseCategories()
+        {
+            IHouseTypeExpenses hsExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType);
+            //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
+            PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
         }
     }
 }

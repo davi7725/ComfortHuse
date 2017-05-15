@@ -3,12 +3,13 @@ using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 using System;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
+using Comforthuse;
+using Comforthuse.Interfaces;
 
 namespace EmployeeGUI.ViewModels
 {
-    class CaseSelectionViewModel
+    public class CaseSelectionViewModel
     {
         private ICommand _getCasesCommand;
         private ICommand _createCaseCommand;
@@ -104,14 +105,18 @@ namespace EmployeeGUI.ViewModels
                 throw;
             }
         }
-        
+
         private void OpenCase(ICase c)
         {
             CaseWindow win = new CaseWindow();
-            win.DataContext = new CaseViewModel() { Case = c };
+            CaseViewModel vm = new CaseViewModel() {Case = c};
+            vm.InjectExpenseCategories();
+            win.DataContext = vm;
             win.Show();
 
         }
+
+
 
     }
 }

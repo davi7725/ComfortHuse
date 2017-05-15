@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace Comforthuse.Utility
 {
-    internal class ObjectFactory
+    public class ObjectFactory
     {
         private static ObjectFactory _instance;
         private ObjectFactory()
         {
         }
 
-        internal static ObjectFactory Instance
+        public static ObjectFactory Instance
         {
             get
             {
@@ -73,7 +73,7 @@ namespace Comforthuse.Utility
             return categories;
         }
 
-        internal ICase CreateNewCase()
+        public ICase CreateNewCase()
         {
             Case thisCase = new Case(InstanciateEmptyExpenseCategories())
             {
@@ -92,9 +92,9 @@ namespace Comforthuse.Utility
             return new Customer();
         }
 
-        internal ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNr1, string phoneNr2)
+        internal ICustomer CreateExistingCustomer(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2)
         {
-            return new Customer(firstName, lastName, email, city, address, zipcode, phoneNr1, phoneNr2);
+            return new Customer(firstName, lastName, email, city, address, zipcode, phoneNb1, phoneNb2);
         }
     }
 

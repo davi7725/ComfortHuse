@@ -9,12 +9,12 @@ using System.Collections.Generic;
 namespace ComforthuseUserstoryTests
 {
     [TestClass]
-    public class U19_1_HouseTypeExpenseCategory
+    public class U25_EditTechnicalSpecifications
     {
 
 
         [TestMethod]
-        public void GetHouseTypeCategoryObject()
+        public void GetListOfTechnicalSpecifiations()
         {
 
             DomainFacade df = new DomainFacade();
@@ -22,14 +22,15 @@ namespace ComforthuseUserstoryTests
             ICase c = df.CreateCase();
 
             List<ITechnicalSpecification> tspec = new List<ITechnicalSpecification>();
+            
 
 
             IHouseTypeExpenses htExpenses = (IHouseTypeExpenses)c.GetExpenseCategory(Category.HouseType);
 
+            //List has 5 
 
             Assert.AreEqual(typeof(HouseTypeExpenses), htExpenses.GetType());
             Assert.AreNotEqual(null, htExpenses);
-
         }
     }
 }
