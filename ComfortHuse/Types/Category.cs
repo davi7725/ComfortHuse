@@ -17,7 +17,8 @@
         Painting,
         Plumbing,
         Ventilation,
-        BuildOn,
+        ExtraConstruction,
+        BrickLayer,
         Other
     }
 }

@@ -54,11 +54,13 @@ namespace Comforthuse.Models
         private decimal CalculatePrice()
         {
             decimal price = 0;
-            /*foreach (KeyValuePair<Category, IExpenseCategory> c in _expenseCategories)
+            foreach (KeyValuePair<Category, IExpenseCategory> c in _expenseCategories)
             {
-                price += c.Value.Price;
+                if(c.Value != null)
+                {
+                    price += c.Value.Price;
+                }
             }
-            */
             return price;
         }
 

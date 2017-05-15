@@ -9,6 +9,21 @@ namespace ComforthuseUserstoryTests
     [TestClass]
     public class U06_Tests
     {
+        [TestInitialize]
+        public void CleanRepository()
+        {
+            CaseRepository.Instance.Clear();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void CaseListIsEmpty()
+        {
+            ICaseRepository caseRepository = CaseRepository.Instance;
+
+            List<ICase> listOfCases = caseRepository.GetAllCases();
+        }
+
         [TestMethod]
         public void CaseListIsNotEmpty()
         {
@@ -22,15 +37,6 @@ namespace ComforthuseUserstoryTests
             Assert.IsTrue(listOfCases.Count > 0);
 
 
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(Exception))]
-        public void CaseListIsEmpty()
-        {
-            ICaseRepository caseRepository = CaseRepository.Instance;
-
-            List<ICase> listOfCases = caseRepository.GetAllCases();
         }
 
         [TestMethod]

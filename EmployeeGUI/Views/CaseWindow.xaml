@@ -107,7 +107,7 @@
                     </Grid.RowDefinitions>
                     <GroupBox VerticalContentAlignment="Top" Grid.Column="1" Grid.Row="1" FontSize="12" Header="Customer information" HorizontalAlignment="Stretch" Margin="0,0,0,0"
                   VerticalAlignment="Stretch">
-                     
+
 
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
@@ -152,7 +152,7 @@
                             <TextBox Grid.Column="3" Grid.Row="7" Text="{Binding Email}" x:Name="txtBox_Email" HorizontalAlignment="Left" Height="20" Width="200" />
                         </Grid>
                     </GroupBox>
-               
+
                 </Grid>
 
             </TabItem>
@@ -212,6 +212,7 @@
             </MenuItem>
             <MenuItem/>
         </Menu>
+        <Label x:Name="totPriceTextLabel" Content="{Binding TotalPrice}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4.8,64.4,0" Grid.Row="2" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.021,0.454"/>
 
 
     </Grid>
