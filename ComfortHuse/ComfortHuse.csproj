@@ -47,6 +47,9 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Plot.cs" />
     <Compile Include="Interfaces\ITechnicalSpecification.cs" />
+    <Compile Include="Models\SpecificationDerivatives\ExtraExpenseSpecification.cs" />
+    <Compile Include="Interfaces\IExtraExpenseSpecification.cs" />
+    <Compile Include="Interfaces\ISpecification.cs" />
     <Compile Include="Models\SpecificationDerivatives\Specification.cs" />
     <Compile Include="Types\Category.cs" />
     <Compile Include="Database\DatabaseController.cs" />

@@ -1,4 +1,5 @@
 using Comforthuse.Models;
+using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
 
 namespace Comforthuse.Utility
@@ -14,9 +15,10 @@ namespace Comforthuse.Utility
         public abstract decimal Price { get; }
         public ProductCategory Category { get; }
 
-        public List<IExpenseSpecification> ExtraExpenses
+        public List<IExtraExpenseSpecification> ExtraExpenses
         {
             get { return _extras; }
+            set { _extras = value; }
         }
 
         public List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
@@ -34,8 +36,8 @@ namespace Comforthuse.Utility
             }
         }
 
-        protected List<IExpenseSpecification> _extras = new List<IExpenseSpecification>();
+        protected List<IExtraExpenseSpecification> _extras;
 
-        protected List<ITechnicalSpecification> _tecnSpecifications = new List<ITechnicalSpecification>();
+        protected List<ITechnicalSpecification> _tecnSpecifications;
     }
 }

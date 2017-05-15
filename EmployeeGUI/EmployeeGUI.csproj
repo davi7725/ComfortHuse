@@ -157,9 +157,6 @@
     <Compile Include="Views\ProductCategoryPages\CarportGarage.xaml.cs">
       <DependentUpon>CarportGarage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProductCategoryPages\HouseTypePage.xaml.cs">
-      <DependentUpon>HouseTypePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ProductCategoryPages\OutsideMaterials.xaml.cs">
       <DependentUpon>OutsideMaterials.xaml</DependentUpon>
     </Compile>
@@ -271,10 +268,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductCategoryPages\CarportGarage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\ProductCategoryPages\HouseTypePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

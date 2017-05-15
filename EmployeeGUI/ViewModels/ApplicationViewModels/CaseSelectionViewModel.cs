@@ -15,7 +15,7 @@ namespace EmployeeGUI.ViewModels
         private ICommand _createCaseCommand;
         private ICommand _editCaseCommand;
 
-        private readonly IEmployeeFacade _facade = new DomainFacade();
+        private IEmployeeFacade _facade = new DomainFacade();
 
         private ObservableCollection<ICase> _cases;
 

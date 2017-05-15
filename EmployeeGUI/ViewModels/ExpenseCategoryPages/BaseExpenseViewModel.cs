@@ -1,4 +1,5 @@
 ﻿using Comforthuse.Models;
+using Comforthuse.Models.SpecificationDerivatives;
 using Comforthuse.Utility;
 using EmployeeGUI.Helpers;
 using SimpleMVVMExample;
@@ -12,7 +13,7 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 
         public virtual string Name { get; protected set; }
 
-        public virtual List<IExpenseSpecification> ExtraExpenses { get; }
+        public virtual List<IExtraExpenseSpecification> ExtraExpenses { get; set; }
 
         public virtual List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
 

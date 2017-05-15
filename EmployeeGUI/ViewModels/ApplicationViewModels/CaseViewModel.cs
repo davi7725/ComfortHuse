@@ -169,6 +169,8 @@ namespace EmployeeGUI.ViewModels
             IHouseTypeExpenses hsExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType);
             //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
             PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
+            PageViewModels[0].ExtraExpenses = hsExpenses.ExtraExpenses;
+
         }
     }
 }
