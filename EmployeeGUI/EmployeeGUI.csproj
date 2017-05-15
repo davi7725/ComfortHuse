@@ -112,8 +112,11 @@
     <Compile Include="Views\ExpenseCategoryPages\HomeAppliancePage.xaml.cs">
       <DependentUpon>HomeAppliancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ExpenseCategoryPages\HouseTypePage.xaml.cs">
-      <DependentUpon>HouseTypePage.xaml</DependentUpon>
+    <Compile Include="Views\ExpenseCategoryPages\HouseTypo.xaml.cs">
+      <DependentUpon>HouseTypo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExpenseCategoryPages\HouseTypoPage.xaml.cs">
+      <DependentUpon>HouseTypoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ExpenseCategoryPages\InteriorPage.xaml.cs">
       <DependentUpon>InteriorPage.xaml</DependentUpon>
@@ -211,7 +214,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ExpenseCategoryPages\HouseTypePage.xaml">
+    <Page Include="Views\ExpenseCategoryPages\HouseTypo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ExpenseCategoryPages\HouseTypoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

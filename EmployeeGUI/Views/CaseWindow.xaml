@@ -16,7 +16,7 @@
             <expenseCategoryViews:PlotPage />
         </DataTemplate>
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:HouseTypeExpenseViewModel}">
-            <expenseCategoryViews:HouseTypePage />
+            <expenseCategoryViews:HouseTypoPage />
         </DataTemplate>
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:FloorExpenseViewModel}">
             <expenseCategoryViews:FloorPage />

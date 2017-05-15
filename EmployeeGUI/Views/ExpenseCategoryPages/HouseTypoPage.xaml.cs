@@ -18,9 +18,9 @@ namespace EmployeeGUI.Views.ExpenseCategoryPages
     /// <summary>
     /// Interaction logic for HouseTypePage.xaml
     /// </summary>
-    public partial class HouseTypePage : UserControl
+    public partial class HouseTypoPage : UserControl
     {
-        public HouseTypePage()
+        public HouseTypoPage()
         {
             InitializeComponent();
         }
