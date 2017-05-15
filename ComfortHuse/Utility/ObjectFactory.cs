@@ -1,5 +1,6 @@
 ﻿using Comforthuse.Interfaces;
 using Comforthuse.Models;
+using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
 
 namespace Comforthuse.Utility
@@ -49,15 +50,17 @@ namespace Comforthuse.Utility
             return techSpec;
         }
 
-        private IHouseTypeExpenses InstanciateHouseType()
+        internal List<IExtraExpenseSpecification> InstanciateExtraExpense(int amount)
         {
-            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5) };
+            List<IExtraExpenseSpecification> extraSpec = new List<IExtraExpenseSpecification>();
+            for (int i = 0; i < amount; i++)
+            {
+                extraSpec.Add(new ExtraExpenseSpecification());
+            }
+            return extraSpec;
         }
 
-        private CarportGarageExpenses InstanciateCarportGarage()
-        {
-            return new CarportGarageExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5) };
-        }
+        
 
         internal IEmployee CreateEmployee(string FirstName, string LastName, string Email, string PhoneNb)
         {
@@ -68,10 +71,74 @@ namespace Comforthuse.Utility
         private Dictionary<Category, IExpenseCategory> InstanciateEmptyExpenseCategories()
         {
             Dictionary<Category, IExpenseCategory> categories = new Dictionary<Category, IExpenseCategory>();
-            categories.Add(Category.HouseType, InstanciateHouseType());
+            categories.Add(Category.BrickLayer, InstanciateBrickLayer());
+            categories.Add(Category.Carpentry, InstanciateCarpentry());
             categories.Add(Category.CarportGarage, InstanciateCarportGarage());
+            categories.Add(Category.ExtraConstruction, InstanciateExtraConstruction());
+            categories.Add(Category.Flooring, InstanciateFlooring());
+            categories.Add(Category.HouseType, InstanciateHouseType());
+            categories.Add(Category.Interior, InstanciateInterior());
+            categories.Add(Category.MaterialInside, InstanciateMaterialInside());
+            categories.Add(Category.Other, InstanciateOther());
+            categories.Add(Category.Painting, InstanciatePainting());
+            categories.Add(Category.Plumbing, InstanciatePlumbing());
+            categories.Add(Category.Ventilation, InstanciateVentilation());
+            categories.Add(Category.WindowsDoors, InstanciateWindowsAndDoors());
             return categories;
         }
+        private BrickLayerExpenses InstanciateBrickLayer()
+        {
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+        private CarpenterExpenses InstanciateCarpentry()
+        {
+            return new CarpenterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private CarportGarageExpenses InstanciateCarportGarage()
+        {
+            return new CarportGarageExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private ExtraConstructionExpenses InstanciateExtraConstruction()
+        {
+            return new ExtraConstructionExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private FlooringExpenses InstanciateFlooring()
+        {
+            return new FlooringExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private IHouseTypeExpenses InstanciateHouseType()
+        {
+            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), HouseType = new HouseType() };
+        }
+        private InteriorExpenses InstanciateInterior()
+        {
+            return new InteriorExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+        private MaterialsInsideExpenses InstanciateMaterialInside()
+        {
+            return new MaterialsInsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+        private OtherExpenses InstanciateOther()
+        {
+            return new OtherExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+        private PainterExpenses InstanciatePainting()
+        {
+            return new PainterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+        private PlumberExpenses InstanciatePlumbing()
+        {
+            return new PlumberExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+        private VentilationExpenses InstanciateVentilation()
+        {
+            return new VentilationExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+        private WindowsAndDoorsExpenses InstanciateWindowsAndDoors()
+        {
+            return new WindowsAndDoorsExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+        }
+
 
         public ICase CreateNewCase()
         {

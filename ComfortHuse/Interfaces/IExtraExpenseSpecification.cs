@@ -1,4 +1,4 @@
-﻿namespace Comforthuse.Models.SpecificationDerivatives
+﻿namespace Comforthuse.Interfaces
 {
     public interface IExtraExpenseSpecification : ISpecification
     {

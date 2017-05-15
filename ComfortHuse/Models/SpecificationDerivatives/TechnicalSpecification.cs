@@ -1,4 +1,4 @@
-﻿namespace Comforthuse.Models
+﻿namespace Comforthuse.Models.SpecificationDerivatives
 {
     public class TechnicalSpecification : Specification, ITechnicalSpecification
     {

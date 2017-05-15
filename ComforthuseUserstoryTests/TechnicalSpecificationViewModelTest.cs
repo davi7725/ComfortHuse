@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Comforthuse.Models;
+using Comforthuse.Models.SpecificationDerivatives;
 using EmployeeGUI.ViewModels.Partial;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

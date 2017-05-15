@@ -164,6 +164,11 @@ namespace EmployeeGUI.ViewModels
             set { _caseCustomer.PhoneNb2 = value; }
         }
 
+        public string TotalPrice
+        {
+            get { return "Total price: " + _activeCase.Price + " kr"; }
+        }
+
         public void InjectExpenseCategories()
         {
             IHouseTypeExpenses hsExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType);

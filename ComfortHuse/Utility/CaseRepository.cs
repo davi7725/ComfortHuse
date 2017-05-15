@@ -73,30 +73,24 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            /*
             if (_cases.Count > 0)
             {
-                _db.GetAllCases();
+                return _cases;
             }
             else
             {
                 throw new Exception("The list is empty");
             }
-            */
-            var li = new List<ICase>()
-            {
-                new Case(){CaseNumber = 1, AmountOfRevisions = 1, DateOfLastRevision = new DateTime(2017, 6, 18),DateOfCreation = new DateTime(2017, 5, 18),
-                    Customer = new Customer("Jens", "Jensen","abc@abc.com", "Odense", "Vollmose Allé 2", "5250", "60606060","")},
-                new Case(){CaseNumber = 2, AmountOfRevisions = 2, DateOfLastRevision = new DateTime(2017, 6, 18), DateOfCreation = new DateTime(2017, 2, 18),Customer = new Customer("Sigurd", "Sigurdson","abc@abc.com", "Fredericia", "Blåbærvænget 12", "3250", "60606060","")},
-                new Case(){CaseNumber = 3, AmountOfRevisions = 4, DateOfLastRevision = new DateTime(2017, 6, 18), DateOfCreation = new DateTime(2017, 1, 18),Customer = new Customer("Magnus", "Magnusen","abc@abc.com", "Århus", "Rønnebærvænget 14", "3250", "60606060","")}
-            };
-
-            return li;
         }
 
         public void Save(ICase obj)
         {
             _db.SaveCase(obj);
+        }
+
+        public void Clear()
+        {
+            _cases.Clear();
         }
 
     }
