@@ -5,6 +5,7 @@ namespace Comforthuse.Models
 {
     public class Case : ICase
     {
+        // Change
         private Dictionary<Category, IExpenseCategory> _expenseCategories;
 
         public Case(Dictionary<Category, IExpenseCategory> categories)
