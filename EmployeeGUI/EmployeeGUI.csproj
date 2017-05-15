@@ -154,6 +154,18 @@
     <Compile Include="Views\Partial\TechnicalSpecificationPage.xaml.cs">
       <DependentUpon>TechnicalSpecificationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProductCategoryPages\CarportGarage.xaml.cs">
+      <DependentUpon>CarportGarage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductCategoryPages\HouseTypePage.xaml.cs">
+      <DependentUpon>HouseTypePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductCategoryPages\OutsideMaterials.xaml.cs">
+      <DependentUpon>OutsideMaterials.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductCategoryPages\PlotPage.xaml.cs">
+      <DependentUpon>PlotPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="ViewModels\Partial\TechnicalExpenses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -257,6 +269,22 @@
     <Page Include="Views\Partial\TechnicalSpecificationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductCategoryPages\CarportGarage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductCategoryPages\HouseTypePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductCategoryPages\OutsideMaterials.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ProductCategoryPages\PlotPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
