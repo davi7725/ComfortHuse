@@ -1,4 +1,4 @@
-﻿namespace Comforthuse.Models
+﻿namespace Comforthuse.Interfaces
 {
     public interface ISpecification
     {

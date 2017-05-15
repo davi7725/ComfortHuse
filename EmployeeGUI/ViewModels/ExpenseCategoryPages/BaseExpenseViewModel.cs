@@ -4,6 +4,7 @@ using Comforthuse.Utility;
 using EmployeeGUI.Helpers;
 using SimpleMVVMExample;
 using System.Collections.Generic;
+using Comforthuse.Interfaces;
 
 namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 {

@@ -1,5 +1,6 @@
 ﻿using Comforthuse.Interfaces;
 using Comforthuse.Models;
+using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
 
 namespace Comforthuse.Utility
@@ -49,9 +50,19 @@ namespace Comforthuse.Utility
             return techSpec;
         }
 
+        internal List<IExtraExpenseSpecification> InstanciateExtraExpense(int amount)
+        {
+            List<IExtraExpenseSpecification> extraSpec = new List<IExtraExpenseSpecification>();
+            for (int i = 0; i < amount; i++)
+            {
+                extraSpec.Add(new ExtraExpenseSpecification());
+            }
+            return extraSpec;
+        }
+
         private IHouseTypeExpenses InstanciateHouseType()
         {
-            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5) };
+            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
 
         private CarportGarageExpenses InstanciateCarportGarage()

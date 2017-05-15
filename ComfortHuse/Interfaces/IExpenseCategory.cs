@@ -1,6 +1,7 @@
 ﻿using Comforthuse.Models.SpecificationDerivatives;
 using Comforthuse.Utility;
 using System.Collections.Generic;
+using Comforthuse.Interfaces;
 
 namespace Comforthuse.Models
 {

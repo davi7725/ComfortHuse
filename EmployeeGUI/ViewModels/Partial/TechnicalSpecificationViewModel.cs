@@ -1,4 +1,4 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
 
 namespace EmployeeGUI.ViewModels.Partial
