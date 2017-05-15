@@ -104,24 +104,7 @@ namespace EmployeeGUI.ViewModels
                 throw;
             }
         }
-
-        private void DisplayError(Exception e)
-        {
-            string message = e.Message;
-            string caption = "Ok";
-            MessageBoxButton buttons = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Error;
-            MessageBox.Show(message, caption, buttons, icon);
-        }
-
-        private void EditCase()
-        {
-            MessageHandling.DisplayErrorMessage("Functionality not implemented yet.");
-            // OpenCase(_facade.EditCase());
-            //_facade.GetCase()
-            //OpenCase();
-        }
-
+        
         private void OpenCase(ICase c)
         {
             CaseWindow win = new CaseWindow();
