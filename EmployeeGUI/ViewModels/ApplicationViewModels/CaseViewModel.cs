@@ -128,7 +128,6 @@ namespace EmployeeGUI.ViewModels
         {
             get { return _caseCustomer.LastName; }
             set { _caseCustomer.LastName = value; }
-
         }
 
         public string Email
@@ -171,6 +170,7 @@ namespace EmployeeGUI.ViewModels
 
         public void InjectExpenseCategories()
         {
+            
             IHouseTypeExpenses hsExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType);
             //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
             PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;

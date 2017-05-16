@@ -5,12 +5,16 @@ namespace Comforthuse.Models
 {
     public class Case : ICase
     {
-        // Change
-        private Dictionary<Category, IExpenseCategory> _expenseCategories;
 
+        private Dictionary<Category, IExpenseCategory> _expenseCategories;
         public Case(Dictionary<Category, IExpenseCategory> categories)
         {
             _expenseCategories = categories;
+            DateOfCreation = DateTime.Now;
+        }
+
+        public Case()
+        {
         }
 
         public IExpenseCategory GetExpenseCategory(Category category)
@@ -32,7 +36,7 @@ namespace Comforthuse.Models
         public DateTime DateOfLastRevision { get; internal set; }
         public int AmountOfRevisions { get; set; }
         public int CaseNumber { get; set; }
-
+        public int Bank { get; set; }
         public bool Sold
         {
             get { return _isSold; }
@@ -44,13 +48,8 @@ namespace Comforthuse.Models
                 return CalculatePrice();
             }
         }
-
         public string HouseType { get; set; }
 
-        public Case()
-        {
-            DateOfCreation = DateTime.Now;
-        }
 
         private decimal CalculatePrice()
         {
@@ -64,15 +63,12 @@ namespace Comforthuse.Models
             }
             return price;
         }
-
         public void RegisterRevision()
         {
             AmountOfRevisions = AmountOfRevisions++;
             DateOfLastRevision = DateTime.Now;
         }
-
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");
-
         public override bool Equals(object o)
         {
             bool isEqual = false;
@@ -81,7 +77,6 @@ namespace Comforthuse.Models
             {
                 isEqual = true;
             }
-
             return isEqual;
         }
     }

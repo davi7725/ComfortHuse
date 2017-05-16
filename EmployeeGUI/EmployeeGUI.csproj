@@ -77,7 +77,7 @@
     <Compile Include="ViewModels\ExpenseCategoryPages\ExtraConstructionExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\FloorExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\GarageCarportExpenseViewModel.cs" />
-    <Compile Include="ViewModels\ExpenseCategoryPages\HomeApplianceExpenseViewModel.cs" />
+    <Compile Include="ViewModels\ExpenseCategoryPages\HomeApplainceExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\HouseTypeExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\InteriorExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\PaintExpenseViewModel.cs" />
