@@ -45,6 +45,7 @@ namespace Comforthuse.Models
             }
         }
 
+        public string HouseType { get; set; }
 
         public Case()
         {

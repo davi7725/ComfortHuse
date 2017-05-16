@@ -22,12 +22,85 @@ namespace Comforthuse.Utility
             }
         }
 
+        private void instanciateMockCases()
+        {
 
+            var li = new List<ICase>()
+                {
+                    new Case()
+                    {
+                        CaseNumber = 1,
+                        AmountOfRevisions = 1,
+                        HouseType = "HouseType A",
+                        DateOfLastRevision = new DateTime(2017, 6, 18),
+                        DateOfCreation = new DateTime(2017, 5, 18),
+                        Customer =
+                            new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
+                                "60606060", "")
+                    },
+                    new Case()
+                    {
+                        CaseNumber = 1,
+                        AmountOfRevisions = 1,
+                        DateOfLastRevision = new DateTime(2017, 6, 18),
+                        DateOfCreation = new DateTime(2017, 5, 18),
+                        Customer =
+                            new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
+                                "60606060", "")
+                    },
+                    new Case()
+                    {
+                        CaseNumber = 2,
+                        AmountOfRevisions = 2,
+                        HouseType = "HouseType B",
+                        DateOfLastRevision = new DateTime(2017, 6, 18),
+                        DateOfCreation = new DateTime(2017, 2, 18),
+                        Customer =
+                            new Customer("Sigurd", "Sigurdson", "abc@abc.com", "Fredericia", "Blåbærvænget 12", "3250",
+                                "60606060", "")
+                    },
+                    new Case()
+                    {
+                        CaseNumber = 3,
+                        AmountOfRevisions = 4,
+                        HouseType = "HouseType A",
+                        DateOfLastRevision = new DateTime(2017, 6, 18),
+                        DateOfCreation = new DateTime(2017, 1, 18),
+                        Customer =
+                            new Customer("Magnus", "Magnusen", "abc@abc.com", "Århus", "Rønnebærvænget 14", "3250",
+                                "60606060", "")
+                    },
+                    new Case()
+                    {
+                        CaseNumber = 2,
+                        AmountOfRevisions = 2,
+                        DateOfLastRevision = new DateTime(2017, 6, 18),
+                        DateOfCreation = new DateTime(2017, 2, 18),
+                        Customer =
+                            new Customer("Sigurd", "Sigurdson", "abc@abc.com", "Fredericia", "Blåbærvænget 12", "3250",
+                                "60606060", "")
+                    },
+                    new Case()
+                    {
+                        CaseNumber = 3,
+                        AmountOfRevisions = 4,
+                        DateOfLastRevision = new DateTime(2017, 6, 18),
+                        DateOfCreation = new DateTime(2017, 1, 18),
+                        Customer =
+                            new Customer("Magnus", "Magnusen", "abc@abc.com", "Århus", "Rønnebærvænget 14", "3250",
+                                "60606060", "")
+                    }
+                };
+
+            _cases = li;
+        }
 
         public void Add(ICase caseObj)
         {
             _cases.Add(caseObj);
         }
+
+
 
         public ICase Load(int caseId)
         {
@@ -53,6 +126,7 @@ namespace Comforthuse.Utility
 
         }
 
+
         public ICase Create()
         {
             ICase newCase = ObjectFactory.Instance.CreateNewCase();
@@ -65,6 +139,7 @@ namespace Comforthuse.Utility
 
         }
 
+
         private int GetNextId()
         {
             // return _db.GetNextCaseId();
@@ -73,9 +148,10 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            if (_cases.Count > 0)
+            if (_cases.Count >= 0)
             {
                 return _cases;
+
             }
             else
             {
