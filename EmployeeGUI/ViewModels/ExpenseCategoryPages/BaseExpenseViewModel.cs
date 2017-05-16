@@ -1,10 +1,8 @@
-﻿using Comforthuse.Models;
-using Comforthuse.Models.SpecificationDerivatives;
-using Comforthuse.Utility;
+﻿using Comforthuse.Interfaces;
+using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 using SimpleMVVMExample;
 using System.Collections.Generic;
-using Comforthuse.Interfaces;
 
 namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 {
@@ -19,5 +17,6 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
         public virtual List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
 
         public virtual decimal Price { get; }
+
     }
 }

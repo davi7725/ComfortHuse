@@ -13,6 +13,11 @@ namespace Comforthuse.Utility
         private IDbEmployee _db = DatabaseController.Instance;
         private List<ICase> _currentCases = new List<ICase>();
 
+        private CaseRepository()
+        {
+            instanciateMockCases();
+        }
+
         public static CaseRepository Instance
         {
             get
@@ -148,7 +153,7 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            if (_cases.Count >= 0)
+            if (_cases.Count > 0)
             {
                 return _cases;
 
