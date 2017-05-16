@@ -56,7 +56,7 @@ namespace Comforthuse.Models
             decimal price = 0;
             foreach (KeyValuePair<Category, IExpenseCategory> c in _expenseCategories)
             {
-                if(c.Value != null)
+                if (c.Value != null)
                 {
                     price += c.Value.Price;
                 }

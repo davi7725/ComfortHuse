@@ -60,7 +60,7 @@ namespace Comforthuse.Utility
             return extraSpec;
         }
 
-        
+
 
         internal IEmployee CreateEmployee(string FirstName, string LastName, string Email, string PhoneNb)
         {
@@ -88,7 +88,7 @@ namespace Comforthuse.Utility
         }
         private BrickLayerExpenses InstanciateBrickLayer()
         {
-            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
         private CarpenterExpenses InstanciateCarpentry()
         {
@@ -112,31 +112,31 @@ namespace Comforthuse.Utility
         }
         private InteriorExpenses InstanciateInterior()
         {
-            return new InteriorExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new InteriorExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
         private MaterialsInsideExpenses InstanciateMaterialInside()
         {
-            return new MaterialsInsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new MaterialsInsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
         private OtherExpenses InstanciateOther()
         {
-            return new OtherExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new OtherExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
         private PainterExpenses InstanciatePainting()
         {
-            return new PainterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new PainterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
         private PlumberExpenses InstanciatePlumbing()
         {
-            return new PlumberExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new PlumberExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
         private VentilationExpenses InstanciateVentilation()
         {
-            return new VentilationExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new VentilationExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
         private WindowsAndDoorsExpenses InstanciateWindowsAndDoors()
         {
-            return new WindowsAndDoorsExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5)};
+            return new WindowsAndDoorsExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
 
 
