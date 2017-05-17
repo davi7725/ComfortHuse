@@ -170,11 +170,81 @@ namespace EmployeeGUI.ViewModels
 
         public void InjectExpenseCategories()
         {
-            
+
             IHouseTypeExpenses hsExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType);
+            IExpenseCategory cgExtraExpenses = _activeCase.GetExpenseCategory(Category.CarportGarage);
+            IExpenseCategory plExtraExpenses = _activeCase.GetExpenseCategory(Category.Plot);
+            IExpenseCategory moExtraExpenses = _activeCase.GetExpenseCategory(Category.MaterialOutside);
+            IExpenseCategory wdExtraExpenses = _activeCase.GetExpenseCategory(Category.WindowsDoors);
+            IExpenseCategory miExtraExpenses = _activeCase.GetExpenseCategory(Category.MaterialInside);
+            IExpenseCategory inExtraExpenses = _activeCase.GetExpenseCategory(Category.Interior);
+            IExpenseCategory flExtraExpenses = _activeCase.GetExpenseCategory(Category.Flooring);
+            IExpenseCategory pwExtraExpenses = _activeCase.GetExpenseCategory(Category.Power);
+            IExpenseCategory haExtraExpenses = _activeCase.GetExpenseCategory(Category.Appliances);
+            IExpenseCategory tlExtraExpenses = _activeCase.GetExpenseCategory(Category.Tiles);
+            IExpenseCategory crExtraExpenses = _activeCase.GetExpenseCategory(Category.Carpentry);
+            IExpenseCategory ptExtraExpenses = _activeCase.GetExpenseCategory(Category.Painting);
+            IExpenseCategory wlExtraExpenses = _activeCase.GetExpenseCategory(Category.BrickLayer);
+            IExpenseCategory pmExtraExpenses = _activeCase.GetExpenseCategory(Category.Plumbing);
+            IExpenseCategory vtExtraExpenses = _activeCase.GetExpenseCategory(Category.Ventilation);
+            IExpenseCategory exExtraExpenses = _activeCase.GetExpenseCategory(Category.ExtraConstruction);
+            IExpenseCategory otExtraExpenses = _activeCase.GetExpenseCategory(Category.Other);
+
+
             //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
             PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
             PageViewModels[0].ExtraExpenses = hsExpenses.ExtraExpenses;
+
+            PageViewModels[1].TechnicalSpecifications = cgExtraExpenses.TechnicalSpecifications;
+            PageViewModels[1].ExtraExpenses = cgExtraExpenses.ExtraExpenses;
+
+            PageViewModels[2].TechnicalSpecifications = plExtraExpenses.TechnicalSpecifications;
+            PageViewModels[2].ExtraExpenses = plExtraExpenses.ExtraExpenses;
+
+            PageViewModels[3].TechnicalSpecifications = moExtraExpenses.TechnicalSpecifications;
+            PageViewModels[3].ExtraExpenses = moExtraExpenses.ExtraExpenses;
+
+            PageViewModels[4].TechnicalSpecifications = wdExtraExpenses.TechnicalSpecifications;
+            PageViewModels[4].ExtraExpenses = wdExtraExpenses.ExtraExpenses;
+
+            PageViewModels[5].TechnicalSpecifications = miExtraExpenses.TechnicalSpecifications;
+            PageViewModels[5].ExtraExpenses = miExtraExpenses.ExtraExpenses;
+
+            PageViewModels[6].TechnicalSpecifications = inExtraExpenses.TechnicalSpecifications;
+            PageViewModels[6].ExtraExpenses = inExtraExpenses.ExtraExpenses;
+
+            PageViewModels[7].TechnicalSpecifications = flExtraExpenses.TechnicalSpecifications;
+            PageViewModels[7].ExtraExpenses = flExtraExpenses.ExtraExpenses;
+
+            PageViewModels[8].TechnicalSpecifications = pwExtraExpenses.TechnicalSpecifications;
+            PageViewModels[8].ExtraExpenses = pwExtraExpenses.ExtraExpenses;
+
+            PageViewModels[9].TechnicalSpecifications = haExtraExpenses.TechnicalSpecifications;
+            PageViewModels[9].ExtraExpenses = haExtraExpenses.ExtraExpenses;
+
+            PageViewModels[10].TechnicalSpecifications = tlExtraExpenses.TechnicalSpecifications;
+            PageViewModels[10].ExtraExpenses = tlExtraExpenses.ExtraExpenses;
+
+            PageViewModels[11].TechnicalSpecifications = crExtraExpenses.TechnicalSpecifications;
+            PageViewModels[11].ExtraExpenses = crExtraExpenses.ExtraExpenses;
+
+            PageViewModels[12].TechnicalSpecifications = ptExtraExpenses.TechnicalSpecifications;
+            PageViewModels[12].ExtraExpenses = ptExtraExpenses.ExtraExpenses;
+
+            PageViewModels[13].TechnicalSpecifications = wlExtraExpenses.TechnicalSpecifications;
+            PageViewModels[13].ExtraExpenses = wlExtraExpenses.ExtraExpenses;
+
+            PageViewModels[14].TechnicalSpecifications = pmExtraExpenses.TechnicalSpecifications;
+            PageViewModels[14].ExtraExpenses = pmExtraExpenses.ExtraExpenses;
+
+            PageViewModels[15].TechnicalSpecifications = vtExtraExpenses.TechnicalSpecifications;
+            PageViewModels[15].ExtraExpenses = vtExtraExpenses.ExtraExpenses;
+
+            PageViewModels[16].TechnicalSpecifications = exExtraExpenses.TechnicalSpecifications;
+            PageViewModels[16].ExtraExpenses = exExtraExpenses.ExtraExpenses;
+
+            PageViewModels[17].TechnicalSpecifications = otExtraExpenses.TechnicalSpecifications;
+            PageViewModels[17].ExtraExpenses = otExtraExpenses.ExtraExpenses;
 
         }
     }

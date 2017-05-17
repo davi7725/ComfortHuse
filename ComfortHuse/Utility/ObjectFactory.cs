@@ -71,22 +71,47 @@ namespace Comforthuse.Utility
         public Dictionary<Category, IExpenseCategory> InstanciateEmptyExpenseCategories()
         {
             Dictionary<Category, IExpenseCategory> categories = new Dictionary<Category, IExpenseCategory>();
-            categories.Add(Category.BrickLayer, InstanciateBrickLayer());
-            categories.Add(Category.Carpentry, InstanciateCarpentry());
-            categories.Add(Category.CarportGarage, InstanciateCarportGarage());
-            categories.Add(Category.ExtraConstruction, InstanciateExtraConstruction());
-            categories.Add(Category.Flooring, InstanciateFlooring());
             categories.Add(Category.HouseType, InstanciateHouseType());
-            categories.Add(Category.Interior, InstanciateInterior());
+            categories.Add(Category.CarportGarage, InstanciateCarportGarage());
+            categories.Add(Category.Plot, InstanciatePlot());
+            categories.Add(Category.MaterialOutside, InstanciateMaterialsOutside());
+            categories.Add(Category.WindowsDoors, InstanciateWindowsAndDoors());
             categories.Add(Category.MaterialInside, InstanciateMaterialInside());
-            categories.Add(Category.Other, InstanciateOther());
+            categories.Add(Category.Interior, InstanciateInterior());
+            categories.Add(Category.Flooring, InstanciateFlooring());
+            categories.Add(Category.Power, InstanciatePower());
+            categories.Add(Category.Appliances, InstanciateApplicances());
+            categories.Add(Category.Tiles, InstanciateTiles());
+            categories.Add(Category.Carpentry, InstanciateCarpentry());
             categories.Add(Category.Painting, InstanciatePainting());
+            categories.Add(Category.BrickLayer, InstanciateBrickLayer());
             categories.Add(Category.Plumbing, InstanciatePlumbing());
             categories.Add(Category.Ventilation, InstanciateVentilation());
-            categories.Add(Category.WindowsDoors, InstanciateWindowsAndDoors());
+            categories.Add(Category.ExtraConstruction, InstanciateExtraConstruction());
+            categories.Add(Category.Other, InstanciateOther());
             return categories;
         }
+        private BrickLayerExpenses InstanciatePlot()
+        {
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private BrickLayerExpenses InstanciateMaterialsOutside()
+        {
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private BrickLayerExpenses InstanciatePower()
+        {
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private BrickLayerExpenses InstanciateApplicances()
+        {
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
         private BrickLayerExpenses InstanciateBrickLayer()
+        {
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+        private BrickLayerExpenses InstanciateTiles()
         {
             return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
         }
