@@ -244,7 +244,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" VerticalAlignment="Top" />
+           
 
 
 

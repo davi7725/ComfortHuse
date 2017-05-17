@@ -8,7 +8,7 @@
       Title="HouseType">
 
     <Grid Height="2300 " Width="555" Background="#FFE5E5E5" RenderTransformOrigin="0.779,0.538" >
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,-10" RenderTransformOrigin="0.577,0.51">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.577,0.51">
             <Grid.RowDefinitions>
 
                 <RowDefinition Height="42" />

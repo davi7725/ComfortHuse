@@ -4,8 +4,228 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+            d:DesignHeight="1119.6" d:DesignWidth="712.8">
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+    <Grid Background="White" VerticalAlignment="Stretch" MinHeight="4000">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="1100" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="130" />
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="1" MinHeight="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,14.6,19.8,26" RenderTransformOrigin="0.577,0.51" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="42" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="145" />
+                <ColumnDefinition Width="145" />
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="90*" />
+                <ColumnDefinition Width="71*" />
+                <ColumnDefinition Width="86*" />
+                <ColumnDefinition Width="45*" />
+            </Grid.ColumnDefinitions>
+
+                <Label x:Name="label1" Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Grid.Row="2"  FontWeight="Bold"/>
+            <ComboBox x:Name="comboBox1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="78" Grid.ColumnSpan="2" Margin="0,10,144.6,0" Grid.Row="2"/>
+            <TextBox x:Name="textBox1" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="0.2,10,0,0"/>
+            <TextBox x:Name="textBox2" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox3" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="2" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+
+                <Label x:Name="label2" Content="Option:" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="0" VerticalAlignment="Top" Margin="0,10,0,0"  FontWeight="Bold"/>
+
+
+            <TextBox x:Name="textBox4" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="8" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox5" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox6" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="2" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox7" HorizontalAlignment="Center" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" Text="TextBox" Width="120" Margin="12.2,9.6,12.6,9"/>
+            <TextBox x:Name="textBox8" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="4" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox9" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="4" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox10" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox11" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="5" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox12" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="5" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox13" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="6" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox14" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="6" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox15" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="6" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox16" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="7" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox17" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="7" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox18" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="7" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox19" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="7" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox20" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="8" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox21" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="8" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox22" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="9" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox23" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="9" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox24" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="9" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox25" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="10" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox26" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="10" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox27" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="10" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox28" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="11" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox29" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="11" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox30" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="11" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox31" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="12" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox32" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="12" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox33" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="12" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox34" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="13" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox35" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="13" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox36" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="13" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox37" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="14" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox38" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="14" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox39" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="14" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox40" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="15" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox41" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="15" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox42" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="15" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox43" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="16" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox44" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="16" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox45" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="16" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+            <TextBox x:Name="textBox46" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="17" Grid.Column="1" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="12.5,10,12.3,0"/>
+            <TextBox x:Name="textBox47" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="17" Grid.Column="2" Text="TextBox" VerticalAlignment="Top" Width="55" Margin="10.4,10,9.8,0"/>
+            <TextBox x:Name="textBox48" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Grid.Row="17" Grid.Column="3" Text="TextBox" VerticalAlignment="Top" Width="46" Margin="6.2,10,5.4,0"/>
+
+
+            <ComboBox x:Name="comboBox3" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox4" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox5" HorizontalAlignment="Right" Grid.Row="6" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox6" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox7" HorizontalAlignment="Right" Grid.Row="8" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox8" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox9" HorizontalAlignment="Right" Grid.Row="10" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox10" HorizontalAlignment="Right" Grid.Row="11" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox11" HorizontalAlignment="Right" Grid.Row="12" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox12" HorizontalAlignment="Right" Grid.Row="13" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox13" HorizontalAlignment="Right" Grid.Row="14" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox14" HorizontalAlignment="Right" Grid.Row="15" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox15" HorizontalAlignment="Right" Grid.Row="16" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+            <ComboBox x:Name="comboBox16" HorizontalAlignment="Right" Grid.Row="17" Grid.Column="0" VerticalAlignment="Top" Width="135" Margin="0,10.2,4.8,0"/>
+
+
+
+
+
+
+                <Label Grid.Column="0" Grid.Row="0" FontSize="20" Content="Garage Type"  FontWeight="Bold"></Label>
+            <Label Grid.Column="1" Grid.Row="20" Content="Technical Information" FontWeight="Bold" ></Label>
+            <Label Grid.Column="1" Grid.Row="27" Content="Other Expenses" FontWeight="Bold" ></Label>
+            <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="21" ItemsSource="{Binding TechnicalSpecifications}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="90*" />
+                                <ColumnDefinition Width="90*" />
+                                <ColumnDefinition Width="90*" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox IsEnabled="{Binding EditAble}" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Text="{Binding Description, Mode=OneWay}" />
+                            <CheckBox Grid.Column="0" IsChecked="{Binding Ticked, Mode=OneWay}"/>
+
+
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="28" ItemsSource="{Binding ExtraExpenses}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="120" />
+                                <ColumnDefinition Width="65*" />
+                                <ColumnDefinition Width="75*" />
+                                <ColumnDefinition Width="65*" />
+                                <ColumnDefinition Width="75" />
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0" IsChecked="{Binding Ticked, Mode=OneWay}"/>
+                            <TextBox x:Name="textBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding Title, Mode=OneWay}" VerticalAlignment="Top" Width="120" Grid.Column="1" />
+                            <TextBox x:Name="textBox1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding Description, Mode=OneWay}" VerticalAlignment="Top" Width="120" Grid.Column="2" />
+                            <TextBox x:Name="textBox2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding Amount, Mode=OneWay}" VerticalAlignment="Top" Width="120" Grid.Column="4" />
+                            <TextBox x:Name="textBox3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Grid.RowSpan="2" TextWrapping="Wrap" Text="{Binding PricePerUnit, Mode=OneWay}" VerticalAlignment="Top" Width="100" Grid.Column="5" />
+                            <Label x:Name="label" Content="{Binding TotalPrice, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="6" />
+
+
+
+
+
+
+
+
+
+                        </Grid>
+
+
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+                
+            </Grid>
     </Grid>
+    </ScrollViewer>
 </UserControl>
