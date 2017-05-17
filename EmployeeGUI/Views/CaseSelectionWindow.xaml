@@ -23,7 +23,7 @@
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Name="MenuItemEdit" Header="Edit" Click="MenuItemEdit_OnClick"></MenuItem>
-                    <MenuItem Name="MenuItemPrint" Click="MenuItemPrint_OnClick" Header="Print docouments"></MenuItem>
+                    <MenuItem Name="MenuItemPrint" Click="MenuItemPrint_OnClick" Header="Print documents"></MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>

@@ -76,7 +76,7 @@
     <Compile Include="Models\ExpensesDerivatives\ExtraConstructionExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\FlooringExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\HouseTypeExpenses.cs" />
-    <Compile Include="Utility\ICaseRepository.cs" />
+    <Compile Include="Interfaces\ICaseRepository.cs" />
     <Compile Include="Models\ExpensesDerivatives\InteriorExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\MaterialsInsideExpenses.cs" />
     <Compile Include="Utility\ObjectFactory.cs" />

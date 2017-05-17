@@ -32,8 +32,10 @@ namespace Comforthuse.Utility
 
             var li = new List<ICase>()
                 {
-                    new Case()
+                
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
+                        
                         CaseNumber = 1,
                         AmountOfRevisions = 1,
                         HouseType = "HouseType A",
@@ -43,7 +45,7 @@ namespace Comforthuse.Utility
                             new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 1,
                         AmountOfRevisions = 1,
@@ -53,7 +55,7 @@ namespace Comforthuse.Utility
                             new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 2,
                         AmountOfRevisions = 2,
@@ -64,7 +66,7 @@ namespace Comforthuse.Utility
                             new Customer("Sigurd", "Sigurdson", "abc@abc.com", "Fredericia", "Blåbærvænget 12", "3250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 3,
                         AmountOfRevisions = 4,
@@ -75,7 +77,7 @@ namespace Comforthuse.Utility
                             new Customer("Magnus", "Magnusen", "abc@abc.com", "Århus", "Rønnebærvænget 14", "3250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 2,
                         AmountOfRevisions = 2,
@@ -85,7 +87,7 @@ namespace Comforthuse.Utility
                             new Customer("Sigurd", "Sigurdson", "abc@abc.com", "Fredericia", "Blåbærvænget 12", "3250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 3,
                         AmountOfRevisions = 4,
