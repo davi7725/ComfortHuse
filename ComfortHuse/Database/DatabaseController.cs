@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Comforthuse.Database
 {
-    internal class DatabaseController : IDbAdmin, IDbEmployee
+    public class DatabaseController : IDbAdmin, IDbEmployee
     {
 
         private static DatabaseController _instance = null;

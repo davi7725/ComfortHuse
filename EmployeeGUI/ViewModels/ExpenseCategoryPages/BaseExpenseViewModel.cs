@@ -19,6 +19,5 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
         public virtual List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
 
         public virtual decimal Price { get; }
-
     }
 }

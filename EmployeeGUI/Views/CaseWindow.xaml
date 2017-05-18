@@ -257,9 +257,9 @@
                             </Grid.RowDefinitions>
                         </Grid>
                     </GroupBox>
-                    <ComboBox ItemsSource="{Binding Employees}">
+                    <ComboBox>
                         <ComboBox.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate >
                                 <ComboBoxItem Content="{Binding FullName}">
                                 </ComboBoxItem>
                             </DataTemplate>

@@ -62,7 +62,7 @@ namespace Comforthuse.Utility
 
 
 
-        internal IEmployee CreateEmployee(string FirstName, string LastName, string Email, string PhoneNb)
+        public IEmployee CreateEmployee(string FirstName, string LastName, string Email, string PhoneNb)
         {
             return new Employee(FirstName, LastName, Email, PhoneNb);
         }
