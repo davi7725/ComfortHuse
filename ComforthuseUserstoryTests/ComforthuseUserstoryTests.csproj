@@ -62,6 +62,7 @@
     <Compile Include="U25_EditTechnicalSpecifications.cs" />
     <Compile Include="U19_1_HouseTypeExpenseCategory.cs" />
     <Compile Include="U09_Tests.cs" />
+    <Compile Include="U27_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Comforthuse\Comforthuse.csproj">
