@@ -30,11 +30,12 @@ namespace Comforthuse.Models
             get { return "HouseType" + " for " + Customer.FirstName + " " + Customer.LastName; }
         }
 
-        public IEmployee Employee { get; internal set; }
+        public IEmployee Employee { get; set; }
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; internal set; }
         public DateTime DateOfLastRevision { get; internal set; }
         public int AmountOfRevisions { get; set; }
+        public IPlot Plot { get; set; }
         public int CaseNumber { get; set; }
         public int Bank { get; set; }
         public bool Sold
@@ -89,6 +90,8 @@ namespace Comforthuse.Models
         decimal Price { get; }
         int AmountOfRevisions { get; }
         ICustomer Customer { get; set; }
+        IEmployee Employee { get; set; }
+        IPlot Plot { get; set; }
         IExpenseCategory GetExpenseCategory(Category category);
         DateTime DateOfLastRevision { get; }
         DateTime DateOfCreation { get; }

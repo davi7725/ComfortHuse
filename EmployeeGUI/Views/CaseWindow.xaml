@@ -86,7 +86,7 @@
                 <RowDefinition Height="50*"></RowDefinition>
                 <RowDefinition Height="50*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label x:Name="label" Content="{Binding CaseID}" HorizontalAlignment="Right"  VerticalAlignment="Top" Height="29" Width="169" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"/>
+            <Label x:Name="label" Content="{Binding CaseID, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"  VerticalAlignment="Top" Height="29" Width="169" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"/>
             <Label x:Name="ApplicationLabel" Content="Comfort Huse A/S" FontSize="22" FontFamily="Lato Black"/>
         </Grid>
 
@@ -128,10 +128,10 @@
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
                             <Label Grid.Column="1" Grid.Row="0" x:Name="label_FirstName" Content="First name:" HorizontalAlignment="Left" Height="25"  />
-                            <TextBox Grid.Column="3" Grid.Row="0"  Text="{Binding FirstName}" x:Name="txtBox_FirstName" HorizontalAlignment="Left" Height="20" Width="200" />
-
+                            <TextBox Grid.Column="3" Grid.Row="0"  Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" x:Name="txtBox_FirstName" HorizontalAlignment="Left" Height="20" Width="200" />
+                             
                             <Label Grid.Column="1" Grid.Row="1" x:Name="label_LastName" Content="Last name:" HorizontalAlignment="Left" Height="25"  />
-                            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding LastName}" x:Name="txtBox_LastName" HorizontalAlignment="Left" Height="20" Width="200" />
+                            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" x:Name="txtBox_LastName" HorizontalAlignment="Left" Height="20" Width="200" />
 
                             <Label Grid.Column="1" Grid.Row="2" x:Name="label_City" Content="City:" HorizontalAlignment="Left" Height="25" />
                             <TextBox  Grid.Column="3" Grid.Row="2" Text="{Binding City}" x:Name="txtBox_City" HorizontalAlignment="Left" Height="20" Width="200" />
@@ -156,12 +156,6 @@
                 </Grid>
 
             </TabItem>
-            <!--
-            #3b3a36
-            #b3c2bf
-            #e9ece5
-            #c0dfd9
-            -->
             <TabItem Background="White" Header="Material Selection" Height="22" VerticalAlignment="Bottom">
                 <DockPanel>
                     <Border Background="DimGray" DockPanel.Dock="Left" BorderBrush="DimGray" BorderThickness="0,0,0,1">
@@ -186,6 +180,94 @@
                     </Border>
                     <ContentControl Content="{Binding CurrentPageViewModel}" />
                 </DockPanel>
+            </TabItem>
+            <TabItem Background="White" Header="Case" Height="22" VerticalAlignment="Bottom">
+                <Grid Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="220"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox VerticalContentAlignment="Top" Grid.Column="1" Grid.Row="1" FontSize="12" Header="Plot information" HorizontalAlignment="Stretch" Margin="0,0,0,0"
+                  VerticalAlignment="Stretch">
+
+
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="10"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="1" Grid.Row="0" x:Name="label_plotAddress" Content="Address:" HorizontalAlignment="Left" Height="25" />
+                            <TextBox  Grid.Column="3" Grid.Row="0" Text="{Binding PlotAddress}" x:Name="plotAddressTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
+
+                            <Label  Grid.Column="1" Grid.Row="1" x:Name="label_plotZipCode" Content="Zipcode:" HorizontalAlignment="Left" Height="25"  />
+                            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding PlotZipcode}"  x:Name="plotZipCodeTextbox" HorizontalAlignment="Left" Height="20" Width="200" />
+
+                            <Label  Grid.Column="1" Grid.Row="2" x:Name="label_plotCity" Content="City:" HorizontalAlignment="Left" Height="25"  />
+                            <TextBox Grid.Column="3" Grid.Row="2" Text="{Binding PlotCity}"  x:Name="plotCityTextBox" HorizontalAlignment="Left" Height="20" Width="200"  />
+
+                            <Label  Grid.Column="1" Grid.Row="3" x:Name="label_plotArea" Content="Area:" HorizontalAlignment="Left" Height="25" />
+                            <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding PlotArea}" x:Name="plotAreaTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
+
+                            <Label  Grid.Column="1" Grid.Row="4" x:Name="label_plotMunicipality" Content="Municipality:" HorizontalAlignment="Left" Height="25" />
+                            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding PlotMunicipality}" x:Name="plotMunicipalityTextBox" HorizontalAlignment="Left" Height="20" Width="200"  />
+
+                            <Label Grid.Column="1" Grid.Row="5" x:Name="label_plotAvaliabilityDate" Content="Avaliability Date" HorizontalAlignment="Left" Height="25" Width="67" />
+                            <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding PlotAvaliabilityDate}" x:Name="plotAvaliabilityDateTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
+                        </Grid>
+                    </GroupBox>
+                    
+                    <GroupBox VerticalContentAlignment="Top" Grid.Column="2" Grid.Row="1" FontSize="12" Header="Assign Employee" HorizontalAlignment="Stretch" Margin="0,0,0,0"
+                  VerticalAlignment="Stretch">
+
+
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="10"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                    </GroupBox>
+                    <ComboBox ItemsSource="{Binding Employees}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <ComboBoxItem Content="{Binding FullName}">
+                                </ComboBoxItem>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Name="EmployeeNameLabel" Content="Name" />
+                    <Label Name="EmployeeEmailLabel" Content="Email" />
+                </Grid>
             </TabItem>
         </TabControl>
 
@@ -213,7 +295,5 @@
             <MenuItem/>
         </Menu>
         <Label x:Name="totPriceTextLabel" Content="{Binding TotalPrice}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4.8,64.4,0" Grid.Row="2" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.021,0.454"/>
-
-
     </Grid>
 </Window>

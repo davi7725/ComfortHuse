@@ -1,4 +1,6 @@
-﻿namespace Comforthuse.Models
+﻿using EmployeeGUI.Helpers;
+
+namespace Comforthuse.Models
 {
     public interface ICustomer
     {
@@ -12,7 +14,7 @@
         string PhoneNb2 { get; set; }
     }
 
-    public class Customer : ICustomer
+    public class Customer : ObservableObject, ICustomer
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
