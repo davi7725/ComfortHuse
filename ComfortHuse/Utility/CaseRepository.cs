@@ -166,9 +166,10 @@ namespace Comforthuse.Utility
             }
         }
 
-        public void Save(ICase obj)
+        public bool Save(ICase obj)
         {
-            _db.SaveCase(obj);
+            obj.RegisterRevision();
+            return _db.SaveCase(obj);
         }
 
         public void Clear()

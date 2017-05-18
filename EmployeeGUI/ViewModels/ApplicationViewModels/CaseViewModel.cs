@@ -2,6 +2,7 @@
 using Comforthuse.Interfaces;
 using Comforthuse.Models;
 using EmployeeGUI.Helpers;
+using Comforthuse.Utility;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
 using System.Collections.Generic;
@@ -246,6 +247,11 @@ namespace EmployeeGUI.ViewModels
             PageViewModels[17].TechnicalSpecifications = otExtraExpenses.TechnicalSpecifications;
             PageViewModels[17].ExtraExpenses = otExtraExpenses.ExtraExpenses;
 
+        }
+
+        public bool Save()
+        {
+            return CaseRepository.Instance.Save(_activeCase);
         }
     }
 }

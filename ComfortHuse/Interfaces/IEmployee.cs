@@ -1,10 +1,10 @@
-﻿namespace Comforthuse
+﻿namespace Comforthuse.Interfaces
 {
     public interface IEmployee
     {
-        string FirstName { get; }
-        string LastName { get; }
-        string PhoneNumber { get; }
-        string Email { get; }
+        string FirstName { get; set; }
+        string LastName { get; set; }
+        string PhoneNumber { get; set; }
+        string Email { get; set; }
     }
 }

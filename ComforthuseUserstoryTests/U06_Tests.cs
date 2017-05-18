@@ -14,6 +14,7 @@ namespace ComforthuseUserstoryTests
         {
             CaseRepository.Instance.Clear();
         }
+        
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
