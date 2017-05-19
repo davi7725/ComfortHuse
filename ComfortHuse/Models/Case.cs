@@ -56,9 +56,6 @@ namespace Comforthuse.Models
                 return CalculatePrice();
             }
         }
-        public string HouseType { get; set; }
-
-
         private decimal CalculatePrice()
         {
             decimal price = 0;
@@ -101,11 +98,8 @@ namespace Comforthuse.Models
         int CaseNumber { get; set; }
         decimal Price { get; }
         int AmountOfRevisions { get; }
-
         DateTime ConstructionStartDate { get; }
-
         DateTime MoveInDate { get; }
-
         string Description { get; }
         ICustomer Customer { get; set; }
         IEmployee Employee { get; set; }
