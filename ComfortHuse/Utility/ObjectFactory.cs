@@ -69,7 +69,7 @@ namespace Comforthuse.Utility
         }
 
 
-        private Dictionary<Category, IExpenseCategory> InstanciateEmptyExpenseCategories()
+        public Dictionary<Category, IExpenseCategory> InstanciateEmptyExpenseCategories()
         {
             Dictionary<Category, IExpenseCategory> categories = new Dictionary<Category, IExpenseCategory>();
             categories.Add(Category.BrickLayer, InstanciateBrickLayer());
