@@ -1,14 +1,13 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Comforthuse.Models;
+﻿using Comforthuse.Models;
 using Comforthuse.Utility;
 using EmployeeGUI.ViewModels;
-using EmployeeGUI.ViewModels.ExpenseCategoryPages;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ComforthuseUserstoryTests
 {
+    //??????
     [TestClass]
-    public class U27_Tests
+    public class U27_Tests2
     {
         [TestMethod]
         public void ShouldUpdateExtraExpenseAmount()
@@ -22,7 +21,7 @@ namespace ComforthuseUserstoryTests
             cvm.CurrentPageViewModel = cvm.PageViewModels[1];
             cvm.CurrentPageViewModel.ExtraExpenses[0].Amount = 25;
 
-            Assert.AreEqual(25,case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].Amount); 
+            Assert.AreEqual(25, case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].Amount);
         }
 
         [TestMethod]

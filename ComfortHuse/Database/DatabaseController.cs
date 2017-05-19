@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using Comforthuse.Interfaces;
 
 namespace Comforthuse.Database
 {
@@ -28,7 +27,7 @@ namespace Comforthuse.Database
             }
         }
 
-        
+
 
         public List<ICase> GetAllCases()
         {
@@ -60,7 +59,7 @@ namespace Comforthuse.Database
                 string employeeEmail = InsertEmployee(c.Employee);
                 int plotId = InsertPlot(c.Plot);
                 int imageId = InsertImage(c.Image);
-                InsertCase(c,customerEmail,moneyInstituteId,employeeEmail,plotId,imageId);
+                InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
                 //InsertProducts();
                 //InsertExtraExpenses();
 
@@ -78,7 +77,7 @@ namespace Comforthuse.Database
                 }
             }
 
-            
+
             return isSuccessful;
         }
 
@@ -127,12 +126,12 @@ namespace Comforthuse.Database
         {
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditPlot", conn);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add(new SqlParameter("@ZipCode", plot.Zipcode));
+            command.Parameters.Add(new SqlParameter("@ZipCode", plot.ZipCode));
             command.Parameters.Add(new SqlParameter("@PlotAddress", plot.Address));
             command.Parameters.Add(new SqlParameter("@City", plot.City));
             command.Parameters.Add(new SqlParameter("@Area", plot.Area));
             command.Parameters.Add(new SqlParameter("@Municipality", plot.Municipality));
-            command.Parameters.Add(new SqlParameter("@AvailabilityDate", plot.AvailabilityDate));
+            command.Parameters.Add(new SqlParameter("@AvailabilityDate", plot.AvalibilityDate));
 
             SqlParameter returnParameter = command.Parameters.Add("@PlotId", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;

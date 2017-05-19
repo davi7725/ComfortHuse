@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Comforthuse.Interfaces;
 
 namespace Comforthuse.Models
 {
@@ -41,7 +40,6 @@ namespace Comforthuse.Models
 
         public string Description { get; set; }
         public int AmountOfRevisions { get; set; }
-        public IPlot Plot { get; set; }
         public int CaseNumber { get; set; }
         public int Bank { get; set; }
         public IMoneyInstitute MoneyInstitute { get; set; }
@@ -115,10 +113,8 @@ namespace Comforthuse.Models
         IExpenseCategory GetExpenseCategory(Category category);
         DateTime DateOfLastRevision { get; }
         DateTime DateOfCreation { get; }
-        IEmployee Employee { get; set; }
         IMoneyInstitute MoneyInstitute { get; set; }
-        IPlot Plot { get; set; }
-        IImage Image { get;set; }
+        IImage Image { get; set; }
         void RegisterRevision();
     }
 }

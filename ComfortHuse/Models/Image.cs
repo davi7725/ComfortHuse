@@ -6,7 +6,6 @@ namespace Comforthuse.Models
     {
         public string Title { get; set; }
         public Bitmap SrcImage { get; set; }
-
         public string Path { get; set; }
         public string Description { get; set; }
     }
@@ -16,7 +15,6 @@ namespace Comforthuse.Models
     {
         string Title { get; }
         Bitmap SrcImage { get; }
-
         string Path { get; set; }
         string Description { get; set; }
     }
