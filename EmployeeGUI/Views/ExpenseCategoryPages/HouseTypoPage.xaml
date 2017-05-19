@@ -92,7 +92,7 @@
 
                 <Label x:Name="Label6" Content="Manual Insert:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Margin="0,11,0,0" Width="135" FontSize="13" FontWeight="Bold" Height="28"/>
                 <Label x:Name="Label7" Content="Type:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Margin="0,10.4,0,0" FontSize="13" FontWeight="Bold" Height="27" Width="43"/>
-                <TextBox x:Name="textBox1" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="{Binding HouseTypeName}" VerticalAlignment="Top" Width="198" Grid.Column="1" Margin="12.2,10.4,9.8,0" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="textBox1" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Text="{Binding HouseTypeName, Mode=OneWay}" VerticalAlignment="Top" Width="198" Grid.Column="1" Margin="12.2,10.4,9.8,0" Grid.Row="1" Grid.ColumnSpan="2"/>
                 <Label x:Name="Label8" Content="m²" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="4" Width="28" Margin="20.6,10.4,22.6,0" Grid.Row="1" Height="25"/>
                 <Label x:Name="Label9" Content="0" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="5" Width="28" Margin="32.4,10.4,26,0" Grid.Row="1" Height="25"/>
                 <Label x:Name="Label10" Content="Heating:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Margin="0,9.8,0,0" Width="89" FontSize="13" FontWeight="Bold" Height="27"/>

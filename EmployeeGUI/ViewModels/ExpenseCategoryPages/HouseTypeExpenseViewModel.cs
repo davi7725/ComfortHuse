@@ -1,4 +1,5 @@
-﻿using Comforthuse.Interfaces;
+﻿using System;
+using Comforthuse.Interfaces;
 using Comforthuse.Models;
 
 namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
@@ -54,11 +55,14 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             Name = "House Type";
         }
         
-        public IHouseTypeExpenses HouseTypeExpensesModel
+        public override IExpenseCategory ExpenseCategory
         {
+
             set
             {
-                _houseTypeExpensesModel = value;
+                _houseTypeExpensesModel = (IHouseTypeExpenses)value;
+                TechnicalSpecifications = _houseTypeExpensesModel.TechnicalSpecifications;
+                ExtraExpenses = _houseTypeExpensesModel.ExtraExpenses;
             }
         }
     }

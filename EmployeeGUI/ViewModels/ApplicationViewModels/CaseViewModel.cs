@@ -134,7 +134,6 @@ namespace EmployeeGUI.ViewModels
                 }
             }
         }
-
         public string LastName
         {
             get { return _caseCustomer.LastName; }
@@ -226,14 +225,11 @@ namespace EmployeeGUI.ViewModels
         }
         public void InjectExpenseCategories()
         {
-            IHouseTypeExpenses hsExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType);
-            //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
-            PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
-            PageViewModels[0].ExtraExpenses = hsExpenses.ExtraExpenses;
+            PageViewModels[0].ExpenseCategory = _activeCase.GetExpenseCategory(Category.HouseType);
 
             ICarportGarageExpenses cpExpenses = (ICarportGarageExpenses)_activeCase.GetExpenseCategory(Category.CarportGarage);
-            PageViewModels[1].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
-            PageViewModels[1].ExtraExpenses = hsExpenses.ExtraExpenses;
+            PageViewModels[1].TechnicalSpecifications = cpExpenses.TechnicalSpecifications;
+            PageViewModels[1].ExtraExpenses = cpExpenses.ExtraExpenses;
 
             IPlotExpenses plExpenses = (IPlotExpenses)_activeCase.GetExpenseCategory(Category.Plot);
             PageViewModels[2].TechnicalSpecifications = plExpenses.TechnicalSpecifications;
