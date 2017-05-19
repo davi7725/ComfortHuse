@@ -3,6 +3,7 @@ using Comforthuse.Facade;
 using Comforthuse.Interfaces;
 using Comforthuse.Models;
 using EmployeeGUI.Helpers;
+using Comforthuse.Utility;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
 using System.Collections.Generic;
@@ -229,6 +230,11 @@ namespace EmployeeGUI.ViewModels
             //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
             PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
             PageViewModels[0].ExtraExpenses = hsExpenses.ExtraExpenses;
+        }
+
+        public bool Save()
+        {
+            return CaseRepository.Instance.Save(_activeCase);
         }
     }
 }
