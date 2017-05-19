@@ -2,8 +2,8 @@
 using Comforthuse.Facade;
 using Comforthuse.Interfaces;
 using Comforthuse.Models;
-using EmployeeGUI.Helpers;
 using Comforthuse.Utility;
+using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
 using System.Collections.Generic;
