@@ -28,7 +28,50 @@ namespace Comforthuse.Database
             }
         }
 
+        public Dictionary<int, ProductOption> GetAllProductOptions()
+        {
+            Dictionary<int, ProductOption> listOfProductOptions = new Dictionary<int, ProductOption>();
 
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetAllProductOptions", conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int productOptionId = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        decimal priceF = reader.GetDecimal(2);
+                        decimal priceS = reader.GetDecimal(3);
+                        string unit = reader.GetString(4);
+                        bool isStandard = reader.GetBoolean(5);
+                        int productType = reader.GetInt32(6);
+
+                        ProductOption po = new ProductOption(productOptionId, name, priceF, priceS, unit, isStandard, productType);
+                        listOfProductOptions.Add(productOptionId,po);
+                    }
+                }
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    conn.Dispose();
+                }
+            }
+
+            return listOfProductOptions;
+        }
 
         public List<ICase> GetAllCases()
         {
@@ -133,8 +176,8 @@ namespace Comforthuse.Database
                 string category = kpv.Key.ToString();
                 foreach (IExtraExpenseSpecification iees in iec.ExtraExpenses)
                 {
-                    if(iees.Title != "" && iees.Description != "" && iees.Amount != 0)
-                    InsertExtraExpense(iees.Description, iees.Amount, iees.PricePerUnit, caseNumber, caseYear, iees.Title, category);
+                    if (iees.Title != "" && iees.Description != "" && iees.Amount != 0)
+                        InsertExtraExpense(iees.Description, iees.Amount, iees.PricePerUnit, caseNumber, caseYear, iees.Title, category);
                 }
             }
         }
@@ -155,7 +198,7 @@ namespace Comforthuse.Database
 
             command.Dispose();
 
-            }
+        }
 
         private void DeleteCaseExtraExpenses(int caseYear, int caseNumber)
         {

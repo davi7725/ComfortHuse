@@ -4,6 +4,7 @@ using Comforthuse.Utility;
 using Comforthuse.Database;
 using Comforthuse.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Comforthuse;
 
 namespace ComforthuseUserstoryTests
 {
@@ -17,7 +18,7 @@ namespace ComforthuseUserstoryTests
 
             case1.CaseNumber = 1;
             case1.DateOfCreation = new DateTime(2017, 6, 6);
-            
+
 
             case1.ConstructionStartDate = new DateTime(2017, 1, 1);
             case1.MoveInDate = new DateTime(2016, 2, 2);
@@ -36,7 +37,7 @@ namespace ComforthuseUserstoryTests
 
             case1.Employee = new Employee("Alan", "Boje", "ab@comforthuse.dk", "24813540");
 
-            case1.Plot = new Plot() { Zipcode = "21331", Address = "testaddress", City = "Idunno", Area = "Giant", Municipality = "Odense", AvailabilityDate = new DateTime(2017, 6, 23) };
+            case1.Plot = new Plot() { Zipcode = "21331", Address = "testaddress", City = "Idunno", Area = 123, Municipality = "Odense", AvailabilityDate = new DateTime(2017, 6, 23) };
 
             case1.Image = new Image() { Path = @"c:\test\img2.png", Description = "Very good image" };
 
@@ -56,9 +57,7 @@ namespace ComforthuseUserstoryTests
 
             case1.GetExpenseCategory(Comforthuse.Category.Carpentry).TechnicalSpecifications[0].EditAble = false;
             case1.GetExpenseCategory(Comforthuse.Category.Carpentry).TechnicalSpecifications[0].Description = "I don't know how to write technical jk";
-
-
-
+            
             Assert.IsTrue(DatabaseController.Instance.SaveCase(case1));
 
         }

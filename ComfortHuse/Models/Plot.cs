@@ -9,8 +9,8 @@ namespace Comforthuse.Models
         public string Zipcode { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
-        public int Municipality { get; set; }
-        public DateTime AvalibilityDate { get; set; }
+        public string Municipality { get; set; }
+        public DateTime AvailabilityDate { get; set; }
     }
 
     public interface IPlot
@@ -19,7 +19,7 @@ namespace Comforthuse.Models
         string Zipcode { get; set; }
         string Address { get; set; }
         string City { get; set; }
-        int Municipality { get; set; }
-        DateTime AvalibilityDate { get; set; }
+        string Municipality { get; set; }
+        DateTime AvailabilityDate { get; set; }
     }
 }

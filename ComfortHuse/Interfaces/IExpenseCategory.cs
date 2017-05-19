@@ -7,7 +7,7 @@ namespace Comforthuse.Models
 {
     public interface IExpenseCategory
     {
-        ProductCategory Category { get; }
+        Category Category { get; }
         decimal Price { get; }
         List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
         List<IExtraExpenseSpecification> ExtraExpenses { get; set; }
