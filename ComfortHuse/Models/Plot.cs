@@ -6,7 +6,7 @@ namespace Comforthuse.Models
     public class Plot : IPlot
     {
         public int Area { get; set; }
-        public int ZipCode { get; set; }
+        public string Zipcode { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
         public int Municipality { get; set; }
@@ -16,7 +16,7 @@ namespace Comforthuse.Models
     public interface IPlot
     {
         int Area { get; set; }
-        int ZipCode { get; set; }
+        string Zipcode { get; set; }
         string Address { get; set; }
         string City { get; set; }
         int Municipality { get; set; }

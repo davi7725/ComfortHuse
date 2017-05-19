@@ -196,8 +196,20 @@ namespace EmployeeGUI.ViewModels
         }
         public string PlotArea
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.Area.ToString(); }
+            set
+            {
+                int area;
+                if (int.TryParse(value, out area))
+                {
+
+                    _activeCase.Plot.Area = area;
+                }
+                else
+                {
+                    MessageHandling.DisplayErrorMessage("Invalid value, you can only enter numbers");
+                }
+            }
         }
         public string TotalPrice
         {
