@@ -10,8 +10,10 @@ namespace Comforthuse.Utility
                 return HouseType.TotalPrice + this.PriceExtraExpenses;
             }
         }
-        public HouseType HouseType { get; set; }
+        public IHouseType HouseType { get; set; }
         public bool HouseExpansion { get; set; }
+
+       
     }
 
 }

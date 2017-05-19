@@ -5,29 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ComforthuseUserstoryTests
 {
+    //??????
     [TestClass]
-    public class U27_Tests
+    public class U27_Tests2
     {
-        [TestMethod]
-        public void _TEST_()
-        {
-            ICase case1 = ObjectFactory.Instance.CreateNewCase();
-            case1.CaseNumber = 1;
-
-            CaseRepository cr = CaseRepository.Instance;
-
-            cr.Add(case1);
-
-            CaseViewModel cvm = new CaseViewModel();
-            cvm.Case = case1;
-            cvm.InjectExpenseCategories();
-
-            cvm.CurrentPageViewModel = cvm.PageViewModels[1];
-            cvm.CurrentPageViewModel.ExtraExpenses[0].Amount = 25;
-
-            Assert.AreEqual(cr.Load(1).GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].Amount, cvm.Case.GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].Amount);
-        }
-
         [TestMethod]
         public void ShouldUpdateExtraExpenseAmount()
         {

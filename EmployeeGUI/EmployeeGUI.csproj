@@ -112,9 +112,6 @@
     <Compile Include="Views\ExpenseCategoryPages\HomeAppliancePage.xaml.cs">
       <DependentUpon>HomeAppliancePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ExpenseCategoryPages\HouseTypo.xaml.cs">
-      <DependentUpon>HouseTypo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ExpenseCategoryPages\HouseTypoPage.xaml.cs">
       <DependentUpon>HouseTypoPage.xaml</DependentUpon>
     </Compile>
@@ -182,7 +179,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="ViewModels\ApplicationViewModels\CaseSelectionViewModel.cs" />
     <Compile Include="ViewModels\ApplicationViewModels\CaseViewModel.cs" />
@@ -213,10 +209,6 @@
     <Page Include="Views\ExpenseCategoryPages\HomeAppliancePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ExpenseCategoryPages\HouseTypo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ExpenseCategoryPages\HouseTypoPage.xaml">
       <SubType>Designer</SubType>

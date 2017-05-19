@@ -43,6 +43,11 @@
   <ItemGroup>
     <Compile Include="Interfaces\IHouseTypeExpenses.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />
+    <Compile Include="Interfaces\ICarportGarageExpenses.cs" />
+    <Compile Include="Interfaces\IPlotExpenses.cs" />
+    <Compile Include="Interfaces\IMaterialOutsideExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\MaterialsOutsideExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\PlotExpenses.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\MoneyInstitute.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\CaseRepository.cs" />
     <Compile Include="Models\Expenses.cs" />
+    <Compile Include="Utility\EmployeeRepository.cs" />
     <Compile Include="Utility\ExportToPDF.cs" />
     <Compile Include="Models\ExpensesDerivatives\ExtraConstructionExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\FlooringExpenses.cs" />
@@ -84,6 +90,7 @@
     <Compile Include="Models\ExpensesDerivatives\OtherExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\PainterExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\PlumberExpenses.cs" />
+    <Compile Include="Utility\ObservableObject.cs" />
     <Compile Include="Utility\ValidateCustomer.cs" />
     <Compile Include="Utility\Validator.cs" />
     <Compile Include="Models\ExpensesDerivatives\VentilationExpenses.cs" />

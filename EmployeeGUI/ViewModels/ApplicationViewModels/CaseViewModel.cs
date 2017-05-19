@@ -1,8 +1,9 @@
 ﻿using Comforthuse;
+using Comforthuse.Facade;
 using Comforthuse.Interfaces;
 using Comforthuse.Models;
-using EmployeeGUI.Helpers;
 using Comforthuse.Utility;
+using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
 using System.Collections.Generic;
@@ -13,12 +14,13 @@ namespace EmployeeGUI.ViewModels
 {
     public class CaseViewModel : ObservableObject
     {
+        private IEmployeeFacade _facade;
         private ICustomer _caseCustomer;
         private ICommand _changePageCommand;
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
+        private int _caseID;
         private ICase _activeCase;
-
         public ICase Case
         {
             get
@@ -38,7 +40,6 @@ namespace EmployeeGUI.ViewModels
         }
         public CaseViewModel()
         {
-
             // Instanciate and add avaliable pages
             PageViewModels.Add(new HouseTypeExpenseViewModel());
             PageViewModels.Add(new GarageCarportExpenseViewModel());
@@ -58,11 +59,13 @@ namespace EmployeeGUI.ViewModels
             PageViewModels.Add(new VentilationExpenseViewModel());
             PageViewModels.Add(new ExtraContructionViewModel());
             PageViewModels.Add(new OtherExpenseViewModel());
-
             // Set starting page
             CurrentPageViewModel = PageViewModels[0];
         }
-
+        public IEmployeeFacade Facade
+        {
+            set { _facade = value; }
+        }
         public ICommand ChangePageCommand
         {
             get
@@ -77,7 +80,6 @@ namespace EmployeeGUI.ViewModels
                 return _changePageCommand;
             }
         }
-
         private void ChangeViewModel(IPageViewModel viewModel)
         {
             if (!PageViewModels.Contains(viewModel))
@@ -86,7 +88,6 @@ namespace EmployeeGUI.ViewModels
             CurrentPageViewModel = PageViewModels
                 .FirstOrDefault(vm => vm == viewModel);
         }
-
         public List<IPageViewModel> PageViewModels
         {
             get
@@ -97,7 +98,6 @@ namespace EmployeeGUI.ViewModels
                 return _pageViewModels;
             }
         }
-
         public IPageViewModel CurrentPageViewModel
         {
             get
@@ -113,18 +113,27 @@ namespace EmployeeGUI.ViewModels
                 }
             }
         }
-
         public string CaseID
         {
-            get { return "Case Number: " + _activeCase.DateOfCreation.Year + "-" + _activeCase.CaseNumber.ToString(); }
+            get { return "Case Number: " + _activeCase.DateOfCreation.Year + "-" + _activeCase.CaseNumber; }
         }
 
+        internal void SetCaseID(int caseid)
+        {
+            _caseID = caseid;
+        }
         public string FirstName
         {
             get { return _caseCustomer.FirstName; }
-            set { _caseCustomer.FirstName = value; }
+            set
+            {
+                if (value != _caseCustomer.FirstName)
+                {
+                    _caseCustomer.FirstName = value;
+                    OnPropertyChanged("FirstName");
+                }
+            }
         }
-
         public string LastName
         {
             get { return _caseCustomer.LastName; }
@@ -164,89 +173,83 @@ namespace EmployeeGUI.ViewModels
             set { _caseCustomer.PhoneNb2 = value; }
         }
 
+        public string PlotAvalibilityDate
+        {
+            get { return _caseCustomer.PhoneNb2; }
+            set { _caseCustomer.PhoneNb2 = value; }
+        }
+        public string PlotCity
+        {
+            get { return _caseCustomer.PhoneNb2; }
+            set { _caseCustomer.PhoneNb2 = value; }
+        }
+        public string PlotZipcode
+        {
+            get { return _caseCustomer.PhoneNb2; }
+            set { _caseCustomer.PhoneNb2 = value; }
+        }
+        public string PlotMunicipality
+        {
+            get { return _caseCustomer.PhoneNb2; }
+            set { _caseCustomer.PhoneNb2 = value; }
+        }
+        public string PlotArea
+        {
+            get { return _activeCase.Plot.Area.ToString(); }
+            set
+            {
+                int area;
+                if (int.TryParse(value, out area))
+                {
+
+                    _activeCase.Plot.Area = area;
+                }
+                else
+                {
+                    MessageHandling.DisplayErrorMessage("Invalid value, you can only enter numbers");
+                }
+            }
+        }
         public string TotalPrice
         {
             get { return "Total price: " + _activeCase.Price + " kr"; }
         }
-
+        public List<IEmployee> Employees
+        {
+            get { return _facade.GetAllEmployees(); }
+        }
+        public string SalesPersonPhoneNb
+        {
+            get { return _activeCase.Employee.PhoneNumber; }
+            set { _activeCase.Employee.PhoneNumber = value; }
+        }
+        public string SalesPersonPhoneEmail
+        {
+            get { return _activeCase.Employee.Email; }
+            set
+            {
+                if (value != _activeCase.Employee.Email)
+                {
+                    _activeCase.Employee.Email = value;
+                    OnPropertyChanged("SalesPersonPhoneEmail");
+                }
+            }
+        }
         public void InjectExpenseCategories()
         {
+            PageViewModels[0].ExpenseCategory = _activeCase.GetExpenseCategory(Category.HouseType);
 
-            IHouseTypeExpenses hsExpenses = (IHouseTypeExpenses)_activeCase.GetExpenseCategory(Category.HouseType);
-            IExpenseCategory cgExtraExpenses = _activeCase.GetExpenseCategory(Category.CarportGarage);
-            IExpenseCategory plExtraExpenses = _activeCase.GetExpenseCategory(Category.Plot);
-            IExpenseCategory moExtraExpenses = _activeCase.GetExpenseCategory(Category.MaterialOutside);
-            IExpenseCategory wdExtraExpenses = _activeCase.GetExpenseCategory(Category.WindowsDoors);
-            IExpenseCategory miExtraExpenses = _activeCase.GetExpenseCategory(Category.MaterialInside);
-            IExpenseCategory inExtraExpenses = _activeCase.GetExpenseCategory(Category.Interior);
-            IExpenseCategory flExtraExpenses = _activeCase.GetExpenseCategory(Category.Flooring);
-            IExpenseCategory pwExtraExpenses = _activeCase.GetExpenseCategory(Category.Power);
-            IExpenseCategory haExtraExpenses = _activeCase.GetExpenseCategory(Category.Appliances);
-            IExpenseCategory tlExtraExpenses = _activeCase.GetExpenseCategory(Category.Tiles);
-            IExpenseCategory crExtraExpenses = _activeCase.GetExpenseCategory(Category.Carpentry);
-            IExpenseCategory ptExtraExpenses = _activeCase.GetExpenseCategory(Category.Painting);
-            IExpenseCategory wlExtraExpenses = _activeCase.GetExpenseCategory(Category.BrickLayer);
-            IExpenseCategory pmExtraExpenses = _activeCase.GetExpenseCategory(Category.Plumbing);
-            IExpenseCategory vtExtraExpenses = _activeCase.GetExpenseCategory(Category.Ventilation);
-            IExpenseCategory exExtraExpenses = _activeCase.GetExpenseCategory(Category.ExtraConstruction);
-            IExpenseCategory otExtraExpenses = _activeCase.GetExpenseCategory(Category.Other);
+            ICarportGarageExpenses cpExpenses = (ICarportGarageExpenses)_activeCase.GetExpenseCategory(Category.CarportGarage);
+            PageViewModels[1].TechnicalSpecifications = cpExpenses.TechnicalSpecifications;
+            PageViewModels[1].ExtraExpenses = cpExpenses.ExtraExpenses;
 
+            IPlotExpenses plExpenses = (IPlotExpenses)_activeCase.GetExpenseCategory(Category.Plot);
+            PageViewModels[2].TechnicalSpecifications = plExpenses.TechnicalSpecifications;
+            PageViewModels[2].ExtraExpenses = plExpenses.ExtraExpenses;
 
-            //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
-            PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
-            PageViewModels[0].ExtraExpenses = hsExpenses.ExtraExpenses;
-
-            PageViewModels[1].TechnicalSpecifications = cgExtraExpenses.TechnicalSpecifications;
-            PageViewModels[1].ExtraExpenses = cgExtraExpenses.ExtraExpenses;
-
-            PageViewModels[2].TechnicalSpecifications = plExtraExpenses.TechnicalSpecifications;
-            PageViewModels[2].ExtraExpenses = plExtraExpenses.ExtraExpenses;
-
-            PageViewModels[3].TechnicalSpecifications = moExtraExpenses.TechnicalSpecifications;
-            PageViewModels[3].ExtraExpenses = moExtraExpenses.ExtraExpenses;
-
-            PageViewModels[4].TechnicalSpecifications = wdExtraExpenses.TechnicalSpecifications;
-            PageViewModels[4].ExtraExpenses = wdExtraExpenses.ExtraExpenses;
-
-            PageViewModels[5].TechnicalSpecifications = miExtraExpenses.TechnicalSpecifications;
-            PageViewModels[5].ExtraExpenses = miExtraExpenses.ExtraExpenses;
-
-            PageViewModels[6].TechnicalSpecifications = inExtraExpenses.TechnicalSpecifications;
-            PageViewModels[6].ExtraExpenses = inExtraExpenses.ExtraExpenses;
-
-            PageViewModels[7].TechnicalSpecifications = flExtraExpenses.TechnicalSpecifications;
-            PageViewModels[7].ExtraExpenses = flExtraExpenses.ExtraExpenses;
-
-            PageViewModels[8].TechnicalSpecifications = pwExtraExpenses.TechnicalSpecifications;
-            PageViewModels[8].ExtraExpenses = pwExtraExpenses.ExtraExpenses;
-
-            PageViewModels[9].TechnicalSpecifications = haExtraExpenses.TechnicalSpecifications;
-            PageViewModels[9].ExtraExpenses = haExtraExpenses.ExtraExpenses;
-
-            PageViewModels[10].TechnicalSpecifications = tlExtraExpenses.TechnicalSpecifications;
-            PageViewModels[10].ExtraExpenses = tlExtraExpenses.ExtraExpenses;
-
-            PageViewModels[11].TechnicalSpecifications = crExtraExpenses.TechnicalSpecifications;
-            PageViewModels[11].ExtraExpenses = crExtraExpenses.ExtraExpenses;
-
-            PageViewModels[12].TechnicalSpecifications = ptExtraExpenses.TechnicalSpecifications;
-            PageViewModels[12].ExtraExpenses = ptExtraExpenses.ExtraExpenses;
-
-            PageViewModels[13].TechnicalSpecifications = wlExtraExpenses.TechnicalSpecifications;
-            PageViewModels[13].ExtraExpenses = wlExtraExpenses.ExtraExpenses;
-
-            PageViewModels[14].TechnicalSpecifications = pmExtraExpenses.TechnicalSpecifications;
-            PageViewModels[14].ExtraExpenses = pmExtraExpenses.ExtraExpenses;
-
-            PageViewModels[15].TechnicalSpecifications = vtExtraExpenses.TechnicalSpecifications;
-            PageViewModels[15].ExtraExpenses = vtExtraExpenses.ExtraExpenses;
-
-            PageViewModels[16].TechnicalSpecifications = exExtraExpenses.TechnicalSpecifications;
-            PageViewModels[16].ExtraExpenses = exExtraExpenses.ExtraExpenses;
-
-            PageViewModels[17].TechnicalSpecifications = otExtraExpenses.TechnicalSpecifications;
-            PageViewModels[17].ExtraExpenses = otExtraExpenses.ExtraExpenses;
-
+            IMaterialOutsideExpenses miExpenses = (IMaterialOutsideExpenses)_activeCase.GetExpenseCategory(Category.MaterialOutside);
+            PageViewModels[3].TechnicalSpecifications = miExpenses.TechnicalSpecifications;
+            PageViewModels[3].ExtraExpenses = miExpenses.ExtraExpenses;
         }
 
         public bool Save()

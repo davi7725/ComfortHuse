@@ -3,23 +3,23 @@ using System;
 
 namespace Comforthuse.Models
 {
-    public class Plot :IPlot
+    public class Plot : IPlot
     {
+        public int Area { get; set; }
         public string Zipcode { get; set; }
-        public string Address { get; set; }
         public string City { get; set; }
-        public string Area { get; set; }
-        public string Municipality { get; set; }
-        public DateTime AvailabilityDate { get; set; }
+        public string Address { get; set; }
+        public int Municipality { get; set; }
+        public DateTime AvalibilityDate { get; set; }
     }
 
     public interface IPlot
     {
-        string Zipcode { get; }
-        string Address { get;}
-        string City { get;}
-        string Area { get; }
-        string Municipality { get;}
-        DateTime AvailabilityDate { get; }
+        int Area { get; set; }
+        string Zipcode { get; set; }
+        string Address { get; set; }
+        string City { get; set; }
+        int Municipality { get; set; }
+        DateTime AvalibilityDate { get; set; }
     }
 }

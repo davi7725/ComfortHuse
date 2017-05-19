@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EmployeeRepositoryTests.cs" />
     <Compile Include="TechnicalSpecificationsTest.cs" />
     <Compile Include="TechnicalSpecificationViewModelTest.cs" />
     <Compile Include="U01_Tests.cs" />
@@ -62,8 +63,9 @@
     <Compile Include="U25_EditTechnicalSpecifications.cs" />
     <Compile Include="U19_1_HouseTypeExpenseCategory.cs" />
     <Compile Include="U09_Tests.cs" />
+    <Compile Include="U27_Tests - Copy.cs" />
     <Compile Include="U27_Tests.cs" />
-    <Compile Include="U21_Tests.cs" />
+    <Compile Include="U29_AssignEmployee.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Comforthuse\Comforthuse.csproj">

@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using Comforthuse.Models.SpecificationDerivatives;
+﻿using Comforthuse.Models.SpecificationDerivatives;
 using EmployeeGUI.ViewModels.Partial;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace ComforthuseUserstoryTests
 {
     [TestClass]
     public class TechnicalSpecificationViewModelTest
     {
-    
+
         [TestMethod]
         public void CanRetrieveListOfTechnicalSpecifications()
         {
@@ -24,13 +24,12 @@ namespace ComforthuseUserstoryTests
             TechnicalSpecificationViewModel vm = new TechnicalSpecificationViewModel(tslist);
 
             Assert.AreEqual(vm.TechnicalSpecifications[0].Description, "Spec1");
-
             Assert.AreEqual(vm.TechnicalSpecifications[0].Ticked, true);
             Assert.AreEqual(vm.TechnicalSpecifications[1].Description, "Spec2");
             Assert.AreEqual(vm.TechnicalSpecifications[1].Ticked, false);
             Assert.AreEqual(vm.TechnicalSpecifications[2].Description, "Spec3");
             Assert.AreEqual(vm.TechnicalSpecifications[2].Ticked, true);
         }
-        
+
     }
 }
