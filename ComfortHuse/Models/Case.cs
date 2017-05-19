@@ -33,7 +33,7 @@ namespace Comforthuse.Models
 
         public IEmployee Employee { get; set; }
         public ICustomer Customer { get; set; }
-        public DateTime DateOfCreation { get; internal set; }
+        public DateTime DateOfCreation { get; set; }
         public DateTime DateOfLastRevision { get; internal set; }
         public DateTime ConstructionStartDate { get; set; }
 
@@ -93,6 +93,11 @@ namespace Comforthuse.Models
         {
             return base.GetHashCode();
         }
+
+        public Dictionary<Category, IExpenseCategory> GetAllCategories()
+        {
+            return _expenseCategories;
+        }
     }
 
     public interface ICase
@@ -103,19 +108,20 @@ namespace Comforthuse.Models
         decimal Price { get; }
         int AmountOfRevisions { get; }
 
-        DateTime ConstructionStartDate { get; }
+        DateTime ConstructionStartDate { get; set; }
 
-        DateTime MoveInDate { get; }
+        DateTime MoveInDate { get; set; }
 
-        string Description { get; }
+        string Description { get; set; }
         ICustomer Customer { get; set; }
         IExpenseCategory GetExpenseCategory(Category category);
         DateTime DateOfLastRevision { get; }
-        DateTime DateOfCreation { get; }
+        DateTime DateOfCreation { get; set; }
         IEmployee Employee { get; set; }
         IMoneyInstitute MoneyInstitute { get; set; }
         IPlot Plot { get; set; }
         IImage Image { get;set; }
         void RegisterRevision();
+        Dictionary<Category, IExpenseCategory> GetAllCategories();
     }
 }
