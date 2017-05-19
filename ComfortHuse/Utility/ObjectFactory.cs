@@ -2,6 +2,7 @@
 using Comforthuse.Models;
 using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
+using System;
 
 namespace Comforthuse.Utility
 {
@@ -72,6 +73,7 @@ namespace Comforthuse.Utility
         {
             Dictionary<Category, IExpenseCategory> categories = new Dictionary<Category, IExpenseCategory>();
             categories.Add(Category.BrickLayer, InstanciateBrickLayer());
+            categories.Add(Category.Plot, InstanciatePlotExpenseCategory());
             categories.Add(Category.Carpentry, InstanciateCarpentry());
             categories.Add(Category.CarportGarage, InstanciateCarportGarage());
             categories.Add(Category.ExtraConstruction, InstanciateExtraConstruction());
@@ -79,6 +81,7 @@ namespace Comforthuse.Utility
             categories.Add(Category.HouseType, InstanciateHouseType());
             categories.Add(Category.Interior, InstanciateInterior());
             categories.Add(Category.MaterialInside, InstanciateMaterialInside());
+            categories.Add(Category.MaterialOutside, InstanciateMaterialOutside());
             categories.Add(Category.Other, InstanciateOther());
             categories.Add(Category.Painting, InstanciatePainting());
             categories.Add(Category.Plumbing, InstanciatePlumbing());
@@ -86,6 +89,17 @@ namespace Comforthuse.Utility
             categories.Add(Category.WindowsDoors, InstanciateWindowsAndDoors());
             return categories;
         }
+
+        private MaterialsOutsideExpenses InstanciateMaterialOutside()
+        {
+            return new MaterialsOutsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+
+        private PlotExpenses InstanciatePlotExpenseCategory()
+        {
+            return new PlotExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+        }
+
         private BrickLayerExpenses InstanciateBrickLayer()
         {
             return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };

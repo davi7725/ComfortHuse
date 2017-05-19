@@ -1,6 +1,7 @@
 ﻿using Comforthuse;
 using Comforthuse.Interfaces;
 using Comforthuse.Models;
+using Comforthuse.Utility;
 using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
@@ -175,6 +176,20 @@ namespace EmployeeGUI.ViewModels
             //TechnicalSpecifications = new List<ITechnicalSpecification>() { new TechnicalSpecification() { Description = "LUL", Ticked = true, EditAble = false }, new TechnicalSpecification() }
             PageViewModels[0].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
             PageViewModels[0].ExtraExpenses = hsExpenses.ExtraExpenses;
+
+            ICarportGarageExpenses cpExpenses = (ICarportGarageExpenses)_activeCase.GetExpenseCategory(Category.CarportGarage);
+            PageViewModels[1].TechnicalSpecifications = hsExpenses.TechnicalSpecifications;
+            PageViewModels[1].ExtraExpenses = hsExpenses.ExtraExpenses;
+
+            IPlotExpenses plExpenses = (IPlotExpenses)_activeCase.GetExpenseCategory(Category.Plot);
+            PageViewModels[2].TechnicalSpecifications = plExpenses.TechnicalSpecifications;
+            PageViewModels[2].ExtraExpenses = plExpenses.ExtraExpenses;
+
+            IMaterialOutsideExpenses miExpenses = (IMaterialOutsideExpenses)_activeCase.GetExpenseCategory(Category.MaterialOutside);
+            PageViewModels[3].TechnicalSpecifications = miExpenses.TechnicalSpecifications;
+            PageViewModels[3].ExtraExpenses = miExpenses.ExtraExpenses;
+
+
 
         }
     }

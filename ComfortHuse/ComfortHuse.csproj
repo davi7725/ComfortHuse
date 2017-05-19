@@ -43,6 +43,11 @@
   <ItemGroup>
     <Compile Include="Interfaces\IHouseTypeExpenses.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />
+    <Compile Include="Interfaces\ICarportGarageExpenses.cs" />
+    <Compile Include="Interfaces\IPlotExpenses.cs" />
+    <Compile Include="Interfaces\IMaterialOutsideExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\MaterialsOutsideExpenses.cs" />
+    <Compile Include="Models\ExpensesDerivatives\PlotExpenses.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Plot.cs" />
