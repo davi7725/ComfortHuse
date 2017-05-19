@@ -1,6 +1,6 @@
 namespace Comforthuse.Utility
 {
-    public class CarportGarageExpenses : Expenses, ICarportGarageExpenses
+    public class PlotExpenses : Expenses, IPlotExpenses
     {
         public override decimal Price
         {
