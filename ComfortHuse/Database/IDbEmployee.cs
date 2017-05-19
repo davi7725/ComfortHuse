@@ -5,11 +5,11 @@ namespace Comforthuse.Database
 {
     public interface IDbEmployee
     {
-        void InsertCase();
+        void InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int imageId);
         List<ICase> GetAllCases();
         int GetNextCaseId();
         ICase GetCase(int caseId);
-        void SaveCase(ICase @case);
+        bool SaveCase(ICase @case);
         List<ICustomer> GetAllCustomersByName();
         void SearchForCustomer(string query);
     }

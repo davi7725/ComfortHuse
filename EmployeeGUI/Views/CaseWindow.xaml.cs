@@ -15,5 +15,10 @@ namespace EmployeeGUI
             InitializeComponent();
             _caseViewModel = (CaseViewModel)this.DataContext;
         }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            _caseViewModel.Save();
+        }
     }
 }

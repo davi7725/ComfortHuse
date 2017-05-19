@@ -13,6 +13,11 @@ namespace Comforthuse.Utility
         private IDbEmployee _db = DatabaseController.Instance;
         private List<ICase> _currentCases = new List<ICase>();
 
+        private CaseRepository()
+        {
+            instanciateMockCases();
+        }
+
         public static CaseRepository Instance
         {
             get
@@ -27,8 +32,10 @@ namespace Comforthuse.Utility
 
             var li = new List<ICase>()
                 {
-                    new Case()
+                
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
+                        
                         CaseNumber = 1,
                         AmountOfRevisions = 1,
                         HouseType = "HouseType A",
@@ -38,7 +45,7 @@ namespace Comforthuse.Utility
                             new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 1,
                         AmountOfRevisions = 1,
@@ -48,7 +55,7 @@ namespace Comforthuse.Utility
                             new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 2,
                         AmountOfRevisions = 2,
@@ -59,7 +66,7 @@ namespace Comforthuse.Utility
                             new Customer("Sigurd", "Sigurdson", "abc@abc.com", "Fredericia", "Blåbærvænget 12", "3250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 3,
                         AmountOfRevisions = 4,
@@ -70,7 +77,7 @@ namespace Comforthuse.Utility
                             new Customer("Magnus", "Magnusen", "abc@abc.com", "Århus", "Rønnebærvænget 14", "3250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 2,
                         AmountOfRevisions = 2,
@@ -80,7 +87,7 @@ namespace Comforthuse.Utility
                             new Customer("Sigurd", "Sigurdson", "abc@abc.com", "Fredericia", "Blåbærvænget 12", "3250",
                                 "60606060", "")
                     },
-                    new Case()
+                    new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
                         CaseNumber = 3,
                         AmountOfRevisions = 4,
@@ -148,7 +155,7 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            if (_cases.Count >= 0)
+            if (_cases.Count > 0)
             {
                 return _cases;
 
@@ -159,9 +166,10 @@ namespace Comforthuse.Utility
             }
         }
 
-        public void Save(ICase obj)
+        public bool Save(ICase obj)
         {
-            _db.SaveCase(obj);
+            obj.RegisterRevision();
+            return _db.SaveCase(obj);
         }
 
         public void Clear()

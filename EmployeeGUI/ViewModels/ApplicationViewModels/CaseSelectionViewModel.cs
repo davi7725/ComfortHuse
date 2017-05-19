@@ -4,8 +4,6 @@ using EmployeeGUI.Helpers;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Comforthuse;
-using Comforthuse.Interfaces;
 
 namespace EmployeeGUI.ViewModels
 {
@@ -14,11 +12,8 @@ namespace EmployeeGUI.ViewModels
         private ICommand _getCasesCommand;
         private ICommand _createCaseCommand;
         private ICommand _editCaseCommand;
-
         private IEmployeeFacade _facade = new DomainFacade();
-
         private ObservableCollection<ICase> _cases;
-
         public ObservableCollection<ICase> Cases
         {
             get
@@ -109,14 +104,12 @@ namespace EmployeeGUI.ViewModels
         private void OpenCase(ICase c)
         {
             CaseWindow win = new CaseWindow();
-            CaseViewModel vm = new CaseViewModel() {Case = c};
+            CaseViewModel vm = new CaseViewModel() { Case = c };
             vm.InjectExpenseCategories();
+            vm.Facade = _facade;
             win.DataContext = vm;
             win.Show();
 
         }
-
-
-
     }
 }

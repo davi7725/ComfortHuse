@@ -5,12 +5,16 @@ namespace Comforthuse.Models
 {
     public class Case : ICase
     {
-        // Change
-        private Dictionary<Category, IExpenseCategory> _expenseCategories;
 
+        private Dictionary<Category, IExpenseCategory> _expenseCategories;
         public Case(Dictionary<Category, IExpenseCategory> categories)
         {
             _expenseCategories = categories;
+            DateOfCreation = DateTime.Now;
+        }
+
+        public Case()
+        {
         }
 
         public IExpenseCategory GetExpenseCategory(Category category)
@@ -26,13 +30,21 @@ namespace Comforthuse.Models
             get { return "HouseType" + " for " + Customer.FirstName + " " + Customer.LastName; }
         }
 
-        public IEmployee Employee { get; internal set; }
+        public IEmployee Employee { get; set; }
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; internal set; }
         public DateTime DateOfLastRevision { get; internal set; }
+        public DateTime ConstructionStartDate { get; set; }
+
+        public DateTime MoveInDate { get; set; }
+
+        public string Description { get; set; }
         public int AmountOfRevisions { get; set; }
         public int CaseNumber { get; set; }
-
+        public int Bank { get; set; }
+        public IMoneyInstitute MoneyInstitute { get; set; }
+        public IPlot Plot { get; set; }
+        public IImage Image { get; set; }
         public bool Sold
         {
             get { return _isSold; }
@@ -44,13 +56,8 @@ namespace Comforthuse.Models
                 return CalculatePrice();
             }
         }
-
         public string HouseType { get; set; }
 
-        public Case()
-        {
-            DateOfCreation = DateTime.Now;
-        }
 
         private decimal CalculatePrice()
         {
@@ -64,15 +71,12 @@ namespace Comforthuse.Models
             }
             return price;
         }
-
         public void RegisterRevision()
         {
             AmountOfRevisions = AmountOfRevisions++;
             DateOfLastRevision = DateTime.Now;
         }
-
         public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");
-
         public override bool Equals(object o)
         {
             bool isEqual = false;
@@ -81,8 +85,12 @@ namespace Comforthuse.Models
             {
                 isEqual = true;
             }
-
             return isEqual;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 
@@ -93,9 +101,20 @@ namespace Comforthuse.Models
         int CaseNumber { get; set; }
         decimal Price { get; }
         int AmountOfRevisions { get; }
+
+        DateTime ConstructionStartDate { get; }
+
+        DateTime MoveInDate { get; }
+
+        string Description { get; }
         ICustomer Customer { get; set; }
+        IEmployee Employee { get; set; }
+        IPlot Plot { get; set; }
         IExpenseCategory GetExpenseCategory(Category category);
         DateTime DateOfLastRevision { get; }
         DateTime DateOfCreation { get; }
+        IMoneyInstitute MoneyInstitute { get; set; }
+        IImage Image { get; set; }
+        void RegisterRevision();
     }
 }

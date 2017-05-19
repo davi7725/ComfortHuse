@@ -1,7 +1,6 @@
 ﻿using EmployeeGUI.Helpers;
 using System.Windows;
 using System.Windows.Input;
-using Comforthuse.Models;
 
 
 namespace EmployeeGUI.Views

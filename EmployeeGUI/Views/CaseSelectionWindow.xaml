@@ -19,11 +19,11 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Name="CaseList" VerticalAlignment="Stretch" ItemsSource="{Binding Cases}" MouseDoubleClick="CaseList_OnMouseDoubleClick">
+        <ListView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"  Name="CaseList" VerticalAlignment="Stretch" ItemsSource="{Binding Cases, UpdateSourceTrigger=PropertyChanged}" MouseDoubleClick="CaseList_OnMouseDoubleClick">
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Name="MenuItemEdit" Header="Edit" Click="MenuItemEdit_OnClick"></MenuItem>
-                    <MenuItem Name="MenuItemPrint" Click="MenuItemPrint_OnClick" Header="Print docouments"></MenuItem>
+                    <MenuItem Name="MenuItemPrint" Click="MenuItemPrint_OnClick" Header="Print documents"></MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>
