@@ -1,6 +1,7 @@
 ﻿using System;
 using Comforthuse.Interfaces;
 using Comforthuse.Models;
+using EmployeeGUI.Helpers;
 
 namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 {
@@ -22,6 +23,9 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             {
                 return _houseTypeExpensesModel.HouseType.Name;
             }
+            set {
+                _houseTypeExpensesModel.HouseType.Name = value;
+            }
         }
 
         public string HouseTypeTotalPrice
@@ -29,6 +33,24 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             get
             {
                 return _houseTypeExpensesModel.HouseType.TotalPrice.ToString();
+            }
+            set
+            {
+                decimal totalprice;
+                if (decimal.TryParse(value, out totalprice)) {
+                    _houseTypeExpensesModel.HouseType.TotalPrice = totalprice;
+                }
+                else
+                {
+                    if (value != "")
+                    {
+                        MessageHandling.DisplayErrorMessage("Can only contain numbers");
+                    }
+                    else
+                    {
+                        _houseTypeExpensesModel.HouseType.TotalPrice = 0;
+                    }
+                }
             }
         }
 
@@ -38,8 +60,28 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             {
                 return _houseTypeExpensesModel.HouseType.Area.ToString();
             }
+            set
+            {
+                int housetypearea;
+               
+                if (int.TryParse(value, out housetypearea))
+                {
+                    _houseTypeExpensesModel.HouseType.Area = housetypearea;
+                }
+                else
+                {
+                    if (value != "")
+                    {
+                        MessageHandling.DisplayErrorMessage("Can only contain numbers");
+                    }
+                    else
+                    {
+                        _houseTypeExpensesModel.HouseType.Area = 0;
+                    }
+                }
+            }
+         
         }
-
         public string HouseTypeUnitPrice
         {
             get
