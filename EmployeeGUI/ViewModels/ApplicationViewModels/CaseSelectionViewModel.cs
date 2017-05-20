@@ -21,6 +21,8 @@ namespace EmployeeGUI.ViewModels
                 if (_cases == null)
                 {
                     _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
+                    _facade.GetAllProductTypes();
+                    _facade.GetAllProductOptions();
                 }
                 return _cases;
             }

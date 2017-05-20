@@ -11,5 +11,6 @@ namespace Comforthuse.Models
         decimal Price { get; }
         List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
         List<IExtraExpenseSpecification> ExtraExpenses { get; set; }
+        List<ProductType> ListOfProductTypes { get; set; }
     }
 }

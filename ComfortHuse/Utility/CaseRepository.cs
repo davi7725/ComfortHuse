@@ -149,15 +149,14 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            if (_cases.Count > 0)
-            {
-                return _cases;
+            _cases =  _db.GetAllCases();
 
-            }
-            else
+            if (_cases.Count <= 0)
             {
                 throw new Exception("The list is empty");
             }
+
+            return _cases;
         }
 
         public bool Save(ICase obj)

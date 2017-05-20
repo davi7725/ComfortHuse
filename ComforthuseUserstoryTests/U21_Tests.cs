@@ -5,6 +5,7 @@ using Comforthuse.Database;
 using Comforthuse.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Comforthuse;
+using System.Collections.Generic;
 
 namespace ComforthuseUserstoryTests
 {
@@ -14,6 +15,10 @@ namespace ComforthuseUserstoryTests
         [TestMethod]
         public void ShouldInsertCaseInDatabase()
         {
+
+            Dictionary<int, ProductType> listOfProductTypes = ProductTypeRepository.Instance.GetProductTypes();
+            Dictionary<int, ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
+
             ICase case1 = ObjectFactory.Instance.CreateNewCase();
 
             case1.CaseNumber = 1;
@@ -42,22 +47,31 @@ namespace ComforthuseUserstoryTests
             case1.Image = new Image() { Path = @"c:\test\img2.png", Description = "Very good image" };
 
 
-            case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].Title = "Wall";
-            case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].Amount = 10;
-            case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].PricePerUnit = 10;
-            case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).ExtraExpenses[0].Description = "Wood";
+            case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].Title = "Wall";
+            case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].Amount = 10;
+            case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].PricePerUnit = 10;
+            case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].Description = "Wood";
 
-            case1.GetExpenseCategory(Comforthuse.Category.Carpentry).ExtraExpenses[0].Title = "Material";
-            case1.GetExpenseCategory(Comforthuse.Category.Carpentry).ExtraExpenses[0].Amount = 1;
-            case1.GetExpenseCategory(Comforthuse.Category.Carpentry).ExtraExpenses[0].PricePerUnit = 10;
-            case1.GetExpenseCategory(Comforthuse.Category.Carpentry).ExtraExpenses[0].Description = "Hammer";
+            case1.GetExpenseCategory(Category.Carpentry).ExtraExpenses[0].Title = "Material";
+            case1.GetExpenseCategory(Category.Carpentry).ExtraExpenses[0].Amount = 1;
+            case1.GetExpenseCategory(Category.Carpentry).ExtraExpenses[0].PricePerUnit = 10;
+            case1.GetExpenseCategory(Category.Carpentry).ExtraExpenses[0].Description = "Hammer";
 
-            case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).TechnicalSpecifications[0].EditAble = true;
-            case1.GetExpenseCategory(Comforthuse.Category.CarportGarage).TechnicalSpecifications[0].Description = "Woow such a technical thing";
+            case1.GetExpenseCategory(Category.CarportGarage).TechnicalSpecifications[0].EditAble = true;
+            case1.GetExpenseCategory(Category.CarportGarage).TechnicalSpecifications[0].Description = "Woow such a technical thing";
 
-            case1.GetExpenseCategory(Comforthuse.Category.Carpentry).TechnicalSpecifications[0].EditAble = false;
-            case1.GetExpenseCategory(Comforthuse.Category.Carpentry).TechnicalSpecifications[0].Description = "I don't know how to write technical jk";
-            
+            case1.GetExpenseCategory(Category.Carpentry).TechnicalSpecifications[0].EditAble = false;
+            case1.GetExpenseCategory(Category.Carpentry).TechnicalSpecifications[0].Description = "I don't know how to write technical jk";
+
+            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Selected = true;
+            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Amount = 30;
+            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].SpecialPrice = 19.99M;
+
+            Assert.AreEqual("CarportGarage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].Category.ToString());
+            Assert.AreEqual("Carport/Garage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].Name);
+            Assert.AreEqual("Carport", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[0].Name);
+            Assert.AreEqual("Garage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Name);
+
             Assert.IsTrue(DatabaseController.Instance.SaveCase(case1));
 
         }

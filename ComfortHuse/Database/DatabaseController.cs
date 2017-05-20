@@ -28,12 +28,55 @@ namespace Comforthuse.Database
             }
         }
 
+        public Dictionary<int, ProductType> GetAllProductTypes()
+        {
+            Dictionary<int, ProductType> listOfProductTypes = new Dictionary<int, ProductType>();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetAllProductTypesWithCategoryName", conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int productTypeId = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        string productCategoryName = reader.GetString(2);
+
+                        ProductType pt = new ProductType(productTypeId, name, productCategoryName);
+                        listOfProductTypes.Add(productTypeId, pt);
+                    }
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            return listOfProductTypes;
+        }
+
         public Dictionary<int, ProductOption> GetAllProductOptions()
         {
             Dictionary<int, ProductOption> listOfProductOptions = new Dictionary<int, ProductOption>();
 
             try
             {
+
                 conn.Open();
 
                 SqlCommand command = new SqlCommand("CH_SP_GetAllProductOptions", conn);
@@ -54,9 +97,12 @@ namespace Comforthuse.Database
                         int productType = reader.GetInt32(6);
 
                         ProductOption po = new ProductOption(productOptionId, name, priceF, priceS, unit, isStandard, productType);
-                        listOfProductOptions.Add(productOptionId,po);
+                        listOfProductOptions.Add(productOptionId, po);
                     }
                 }
+
+                reader.Close();
+                reader.Dispose();
 
             }
             catch (SqlException sqlE)
@@ -66,7 +112,6 @@ namespace Comforthuse.Database
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
-                    conn.Dispose();
                 }
             }
 
@@ -106,7 +151,7 @@ namespace Comforthuse.Database
                 InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
                 InsertTechnicalSpecifications(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
                 InsertExtraExpenses(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
-                //InsertProducts();
+                InsertProducts(c, c.DateOfCreation.Year, c.CaseNumber);
 
             }
             catch (SqlException sqlE)
@@ -118,12 +163,60 @@ namespace Comforthuse.Database
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
-                    conn.Dispose();
                 }
             }
 
 
             return isSuccessful;
+        }
+
+        private void InsertProducts(ICase c, int caseYear, int caseNumber)
+        {
+            DeleteCaseProducts(caseYear, caseNumber);
+
+            Dictionary<Category, IExpenseCategory> dictionary = c.GetAllCategories();
+
+            foreach (IExpenseCategory iec in dictionary.Values)
+            {
+                foreach (ProductType pt in iec.ListOfProductTypes)
+                {
+                    foreach(ProductOption po in pt.ListOfProductOption)
+                    {
+                        if (po.Selected == true)
+                        {
+                            InsertCaseProductOption(po.ProductId, caseNumber, caseYear, po.Amount,po.SpecialPrice, po.Special);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void InsertCaseProductOption(int productId, int caseNumber, int caseYear, int amount, decimal specialPrice, bool special)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_InsertCaseProduct", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+            command.Parameters.Add(new SqlParameter("@ProductOptionId", productId));
+            command.Parameters.Add(new SqlParameter("@Amount", amount));
+            command.Parameters.Add(new SqlParameter("@SpecialPrice", specialPrice));
+            command.Parameters.Add(new SqlParameter("@Special", special));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+        }
+
+        private void DeleteCaseProducts(object caseYear, int caseNumber)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_DeleteCaseProducts", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
         }
 
         private void InsertTechnicalSpecifications(Dictionary<Category, IExpenseCategory> dictionary, int caseYear, int caseNumber)

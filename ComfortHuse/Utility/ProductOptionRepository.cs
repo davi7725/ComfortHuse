@@ -6,6 +6,9 @@ namespace Comforthuse.Utility
 {
     public class ProductOptionRepository
     {
+
+        private static ProductOptionRepository _instance;
+
         private Dictionary<int, ProductOption> listOfProductOptions = new Dictionary<int, ProductOption>();
 
         public Dictionary<int,ProductOption> GetProductOptions()
@@ -17,5 +20,18 @@ namespace Comforthuse.Utility
 
             return listOfProductOptions;
         }
+
+        public static ProductOptionRepository Instance
+        {
+            get
+            {
+                if(_instance == null)
+                {
+                    _instance = new ProductOptionRepository();
+                }
+                return _instance;
+            }
+        }
+
     }
 }

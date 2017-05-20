@@ -24,6 +24,8 @@ namespace Comforthuse.Utility
 
         public List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
 
+        public List<ProductType> ListOfProductTypes { get; set; }
+
         public decimal PriceExtraExpenses
         {
             get

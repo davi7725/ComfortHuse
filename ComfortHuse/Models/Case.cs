@@ -42,7 +42,6 @@ namespace Comforthuse.Models
         public string Description { get; set; }
         public int AmountOfRevisions { get; set; }
         public int CaseNumber { get; set; }
-        public int Bank { get; set; }
         public IMoneyInstitute MoneyInstitute { get; set; }
         public IPlot Plot { get; set; }
         public IImage Image { get; set; }
