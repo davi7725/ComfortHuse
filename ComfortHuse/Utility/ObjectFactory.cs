@@ -2,6 +2,7 @@
 using Comforthuse.Models;
 using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
+using System;
 
 namespace Comforthuse.Utility
 {
@@ -22,6 +23,16 @@ namespace Comforthuse.Utility
                 }
                 return _instance;
             }
+        }
+
+        public IMoneyInstitute CreateMoneyInstitute(string name, string address, string zipcode, string city, string phonenumber)
+        {
+            return new MoneyInstitute() { Name = name, Address = address, Zipcode = zipcode, City = city, PhoneNb = phonenumber };
+        }
+
+        public IPlot CreatePlot()
+        {
+            return new Plot() { AvailabilityDate = new DateTime(2017,2,1), Area = 23, City = "Odense"};
         }
 
         internal List<ITechnicalSpecification> InstanciateTechnicalSpecification(int amount, List<string> presetSpecifications)

@@ -1,5 +1,5 @@
-﻿using System;
-using Comforthuse.Models;
+﻿using Comforthuse.Models;
+using System;
 
 namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 {

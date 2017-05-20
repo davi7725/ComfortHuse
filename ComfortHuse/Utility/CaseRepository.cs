@@ -50,7 +50,7 @@ namespace Comforthuse.Utility
                         DateOfCreation = new DateTime(2017, 5, 18),
                         Customer =
                             new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
-                                "60606060", "")
+                                "60606060", "60000")
                     },
                     new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
@@ -149,7 +149,7 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            _cases =  _db.GetAllCases();
+           // _cases =  _db.GetAllCases();
 
             if (_cases.Count <= 0)
             {

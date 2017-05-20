@@ -1,11 +1,11 @@
 ﻿using Comforthuse;
 using Comforthuse.Facade;
-using Comforthuse.Interfaces;
 using Comforthuse.Models;
 using Comforthuse.Utility;
 using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -18,6 +18,7 @@ namespace EmployeeGUI.ViewModels
         private ICustomer _caseCustomer;
         private ICommand _changePageCommand;
         private IPageViewModel _currentPageViewModel;
+        private MoneyInstituteViewModel _moneyInstitueViewModel; 
         private List<IPageViewModel> _pageViewModels;
         private int _caseID;
         private ICase _activeCase;
@@ -33,9 +34,19 @@ namespace EmployeeGUI.ViewModels
                 InstanciateViewModel();
             }
         }
+        public MoneyInstituteViewModel MoneyInstituteViewModel
+        {
+            get
+            {
+                if (_moneyInstitueViewModel == null) _moneyInstitueViewModel = new MoneyInstituteViewModel();
+                return _moneyInstitueViewModel;
+            }
+        }
 
         private void InstanciateViewModel()
         {
+            _moneyInstitueViewModel = new MoneyInstituteViewModel();
+            _moneyInstitueViewModel.MoneyInstitute = _activeCase.MoneyInstitute;
             _caseCustomer = _activeCase.Customer;
         }
         public CaseViewModel()
@@ -175,23 +186,44 @@ namespace EmployeeGUI.ViewModels
 
         public string PlotAvalibilityDate
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.AvailabilityDate.ToString("MM-dd-yy"); }
+            set {
+                string dateString = value;
+                string[] datestringArr = dateString.Split('-');
+                int day;
+                int month;
+                int year;
+                int.TryParse(datestringArr[0], out day);
+                int.TryParse(datestringArr[1], out month);
+                int.TryParse(datestringArr[2], out year);
+                _activeCase.Plot.AvailabilityDate = new DateTime(year,month,day); 
+            }
         }
+
+        public string PlotAddress
+        {
+            get { return _activeCase.Plot.Address; }
+            set
+            {
+                _activeCase.Plot.Address = value; 
+            }
+        }
+
         public string PlotCity
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.City; }
+            set { _activeCase.Plot.City = value; }
         }
         public string PlotZipcode
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.Zipcode; }
+            set { _activeCase.Plot.Zipcode = value; }
+
         }
         public string PlotMunicipality
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.Municipality; }
+            set { _activeCase.Plot.Municipality = value; }
         }
         public string PlotArea
         {
@@ -199,14 +231,21 @@ namespace EmployeeGUI.ViewModels
             set
             {
                 int area;
+
                 if (int.TryParse(value, out area))
                 {
-
                     _activeCase.Plot.Area = area;
                 }
                 else
                 {
-                    MessageHandling.DisplayErrorMessage("Invalid value, you can only enter numbers");
+                    if (value != "")
+                    {
+                        MessageHandling.DisplayErrorMessage("Can only contain numbers");
+                    }
+                    else
+                    {
+                        _activeCase.Plot.Area = 0;
+                    }
                 }
             }
         }
@@ -216,7 +255,14 @@ namespace EmployeeGUI.ViewModels
         }
         public List<IEmployee> Employees
         {
-            get { return _facade.GetAllEmployees(); }
+            get
+            {
+                return new List<IEmployee>
+                {
+                        new Employee("a", "h", "c", "d"),
+                        new Employee("b", "e", "f", "g")
+                };
+            }
         }
         public string SalesPersonPhoneNb
         {

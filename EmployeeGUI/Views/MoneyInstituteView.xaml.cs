@@ -13,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EmployeeGUI.Views.ExpenseCategoryPages
+namespace EmployeeGUI.Views
 {
     /// <summary>
-    /// Interaction logic for HouseTypePage.xaml
+    /// Interaction logic for MoneyInstituteView.xaml
     /// </summary>
-    public partial class HouseTypoPage : UserControl
+    public partial class MoneyInstituteView : UserControl
     {
-        public HouseTypoPage()
+        public MoneyInstituteView()
         {
             InitializeComponent();
-        }
-
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

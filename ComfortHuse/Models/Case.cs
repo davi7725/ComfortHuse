@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comforthuse.Utility;
+using System;
 using System.Collections.Generic;
 using Comforthuse.Interfaces;
 
@@ -12,10 +13,13 @@ namespace Comforthuse.Models
         {
             _expenseCategories = categories;
             DateOfCreation = DateTime.Now;
+            Plot = ObjectFactory.Instance.CreatePlot();
+            MoneyInstitute = ObjectFactory.Instance.CreateMoneyInstitute("Danske Bank", "Allerodgade 23", "5300", "Svendborg", "60669041");
         }
 
         public Case()
         {
+            Plot = ObjectFactory.Instance.CreatePlot();
         }
 
         public IExpenseCategory GetExpenseCategory(Category category)
