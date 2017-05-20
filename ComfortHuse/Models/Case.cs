@@ -7,7 +7,6 @@ namespace Comforthuse.Models
 {
     public class Case : ICase
     {
-
         private Dictionary<Category, IExpenseCategory> _expenseCategories;
         public Case(Dictionary<Category, IExpenseCategory> categories)
         {
@@ -40,9 +39,7 @@ namespace Comforthuse.Models
         public DateTime DateOfCreation { get; set; }
         public DateTime DateOfLastRevision { get; internal set; }
         public DateTime ConstructionStartDate { get; set; }
-
         public DateTime MoveInDate { get; set; }
-
         public string Description { get; set; }
         public int AmountOfRevisions { get; set; }
         public int CaseNumber { get; set; }
@@ -61,8 +58,6 @@ namespace Comforthuse.Models
             }
         }
         public string HouseType { get; set; }
-
-
         private decimal CalculatePrice()
         {
             decimal price = 0;
@@ -102,7 +97,6 @@ namespace Comforthuse.Models
             return _expenseCategories;
         }
     }
-
     public interface ICase
     {
         string Title { get; }
@@ -110,11 +104,8 @@ namespace Comforthuse.Models
         int CaseNumber { get; set; }
         decimal Price { get; }
         int AmountOfRevisions { get; }
-
         DateTime ConstructionStartDate { get; set; }
-
         DateTime MoveInDate { get; set; }
-
         string Description { get; set; }
         ICustomer Customer { get; set; }
         IExpenseCategory GetExpenseCategory(Category category);
