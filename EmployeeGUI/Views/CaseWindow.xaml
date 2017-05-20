@@ -7,7 +7,7 @@
         xmlns:expenseCategoryViewModels="clr-namespace:EmployeeGUI.ViewModels.ExpenseCategoryPages"
         xmlns:expenseCategoryViews="clr-namespace:EmployeeGUI.Views.ExpenseCategoryPages"
         mc:Ignorable="d"
-        Title="Case" MinHeight="840" MinWidth="840">
+        Title="Case window" MinHeight="840" MinWidth="840">
     <Window.Resources>
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:GarageCarportExpenseViewModel}">
             <expenseCategoryViews:GarageCarportPage />
