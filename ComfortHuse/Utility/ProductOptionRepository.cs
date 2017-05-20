@@ -33,5 +33,10 @@ namespace Comforthuse.Utility
             }
         }
 
+        private ProductOptionRepository()
+        {
+
+        }
+
     }
 }

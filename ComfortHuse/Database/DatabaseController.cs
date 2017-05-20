@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Comforthuse.Interfaces;
+using Comforthuse.Utility;
 
 namespace Comforthuse.Database
 {
@@ -120,9 +121,260 @@ namespace Comforthuse.Database
 
         public List<ICase> GetAllCases()
         {
-            List<ICase> list = new List<ICase>();
+            List<ICase> listOfCases = new List<ICase>();
+            try
+            {
+                conn.Open();
 
-            return list;
+                SqlCommand command = new SqlCommand("CH_SP_GetAllCases", conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataReader reader = command.ExecuteReader();
+                List<TempCase> tempCases = new List<TempCase>();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int caseNumber = 0;
+                        DateTime constructionStartDate = new DateTime();
+                        DateTime moveInDate = new DateTime();
+                        string description = "";
+                        int amountOfRevisions = 0;
+                        DateTime dateOfCreation = new DateTime();
+                        DateTime dateOfLastRevision = new DateTime();
+                        bool sold = false;
+                        string customerEmail = "";
+                        int moneyInstituteId = 0;
+                        string employeeEmail = "";
+                        int plotId = 0;
+                        int imageId = 0;
+
+                        Case caseObj = (Case)ObjectFactory.Instance.CreateNewCase();
+                        caseObj.CaseNumber = caseNumber;
+                        caseObj.ConstructionStartDate = constructionStartDate;
+                        caseObj.MoveInDate = moveInDate;
+                        caseObj.Description = description;
+                        caseObj.AmountOfRevisions = amountOfRevisions;
+                        caseObj.DateOfCreation = dateOfCreation;
+                        caseObj.DateOfLastRevision = dateOfLastRevision;
+                        caseObj.Sold = sold;
+
+                        TempCase tempCase = new TempCase(caseObj, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
+                        tempCases.Add(tempCase);
+
+                        listOfCases.Add(caseObj);
+                    }
+                }
+
+                reader.Close();
+                reader.Dispose();
+
+                GetCaseDependencies(tempCases);
+
+            }
+            catch (SqlException sqlE)
+            {
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+
+
+
+            return listOfCases;
+        }
+
+        private void GetCaseDependencies(List<TempCase> tempCases)
+        {
+            foreach(TempCase tc in tempCases)
+            {
+                tc.Case.Customer = GetCustomerByEmail(tc.CustomerEmail);
+                tc.Case.MoneyInstitute = GetMoneyInstituteById(tc.MoneyInstituteId);
+                tc.Case.Plot = GetPlotById(tc.PlotId);
+                tc.Case.Image = GetImageById(tc.ImageId);
+                tc.Case.Employee = EmployeeRepository.Instance.Load(tc.EmployeeEmail);
+            }
+        }
+
+        private IImage GetImageById(int imageId)
+        {
+            Image image = new Image();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetImageById", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ImageId", imageId));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    string path = reader.GetString(2);
+                    string description = reader.GetString(3);
+                    image.Path = path;
+                    image.Description = description;
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return image;
+        }
+
+        private IPlot GetPlotById(int plotId)
+        {
+            Plot plot = new Plot();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetPlotById", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PlotId", plotId));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    string zipcode = reader.GetString(2);
+                    string address = reader.GetString(3);
+                    string city = reader.GetString(4);
+                    int area = reader.GetInt32(5);
+                    string municipality = reader.GetString(6);
+                    DateTime availabilityDate = reader.GetDateTime(7);
+                    plot.Zipcode = zipcode;
+                    plot.Address = address;
+                    plot.City = city;
+                    plot.Area = area;
+                    plot.Municipality = municipality;
+                    plot.AvailabilityDate = availabilityDate;
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return plot;
+        }
+
+        private IMoneyInstitute GetMoneyInstituteById(int moneyInstituteId)
+        {
+            MoneyInstitute moneyInstitute = new MoneyInstitute();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetMoneyInstituteById", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@MoneyInstituteId", moneyInstituteId));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    string name = reader.GetString(0);
+                    string address = reader.GetString(1);
+                    string zipcode = reader.GetString(2);
+                    string city = reader.GetString(3);
+                    string phoneNb = reader.GetString(4);
+                    moneyInstitute.Name = name;
+                    moneyInstitute.Address = address;
+                    moneyInstitute.Zipcode = zipcode;
+                    moneyInstitute.City = city;
+                    moneyInstitute.PhoneNb = phoneNb;
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            return moneyInstitute;
+        }
+
+        private ICustomer GetCustomerByEmail(string customerEmail)
+        {
+            Customer customer = new Customer();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetCustomerByEmail", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Email", customerEmail));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    string firstName = reader.GetString(0);
+                    string lastName = reader.GetString(1);
+                    string city = reader.GetString(3);
+                    string address = reader.GetString(4);
+                    string zipcode = reader.GetString(5);
+                    string phoneNb1 = reader.GetString(6);
+                    string phoneNb2 = reader.GetString(7);
+                    customer.FirstName = firstName;
+                    customer.LastName = lastName;
+                    customer.Email = customerEmail;
+                    customer.City = city;
+                    customer.Address = address;
+                    customer.Zipcode = zipcode;
+                    customer.PhoneNb1 = phoneNb1;
+                    customer.PhoneNb2 = phoneNb2;
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            return customer;
         }
 
         public int GetNextCaseId()
@@ -180,11 +432,11 @@ namespace Comforthuse.Database
             {
                 foreach (ProductType pt in iec.ListOfProductTypes)
                 {
-                    foreach(ProductOption po in pt.ListOfProductOption)
+                    foreach (ProductOption po in pt.ListOfProductOption)
                     {
                         if (po.Selected == true)
                         {
-                            InsertCaseProductOption(po.ProductId, caseNumber, caseYear, po.Amount,po.SpecialPrice, po.Special);
+                            InsertCaseProductOption(po.ProductId, caseNumber, caseYear, po.Amount, po.SpecialPrice, po.Special);
                         }
                     }
                 }

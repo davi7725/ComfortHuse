@@ -49,10 +49,7 @@ namespace Comforthuse.Models
         public IMoneyInstitute MoneyInstitute { get; set; }
         public IPlot Plot { get; set; }
         public IImage Image { get; set; }
-        public bool Sold
-        {
-            get { return _isSold; }
-        }
+        public bool Sold { get; set; }
         public decimal Price
         {
             get
@@ -60,7 +57,6 @@ namespace Comforthuse.Models
                 return CalculatePrice();
             }
         }
-        public string HouseType { get; set; }
 
 
         private decimal CalculatePrice()
@@ -106,7 +102,7 @@ namespace Comforthuse.Models
     public interface ICase
     {
         string Title { get; }
-        bool Sold { get; }
+        bool Sold { get; set; }
         int CaseNumber { get; set; }
         decimal Price { get; }
         int AmountOfRevisions { get; }
