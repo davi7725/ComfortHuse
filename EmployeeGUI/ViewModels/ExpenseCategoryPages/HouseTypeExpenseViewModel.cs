@@ -1,5 +1,4 @@
-﻿using System;
-using Comforthuse.Interfaces;
+﻿using Comforthuse.Interfaces;
 using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 
@@ -10,7 +9,8 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 
         private IHouseTypeExpenses _houseTypeExpensesModel;
 
-        public string HouseTypeDescription {
+        public string HouseTypeDescription
+        {
             get
             {
                 return _houseTypeExpensesModel.HouseType.Description;
@@ -23,7 +23,8 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             {
                 return _houseTypeExpensesModel.HouseType.Name;
             }
-            set {
+            set
+            {
                 _houseTypeExpensesModel.HouseType.Name = value;
             }
         }
@@ -37,7 +38,8 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             set
             {
                 decimal totalprice;
-                if (decimal.TryParse(value, out totalprice)) {
+                if (decimal.TryParse(value, out totalprice))
+                {
                     _houseTypeExpensesModel.HouseType.TotalPrice = totalprice;
                 }
                 else
@@ -63,7 +65,7 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             set
             {
                 int housetypearea;
-               
+
                 if (int.TryParse(value, out housetypearea))
                 {
                     _houseTypeExpensesModel.HouseType.Area = housetypearea;
@@ -80,7 +82,7 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
                     }
                 }
             }
-         
+
         }
         public string HouseTypeUnitPrice
         {
@@ -96,7 +98,7 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
         {
             Name = "House Type";
         }
-        
+
         public override IExpenseCategory ExpenseCategory
         {
 

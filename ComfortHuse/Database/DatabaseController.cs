@@ -58,6 +58,7 @@ namespace Comforthuse.Database
                 int moneyInstituteId = InsertMoneyInstitute(c.MoneyInstitute);
                 string employeeEmail = InsertEmployee(c.Employee);
                 int plotId = InsertPlot(c.Plot);
+
                 int imageId = InsertImage(c.Image);
                 InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
                 //InsertProducts();

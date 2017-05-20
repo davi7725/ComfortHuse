@@ -1,6 +1,5 @@
 ﻿using Comforthuse;
 using Comforthuse.Facade;
-using Comforthuse.Interfaces;
 using Comforthuse.Models;
 using Comforthuse.Utility;
 using EmployeeGUI.Helpers;
@@ -216,7 +215,14 @@ namespace EmployeeGUI.ViewModels
         }
         public List<IEmployee> Employees
         {
-            get { return _facade.GetAllEmployees(); }
+            get
+            {
+                return new List<IEmployee>
+                {
+                        new Employee("a", "h", "c", "d"),
+                        new Employee("b", "e", "f", "g")
+                };
+            }
         }
         public string SalesPersonPhoneNb
         {

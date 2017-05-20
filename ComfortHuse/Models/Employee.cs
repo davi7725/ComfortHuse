@@ -4,7 +4,7 @@
     {
         public string FirstName { get; set; }
 
-        public string FullName
+        public string DisplayName
         {
             get
             {
