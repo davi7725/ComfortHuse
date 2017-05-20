@@ -18,6 +18,7 @@ namespace EmployeeGUI.ViewModels
         private ICustomer _caseCustomer;
         private ICommand _changePageCommand;
         private IPageViewModel _currentPageViewModel;
+        private MoneyInstituteViewModel _moneyInstitueViewModel; 
         private List<IPageViewModel> _pageViewModels;
         private int _caseID;
         private ICase _activeCase;
@@ -33,9 +34,19 @@ namespace EmployeeGUI.ViewModels
                 InstanciateViewModel();
             }
         }
+        public MoneyInstituteViewModel MoneyInstituteViewModel
+        {
+            get
+            {
+                if (_moneyInstitueViewModel == null) _moneyInstitueViewModel = new MoneyInstituteViewModel();
+                return _moneyInstitueViewModel;
+            }
+        }
 
         private void InstanciateViewModel()
         {
+            _moneyInstitueViewModel = new MoneyInstituteViewModel();
+            _moneyInstitueViewModel.MoneyInstitute = _activeCase.MoneyInstitute;
             _caseCustomer = _activeCase.Customer;
         }
         public CaseViewModel()

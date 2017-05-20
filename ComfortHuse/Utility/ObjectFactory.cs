@@ -25,6 +25,11 @@ namespace Comforthuse.Utility
             }
         }
 
+        public IMoneyInstitute CreateMoneyInstitute(string name, string address, string zipcode, string city, string phonenumber)
+        {
+            return new MoneyInstitute() { Name = name, Address = address, Zipcode = zipcode, City = city, PhoneNb = phonenumber };
+        }
+
         public IPlot CreatePlot()
         {
             return new Plot() { AvailabilityDate = new DateTime(2017,2,1), Area = 23, City = "Odense"};

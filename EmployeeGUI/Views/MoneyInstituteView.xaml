@@ -5,8 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EmployeeGUI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             d:DesignHeight="480" d:DesignWidth="350">
+    <GroupBox VerticalContentAlignment="Top" FontSize="12" Header="Money Institute" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+      
+           
+            <Label Grid.Column="1" Grid.Row="0" x:Name="label_FirstName" Content="Name:" HorizontalAlignment="Left" Height="25"  />
+            <TextBox Grid.Column="3" Grid.Row="0"  Text="{Binding Name}" x:Name="txtBox_Name" HorizontalAlignment="Left" Height="20" Width="200" />
+
+
+            <Label Grid.Column="1" Grid.Row="1" x:Name="label_LastName" Content="Adress:" HorizontalAlignment="Left" Height="25"  />
+            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Address}" x:Name="txtBox_Address" HorizontalAlignment="Left" Height="20" Width="200" />
+
+            <Label Grid.Column="1" Grid.Row="2" x:Name="label_City" Content="ZipCode:" HorizontalAlignment="Left" Height="25" />
+            <TextBox  Grid.Column="3" Grid.Row="2" Text="{Binding Zipcode}" x:Name="txtBox_Zipcode" HorizontalAlignment="Left" Height="20" Width="200" />
+
+            <Label  Grid.Column="1" Grid.Row="3" x:Name="label_Address" Content="City:" HorizontalAlignment="Left" Height="25"  />
+            <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding City}"  x:Name="txtBox_City" HorizontalAlignment="Left" Height="20" Width="200" />
+
+            <Label  Grid.Column="1" Grid.Row="4" x:Name="label_Zipcode" Content="PhoneNb:" HorizontalAlignment="Left" Height="25"  />
+            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding PhoneNumber}"  x:Name="txtBox_PhoneNb" HorizontalAlignment="Left" Height="20" Width="200"  />
+
             
-    </Grid>
+        </Grid>
+    </GroupBox>
 </UserControl>
