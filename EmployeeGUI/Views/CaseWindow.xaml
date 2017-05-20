@@ -291,8 +291,7 @@
                     <ComboBox ItemsSource="{Binding Employees}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
-                                <ComboBoxItem Content="{Binding FullName}">
-                                </ComboBoxItem>
+                                <Rectangle Fill="{Binding DisplayName}" Width="16" Height="16" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>

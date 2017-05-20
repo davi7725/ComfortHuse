@@ -43,8 +43,6 @@ namespace ComforthuseUserstoryTests
 
             IPageViewModel htvm = new HouseTypeExpenseViewModel();
 
-
-
             //Assert.AreEqual();
         }
 
