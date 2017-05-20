@@ -1,6 +1,7 @@
 ﻿using Comforthuse.Utility;
 using System;
 using System.Collections.Generic;
+using Comforthuse.Interfaces;
 
 namespace Comforthuse.Models
 {
@@ -35,7 +36,7 @@ namespace Comforthuse.Models
 
         public IEmployee Employee { get; set; }
         public ICustomer Customer { get; set; }
-        public DateTime DateOfCreation { get; internal set; }
+        public DateTime DateOfCreation { get; set; }
         public DateTime DateOfLastRevision { get; internal set; }
         public DateTime ConstructionStartDate { get; set; }
 
@@ -44,7 +45,6 @@ namespace Comforthuse.Models
         public string Description { get; set; }
         public int AmountOfRevisions { get; set; }
         public int CaseNumber { get; set; }
-        public int Bank { get; set; }
         public IMoneyInstitute MoneyInstitute { get; set; }
         public IPlot Plot { get; set; }
         public IImage Image { get; set; }
@@ -59,6 +59,9 @@ namespace Comforthuse.Models
                 return CalculatePrice();
             }
         }
+        public string HouseType { get; set; }
+
+
         private decimal CalculatePrice()
         {
             decimal price = 0;
@@ -92,6 +95,11 @@ namespace Comforthuse.Models
         {
             return base.GetHashCode();
         }
+
+        public Dictionary<Category, IExpenseCategory> GetAllCategories()
+        {
+            return _expenseCategories;
+        }
     }
 
     public interface ICase
@@ -101,17 +109,21 @@ namespace Comforthuse.Models
         int CaseNumber { get; set; }
         decimal Price { get; }
         int AmountOfRevisions { get; }
-        DateTime ConstructionStartDate { get; }
-        DateTime MoveInDate { get; }
-        string Description { get; }
+
+        DateTime ConstructionStartDate { get; set; }
+
+        DateTime MoveInDate { get; set; }
+
+        string Description { get; set; }
         ICustomer Customer { get; set; }
-        IEmployee Employee { get; set; }
-        IPlot Plot { get; set; }
         IExpenseCategory GetExpenseCategory(Category category);
         DateTime DateOfLastRevision { get; }
-        DateTime DateOfCreation { get; }
+        DateTime DateOfCreation { get; set; }
+        IEmployee Employee { get; set; }
         IMoneyInstitute MoneyInstitute { get; set; }
-        IImage Image { get; set; }
+        IPlot Plot { get; set; }
+        IImage Image { get;set; }
         void RegisterRevision();
+        Dictionary<Category, IExpenseCategory> GetAllCategories();
     }
 }
