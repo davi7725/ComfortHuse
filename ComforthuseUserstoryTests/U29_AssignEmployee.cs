@@ -32,7 +32,7 @@ namespace ComforthuseUserstoryTests
         {
             //Given
             IEmployee employee = ObjectFactory.Instance.CreateEmployee("Alexander", "Hvidt", "alexander2341@gmail.com", "60669041");
-            IEmployeeRepository empRepo = new EmployeeRepository();
+            IEmployeeRepository empRepo = EmployeeRepository.Instance;
 
             //When
             empRepo.Add(employee);

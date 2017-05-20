@@ -39,9 +39,9 @@ namespace Comforthuse.Models
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; set; }
         public DateTime DateOfLastRevision { get; internal set; }
-        public DateTime ConstructionStartDate { get; set; }
+        public DateTime? ConstructionStartDate { get; set; }
 
-        public DateTime MoveInDate { get; set; }
+        public DateTime? MoveInDate { get; set; }
 
         public string Description { get; set; }
         public int AmountOfRevisions { get; set; }
@@ -107,9 +107,9 @@ namespace Comforthuse.Models
         decimal Price { get; }
         int AmountOfRevisions { get; }
 
-        DateTime ConstructionStartDate { get; set; }
+        DateTime? ConstructionStartDate { get; set; }
 
-        DateTime MoveInDate { get; set; }
+        DateTime? MoveInDate { get; set; }
 
         string Description { get; set; }
         ICustomer Customer { get; set; }

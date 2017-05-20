@@ -122,6 +122,8 @@ namespace Comforthuse.Database
         public List<ICase> GetAllCases()
         {
             List<ICase> listOfCases = new List<ICase>();
+            List<TempCase> tempCases = new List<TempCase>();
+
             try
             {
                 conn.Open();
@@ -130,25 +132,71 @@ namespace Comforthuse.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlDataReader reader = command.ExecuteReader();
-                List<TempCase> tempCases = new List<TempCase>();
 
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        int caseNumber = 0;
-                        DateTime constructionStartDate = new DateTime();
-                        DateTime moveInDate = new DateTime();
-                        string description = "";
-                        int amountOfRevisions = 0;
-                        DateTime dateOfCreation = new DateTime();
-                        DateTime dateOfLastRevision = new DateTime();
-                        bool sold = false;
-                        string customerEmail = "";
-                        int moneyInstituteId = 0;
-                        string employeeEmail = "";
-                        int plotId = 0;
-                        int imageId = 0;
+                        int caseNumber = reader.GetInt32(0);
+
+                        DateTime? constructionStartDate;
+                        if (reader.IsDBNull(1))
+                        {
+                            constructionStartDate = null;
+                        }
+                        else
+                        {
+                            constructionStartDate = reader.GetDateTime(1);
+                        }
+
+                        DateTime? moveInDate;
+                        if (reader.IsDBNull(2))
+                        {
+                            moveInDate = null;
+                        }
+                        else
+                        {
+                            moveInDate = reader.GetDateTime(2);
+                        }
+
+                        string description = reader.GetString(3);
+                        int amountOfRevisions = reader.GetInt32(4);
+                        DateTime dateOfCreation = reader.GetDateTime(5);
+                        DateTime dateOfLastRevision = reader.GetDateTime(6);
+                        bool sold = reader.GetBoolean(7);
+                        string customerEmail = reader.GetString(8);
+
+                        int? moneyInstituteId;
+                        if (reader.IsDBNull(9))
+                        {
+                            moneyInstituteId = null;
+                        }
+                        else
+                        {
+                            moneyInstituteId = reader.GetInt32(9);
+                        }
+                        string employeeEmail = reader.GetString(10);
+
+                        int? plotId;
+                        if (reader.IsDBNull(11))
+                        {
+                            plotId = null;
+                        }
+                        else
+                        {
+                            plotId = reader.GetInt32(11);
+                        }
+
+                        int? imageId;
+                        if (reader.IsDBNull(12))
+                        {
+                            imageId = null;
+                        }
+                        else
+                        {
+                            imageId = reader.GetInt32(12);
+                        }
+
 
                         Case caseObj = (Case)ObjectFactory.Instance.CreateNewCase();
                         caseObj.CaseNumber = caseNumber;
@@ -169,9 +217,7 @@ namespace Comforthuse.Database
 
                 reader.Close();
                 reader.Dispose();
-
-                GetCaseDependencies(tempCases);
-
+                command.Dispose();
             }
             catch (SqlException sqlE)
             {
@@ -185,19 +231,30 @@ namespace Comforthuse.Database
             }
 
 
-
-
+            GetCaseDependencies(tempCases);
             return listOfCases;
         }
 
         private void GetCaseDependencies(List<TempCase> tempCases)
         {
-            foreach(TempCase tc in tempCases)
+            foreach (TempCase tc in tempCases)
             {
                 tc.Case.Customer = GetCustomerByEmail(tc.CustomerEmail);
-                tc.Case.MoneyInstitute = GetMoneyInstituteById(tc.MoneyInstituteId);
-                tc.Case.Plot = GetPlotById(tc.PlotId);
-                tc.Case.Image = GetImageById(tc.ImageId);
+                if (tc.MoneyInstituteId == null)
+                    tc.Case.MoneyInstitute = new MoneyInstitute();
+                else
+                    tc.Case.MoneyInstitute = GetMoneyInstituteById(Convert.ToInt32(tc.MoneyInstituteId));
+
+                if (tc.PlotId == null)
+                    tc.Case.Plot = new Plot();
+                else
+                    tc.Case.Plot = GetPlotById(Convert.ToInt32(tc.PlotId));
+
+                if (tc.ImageId == null)
+                    tc.Case.Image = new Image();
+                else
+                    tc.Case.Image = GetImageById(Convert.ToInt32(tc.ImageId));
+
                 tc.Case.Employee = EmployeeRepository.Instance.Load(tc.EmployeeEmail);
             }
         }
@@ -218,8 +275,9 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
-                    string path = reader.GetString(2);
-                    string description = reader.GetString(3);
+                    reader.Read();
+                    string path = reader.GetString(0);
+                    string description = reader.GetString(1);
                     image.Path = path;
                     image.Description = description;
                 }
@@ -243,6 +301,7 @@ namespace Comforthuse.Database
         {
             Plot plot = new Plot();
 
+
             try
             {
                 conn.Open();
@@ -255,12 +314,14 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
-                    string zipcode = reader.GetString(2);
-                    string address = reader.GetString(3);
-                    string city = reader.GetString(4);
-                    int area = reader.GetInt32(5);
-                    string municipality = reader.GetString(6);
-                    DateTime availabilityDate = reader.GetDateTime(7);
+                    reader.Read();
+                    string zipcode = reader.GetString(0);
+                    string address = reader.GetString(1);
+                    string city = reader.GetString(2);
+                    int area = reader.GetInt32(3);
+                    string municipality = reader.GetString(4);
+                    DateTime availabilityDate = reader.GetDateTime(5);
+
                     plot.Zipcode = zipcode;
                     plot.Address = address;
                     plot.City = city;
@@ -281,6 +342,7 @@ namespace Comforthuse.Database
                     conn.Close();
                 }
             }
+
             return plot;
         }
 
@@ -300,6 +362,7 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
+                    reader.Read();
                     string name = reader.GetString(0);
                     string address = reader.GetString(1);
                     string zipcode = reader.GetString(2);
@@ -344,6 +407,7 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
+                    reader.Read();
                     string firstName = reader.GetString(0);
                     string lastName = reader.GetString(1);
                     string city = reader.GetString(3);
@@ -561,8 +625,8 @@ namespace Comforthuse.Database
         {
             int caseNumber = c.CaseNumber;
             int caseYear = c.DateOfCreation.Year;
-            DateTime constructionStartDate = c.ConstructionStartDate;
-            DateTime moveInDate = c.MoveInDate;
+            DateTime? constructionStartDate = c.ConstructionStartDate;
+            DateTime? moveInDate = c.MoveInDate;
             string caseDescription = c.Description;
 
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditCase", conn);
