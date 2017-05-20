@@ -178,7 +178,38 @@
 
                         </ItemsControl>
                     </Border>
-                    <ContentControl Content="{Binding CurrentPageViewModel}" />
+
+                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="145" />
+                            <ColumnDefinition Width="145" />
+                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition Width="90*" />
+                            <ColumnDefinition Width="71*" />
+                            <ColumnDefinition Width="86*" />
+                            <ColumnDefinition Width="45*" />
+                        </Grid.ColumnDefinitions>
+                      
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="42"/>
+                            <RowDefinition Height="10*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Options" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="1" Content="Options" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="2" Content="Spec.Price" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="3" Content="Number" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="4" Content="Unit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="5" Content="A price" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <Label Grid.Row="0" Grid.Column="6" Content="Total" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                     
+                        
+                        <ContentControl Grid.ColumnSpan="7" Grid.Row="1" Content="{Binding CurrentPageViewModel}" />
+
+                    </Grid>
+                    
+                    
                 </DockPanel>
             </TabItem>
             <TabItem Background="White" Header="Case" Height="22" VerticalAlignment="Bottom">
@@ -218,7 +249,7 @@
                             </Grid.RowDefinitions>
 
                             <Label Grid.Column="1" Grid.Row="0" x:Name="label_plotAddress" Content="Address:" HorizontalAlignment="Left" Height="25" />
-                            <TextBox  Grid.Column="3" Grid.Row="0" Text="{Binding PlotAddress}" x:Name="plotAddressTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
+                            <TextBox  Grid.Column="3" Grid.Row="0" Text="{Binding PlotAddress}" x:Name="plotAddressTextBox" HorizontalAlignment="Left" Height="20" Width="200" TextChanged="plotAddressTextBox_TextChanged" />
 
                             <Label  Grid.Column="1" Grid.Row="1" x:Name="label_plotZipCode" Content="Zipcode:" HorizontalAlignment="Left" Height="25"  />
                             <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding PlotZipcode}"  x:Name="plotZipCodeTextbox" HorizontalAlignment="Left" Height="20" Width="200" />
@@ -233,7 +264,7 @@
                             <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding PlotMunicipality}" x:Name="plotMunicipalityTextBox" HorizontalAlignment="Left" Height="20" Width="200"  />
 
                             <Label Grid.Column="1" Grid.Row="5" x:Name="label_plotAvaliabilityDate" Content="Avaliability Date" HorizontalAlignment="Left" Height="25" Width="67" />
-                            <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding PlotAvaliabilityDate}" x:Name="plotAvaliabilityDateTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
+                            <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding PlotAvalibilityDate}" x:Name="plotAvaliabilityDateTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
                         </Grid>
                     </GroupBox>
 

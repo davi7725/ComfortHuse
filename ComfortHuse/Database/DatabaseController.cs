@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Comforthuse.Interfaces;
 
 namespace Comforthuse.Database
 {
@@ -27,7 +28,95 @@ namespace Comforthuse.Database
             }
         }
 
+        public Dictionary<int, ProductType> GetAllProductTypes()
+        {
+            Dictionary<int, ProductType> listOfProductTypes = new Dictionary<int, ProductType>();
 
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetAllProductTypesWithCategoryName", conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int productTypeId = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        string productCategoryName = reader.GetString(2);
+
+                        ProductType pt = new ProductType(productTypeId, name, productCategoryName);
+                        listOfProductTypes.Add(productTypeId, pt);
+                    }
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            return listOfProductTypes;
+        }
+
+        public Dictionary<int, ProductOption> GetAllProductOptions()
+        {
+            Dictionary<int, ProductOption> listOfProductOptions = new Dictionary<int, ProductOption>();
+
+            try
+            {
+
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetAllProductOptions", conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int productOptionId = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        decimal priceF = reader.GetDecimal(2);
+                        decimal priceS = reader.GetDecimal(3);
+                        string unit = reader.GetString(4);
+                        bool isStandard = reader.GetBoolean(5);
+                        int productType = reader.GetInt32(6);
+
+                        ProductOption po = new ProductOption(productOptionId, name, priceF, priceS, unit, isStandard, productType);
+                        listOfProductOptions.Add(productOptionId, po);
+                    }
+                }
+
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            return listOfProductOptions;
+        }
 
         public List<ICase> GetAllCases()
         {
@@ -55,14 +144,14 @@ namespace Comforthuse.Database
             {
                 conn.Open();
                 string customerEmail = InsertCustomer(c.Customer);
+                int imageId = InsertImage(c.Image);
                 int moneyInstituteId = InsertMoneyInstitute(c.MoneyInstitute);
                 string employeeEmail = InsertEmployee(c.Employee);
                 int plotId = InsertPlot(c.Plot);
-
-                int imageId = InsertImage(c.Image);
                 InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
-                //InsertProducts();
-                //InsertExtraExpenses();
+                InsertTechnicalSpecifications(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
+                InsertExtraExpenses(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
+                InsertProducts(c, c.DateOfCreation.Year, c.CaseNumber);
 
             }
             catch (SqlException sqlE)
@@ -74,12 +163,146 @@ namespace Comforthuse.Database
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
-                    conn.Dispose();
                 }
             }
 
 
             return isSuccessful;
+        }
+
+        private void InsertProducts(ICase c, int caseYear, int caseNumber)
+        {
+            DeleteCaseProducts(caseYear, caseNumber);
+
+            Dictionary<Category, IExpenseCategory> dictionary = c.GetAllCategories();
+
+            foreach (IExpenseCategory iec in dictionary.Values)
+            {
+                foreach (ProductType pt in iec.ListOfProductTypes)
+                {
+                    foreach(ProductOption po in pt.ListOfProductOption)
+                    {
+                        if (po.Selected == true)
+                        {
+                            InsertCaseProductOption(po.ProductId, caseNumber, caseYear, po.Amount,po.SpecialPrice, po.Special);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void InsertCaseProductOption(int productId, int caseNumber, int caseYear, int amount, decimal specialPrice, bool special)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_InsertCaseProduct", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+            command.Parameters.Add(new SqlParameter("@ProductOptionId", productId));
+            command.Parameters.Add(new SqlParameter("@Amount", amount));
+            command.Parameters.Add(new SqlParameter("@SpecialPrice", specialPrice));
+            command.Parameters.Add(new SqlParameter("@Special", special));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+        }
+
+        private void DeleteCaseProducts(object caseYear, int caseNumber)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_DeleteCaseProducts", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+        }
+
+        private void InsertTechnicalSpecifications(Dictionary<Category, IExpenseCategory> dictionary, int caseYear, int caseNumber)
+        {
+            DeleteCaseTechnicalSpecifications(caseYear, caseNumber);
+            foreach (IExpenseCategory iec in dictionary.Values)
+            {
+                foreach (ITechnicalSpecification iees in iec.TechnicalSpecifications)
+                {
+                    if (iees.Description != null)
+                    {
+                        InsertTechnicalSpecification(iees.Description, iees.EditAble, caseNumber, caseYear);
+                    }
+                }
+            }
+        }
+
+        private void InsertTechnicalSpecification(string description, bool editAble, int caseNumber, int caseYear)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_InsertOrReturnTechnicalSpecificationId", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@TechnicalSpDescription", description));
+            command.Parameters.Add(new SqlParameter("@IsTicked", editAble));
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+        }
+
+        private void DeleteCaseTechnicalSpecifications(int caseYear, int caseNumber)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_DeleteCaseTechincalSpecifiication", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+        }
+
+        private void InsertExtraExpenses(Dictionary<Category, IExpenseCategory> expenseCategories, int caseYear, int caseNumber)
+        {
+            DeleteCaseExtraExpenses(caseYear, caseNumber);
+            foreach (KeyValuePair<Category, IExpenseCategory> kpv in expenseCategories)
+            {
+                IExpenseCategory iec = kpv.Value;
+                string category = kpv.Key.ToString();
+                foreach (IExtraExpenseSpecification iees in iec.ExtraExpenses)
+                {
+                    if (iees.Title != "" && iees.Description != "" && iees.Amount != 0)
+                        InsertExtraExpense(iees.Description, iees.Amount, iees.PricePerUnit, caseNumber, caseYear, iees.Title, category);
+                }
+            }
+        }
+
+        private void InsertExtraExpense(string description, int amount, decimal pricePerUnit, int caseNumber, int caseYear, string title, string category)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_InsertOrReturnProductExpenseId", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@ProductExpenseName", description));
+            command.Parameters.Add(new SqlParameter("@Amount", amount));
+            command.Parameters.Add(new SqlParameter("@Price", pricePerUnit));
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+            command.Parameters.Add(new SqlParameter("@ProductExpenseTypeName", title));
+            command.Parameters.Add(new SqlParameter("@ProductCategoryName", category));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+
+        }
+
+        private void DeleteCaseExtraExpenses(int caseYear, int caseNumber)
+        {
+            SqlCommand command = new SqlCommand("CH_SP_DeleteCaseProductExpenses", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
         }
 
         public void InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int imageId)
@@ -92,6 +315,8 @@ namespace Comforthuse.Database
 
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditCase", conn);
             command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
             command.Parameters.Add(new SqlParameter("@ConstructionStartDate", constructionStartDate));
             command.Parameters.Add(new SqlParameter("@MoveInDate", moveInDate));
             command.Parameters.Add(new SqlParameter("@CaseDescription", caseDescription));
@@ -127,12 +352,12 @@ namespace Comforthuse.Database
         {
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditPlot", conn);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add(new SqlParameter("@Zipcode", plot.Zipcode));
+            command.Parameters.Add(new SqlParameter("@ZipCode", plot.Zipcode));
             command.Parameters.Add(new SqlParameter("@PlotAddress", plot.Address));
             command.Parameters.Add(new SqlParameter("@City", plot.City));
             command.Parameters.Add(new SqlParameter("@Area", plot.Area));
             command.Parameters.Add(new SqlParameter("@Municipality", plot.Municipality));
-            command.Parameters.Add(new SqlParameter("@AvailabilityDate", plot.AvalibilityDate));
+            command.Parameters.Add(new SqlParameter("@AvailabilityDate", plot.AvailabilityDate));
 
             SqlParameter returnParameter = command.Parameters.Add("@PlotId", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;

@@ -2,6 +2,7 @@
 using Comforthuse.Models;
 using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
+using System;
 
 namespace Comforthuse.Utility
 {
@@ -22,6 +23,11 @@ namespace Comforthuse.Utility
                 }
                 return _instance;
             }
+        }
+
+        public IPlot CreatePlot()
+        {
+            return new Plot() { AvailabilityDate = new DateTime(2017,2,1), Area = 23, City = "Odense"};
         }
 
         internal List<ITechnicalSpecification> InstanciateTechnicalSpecification(int amount, List<string> presetSpecifications)
@@ -91,65 +97,65 @@ namespace Comforthuse.Utility
 
         private MaterialsOutsideExpenses InstanciateMaterialOutside()
         {
-            return new MaterialsOutsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new MaterialsOutsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.MaterialOutside) };
         }
 
         private PlotExpenses InstanciatePlotExpenseCategory()
         {
-            return new PlotExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new PlotExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Plot) };
         }
 
         private BrickLayerExpenses InstanciateBrickLayer()
         {
-            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new BrickLayerExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.BrickLayer) };
         }
         private CarpenterExpenses InstanciateCarpentry()
         {
-            return new CarpenterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new CarpenterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Carpentry) };
         }
         private CarportGarageExpenses InstanciateCarportGarage()
         {
-            return new CarportGarageExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new CarportGarageExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.CarportGarage) };
         }
         private ExtraConstructionExpenses InstanciateExtraConstruction()
         {
-            return new ExtraConstructionExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new ExtraConstructionExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.ExtraConstruction) };
         }
         private FlooringExpenses InstanciateFlooring()
         {
-            return new FlooringExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new FlooringExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Flooring) };
         }
         private IHouseTypeExpenses InstanciateHouseType()
         {
-            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), HouseType = new HouseType() { Area = 32, TotalPrice = 4000, Name = "E170", Description="Bla bla bla" } };
+            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), HouseType = new HouseType() { Area = 32, TotalPrice = 4000, Name = "E170", Description="Bla bla bla" }, ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.HouseType) };
         }
         private InteriorExpenses InstanciateInterior()
         {
-            return new InteriorExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new InteriorExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Interior) };
         }
         private MaterialsInsideExpenses InstanciateMaterialInside()
         {
-            return new MaterialsInsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new MaterialsInsideExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.MaterialInside) };
         }
         private OtherExpenses InstanciateOther()
         {
-            return new OtherExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new OtherExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Other) };
         }
         private PainterExpenses InstanciatePainting()
         {
-            return new PainterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new PainterExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Painting) };
         }
         private PlumberExpenses InstanciatePlumbing()
         {
-            return new PlumberExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new PlumberExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Plumbing) };
         }
         private VentilationExpenses InstanciateVentilation()
         {
-            return new VentilationExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new VentilationExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.Ventilation) };
         }
         private WindowsAndDoorsExpenses InstanciateWindowsAndDoors()
         {
-            return new WindowsAndDoorsExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5) };
+            return new WindowsAndDoorsExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.WindowsDoors) };
         }
 
 

@@ -91,6 +91,8 @@
     <Compile Include="Models\ExpensesDerivatives\PainterExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\PlumberExpenses.cs" />
     <Compile Include="Utility\ObservableObject.cs" />
+    <Compile Include="Utility\ProductOptionRepository.cs" />
+    <Compile Include="Utility\ProductTypeRepository.cs" />
     <Compile Include="Utility\ValidateCustomer.cs" />
     <Compile Include="Utility\Validator.cs" />
     <Compile Include="Models\ExpensesDerivatives\VentilationExpenses.cs" />

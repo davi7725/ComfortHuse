@@ -50,7 +50,7 @@ namespace Comforthuse.Utility
                         DateOfCreation = new DateTime(2017, 5, 18),
                         Customer =
                             new Customer("Jens", "Jensen", "abc@abc.com", "Odense", "Vollmose Allé 2", "5250",
-                                "60606060", "")
+                                "60606060", "60000")
                     },
                     new Case(ObjectFactory.Instance.InstanciateEmptyExpenseCategories())
                     {
@@ -149,15 +149,14 @@ namespace Comforthuse.Utility
 
         public List<ICase> GetAllCases()
         {
-            if (_cases.Count > 0)
-            {
-                return _cases;
+           // _cases =  _db.GetAllCases();
 
-            }
-            else
+            if (_cases.Count <= 0)
             {
                 throw new Exception("The list is empty");
             }
+
+            return _cases;
         }
 
         public bool Save(ICase obj)

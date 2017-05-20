@@ -14,7 +14,7 @@ namespace Comforthuse.Utility
     public abstract class Expenses : IExpenseCategory
     {
         public abstract decimal Price { get;}
-        public ProductCategory Category { get; }
+        public Category Category { get; }
 
         public List<IExtraExpenseSpecification> ExtraExpenses
         {
@@ -23,6 +23,8 @@ namespace Comforthuse.Utility
         }
 
         public List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
+
+        public List<ProductType> ListOfProductTypes { get; set; }
 
         public decimal PriceExtraExpenses
         {

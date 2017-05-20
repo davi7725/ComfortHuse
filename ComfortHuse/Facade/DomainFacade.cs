@@ -23,6 +23,16 @@ namespace Comforthuse.Facade
         {
             return _employeeRep.GetAllEmployee();
         }
+
+        public void GetAllProductTypes()
+        {
+            ProductTypeRepository.Instance.GetProductTypes();
+        }
+
+        public void GetAllProductOptions()
+        {
+            ProductOptionRepository.Instance.GetProductOptions();
+        }
     }
 
     public interface IAdministratorFacade
@@ -32,7 +42,9 @@ namespace Comforthuse.Facade
     public interface IEmployeeFacade
     {
         ICase CreateCase();
+        void GetAllProductOptions();
         List<ICase> GetAllCases();
         List<IEmployee> GetAllEmployees();
+        void GetAllProductTypes();
     }
 }
