@@ -20,5 +20,10 @@ namespace EmployeeGUI
         {
             _caseViewModel.Save();
         }
+
+        private void plotAddressTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
     }
 }

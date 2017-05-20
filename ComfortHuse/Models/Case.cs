@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comforthuse.Utility;
+using System;
 using System.Collections.Generic;
 
 namespace Comforthuse.Models
@@ -11,10 +12,12 @@ namespace Comforthuse.Models
         {
             _expenseCategories = categories;
             DateOfCreation = DateTime.Now;
+            Plot = ObjectFactory.Instance.CreatePlot();
         }
 
         public Case()
         {
+            Plot = ObjectFactory.Instance.CreatePlot();
         }
 
         public IExpenseCategory GetExpenseCategory(Category category)

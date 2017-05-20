@@ -29,5 +29,10 @@ namespace EmployeeGUI.Views.ExpenseCategoryPages
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

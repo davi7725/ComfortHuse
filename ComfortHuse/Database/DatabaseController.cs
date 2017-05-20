@@ -126,7 +126,7 @@ namespace Comforthuse.Database
         {
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditPlot", conn);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.Add(new SqlParameter("@ZipCode", plot.ZipCode));
+            command.Parameters.Add(new SqlParameter("@ZipCode", plot.Zipcode));
             command.Parameters.Add(new SqlParameter("@PlotAddress", plot.Address));
             command.Parameters.Add(new SqlParameter("@City", plot.City));
             command.Parameters.Add(new SqlParameter("@Area", plot.Area));

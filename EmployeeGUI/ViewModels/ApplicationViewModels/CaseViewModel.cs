@@ -6,6 +6,7 @@ using Comforthuse.Utility;
 using EmployeeGUI.Helpers;
 using EmployeeGUI.ViewModels.ExpenseCategoryPages;
 using SimpleMVVMExample;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -175,28 +176,68 @@ namespace EmployeeGUI.ViewModels
 
         public string PlotAvalibilityDate
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.AvalibilityDate.ToString("MM-dd-yy"); }
+            set {
+                string dateString = value;
+                string[] datestringArr = dateString.Split('-');
+                int day;
+                int month;
+                int year;
+                int.TryParse(datestringArr[0], out day);
+                int.TryParse(datestringArr[1], out month);
+                int.TryParse(datestringArr[2], out year);
+                _activeCase.Plot.AvalibilityDate = new DateTime(year,month,day); 
+            }
         }
+
+        public string PlotAddress
+        {
+            get { return _activeCase.Plot.Address; }
+            set
+            {
+                _activeCase.Plot.Address = value; 
+            }
+        }
+
         public string PlotCity
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.City; }
+            set { _activeCase.Plot.City = value; }
         }
         public string PlotZipcode
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.Zipcode; }
+            set { _activeCase.Plot.Zipcode = value; }
+
         }
         public string PlotMunicipality
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.Municipality; }
+            set { _activeCase.Plot.Municipality = value; }
         }
         public string PlotArea
         {
-            get { return _caseCustomer.PhoneNb2; }
-            set { _caseCustomer.PhoneNb2 = value; }
+            get { return _activeCase.Plot.Area.ToString(); }
+            set
+            {
+                int area;
+
+                if (int.TryParse(value, out area))
+                {
+                    _activeCase.Plot.Area = area;
+                }
+                else
+                {
+                    if (value != "")
+                    {
+                        MessageHandling.DisplayErrorMessage("Can only contain numbers");
+                    }
+                    else
+                    {
+                        _activeCase.Plot.Area = 0;
+                    }
+                }
+            }
         }
         public string TotalPrice
         {

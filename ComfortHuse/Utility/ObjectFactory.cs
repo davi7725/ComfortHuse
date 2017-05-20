@@ -2,6 +2,7 @@
 using Comforthuse.Models;
 using Comforthuse.Models.SpecificationDerivatives;
 using System.Collections.Generic;
+using System;
 
 namespace Comforthuse.Utility
 {
@@ -22,6 +23,11 @@ namespace Comforthuse.Utility
                 }
                 return _instance;
             }
+        }
+
+        public IPlot CreatePlot()
+        {
+            return new Plot() { AvalibilityDate = new DateTime(2017,2,1), Area = 23, City = "Odense"};
         }
 
         internal List<ITechnicalSpecification> InstanciateTechnicalSpecification(int amount, List<string> presetSpecifications)
@@ -62,7 +68,7 @@ namespace Comforthuse.Utility
 
 
 
-        internal IEmployee CreateEmployee(string FirstName, string LastName, string Email, string PhoneNb)
+        public IEmployee CreateEmployee(string FirstName, string LastName, string Email, string PhoneNb)
         {
             return new Employee(FirstName, LastName, Email, PhoneNb);
         }

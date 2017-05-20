@@ -15,6 +15,11 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             {
                 return _houseTypeExpensesModel.HouseType.Description;
             }
+            set
+            {
+                 _houseTypeExpensesModel.HouseType.Description = value;
+            }
+
         }
 
         public string HouseTypeName
