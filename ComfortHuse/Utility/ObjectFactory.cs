@@ -27,7 +27,7 @@ namespace Comforthuse.Utility
 
         public IPlot CreatePlot()
         {
-            return new Plot() { AvalibilityDate = new DateTime(2017,2,1), Area = 23, City = "Odense"};
+            return new Plot() { AvailabilityDate = new DateTime(2017,2,1), Area = 23, City = "Odense"};
         }
 
         internal List<ITechnicalSpecification> InstanciateTechnicalSpecification(int amount, List<string> presetSpecifications)
