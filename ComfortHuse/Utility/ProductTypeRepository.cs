@@ -52,5 +52,10 @@ namespace Comforthuse.Utility
                 return _instance;
             }
         }
+
+        private ProductTypeRepository()
+        {
+
+        }
     }
 }
