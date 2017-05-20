@@ -6,14 +6,12 @@ namespace Comforthuse.Models
 {
     public class ProductType
     {
-        private int productCategoryId;
         private List<ProductOption> _listOfProductOption;
 
         public ProductType(int productTypeId, string name, string productCategoryName)
         {
             ProductTypeId = productTypeId;
             Name = name;
-            this.productCategoryId = productCategoryId;
             Category = (Category)Enum.Parse(typeof(Category), productCategoryName);
             _listOfProductOption = new List<ProductOption>();
         }

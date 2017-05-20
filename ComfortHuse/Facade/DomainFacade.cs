@@ -7,7 +7,7 @@ namespace Comforthuse.Facade
     public class DomainFacade : IEmployeeFacade, IAdministratorFacade
     {
         private ICaseRepository _caseRep = CaseRepository.Instance;
-        private IEmployeeRepository _employeeRep = new EmployeeRepository();
+        private IEmployeeRepository _employeeRep = EmployeeRepository.Instance;
 
         public ICase CreateCase()
         {

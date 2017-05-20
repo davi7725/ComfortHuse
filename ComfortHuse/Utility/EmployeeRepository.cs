@@ -5,9 +5,23 @@ namespace Comforthuse.Utility
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-
+        private static EmployeeRepository _instance;
         private IDbEmployee _db = DatabaseController.Instance;
         private List<IEmployee> _employees = new List<IEmployee>();
+
+        public static EmployeeRepository Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new EmployeeRepository();
+                }
+                return _instance;
+            }
+
+        }
+
         public List<IEmployee> GetAllEmployee()
         {
             return _employees;
@@ -17,7 +31,7 @@ namespace Comforthuse.Utility
             _employees.Add(employee);
         }
 
-        public EmployeeRepository()
+        private EmployeeRepository()
         {
             _employees = InstanciateMockObjects();
         }
@@ -31,6 +45,19 @@ namespace Comforthuse.Utility
                 new Employee("Reno", "Rubar", "reno@gmail.com", "41241414"),
                 new Employee("Darius", "Vasili", "darius@gmail.com", "41414141")
             };
+        }
+
+        public IEmployee Load(string email)
+        {
+            IEmployee employee = null;
+            foreach(IEmployee emp in _employees)
+            {
+                if (emp.Email == email)
+                {
+                    employee = emp;
+                }
+            }
+            return employee;
         }
     }
 

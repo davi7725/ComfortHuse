@@ -7,6 +7,7 @@ namespace Comforthuse.Models
 {
     public class Case : ICase
     {
+
         private Dictionary<Category, IExpenseCategory> _expenseCategories;
         public Case(Dictionary<Category, IExpenseCategory> categories)
         {
@@ -38,18 +39,17 @@ namespace Comforthuse.Models
         public ICustomer Customer { get; set; }
         public DateTime DateOfCreation { get; set; }
         public DateTime DateOfLastRevision { get; internal set; }
-        public DateTime ConstructionStartDate { get; set; }
-        public DateTime MoveInDate { get; set; }
+        public DateTime? ConstructionStartDate { get; set; }
+
+        public DateTime? MoveInDate { get; set; }
+
         public string Description { get; set; }
         public int AmountOfRevisions { get; set; }
         public int CaseNumber { get; set; }
         public IMoneyInstitute MoneyInstitute { get; set; }
         public IPlot Plot { get; set; }
         public IImage Image { get; set; }
-        public bool Sold
-        {
-            get { return _isSold; }
-        }
+        public bool Sold { get; set; }
         public decimal Price
         {
             get
@@ -57,7 +57,8 @@ namespace Comforthuse.Models
                 return CalculatePrice();
             }
         }
-        public string HouseType { get; set; }
+
+
         private decimal CalculatePrice()
         {
             decimal price = 0;
@@ -97,15 +98,19 @@ namespace Comforthuse.Models
             return _expenseCategories;
         }
     }
+
     public interface ICase
     {
         string Title { get; }
-        bool Sold { get; }
+        bool Sold { get; set; }
         int CaseNumber { get; set; }
         decimal Price { get; }
         int AmountOfRevisions { get; }
-        DateTime ConstructionStartDate { get; set; }
-        DateTime MoveInDate { get; set; }
+
+        DateTime? ConstructionStartDate { get; set; }
+
+        DateTime? MoveInDate { get; set; }
+
         string Description { get; set; }
         ICustomer Customer { get; set; }
         IExpenseCategory GetExpenseCategory(Category category);

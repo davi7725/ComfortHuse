@@ -18,6 +18,7 @@ namespace ComforthuseUserstoryTests
 
             Dictionary<int, ProductType> listOfProductTypes = ProductTypeRepository.Instance.GetProductTypes();
             Dictionary<int, ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
+            
 
             ICase case1 = ObjectFactory.Instance.CreateNewCase();
 
