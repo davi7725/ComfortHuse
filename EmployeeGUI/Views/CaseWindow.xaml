@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:EmployeeGUI"
         xmlns:expenseCategoryViewModels="clr-namespace:EmployeeGUI.ViewModels.ExpenseCategoryPages"
         xmlns:expenseCategoryViews="clr-namespace:EmployeeGUI.Views.ExpenseCategoryPages"
+        xmlns:vm="clr-namespace:EmployeeGUI.ViewModels"
+        xmlns:v="clr-namespace:EmployeeGUI.Views"
         mc:Ignorable="d"
         Title="Case window" MinHeight="840" MinWidth="840">
     <Window.Resources>
@@ -62,6 +64,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type expenseCategoryViewModels:WindowsDoorsExpenseViewModel}">
             <expenseCategoryViews:WindowsDoorsPage />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:MoneyInstituteViewModel}">
+            <v:MoneyInstituteView />
         </DataTemplate>
     </Window.Resources>
     <Grid Background="#c9c9c9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

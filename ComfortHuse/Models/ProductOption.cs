@@ -48,7 +48,5 @@ namespace Comforthuse.Models
             }
         }
         public int Amount { get; set; }
-
-
     }
 }

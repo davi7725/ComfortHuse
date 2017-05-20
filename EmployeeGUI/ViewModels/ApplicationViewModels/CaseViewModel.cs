@@ -176,7 +176,8 @@ namespace EmployeeGUI.ViewModels
         public string PlotAvalibilityDate
         {
             get { return _activeCase.Plot.AvailabilityDate.ToString("MM-dd-yy"); }
-            set {
+            set
+            {
                 string dateString = value;
                 string[] datestringArr = dateString.Split('-');
                 int day;
@@ -185,7 +186,7 @@ namespace EmployeeGUI.ViewModels
                 int.TryParse(datestringArr[0], out day);
                 int.TryParse(datestringArr[1], out month);
                 int.TryParse(datestringArr[2], out year);
-                _activeCase.Plot.AvailabilityDate = new DateTime(year,month,day); 
+                _activeCase.Plot.AvailabilityDate = new DateTime(year, month, day);
             }
         }
 
@@ -194,7 +195,7 @@ namespace EmployeeGUI.ViewModels
             get { return _activeCase.Plot.Address; }
             set
             {
-                _activeCase.Plot.Address = value; 
+                _activeCase.Plot.Address = value;
             }
         }
 
