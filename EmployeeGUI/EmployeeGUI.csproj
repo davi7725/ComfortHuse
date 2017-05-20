@@ -91,6 +91,7 @@
     <Compile Include="ViewModels\ExpenseCategoryPages\VentilationExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\WallingExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\WindowsDoorsExpenseViewModel.cs" />
+    <Compile Include="ViewModels\MoneyInstituteViewModel.cs" />
     <Compile Include="ViewModels\Partial\TechnicalExpenses.xaml.cs">
       <DependentUpon>TechnicalExpenses.xaml</DependentUpon>
     </Compile>
@@ -150,6 +151,9 @@
     </Compile>
     <Compile Include="Views\ExpenseCategoryPages\WindowsDoorsPage.xaml.cs">
       <DependentUpon>WindowsDoorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MoneyInstituteView.xaml.cs">
+      <DependentUpon>MoneyInstituteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Partial\TechnicalSpecificationPage.xaml.cs">
       <DependentUpon>TechnicalSpecificationPage.xaml</DependentUpon>
@@ -259,6 +263,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ExpenseCategoryPages\WindowsDoorsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MoneyInstituteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
