@@ -42,5 +42,11 @@ namespace EmployeeGUI.Views
             MessageHandling.DisplayErrorMessage("Not implemented yet.");
             // OpenPrintWindow();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ICommand ic = vm.GetCasesCommand;
+            ic.Execute(new object());
+        }
     }
 }
