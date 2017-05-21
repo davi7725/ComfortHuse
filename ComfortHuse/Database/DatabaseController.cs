@@ -257,7 +257,7 @@ namespace Comforthuse.Database
                     tc.Case.MoneyInstitute = new MoneyInstitute();
                 else
                     tc.Case.MoneyInstitute = GetMoneyInstituteById(Convert.ToInt32(tc.MoneyInstituteId));
-                
+
                 if (tc.PlotId == null)
                     tc.Case.Plot = ObjectFactory.Instance.CreatePlot();
                 else
@@ -610,7 +610,7 @@ namespace Comforthuse.Database
             command.Parameters.Add(new SqlParameter("@TotalPrice", houseTypeEx.HouseType.TotalPrice));
             command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
             command.Parameters.Add(new SqlParameter("@CaseYear", year));
-            
+
             command.ExecuteNonQuery();
 
             command.Dispose();
@@ -797,7 +797,7 @@ namespace Comforthuse.Database
 
         private int? InsertImage(IImage image)
         {
-            if(image == null)
+            if (image == null)
             {
                 return null;
             }
@@ -840,7 +840,7 @@ namespace Comforthuse.Database
 
         private string InsertEmployee(IEmployee employee)
         {
-            if(employee ==null)
+            if (employee == null)
             {
                 return new Employee("Allan", "Boje", "ab@comforthuse.dk", "25874565").Email;
             }

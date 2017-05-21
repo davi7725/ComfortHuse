@@ -30,6 +30,8 @@ namespace EmployeeGUI.Views
             ExecuteEditCaseCommand();
         }
 
+
+
         private void ExecuteEditCaseCommand()
         {
             ICommand cm = vm.EditCaseCommand;
@@ -46,7 +48,7 @@ namespace EmployeeGUI.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ICommand ic = vm.GetCasesCommand;
-            ic.Execute(new object());
+            ic.Execute(CaseList.SelectedItem);
         }
     }
 }

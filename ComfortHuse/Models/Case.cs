@@ -1,10 +1,11 @@
 ﻿using Comforthuse.Utility;
+using EmployeeGUI.Helpers;
 using System;
 using System.Collections.Generic;
 
 namespace Comforthuse.Models
 {
-    public class Case : ICase
+    public class Case : ObservableObject, ICase
     {
 
         private Dictionary<Category, IExpenseCategory> _expenseCategories;
@@ -12,7 +13,7 @@ namespace Comforthuse.Models
         {
             _expenseCategories = categories;
             DateOfCreation = DateTime.Now;
-           }
+        }
 
         public Case()
         {

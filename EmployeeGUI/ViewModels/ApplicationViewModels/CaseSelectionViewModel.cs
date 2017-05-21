@@ -67,7 +67,12 @@ namespace EmployeeGUI.ViewModels
         {
             try
             {
-                _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
+                _cases.Clear();
+                /*  foreach (ICase c in _facade.GetAllCases())
+                  {
+                      _cases.Add(c);
+                  }
+                  */
 
             }
             catch (Exception e)
