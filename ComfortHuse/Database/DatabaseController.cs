@@ -356,6 +356,49 @@ namespace Comforthuse.Database
             return houseType;
         }
 
+        public List<IEmployee> GetAllEmployees()
+        {
+            List<IEmployee> listOfEmployees = new List<IEmployee>();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetAllEmployees", conn);
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string firstName = reader.GetString(0);
+                        string lastName = reader.GetString(1);
+                        string phoneNb = reader.GetString(2);
+                        string email = reader.GetString(3);
+
+                        IEmployee emp = new Employee(firstName, lastName, email, phoneNb);
+                        listOfEmployees.Add(emp);
+                    }
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            return listOfEmployees;
+        }
+
         private IImage GetImageById(int imageId)
         {
             IImage image = ObjectFactory.Instance.CreateNewImage();

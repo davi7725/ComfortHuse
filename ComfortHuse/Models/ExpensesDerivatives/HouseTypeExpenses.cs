@@ -5,17 +5,20 @@ namespace Comforthuse.Utility
 {
     public class HouseTypeExpenses : Expenses, IHouseTypeExpenses
     {
-        public override decimal Price
-        {
-            get
+        public override decimal Price { get
             {
-                return 0 + this.PriceExtraExpenses;
+                if(HouseType.TotalPrice == null)
+                {
+                    return this.PriceExtraExpenses;
+                }
+                else
+                return (decimal)HouseType.TotalPrice + this.PriceExtraExpenses;
             }
         }
         public IHouseType HouseType { get; set; }
         public bool HouseExpansion { get; set; }
 
-
+       
     }
 
 }

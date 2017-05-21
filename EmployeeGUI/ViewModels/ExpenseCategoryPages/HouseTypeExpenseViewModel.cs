@@ -38,7 +38,14 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
         {
             get
             {
+                if(_houseTypeExpensesModel.HouseType.TotalPrice == null)
+                {
+                    return "";
+                }
+                else
+                {
                 return _houseTypeExpensesModel.HouseType.TotalPrice.ToString();
+                }
             }
             set
             {

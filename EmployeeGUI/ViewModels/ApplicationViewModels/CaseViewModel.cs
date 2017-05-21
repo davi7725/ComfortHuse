@@ -300,11 +300,7 @@ namespace EmployeeGUI.ViewModels
         {
             get
             {
-                return new List<IEmployee>
-                {
-                        new Employee("a", "h", "c", "d"),
-                        new Employee("b", "e", "f", "g")
-                };
+               return _facade.GetAllEmployees();
             }
         }
         public string SalesPersonPhoneNb
