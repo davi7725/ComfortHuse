@@ -99,6 +99,9 @@
     <Compile Include="ViewModels\Partial\TechnicalExpensesViewModel.cs" />
     <Compile Include="ViewModels\Partial\TechnicalSpecificationViewModel.cs" />
     <Compile Include="ViewModels\TechnicalSpecificationViewModel.cs" />
+    <Compile Include="Views\EmployeeView.xaml.cs">
+      <DependentUpon>EmployeeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ExpenseCategoryPages\CarpentryPage.xaml.cs">
       <DependentUpon>CarpentryPage.xaml</DependentUpon>
     </Compile>
@@ -195,6 +198,10 @@
       <DependentUpon>CaseWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ExpenseCategoryPages\CarpentryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

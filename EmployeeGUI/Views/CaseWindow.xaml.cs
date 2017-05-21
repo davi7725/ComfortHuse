@@ -20,7 +20,7 @@ namespace EmployeeGUI
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             _caseViewModel = (CaseViewModel)this.DataContext;
-           MessageBox.Show(_caseViewModel.Save().ToString());
+            MessageBox.Show(_caseViewModel.Save().ToString());
         }
 
         private void plotAddressTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -35,7 +35,7 @@ namespace EmployeeGUI
             {
                 MessageBox.Show(emp.Email);
                 CaseViewModel caseViewModel = (CaseViewModel)this.DataContext;
-                caseViewModel.E = emp;
+                caseViewModel.Employee = emp;
             }
             else
             {
