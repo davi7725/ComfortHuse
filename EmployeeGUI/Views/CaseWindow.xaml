@@ -68,6 +68,9 @@
         <DataTemplate DataType="{x:Type vm:MoneyInstituteViewModel}">
             <v:MoneyInstituteView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EmployeeViewModel}">
+            <v:EmployeeView />
+        </DataTemplate>
 
     </Window.Resources>
     <Grid Background="#c9c9c9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
