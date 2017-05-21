@@ -7,7 +7,7 @@ namespace Comforthuse.Utility
     {
         public override decimal Price { get
             {
-                return HouseType.TotalPrice + this.PriceExtraExpenses;
+                return (decimal)HouseType.TotalPrice + this.PriceExtraExpenses;
             }
         }
         public IHouseType HouseType { get; set; }

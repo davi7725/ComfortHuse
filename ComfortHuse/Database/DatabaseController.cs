@@ -158,11 +158,20 @@ namespace Comforthuse.Database
                         {
                             moveInDate = reader.GetDateTime(2);
                         }
+                        string description;
+                        if (reader.IsDBNull(3))
+                        {
+                            description = null;
+                        }
+                        else
+                        {
+                            description = reader.GetString(3);
+                        }
 
-                        string description = reader.GetString(3);
                         int amountOfRevisions = reader.GetInt32(4);
                         DateTime dateOfCreation = reader.GetDateTime(5);
                         DateTime dateOfLastRevision = reader.GetDateTime(6);
+
                         bool sold = reader.GetBoolean(7);
                         string customerEmail = reader.GetString(8);
 
@@ -209,9 +218,11 @@ namespace Comforthuse.Database
                         caseObj.Sold = sold;
 
                         TempCase tempCase = new TempCase(caseObj, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
+
                         tempCases.Add(tempCase);
 
                         listOfCases.Add(caseObj);
+
                     }
                 }
 
@@ -232,6 +243,7 @@ namespace Comforthuse.Database
 
 
             GetCaseDependencies(tempCases);
+
             return listOfCases;
         }
 
@@ -245,11 +257,12 @@ namespace Comforthuse.Database
                     tc.Case.MoneyInstitute = new MoneyInstitute();
                 else
                     tc.Case.MoneyInstitute = GetMoneyInstituteById(Convert.ToInt32(tc.MoneyInstituteId));
-
+                
                 if (tc.PlotId == null)
-                    tc.Case.Plot = new Plot();
+                    tc.Case.Plot = ObjectFactory.Instance.CreatePlot();
                 else
                     tc.Case.Plot = GetPlotById(Convert.ToInt32(tc.PlotId));
+
 
                 if (tc.ImageId == null)
                     tc.Case.Image = new Image();
@@ -282,10 +295,46 @@ namespace Comforthuse.Database
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    string name = reader.GetString(0);
-                    string description = reader.GetString(1);
-                    int area = reader.GetInt32(2);
-                    decimal price = reader.GetDecimal(3);
+                    string name;
+                    if (reader.IsDBNull(0))
+                    {
+                        name = null;
+                    }
+                    else
+                    {
+                        name = reader.GetString(0);
+                    }
+
+                    string description;
+                    if (reader.IsDBNull(1))
+                    {
+                        description = null;
+                    }
+                    else
+                    {
+                        description = reader.GetString(1);
+                    }
+
+                    int? area;
+                    if (reader.IsDBNull(2))
+                    {
+                        area = null;
+                    }
+                    else
+                    {
+                        area = reader.GetInt32(2);
+                    }
+
+                    decimal? price;
+                    if (reader.IsDBNull(3))
+                    {
+                        price = null;
+                    }
+                    else
+                    {
+                        price = reader.GetDecimal(3);
+                    }
+
                     houseType.Name = name;
                     houseType.Description = description;
                     houseType.Area = area;
@@ -309,7 +358,7 @@ namespace Comforthuse.Database
 
         private IImage GetImageById(int imageId)
         {
-            Image image = new Image();
+            IImage image = ObjectFactory.Instance.CreateNewImage();
 
             try
             {
@@ -368,7 +417,15 @@ namespace Comforthuse.Database
                     string city = reader.GetString(2);
                     int area = reader.GetInt32(3);
                     string municipality = reader.GetString(4);
-                    DateTime availabilityDate = reader.GetDateTime(5);
+                    DateTime? availabilityDate;
+                    if (reader.IsDBNull(5))
+                    {
+                        availabilityDate = null;
+                    }
+                    else
+                    {
+                        availabilityDate = reader.GetDateTime(5);
+                    }
 
                     plot.Zipcode = zipcode;
                     plot.Address = address;
@@ -376,10 +433,10 @@ namespace Comforthuse.Database
                     plot.Area = area;
                     plot.Municipality = municipality;
                     plot.AvailabilityDate = availabilityDate;
+
                 }
                 reader.Close();
                 reader.Dispose();
-
             }
             catch (SqlException sqlE)
             { }
@@ -390,7 +447,6 @@ namespace Comforthuse.Database
                     conn.Close();
                 }
             }
-
             return plot;
         }
 
@@ -504,11 +560,12 @@ namespace Comforthuse.Database
             {
                 conn.Open();
                 string customerEmail = InsertCustomer(c.Customer);
-                int imageId = InsertImage(c.Image);
+                int? imageId = InsertImage(c.Image);
                 int moneyInstituteId = InsertMoneyInstitute(c.MoneyInstitute);
                 string employeeEmail = InsertEmployee(c.Employee);
                 int plotId = InsertPlot(c.Plot);
-                InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
+
+                c.CaseNumber = InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
                 InsertTechnicalSpecifications(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
                 InsertExtraExpenses(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
                 InsertProducts(c, c.DateOfCreation.Year, c.CaseNumber);
@@ -517,6 +574,7 @@ namespace Comforthuse.Database
             }
             catch (SqlException sqlE)
             {
+                throw new Exception(sqlE.Message);
                 isSuccessful = false;
             }
             finally
@@ -552,6 +610,7 @@ namespace Comforthuse.Database
 
         private void DeleteHouseType(int year, int caseNumber)
         {
+
             SqlCommand command = new SqlCommand("CH_SP_DeleteHouseType", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
@@ -697,7 +756,7 @@ namespace Comforthuse.Database
             command.Dispose();
         }
 
-        public void InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int imageId)
+        public int InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int? imageId)
         {
             int caseNumber = c.CaseNumber;
             int caseYear = c.DateOfCreation.Year;
@@ -718,13 +777,23 @@ namespace Comforthuse.Database
             command.Parameters.Add(new SqlParameter("@PlotId", plotId));
             command.Parameters.Add(new SqlParameter("@ImageId", imageId));
 
+            SqlParameter returnParameter = command.Parameters.Add("@CaseNumber", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
             command.ExecuteNonQuery();
 
             command.Dispose();
+
+            return int.Parse(returnParameter.Value.ToString());
         }
 
-        private int InsertImage(IImage image)
+        private int? InsertImage(IImage image)
         {
+            if(image == null)
+            {
+                return null;
+            }
+
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditImage", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@Imagepath", image.Path));
