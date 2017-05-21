@@ -6,7 +6,24 @@
              xmlns:local="clr-namespace:EmployeeGUI.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-                    
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="1"  Name="EmployeePhoneNumberLabel" Content="Phonenumber" />
+        <Label Grid.Row="0" Grid.Column="3"  Name="EmployeePhoneNumberContent" Content="{Binding PhoneNumber}" />
+
+        <Label Grid.Row="1" Grid.Column="3"  Name="EmployeeEmailLabel" Content="Email" />
+        <Label Grid.Row="1" Grid.Column="1"  Name="EmployeeEmailContent" Content="{Binding Email}" />
     </Grid>
 </UserControl>

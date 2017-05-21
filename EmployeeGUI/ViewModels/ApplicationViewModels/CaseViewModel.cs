@@ -54,7 +54,11 @@ namespace EmployeeGUI.ViewModels
 
         public IEmployee Employee
         {
-            set { _activeCase.Employee = value; }
+            set
+            {
+                _activeCase.Employee = value;
+                _employeeViewModel.Employee = value;
+            }
         }
 
         private void InstanciateViewModel()
