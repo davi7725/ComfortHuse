@@ -13,9 +13,7 @@ namespace Comforthuse.Models
         {
             _expenseCategories = categories;
             DateOfCreation = DateTime.Now;
-            Plot = ObjectFactory.Instance.CreatePlot();
-            MoneyInstitute = ObjectFactory.Instance.CreateMoneyInstitute("Danske Bank", "Allerodgade 23", "5300", "Svendborg", "60669041");
-        }
+           }
 
         public Case()
         {

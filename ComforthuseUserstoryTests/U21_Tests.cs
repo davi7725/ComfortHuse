@@ -68,10 +68,10 @@ namespace ComforthuseUserstoryTests
             case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Amount = 30;
             case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].SpecialPrice = 19.99M;
 
-            Assert.AreEqual("CarportGarage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].Category.ToString());
-            Assert.AreEqual("Carport/Garage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].Name);
-            Assert.AreEqual("Carport", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[0].Name);
-            Assert.AreEqual("Garage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Name);
+            IHouseTypeExpenses houseEx = (IHouseTypeExpenses)case1.GetExpenseCategory(Category.HouseType);
+            houseEx.HouseType = new HouseType();
+            houseEx.HouseType.TotalPrice = 10;
+
 
             Assert.IsTrue(DatabaseController.Instance.SaveCase(case1));
 

@@ -132,7 +132,7 @@ namespace Comforthuse.Utility
         }
         private IHouseTypeExpenses InstanciateHouseType()
         {
-            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), HouseType = new HouseType() { Area = 32, TotalPrice = 4000, Name = "E170", Description="Bla bla bla" }, ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.HouseType) };
+            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), HouseType = new HouseType(), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.HouseType) };
         }
         private InteriorExpenses InstanciateInterior()
         {
@@ -168,7 +168,8 @@ namespace Comforthuse.Utility
         {
             Case thisCase = new Case(InstanciateEmptyExpenseCategories())
             {
-                Customer = CreateNewCustomer()
+                Customer = CreateNewCustomer(),
+                CaseNumber = 0
             };
             return thisCase;
         }

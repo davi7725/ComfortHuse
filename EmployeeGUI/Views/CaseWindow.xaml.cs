@@ -19,7 +19,7 @@ namespace EmployeeGUI
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             _caseViewModel = (CaseViewModel)this.DataContext;
-            _caseViewModel.Save();
+           MessageBox.Show(_caseViewModel.Save().ToString());
         }
 
         private void plotAddressTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

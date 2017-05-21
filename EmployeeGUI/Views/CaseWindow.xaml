@@ -95,10 +95,10 @@
             <Label x:Name="ApplicationLabel" Content="Comfort Huse A/S" FontSize="22" FontFamily="Lato Black"/>
         </Grid>
 
-        <Rectangle Fill="DimGray" Grid.Row="2" Grid.Column="1"></Rectangle>
-        <TabControl Background="White" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Rectangle Fill="DimGray" Grid.Row="1" Grid.ColumnSpan="2" Margin="15,55.2,0.4,15" Grid.RowSpan="2"/>
+        <TabControl Background="White" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="15,55.2,0.4,15" Grid.RowSpan="2">
             <TabItem Header="Customer ">
-                <Grid Margin="0,0,0,0">
+                <Grid Margin="0,-21,-0.4,21">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="45*"/>
@@ -196,7 +196,7 @@
                             <ColumnDefinition Width="86*" />
                             <ColumnDefinition Width="45*" />
                         </Grid.ColumnDefinitions>
-                      
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="42"/>
                             <RowDefinition Height="10*"/>
@@ -209,13 +209,13 @@
                         <Label Grid.Row="0" Grid.Column="4" Content="Unit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <Label Grid.Row="0" Grid.Column="5" Content="A price" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <Label Grid.Row="0" Grid.Column="6" Content="Total" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                     
-                        
+
+
                         <ContentControl Grid.ColumnSpan="7" Grid.Row="1" Content="{Binding CurrentPageViewModel}" />
 
                     </Grid>
-                    
-                    
+
+
                 </DockPanel>
             </TabItem>
             <TabItem Background="White" Header="Case" Height="22" VerticalAlignment="Bottom">
@@ -331,5 +331,6 @@
             <MenuItem/>
         </Menu>
         <Label x:Name="totPriceTextLabel" Content="{Binding TotalPrice}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4.8,64.4,0" Grid.Row="2" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.021,0.454"/>
+        <Button x:Name="saveButton" Content="Save" Click="saveButton_Click" Grid.Column="1" HorizontalAlignment="Right" Height="16" Margin="0,0,0.4,12.6" Grid.Row="2" VerticalAlignment="Bottom" Width="75" Grid.RowSpan="2"/>
     </Grid>
 </Window>
