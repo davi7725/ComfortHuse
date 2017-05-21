@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 namespace Comforthuse.Models
 {
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     public class ProductType
+#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
         private List<ProductOption> _listOfProductOption;
 
