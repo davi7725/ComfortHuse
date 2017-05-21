@@ -320,9 +320,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-
-
-
         <Menu Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="25" VerticalAlignment="Stretch" FontFamily="Lato" BorderBrush="White">
             <Menu.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -345,5 +342,6 @@
             <MenuItem/>
         </Menu>
         <Label x:Name="totPriceTextLabel" Content="{Binding TotalPrice}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4.8,64.4,0" Grid.Row="2" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.021,0.454"/>
+        <Button x:Name="saveButton" Content="Save" Click="saveButton_Click" Grid.Column="1" HorizontalAlignment="Right" Height="16" Margin="0,0,0.4,12.6" Grid.Row="2" VerticalAlignment="Bottom" Width="75" Grid.RowSpan="2"/>
     </Grid>
 </Window>
