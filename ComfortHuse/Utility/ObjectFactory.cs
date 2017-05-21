@@ -132,7 +132,7 @@ namespace Comforthuse.Utility
         }
         private IHouseTypeExpenses InstanciateHouseType()
         {
-            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), HouseType = new HouseType() { Area = 32, TotalPrice = 4000, Name = "E170", Description="Bla bla bla" }, ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.HouseType) };
+            return new HouseTypeExpenses() { TechnicalSpecifications = InstanciateTechnicalSpecification(5), ExtraExpenses = InstanciateExtraExpense(5), HouseType = new HouseType(), ListOfProductTypes = ProductTypeRepository.Instance.Load(Category.HouseType) };
         }
         private InteriorExpenses InstanciateInterior()
         {
@@ -168,9 +168,28 @@ namespace Comforthuse.Utility
         {
             Case thisCase = new Case(InstanciateEmptyExpenseCategories())
             {
-                Customer = CreateNewCustomer()
+                Customer = CreateNewCustomer(),
+                CaseNumber = 0,
+                Plot = CreateNewPlot(),
+                MoneyInstitute = CreateNewMoneyInstitute(),
+                Image = CreateNewImage()
             };
             return thisCase;
+        }
+
+        private IMoneyInstitute CreateNewMoneyInstitute()
+        {
+            return new MoneyInstitute() { Name = "", Address = "", City = "", Zipcode = "", PhoneNb = "" };
+        }
+
+        public IImage CreateNewImage()
+        {
+            return new Image() { Path = "", Description = "" };
+        }
+
+        private IPlot CreateNewPlot()
+        {
+            return new Plot() { Zipcode = "", Address = "", Area = 0, AvailabilityDate = null, City = "", Municipality = "" };
         }
 
         internal ICase CreateExistingCase()

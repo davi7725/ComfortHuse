@@ -122,6 +122,8 @@ namespace Comforthuse.Database
         public List<ICase> GetAllCases()
         {
             List<ICase> listOfCases = new List<ICase>();
+            List<TempCase> tempCases = new List<TempCase>();
+
             try
             {
                 conn.Open();
@@ -130,25 +132,80 @@ namespace Comforthuse.Database
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlDataReader reader = command.ExecuteReader();
-                List<TempCase> tempCases = new List<TempCase>();
 
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        int caseNumber = 0;
-                        DateTime constructionStartDate = new DateTime();
-                        DateTime moveInDate = new DateTime();
-                        string description = "";
-                        int amountOfRevisions = 0;
-                        DateTime dateOfCreation = new DateTime();
-                        DateTime dateOfLastRevision = new DateTime();
-                        bool sold = false;
-                        string customerEmail = "";
-                        int moneyInstituteId = 0;
-                        string employeeEmail = "";
-                        int plotId = 0;
-                        int imageId = 0;
+                        int caseNumber = reader.GetInt32(0);
+
+                        DateTime? constructionStartDate;
+                        if (reader.IsDBNull(1))
+                        {
+                            constructionStartDate = null;
+                        }
+                        else
+                        {
+                            constructionStartDate = reader.GetDateTime(1);
+                        }
+
+                        DateTime? moveInDate;
+                        if (reader.IsDBNull(2))
+                        {
+                            moveInDate = null;
+                        }
+                        else
+                        {
+                            moveInDate = reader.GetDateTime(2);
+                        }
+                        string description;
+                        if (reader.IsDBNull(3))
+                        {
+                            description = null;
+                        }
+                        else
+                        {
+                            description = reader.GetString(3);
+                        }
+
+                        int amountOfRevisions = reader.GetInt32(4);
+                        DateTime dateOfCreation = reader.GetDateTime(5);
+                        DateTime dateOfLastRevision = reader.GetDateTime(6);
+
+                        bool sold = reader.GetBoolean(7);
+                        string customerEmail = reader.GetString(8);
+
+                        int? moneyInstituteId;
+                        if (reader.IsDBNull(9))
+                        {
+                            moneyInstituteId = null;
+                        }
+                        else
+                        {
+                            moneyInstituteId = reader.GetInt32(9);
+                        }
+                        string employeeEmail = reader.GetString(10);
+
+                        int? plotId;
+                        if (reader.IsDBNull(11))
+                        {
+                            plotId = null;
+                        }
+                        else
+                        {
+                            plotId = reader.GetInt32(11);
+                        }
+
+                        int? imageId;
+                        if (reader.IsDBNull(12))
+                        {
+                            imageId = null;
+                        }
+                        else
+                        {
+                            imageId = reader.GetInt32(12);
+                        }
+
 
                         Case caseObj = (Case)ObjectFactory.Instance.CreateNewCase();
                         caseObj.CaseNumber = caseNumber;
@@ -161,17 +218,17 @@ namespace Comforthuse.Database
                         caseObj.Sold = sold;
 
                         TempCase tempCase = new TempCase(caseObj, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
+
                         tempCases.Add(tempCase);
 
                         listOfCases.Add(caseObj);
+
                     }
                 }
 
                 reader.Close();
                 reader.Dispose();
-
-                GetCaseDependencies(tempCases);
-
+                command.Dispose();
             }
             catch (SqlException sqlE)
             {
@@ -185,7 +242,7 @@ namespace Comforthuse.Database
             }
 
 
-
+            GetCaseDependencies(tempCases);
 
             return listOfCases;
         }
@@ -195,16 +252,113 @@ namespace Comforthuse.Database
             foreach (TempCase tc in tempCases)
             {
                 tc.Case.Customer = GetCustomerByEmail(tc.CustomerEmail);
-                tc.Case.MoneyInstitute = GetMoneyInstituteById(tc.MoneyInstituteId);
-                tc.Case.Plot = GetPlotById(tc.PlotId);
-                tc.Case.Image = GetImageById(tc.ImageId);
+
+                if (tc.MoneyInstituteId == null)
+                    tc.Case.MoneyInstitute = new MoneyInstitute();
+                else
+                    tc.Case.MoneyInstitute = GetMoneyInstituteById(Convert.ToInt32(tc.MoneyInstituteId));
+                
+                if (tc.PlotId == null)
+                    tc.Case.Plot = ObjectFactory.Instance.CreatePlot();
+                else
+                    tc.Case.Plot = GetPlotById(Convert.ToInt32(tc.PlotId));
+
+
+                if (tc.ImageId == null)
+                    tc.Case.Image = new Image();
+                else
+                    tc.Case.Image = GetImageById(Convert.ToInt32(tc.ImageId));
+
+                IExpenseCategory iec = tc.Case.GetExpenseCategory(Category.HouseType);
+                IHouseTypeExpenses ihte = (IHouseTypeExpenses)iec;
+                ihte.HouseType = GetHouseType(tc);
+
                 tc.Case.Employee = EmployeeRepository.Instance.Load(tc.EmployeeEmail);
             }
         }
 
+        private IHouseType GetHouseType(TempCase tc)
+        {
+            IHouseType houseType = new HouseType();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_SelectHouseType", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@CaseNumber", tc.Case.CaseNumber));
+                command.Parameters.Add(new SqlParameter("@CaseYear", tc.Case.DateOfCreation.Year));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    string name;
+                    if (reader.IsDBNull(0))
+                    {
+                        name = null;
+                    }
+                    else
+                    {
+                        name = reader.GetString(0);
+                    }
+
+                    string description;
+                    if (reader.IsDBNull(1))
+                    {
+                        description = null;
+                    }
+                    else
+                    {
+                        description = reader.GetString(1);
+                    }
+
+                    int? area;
+                    if (reader.IsDBNull(2))
+                    {
+                        area = null;
+                    }
+                    else
+                    {
+                        area = reader.GetInt32(2);
+                    }
+
+                    decimal? price;
+                    if (reader.IsDBNull(3))
+                    {
+                        price = null;
+                    }
+                    else
+                    {
+                        price = reader.GetDecimal(3);
+                    }
+
+                    houseType.Name = name;
+                    houseType.Description = description;
+                    houseType.Area = area;
+                    houseType.TotalPrice = price;
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException sqlE)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return houseType;
+        }
+
         private IImage GetImageById(int imageId)
         {
-            Image image = new Image();
+            IImage image = ObjectFactory.Instance.CreateNewImage();
 
             try
             {
@@ -218,8 +372,9 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
-                    string path = reader.GetString(2);
-                    string description = reader.GetString(3);
+                    reader.Read();
+                    string path = reader.GetString(0);
+                    string description = reader.GetString(1);
                     image.Path = path;
                     image.Description = description;
                 }
@@ -241,7 +396,8 @@ namespace Comforthuse.Database
 
         private IPlot GetPlotById(int plotId)
         {
-            Plot plot = new Plot();
+            IPlot plot = ObjectFactory.Instance.CreatePlot();
+
 
             try
             {
@@ -255,22 +411,32 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
-                    string zipcode = reader.GetString(2);
-                    string address = reader.GetString(3);
-                    string city = reader.GetString(4);
-                    int area = reader.GetInt32(5);
-                    string municipality = reader.GetString(6);
-                    DateTime availabilityDate = reader.GetDateTime(7);
+                    reader.Read();
+                    string zipcode = reader.GetString(0);
+                    string address = reader.GetString(1);
+                    string city = reader.GetString(2);
+                    int area = reader.GetInt32(3);
+                    string municipality = reader.GetString(4);
+                    DateTime? availabilityDate;
+                    if (reader.IsDBNull(5))
+                    {
+                        availabilityDate = null;
+                    }
+                    else
+                    {
+                        availabilityDate = reader.GetDateTime(5);
+                    }
+
                     plot.Zipcode = zipcode;
                     plot.Address = address;
                     plot.City = city;
                     plot.Area = area;
                     plot.Municipality = municipality;
                     plot.AvailabilityDate = availabilityDate;
+
                 }
                 reader.Close();
                 reader.Dispose();
-
             }
             catch (SqlException sqlE)
             { }
@@ -286,7 +452,7 @@ namespace Comforthuse.Database
 
         private IMoneyInstitute GetMoneyInstituteById(int moneyInstituteId)
         {
-            MoneyInstitute moneyInstitute = new MoneyInstitute();
+            IMoneyInstitute moneyInstitute = new MoneyInstitute();
 
             try
             {
@@ -300,16 +466,13 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
+                    reader.Read();
                     string name = reader.GetString(0);
                     string address = reader.GetString(1);
                     string zipcode = reader.GetString(2);
                     string city = reader.GetString(3);
                     string phoneNb = reader.GetString(4);
-                    moneyInstitute.Name = name;
-                    moneyInstitute.Address = address;
-                    moneyInstitute.Zipcode = zipcode;
-                    moneyInstitute.City = city;
-                    moneyInstitute.PhoneNb = phoneNb;
+                    moneyInstitute = ObjectFactory.Instance.CreateMoneyInstitute(name, address, zipcode, city, phoneNb);
                 }
                 reader.Close();
                 reader.Dispose();
@@ -344,6 +507,7 @@ namespace Comforthuse.Database
 
                 if (reader.HasRows)
                 {
+                    reader.Read();
                     string firstName = reader.GetString(0);
                     string lastName = reader.GetString(1);
                     string city = reader.GetString(3);
@@ -396,18 +560,21 @@ namespace Comforthuse.Database
             {
                 conn.Open();
                 string customerEmail = InsertCustomer(c.Customer);
-                int imageId = InsertImage(c.Image);
+                int? imageId = InsertImage(c.Image);
                 int moneyInstituteId = InsertMoneyInstitute(c.MoneyInstitute);
                 string employeeEmail = InsertEmployee(c.Employee);
                 int plotId = InsertPlot(c.Plot);
-                InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
+
+                c.CaseNumber = InsertCase(c, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
                 InsertTechnicalSpecifications(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
                 InsertExtraExpenses(c.GetAllCategories(), c.DateOfCreation.Year, c.CaseNumber);
                 InsertProducts(c, c.DateOfCreation.Year, c.CaseNumber);
+                InsertHouseType(c, c.DateOfCreation.Year, c.CaseNumber);
 
             }
             catch (SqlException sqlE)
             {
+                throw new Exception(sqlE.Message);
                 isSuccessful = false;
             }
             finally
@@ -420,6 +587,38 @@ namespace Comforthuse.Database
 
 
             return isSuccessful;
+        }
+
+        private void InsertHouseType(ICase c, int year, int caseNumber)
+        {
+            DeleteHouseType(year, caseNumber);
+
+            IHouseTypeExpenses houseTypeEx = (IHouseTypeExpenses)c.GetExpenseCategory(Category.HouseType);
+            SqlCommand command = new SqlCommand("CH_SP_InsertHouseType", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Name", houseTypeEx.HouseType.Name));
+            command.Parameters.Add(new SqlParameter("@HouseTypeDescription", houseTypeEx.HouseType.Description));
+            command.Parameters.Add(new SqlParameter("@Area", houseTypeEx.HouseType.Area));
+            command.Parameters.Add(new SqlParameter("@TotalPrice", houseTypeEx.HouseType.TotalPrice));
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", year));
+            
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+        }
+
+        private void DeleteHouseType(int year, int caseNumber)
+        {
+
+            SqlCommand command = new SqlCommand("CH_SP_DeleteHouseType", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
+            command.Parameters.Add(new SqlParameter("@CaseYear", year));
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
         }
 
         private void InsertProducts(ICase c, int caseYear, int caseNumber)
@@ -557,12 +756,12 @@ namespace Comforthuse.Database
             command.Dispose();
         }
 
-        public void InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int imageId)
+        public int InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int? imageId)
         {
             int caseNumber = c.CaseNumber;
             int caseYear = c.DateOfCreation.Year;
-            DateTime constructionStartDate = c.ConstructionStartDate;
-            DateTime moveInDate = c.MoveInDate;
+            DateTime? constructionStartDate = c.ConstructionStartDate;
+            DateTime? moveInDate = c.MoveInDate;
             string caseDescription = c.Description;
 
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditCase", conn);
@@ -578,13 +777,23 @@ namespace Comforthuse.Database
             command.Parameters.Add(new SqlParameter("@PlotId", plotId));
             command.Parameters.Add(new SqlParameter("@ImageId", imageId));
 
+            SqlParameter returnParameter = command.Parameters.Add("@CaseNumber", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
             command.ExecuteNonQuery();
 
             command.Dispose();
+
+            return int.Parse(returnParameter.Value.ToString());
         }
 
-        private int InsertImage(IImage image)
+        private int? InsertImage(IImage image)
         {
+            if(image == null)
+            {
+                return null;
+            }
+
             SqlCommand command = new SqlCommand("CH_SP_InsertOrEditImage", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@Imagepath", image.Path));
@@ -623,6 +832,10 @@ namespace Comforthuse.Database
 
         private string InsertEmployee(IEmployee employee)
         {
+            if(employee ==null)
+            {
+                return new Employee("Allan", "Boje", "ab@comforthuse.dk", "25874565").Email;
+            }
             return employee.Email;
         }
 

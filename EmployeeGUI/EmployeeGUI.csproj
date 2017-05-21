@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\MessageHandling.cs" />
     <Compile Include="ViewModels\CustomerInformationViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\BaseExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\CarpentryExpenseViewModel.cs" />
     <Compile Include="ViewModels\ExpenseCategoryPages\ExtraConstructionExpenseViewModel.cs" />

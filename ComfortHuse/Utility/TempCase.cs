@@ -10,7 +10,7 @@ namespace Comforthuse.Utility
     public class TempCase
     {
 
-        public TempCase(Case caseObj, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int imageId)
+        public TempCase(Case caseObj, string customerEmail, int? moneyInstituteId, string employeeEmail, int? plotId, int? imageId)
         {
             Case = caseObj;
             CustomerEmail = customerEmail;
@@ -23,8 +23,8 @@ namespace Comforthuse.Utility
         public Case Case { get; set; }
         public string CustomerEmail { get; set; }
         public string EmployeeEmail { get; set; }
-        public int MoneyInstituteId { get; set; }
-        public int PlotId { get; set; }
-        public int ImageId { get; set; }
+        public int? MoneyInstituteId { get; set; }
+        public int? PlotId { get; set; }
+        public int? ImageId { get; set; }
     }
 }

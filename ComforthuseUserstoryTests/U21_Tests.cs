@@ -18,36 +18,31 @@ namespace ComforthuseUserstoryTests
 
             Dictionary<int, ProductType> listOfProductTypes = ProductTypeRepository.Instance.GetProductTypes();
             Dictionary<int, ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
+            
 
             ICase case1 = ObjectFactory.Instance.CreateNewCase();
 
-            case1.CaseNumber = 1;
-            case1.DateOfCreation = new DateTime(2017, 6, 6);
-
-
-            case1.ConstructionStartDate = new DateTime(2017, 1, 1);
-            case1.MoveInDate = new DateTime(2016, 2, 2);
-            case1.Description = "Very bad description of this case";
+            case1.CaseNumber =0;
 
             case1.Customer.FirstName = "David";
             case1.Customer.LastName = "Alves";
-            case1.Customer.Email = "davi7816@edu.eal.dk";
+            case1.Customer.Email = "castor3@noproblemo.com";
             case1.Customer.City = "Porto";
             case1.Customer.Address = "Praceta Ribeiro Sanches nº89";
             case1.Customer.Zipcode = "4100-428";
             case1.Customer.PhoneNb1 = "937776684";
             case1.Customer.PhoneNb2 = "31854331";
 
-            case1.MoneyInstitute = new MoneyInstitute() { Name = "InstituteFake", Address = "Street", Zipcode = "5200", City = "Odense", PhoneNb = "31853146" };
+            //case1.MoneyInstitute = new MoneyInstitute() { Name = "intituto", Address = "intitutoAddress", Zipcode = "5200", City = "Odense", PhoneNb = "31854545" };
 
-            case1.Employee = new Employee("Alan", "Boje", "ab@comforthuse.dk", "24813540");
+            //case1.Employee = new Employee("Alan", "Boje", "ab@comforthuse.dk", "24813540");
 
-            case1.Plot = new Plot() { Zipcode = "21331", Address = "testaddress", City = "Idunno", Area = 123, Municipality = "Odense", AvailabilityDate = new DateTime(2017, 6, 23) };
+            //case1.Plot = new Plot() { Zipcode = "31634", Address = "testaddressforplot", City = "Idunno", Area = 123, Municipality = "Odense", AvailabilityDate = new DateTime(2017, 6, 23) };
 
-            case1.Image = new Image() { Path = @"c:\test\img2.png", Description = "Very good image" };
+            //case1.Image = new Image() { Path = @"c:\test\img2.png", Description = "Very good image" };
 
 
-            case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].Title = "Wall";
+            /*case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].Title = "Wall";
             case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].Amount = 10;
             case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].PricePerUnit = 10;
             case1.GetExpenseCategory(Category.CarportGarage).ExtraExpenses[0].Description = "Wood";
@@ -65,12 +60,12 @@ namespace ComforthuseUserstoryTests
 
             case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Selected = true;
             case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Amount = 30;
-            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].SpecialPrice = 19.99M;
+            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].SpecialPrice = 19.99M;*/
 
-            Assert.AreEqual("CarportGarage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].Category.ToString());
-            Assert.AreEqual("Carport/Garage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].Name);
-            Assert.AreEqual("Carport", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[0].Name);
-            Assert.AreEqual("Garage", case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOption[1].Name);
+            /*IHouseTypeExpenses houseEx = (IHouseTypeExpenses)case1.GetExpenseCategory(Category.HouseType);
+            houseEx.HouseType = new HouseType();
+            houseEx.HouseType.TotalPrice = 123654;*/
+            throw new Exception(DatabaseController.Instance.GetAllCases().Count.ToString());
 
             Assert.IsTrue(DatabaseController.Instance.SaveCase(case1));
 
