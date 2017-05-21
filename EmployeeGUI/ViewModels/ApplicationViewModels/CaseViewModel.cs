@@ -19,6 +19,7 @@ namespace EmployeeGUI.ViewModels
         private ICommand _changePageCommand;
         private IPageViewModel _currentPageViewModel;
         private MoneyInstituteViewModel _moneyInstitueViewModel; 
+        private EmployeeViewModel _employeeViewModel;
         private List<IPageViewModel> _pageViewModels;
         private int _caseID;
         private ICase _activeCase;
@@ -42,11 +43,27 @@ namespace EmployeeGUI.ViewModels
                 return _moneyInstitueViewModel;
             }
         }
+        public EmployeeViewModel EmployeeViewModel
+        {
+            get
+            {
+                if (_employeeViewModel == null) _employeeViewModel = new EmployeeViewModel();
+                return _employeeViewModel;
+            }
+        }
+
+        public IEmployee Employee
+        {
+            set{ _activeCase.Employee = value; }
+        }
 
         private void InstanciateViewModel()
         {
             _moneyInstitueViewModel = new MoneyInstituteViewModel();
+            _employeeViewModel = new EmployeeViewModel();
             _moneyInstitueViewModel.MoneyInstitute = _activeCase.MoneyInstitute;
+            _employeeViewModel.Employee = _activeCase.Employee;
+
             _caseCustomer = _activeCase.Customer;
         }
         public CaseViewModel()
@@ -129,9 +146,19 @@ namespace EmployeeGUI.ViewModels
             get { return "Case Number: " + _activeCase.DateOfCreation.Year + "-" + _activeCase.CaseNumber; }
         }
 
-        internal void SetCaseID(int caseid)
+        public void SetCaseID(int caseid)
         {
             _caseID = caseid;
+        }
+
+        public string Description
+        {
+            get{
+                return _activeCase.Description;
+            }
+            set{
+                _activeCase.Description = value;
+            }
         }
         public string FirstName
         {

@@ -12,11 +12,11 @@
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -29,20 +29,20 @@
       
            
             <Label Grid.Column="1" Grid.Row="0" x:Name="label_FirstName" Content="Name:" HorizontalAlignment="Left" Height="25"  />
-            <TextBox Grid.Column="3" Grid.Row="0"  Text="{Binding Name}" x:Name="txtBox_Name" HorizontalAlignment="Left" Height="20" Width="200" />
+            <TextBox Grid.Column="3" Grid.Row="0"  Text="{Binding Name}" x:Name="txtBox_Name" HorizontalAlignment="Stretch" Height="20" />
 
 
             <Label Grid.Column="1" Grid.Row="1" x:Name="label_LastName" Content="Adress:" HorizontalAlignment="Left" Height="25"  />
-            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Address}" x:Name="txtBox_Address" HorizontalAlignment="Left" Height="20" Width="200" />
+            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Address}" x:Name="txtBox_Address" HorizontalAlignment="Stretch" Height="20" />
 
             <Label Grid.Column="1" Grid.Row="2" x:Name="label_City" Content="ZipCode:" HorizontalAlignment="Left" Height="25" />
-            <TextBox  Grid.Column="3" Grid.Row="2" Text="{Binding Zipcode}" x:Name="txtBox_Zipcode" HorizontalAlignment="Left" Height="20" Width="200" />
+            <TextBox  Grid.Column="3" Grid.Row="2" Text="{Binding Zipcode}" x:Name="txtBox_Zipcode" HorizontalAlignment="Stretch" Height="20"/>
 
             <Label  Grid.Column="1" Grid.Row="3" x:Name="label_Address" Content="City:" HorizontalAlignment="Left" Height="25"  />
-            <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding City}"  x:Name="txtBox_City" HorizontalAlignment="Left" Height="20" Width="200" />
+            <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding City}"  x:Name="txtBox_City" HorizontalAlignment="Stretch" Height="20" />
 
             <Label  Grid.Column="1" Grid.Row="4" x:Name="label_Zipcode" Content="PhoneNb:" HorizontalAlignment="Left" Height="25"  />
-            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding PhoneNumber}"  x:Name="txtBox_PhoneNb" HorizontalAlignment="Left" Height="20" Width="200"  />
+            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding PhoneNumber}"  x:Name="txtBox_PhoneNb" HorizontalAlignment="Stretch" Height="20" />
 
             
         </Grid>

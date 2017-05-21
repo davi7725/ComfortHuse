@@ -68,6 +68,9 @@
         <DataTemplate DataType="{x:Type vm:MoneyInstituteViewModel}">
             <v:MoneyInstituteView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:EmployeeViewModel}">
+            <v:EmployeeView />
+        </DataTemplate>
     </Window.Resources>
     <Grid Background="#c9c9c9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
@@ -91,13 +94,13 @@
                 <RowDefinition Height="50*"></RowDefinition>
                 <RowDefinition Height="50*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label x:Name="label" Content="{Binding CaseID, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"  VerticalAlignment="Top" Height="29" Width="169" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"/>
+            <Label x:Name="label" Content="{Binding CaseID}" HorizontalAlignment="Right"  VerticalAlignment="Top" Height="29" Width="169" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"/>
             <Label x:Name="ApplicationLabel" Content="Comfort Huse A/S" FontSize="22" FontFamily="Lato Black"/>
         </Grid>
 
         <Rectangle Fill="DimGray" Grid.Row="2" Grid.Column="1"></Rectangle>
         <TabControl Background="White" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <TabItem Header="Customer ">
+            <TabItem Header="Customer " >
                 <Grid Margin="0,0,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
@@ -107,8 +110,8 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10"/>
-                        <RowDefinition Height="250"/>
-                        <RowDefinition Height="220"/>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
                     <GroupBox VerticalContentAlignment="Top" Grid.Column="1" Grid.Row="1" FontSize="12" Header="Customer information" HorizontalAlignment="Stretch" Margin="0,0,0,0"
                   VerticalAlignment="Stretch">
@@ -123,7 +126,7 @@
                                 <ColumnDefinition Width="10"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
@@ -155,7 +158,7 @@
 
                             <Label Grid.Column="1" Grid.Row="7" x:Name="label_Email" Content="Email" HorizontalAlignment="Left" Height="25" Width="67" />
                             <TextBox Grid.Column="3" Grid.Row="7" Text="{Binding Email}" x:Name="txtBox_Email" HorizontalAlignment="Stretch" Height="20" />
-                         
+
                         </Grid>
                     </GroupBox>
 
@@ -202,7 +205,7 @@
                             <ColumnDefinition Width="86*" />
                             <ColumnDefinition Width="45*" />
                         </Grid.ColumnDefinitions>
-                      
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="42"/>
                             <RowDefinition Height="10*"/>
@@ -215,13 +218,13 @@
                         <Label Grid.Row="0" Grid.Column="4" Content="Unit" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <Label Grid.Row="0" Grid.Column="5" Content="A price" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <Label Grid.Row="0" Grid.Column="6" Content="Total" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                     
-                        
+
+
                         <ContentControl Grid.ColumnSpan="7" Grid.Row="1" Content="{Binding CurrentPageViewModel}" />
 
                     </Grid>
-                    
-                    
+
+
                 </DockPanel>
             </TabItem>
             <TabItem Background="White" Header="Case" Height="22" VerticalAlignment="Bottom">
@@ -239,18 +242,16 @@
                     </Grid.RowDefinitions>
                     <GroupBox VerticalContentAlignment="Top" Grid.Column="1" Grid.Row="1" FontSize="12" Header="Plot information" HorizontalAlignment="Stretch" Margin="0,0,0,0"
                   VerticalAlignment="Stretch">
-
-
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10"/>
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="100*"/>
                                 <ColumnDefinition Width="10"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
@@ -261,27 +262,27 @@
                             </Grid.RowDefinitions>
 
                             <Label Grid.Column="1" Grid.Row="0" x:Name="label_plotAddress" Content="Address:" HorizontalAlignment="Left" Height="25" />
-                            <TextBox  Grid.Column="3" Grid.Row="0" Text="{Binding PlotAddress}" x:Name="plotAddressTextBox" HorizontalAlignment="Left" Height="20" Width="200" TextChanged="plotAddressTextBox_TextChanged" />
+                            <TextBox  Grid.Column="3" Grid.Row="0" Text="{Binding PlotAddress}" x:Name="plotAddressTextBox" HorizontalAlignment="Stretch" Height="20" TextChanged="plotAddressTextBox_TextChanged" />
 
                             <Label  Grid.Column="1" Grid.Row="1" x:Name="label_plotZipCode" Content="Zipcode:" HorizontalAlignment="Left" Height="25"  />
-                            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding PlotZipcode}"  x:Name="plotZipCodeTextbox" HorizontalAlignment="Left" Height="20" Width="200" />
+                            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding PlotZipcode}"  x:Name="plotZipCodeTextbox" HorizontalAlignment="Stretch" Height="20" />
 
                             <Label  Grid.Column="1" Grid.Row="2" x:Name="label_plotCity" Content="City:" HorizontalAlignment="Left" Height="25"  />
-                            <TextBox Grid.Column="3" Grid.Row="2" Text="{Binding PlotCity}"  x:Name="plotCityTextBox" HorizontalAlignment="Left" Height="20" Width="200"  />
+                            <TextBox Grid.Column="3" Grid.Row="2" Text="{Binding PlotCity}"  x:Name="plotCityTextBox" HorizontalAlignment="Stretch" Height="20" />
 
                             <Label  Grid.Column="1" Grid.Row="3" x:Name="label_plotArea" Content="Area:" HorizontalAlignment="Left" Height="25" />
-                            <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding PlotArea}" x:Name="plotAreaTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
+                            <TextBox Grid.Column="3" Grid.Row="3" Text="{Binding PlotArea}" x:Name="plotAreaTextBox" HorizontalAlignment="Stretch" Height="20" />
 
                             <Label  Grid.Column="1" Grid.Row="4" x:Name="label_plotMunicipality" Content="Municipality:" HorizontalAlignment="Left" Height="25" />
-                            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding PlotMunicipality}" x:Name="plotMunicipalityTextBox" HorizontalAlignment="Left" Height="20" Width="200"  />
+                            <TextBox Grid.Column="3" Grid.Row="4" Text="{Binding PlotMunicipality}" x:Name="plotMunicipalityTextBox" HorizontalAlignment="Stretch" Height="20"  />
 
                             <Label Grid.Column="1" Grid.Row="5" x:Name="label_plotAvaliabilityDate" Content="Avaliability Date" HorizontalAlignment="Left" Height="25" Width="67" />
-                            <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding PlotAvalibilityDate}" x:Name="plotAvaliabilityDateTextBox" HorizontalAlignment="Left" Height="20" Width="200" />
+                            <TextBox Grid.Column="3" Grid.Row="5" Text="{Binding PlotAvalibilityDate}" x:Name="plotAvaliabilityDateTextBox" HorizontalAlignment="Stretch" Height="20" />
                         </Grid>
                     </GroupBox>
 
                     <GroupBox VerticalContentAlignment="Top" Grid.Column="2" Grid.Row="1" FontSize="12" Header="Assign Employee" HorizontalAlignment="Stretch" Margin="0,0,0,0"
-                  VerticalAlignment="Stretch">
+                    VerticalAlignment="Stretch">
 
 
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -289,26 +290,33 @@
                                 <ColumnDefinition Width="10"/>
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="10"/>
-                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="100*"/>
                                 <ColumnDefinition Width="10"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
+
+
+                            <ComboBox Name="AssignEmployeeCombobox" Grid.Row="1" Grid.Column="3" SelectedValue="{Binding Employee}" ItemsSource="{Binding Employees}" SelectionChanged="AssignEmployeeCombobox_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DisplayName}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+
+                            <Label Grid.Row="2" Grid.Column="1"  Name="EmployeePhoneNumberLabel" Content="Phonenumber" />
+                            <Label Grid.Row="2" Grid.Column="3"  Name="EmployeePhoneNumberContent" Content="{Binding PhoneNumber}" />
+
+                            <Label Grid.Row="3" Grid.Column="3"  Name="EmployeeEmailLabel" Content="Email" />
+                            <Label Grid.Row="3" Grid.Column="1"  Name="EmployeeEmailContent" Content="{Binding PhoneNumber}" />
                         </Grid>
                     </GroupBox>
-                    <ComboBox ItemsSource="{Binding Employees}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <Rectangle Fill="{Binding DisplayName}" Width="16" Height="16" />
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <Label Name="EmployeeNameLabel" Content="Name" />
-                    <Label Name="EmployeeEmailLabel" Content="Email" />
                 </Grid>
             </TabItem>
         </TabControl>
