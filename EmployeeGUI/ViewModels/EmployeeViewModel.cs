@@ -15,17 +15,21 @@ namespace EmployeeGUI.ViewModels
         private IEmployee _employee;
         public IEmployee Employee { set { _employee = value; } }
 
-        public string DisplayName { 
+        public string DisplayName
+        {
             get { return _employee.FirstName + "" + _employee.LastName; }
         }
-        
-        public string FirstName {
+
+        public string FirstName
+        {
             get { return _employee.FirstName; }
-            set {
+            set
+            {
                 _employee.FirstName = value;
             }
         }
-        public string LastName {
+        public string LastName
+        {
             get { return _employee.LastName; }
             set
             {

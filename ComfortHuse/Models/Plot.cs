@@ -10,7 +10,7 @@ namespace Comforthuse.Models
         public string City { get; set; }
         public string Address { get; set; }
         public string Municipality { get; set; }
-        public DateTime AvailabilityDate { get; set; }
+        public DateTime? AvailabilityDate { get; set; }
     }
 
     public interface IPlot
@@ -20,6 +20,6 @@ namespace Comforthuse.Models
         string Address { get; set; }
         string City { get; set; }
         string Municipality { get; set; }
-        DateTime AvailabilityDate { get; set; }
+        DateTime? AvailabilityDate { get; set; }
     }
 }

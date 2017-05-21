@@ -169,9 +169,27 @@ namespace Comforthuse.Utility
             Case thisCase = new Case(InstanciateEmptyExpenseCategories())
             {
                 Customer = CreateNewCustomer(),
-                CaseNumber = 0
+                CaseNumber = 0,
+                Plot = CreateNewPlot(),
+                MoneyInstitute = CreateNewMoneyInstitute(),
+                Image = CreateNewImage()
             };
             return thisCase;
+        }
+
+        private IMoneyInstitute CreateNewMoneyInstitute()
+        {
+            return new MoneyInstitute() { Name = "", Address = "", City = "", Zipcode = "", PhoneNb = "" };
+        }
+
+        public IImage CreateNewImage()
+        {
+            return new Image() { Path = "", Description = "" };
+        }
+
+        private IPlot CreateNewPlot()
+        {
+            return new Plot() { Zipcode = "", Address = "", Area = 0, AvailabilityDate = null, City = "", Municipality = "" };
         }
 
         internal ICase CreateExistingCase()

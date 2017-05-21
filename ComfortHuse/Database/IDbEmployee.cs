@@ -5,7 +5,7 @@ namespace Comforthuse.Database
 {
     public interface IDbEmployee
     {
-        void InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int imageId);
+        int InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int? imageId);
         List<ICase> GetAllCases();
         int GetNextCaseId();
         ICase GetCase(int caseId);
