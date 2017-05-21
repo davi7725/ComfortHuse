@@ -18,7 +18,8 @@ namespace EmployeeGUI.ViewModels
         private ICustomer _caseCustomer;
         private ICommand _changePageCommand;
         private IPageViewModel _currentPageViewModel;
-        private MoneyInstituteViewModel _moneyInstitueViewModel;
+        private MoneyInstituteViewModel _moneyInstitueViewModel; 
+        private EmployeeViewModel _employeeViewModel;
         private List<IPageViewModel> _pageViewModels;
         private int _caseID;
         private ICase _activeCase;
@@ -42,11 +43,27 @@ namespace EmployeeGUI.ViewModels
                 return _moneyInstitueViewModel;
             }
         }
+        public EmployeeViewModel EmployeeViewModel
+        {
+            get
+            {
+                if (_employeeViewModel == null) _employeeViewModel = new EmployeeViewModel();
+                return _employeeViewModel;
+            }
+        }
+
+        public IEmployee Employee
+        {
+            set{ _activeCase.Employee = value; }
+        }
 
         private void InstanciateViewModel()
         {
             _moneyInstitueViewModel = new MoneyInstituteViewModel();
+            _employeeViewModel = new EmployeeViewModel();
             _moneyInstitueViewModel.MoneyInstitute = _activeCase.MoneyInstitute;
+            _employeeViewModel.Employee = _activeCase.Employee;
+
             _caseCustomer = _activeCase.Customer;
         }
         public CaseViewModel()
@@ -129,9 +146,19 @@ namespace EmployeeGUI.ViewModels
             get { return "Case Number: " + _activeCase.DateOfCreation.Year + "-" + _activeCase.CaseNumber; }
         }
 
-        internal void SetCaseID(int caseid)
+        public void SetCaseID(int caseid)
         {
             _caseID = caseid;
+        }
+
+        public string Description
+        {
+            get{
+                return _activeCase.Description;
+            }
+            set{
+                _activeCase.Description = value;
+            }
         }
         public string FirstName
         {
@@ -153,8 +180,8 @@ namespace EmployeeGUI.ViewModels
 
         public string Email
         {
-            get { return _caseCustomer.Email; }
-            set { _caseCustomer.Email = value; }
+            get { return _caseCustomer.FirstName; }
+            set { _caseCustomer.FirstName = value; }
         }
 
         public string City
@@ -186,19 +213,8 @@ namespace EmployeeGUI.ViewModels
 
         public string PlotAvalibilityDate
         {
-            get
-            {
-                if (_activeCase.Plot.AvailabilityDate == null)
-                    return "";
-                else
-                {
-                    DateTime availability = (DateTime)_activeCase.Plot.AvailabilityDate;
-                    return availability.ToString("MM-dd-yy");
-                }
-
-            }
-            set
-            {
+            get { return _activeCase.Plot.AvailabilityDate.ToString("MM-dd-yy"); }
+            set {
                 string dateString = value;
                 string[] datestringArr = dateString.Split('-');
                 int day;
@@ -207,7 +223,7 @@ namespace EmployeeGUI.ViewModels
                 int.TryParse(datestringArr[0], out day);
                 int.TryParse(datestringArr[1], out month);
                 int.TryParse(datestringArr[2], out year);
-                _activeCase.Plot.AvailabilityDate = new DateTime(year, month, day);
+                _activeCase.Plot.AvailabilityDate = new DateTime(year,month,day); 
             }
         }
 
@@ -216,7 +232,7 @@ namespace EmployeeGUI.ViewModels
             get { return _activeCase.Plot.Address; }
             set
             {
-                _activeCase.Plot.Address = value;
+                _activeCase.Plot.Address = value; 
             }
         }
 
