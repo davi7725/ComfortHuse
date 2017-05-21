@@ -514,7 +514,15 @@ namespace Comforthuse.Database
                     string address = reader.GetString(4);
                     string zipcode = reader.GetString(5);
                     string phoneNb1 = reader.GetString(6);
-                    string phoneNb2 = reader.GetString(7);
+                    string phoneNb2;
+                    if (reader.IsDBNull(7))
+                    {
+                        phoneNb2 = "";
+                    }
+                    else
+                    {
+                        phoneNb2 = reader.GetString(7);
+                    }
                     customer.FirstName = firstName;
                     customer.LastName = lastName;
                     customer.Email = customerEmail;

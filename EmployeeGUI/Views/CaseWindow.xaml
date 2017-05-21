@@ -68,9 +68,6 @@
         <DataTemplate DataType="{x:Type vm:MoneyInstituteViewModel}">
             <v:MoneyInstituteView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:EmployeeViewModel}">
-            <v:EmployeeView />
-        </DataTemplate>
 
     </Window.Resources>
     <Grid Background="#c9c9c9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -99,8 +96,8 @@
             <Label x:Name="ApplicationLabel" Content="Comfort Huse A/S" FontSize="22" FontFamily="Lato Black"/>
         </Grid>
 
-        <Rectangle Fill="DimGray" Grid.Row="2" Grid.Column="1"></Rectangle>
-        <TabControl Background="White" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Rectangle Fill="DimGray" Grid.Row="1" Grid.ColumnSpan="2" Margin="15,70.2,0.4,10" Grid.RowSpan="2"/>
+        <TabControl Background="White" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="15,69.2,0.4,7" Grid.RowSpan="2">
             <TabItem Header="Customer " >
                 <Grid Margin="0,0,0,0">
                     <Grid.ColumnDefinitions>
@@ -345,6 +342,7 @@
             </MenuItem>
             <MenuItem/>
         </Menu>
-        <Label x:Name="totPriceTextLabel" Content="{Binding TotalPrice}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,4.8,64.4,0" Grid.Row="2" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.021,0.454"/>
+        <Label x:Name="totPriceTextLabel" Foreground="White" Content="{Binding TotalPrice}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,70.2,10,0" Grid.Row="1" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.021,0.454" Grid.RowSpan="2"/>
+        <Button x:Name="saveButton" Click="saveButton_Click" Content="Save" Grid.Column="1" HorizontalAlignment="Right" Height="21" Margin="0,0,0.4,6.6" Grid.Row="2" VerticalAlignment="Bottom" Width="75" Grid.RowSpan="2"/>
     </Grid>
 </Window>

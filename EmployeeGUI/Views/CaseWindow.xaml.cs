@@ -35,7 +35,7 @@ namespace EmployeeGUI
             {
                 MessageBox.Show(emp.Email);
                 CaseViewModel caseViewModel = (CaseViewModel)this.DataContext;
-                caseViewModel.E = emp;
+                caseViewModel.Employee = emp;
             }
             else
             {
