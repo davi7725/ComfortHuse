@@ -7,6 +7,11 @@ namespace Comforthuse.Utility
     {
         public override decimal Price { get
             {
+                if(HouseType.TotalPrice == null)
+                {
+                    return this.PriceExtraExpenses;
+                }
+                else
                 return (decimal)HouseType.TotalPrice + this.PriceExtraExpenses;
             }
         }

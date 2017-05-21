@@ -24,6 +24,7 @@ namespace Comforthuse.Utility
 
         public List<IEmployee> GetAllEmployee()
         {
+            _employees = _db.GetAllEmployees();
             return _employees;
         }
         public void Add(IEmployee employee)

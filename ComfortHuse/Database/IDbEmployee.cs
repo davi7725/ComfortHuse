@@ -12,5 +12,6 @@ namespace Comforthuse.Database
         bool SaveCase(ICase @case);
         List<ICustomer> GetAllCustomersByName();
         void SearchForCustomer(string query);
+        List<IEmployee> GetAllEmployees();
     }
 }
