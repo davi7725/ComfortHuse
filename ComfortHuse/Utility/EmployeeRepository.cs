@@ -50,7 +50,7 @@ namespace Comforthuse.Utility
         public IEmployee Load(string email)
         {
             IEmployee employee = null;
-            foreach(IEmployee emp in _employees)
+            foreach (IEmployee emp in _employees)
             {
                 if (emp.Email == email)
                 {

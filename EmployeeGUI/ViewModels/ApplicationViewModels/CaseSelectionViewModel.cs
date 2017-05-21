@@ -72,6 +72,7 @@ namespace EmployeeGUI.ViewModels
             catch (Exception e)
             {
                 MessageHandling.DisplayErrorMessage(e.Message);
+                throw;
             }
         }
 
