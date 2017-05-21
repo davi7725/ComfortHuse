@@ -30,9 +30,9 @@ namespace Comforthuse.Models
 
         public List<ProductOption> GetListOfProductOptions()
         {
-            Dictionary<int,ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
+            Dictionary<int, ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
 
-            foreach(ProductOption po in listOfProductOptions.Values)
+            foreach (ProductOption po in listOfProductOptions.Values)
             {
                 if (po.ProductType.Equals(this))
                 {

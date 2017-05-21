@@ -1,7 +1,6 @@
 ﻿using Comforthuse.Utility;
 using System;
 using System.Collections.Generic;
-using Comforthuse.Interfaces;
 
 namespace Comforthuse.Models
 {
@@ -117,7 +116,7 @@ namespace Comforthuse.Models
         IEmployee Employee { get; set; }
         IMoneyInstitute MoneyInstitute { get; set; }
         IPlot Plot { get; set; }
-        IImage Image { get;set; }
+        IImage Image { get; set; }
         void RegisterRevision();
         Dictionary<Category, IExpenseCategory> GetAllCategories();
     }

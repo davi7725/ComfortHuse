@@ -1,10 +1,10 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse.Interfaces;
+using Comforthuse.Models;
+using Comforthuse.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using Comforthuse.Interfaces;
-using Comforthuse.Utility;
 
 namespace Comforthuse.Database
 {
