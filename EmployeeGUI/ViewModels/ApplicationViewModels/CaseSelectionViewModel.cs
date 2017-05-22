@@ -2,8 +2,7 @@
 using Comforthuse.Models;
 using EmployeeGUI.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Windows.Controls;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace EmployeeGUI.ViewModels
@@ -14,14 +13,14 @@ namespace EmployeeGUI.ViewModels
         private ICommand _createCaseCommand;
         private ICommand _editCaseCommand;
         private IEmployeeFacade _facade = new DomainFacade();
-        private List<ICase> _cases;
-        public List<ICase> Cases
+        private ObservableCollection<ICase> _cases;
+        public ObservableCollection<ICase> Cases
         {
             get
             {
                 if (_cases == null)
                 {
-                    _cases = new List<ICase>(_facade.GetAllCases());
+                    _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
                     _facade.GetAllProductTypes();
                     _facade.GetAllProductOptions();
                     _facade.GetAllEmployees();
@@ -69,10 +68,11 @@ namespace EmployeeGUI.ViewModels
         {
             try
             {
-
-                ListView CaseList = (ListView)obj;
-                CaseList.ItemsSource = new List<ICase> { new Case() };
-
+                _cases.Clear();
+                foreach (ICase c in _facade.GetAllCases())
+                {
+                    _cases.Add(c);
+                }
             }
             catch (Exception e)
             {

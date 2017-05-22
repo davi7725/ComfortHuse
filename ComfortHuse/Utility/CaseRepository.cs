@@ -135,11 +135,6 @@ namespace Comforthuse.Utility
             return newCase;
         }
 
-        public void Save(int caseId)
-        {
-
-        }
-
 
         private int GetNextId()
         {
