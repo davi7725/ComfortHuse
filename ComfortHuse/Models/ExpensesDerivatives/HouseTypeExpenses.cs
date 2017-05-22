@@ -17,7 +17,6 @@ namespace Comforthuse.Utility
         }
         public IHouseType HouseType { get; set; }
         public bool HouseExpansion { get; set; }
-
        
     }
 
