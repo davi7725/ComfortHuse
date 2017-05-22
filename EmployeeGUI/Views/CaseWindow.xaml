@@ -296,10 +296,11 @@
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
 
 
-                            <ComboBox Name="AssignEmployeeCombobox" Grid.Row="1" Grid.Column="3" SelectedValue="{Binding Employee}" ItemsSource="{Binding Employees}" SelectionChanged="AssignEmployeeCombobox_SelectionChanged">
+                            <ComboBox Name="AssignEmployeeCombobox" Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="1" SelectedValue="{Binding Employee}" ItemsSource="{Binding Employees}" SelectionChanged="AssignEmployeeCombobox_SelectionChanged">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding DisplayName}"/>
@@ -307,7 +308,25 @@
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
 
-                            <ContentControl Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="5" Content="{Binding EmployeeViewModel}" />
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="5" Grid.Column="0"  DataContext="{Binding Employee, UpdateSourceTrigger=PropertyChanged}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="100*"/>
+                                    <ColumnDefinition Width="10"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+
+
+                                <Label Grid.Row="0" Grid.Column="1" Name="EmployeePhoneNumberLabel" Content="Phonenumber: " />
+                                <Label Grid.Row="0" Grid.Column="3" Name="EmployeePhoneNumberContent" Content="{Binding PhoneNumber}" />
+                                <Label Grid.Column="1" Grid.Row="1" Name="EmployeeEmailLabel" Content="Email: " />
+                                <Label Grid.Column="3" Grid.Row="1"  Name="EmployeeEmailContent" Content="{Binding Email}" />
+                            </Grid>
                         </Grid>
                     </GroupBox>
                 </Grid>

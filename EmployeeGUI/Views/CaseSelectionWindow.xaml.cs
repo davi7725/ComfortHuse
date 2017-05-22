@@ -47,8 +47,10 @@ namespace EmployeeGUI.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             ICommand ic = vm.GetCasesCommand;
-            ic.Execute(CaseList.SelectedItem);
+            ic.Execute(CaseList);
+
         }
     }
 }

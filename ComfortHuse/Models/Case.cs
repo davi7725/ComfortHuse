@@ -47,7 +47,12 @@ namespace Comforthuse.Models
         public IMoneyInstitute MoneyInstitute { get; set; }
         public IPlot Plot { get; set; }
         public IImage Image { get; set; }
-        public bool Sold { get; set; }
+
+        public bool Sold
+        {
+            get { return _isSold; }
+            set { _isSold = value; }
+        }
         public decimal Price
         {
             get
@@ -74,8 +79,12 @@ namespace Comforthuse.Models
             AmountOfRevisions = AmountOfRevisions++;
             DateOfLastRevision = DateTime.Now;
         }
-        public override string ToString() => string.Format($"CaseNumber: {CaseNumber}");
-        public override bool Equals(object o)
+        public override string ToString()
+        {
+            return string.Format($"CaseNumber: {CaseNumber}");
+        }
+
+        /*public override bool Equals(object o)
         {
             bool isEqual = false;
             Case thisCase = (Case)o;
@@ -84,7 +93,7 @@ namespace Comforthuse.Models
                 isEqual = true;
             }
             return isEqual;
-        }
+        }*/
 
         public override int GetHashCode()
         {

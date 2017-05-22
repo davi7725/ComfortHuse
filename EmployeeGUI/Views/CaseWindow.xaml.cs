@@ -33,7 +33,6 @@ namespace EmployeeGUI
             IEmployee emp = (IEmployee)AssignEmployeeCombobox.SelectedItem;
             if (emp != null)
             {
-                MessageBox.Show(emp.Email);
                 CaseViewModel caseViewModel = (CaseViewModel)this.DataContext;
                 caseViewModel.Employee = emp;
             }

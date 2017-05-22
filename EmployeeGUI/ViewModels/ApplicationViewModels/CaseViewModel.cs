@@ -54,10 +54,15 @@ namespace EmployeeGUI.ViewModels
 
         public IEmployee Employee
         {
+            get
+            {
+                return _activeCase.Employee;
+            }
+
             set
             {
                 _activeCase.Employee = value;
-                _employeeViewModel.Employee = value;
+                OnPropertyChanged("Employee");
             }
         }
 
@@ -67,7 +72,6 @@ namespace EmployeeGUI.ViewModels
             _employeeViewModel = new EmployeeViewModel();
             _moneyInstitueViewModel.MoneyInstitute = _activeCase.MoneyInstitute;
             _employeeViewModel.Employee = _activeCase.Employee;
-
             _caseCustomer = _activeCase.Customer;
         }
         public CaseViewModel()
@@ -300,7 +304,7 @@ namespace EmployeeGUI.ViewModels
         {
             get
             {
-               return _facade.GetAllEmployees();
+                return _facade.GetAllEmployees();
             }
         }
         public string SalesPersonPhoneNb
@@ -320,6 +324,8 @@ namespace EmployeeGUI.ViewModels
                 }
             }
         }
+
+
         public void InjectExpenseCategories()
         {
             PageViewModels[0].ExpenseCategory = _activeCase.GetExpenseCategory(Category.HouseType);

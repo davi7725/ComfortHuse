@@ -58,8 +58,10 @@ namespace Comforthuse.Database
                 reader.Dispose();
 
             }
-            catch (SqlException sqlE)
-            { }
+            catch (SqlException)
+            {
+
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -77,7 +79,6 @@ namespace Comforthuse.Database
 
             try
             {
-
                 conn.Open();
 
                 SqlCommand command = new SqlCommand("CH_SP_GetAllProductOptions", conn);
@@ -101,12 +102,10 @@ namespace Comforthuse.Database
                         listOfProductOptions.Add(productOptionId, po);
                     }
                 }
-
                 reader.Close();
                 reader.Dispose();
-
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             { }
             finally
             {
@@ -230,7 +229,7 @@ namespace Comforthuse.Database
                 reader.Dispose();
                 command.Dispose();
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             {
             }
             finally
@@ -344,7 +343,7 @@ namespace Comforthuse.Database
                 reader.Dispose();
 
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             { }
             finally
             {
@@ -386,8 +385,10 @@ namespace Comforthuse.Database
                 reader.Dispose();
 
             }
-            catch (SqlException sqlE)
-            { }
+            catch (SqlException)
+            {
+
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -425,7 +426,7 @@ namespace Comforthuse.Database
                 reader.Dispose();
 
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             { }
             finally
             {
@@ -481,7 +482,7 @@ namespace Comforthuse.Database
                 reader.Close();
                 reader.Dispose();
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             { }
             finally
             {
@@ -521,7 +522,7 @@ namespace Comforthuse.Database
                 reader.Dispose();
 
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             { }
             finally
             {
@@ -579,7 +580,7 @@ namespace Comforthuse.Database
                 reader.Dispose();
 
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             { }
             finally
             {
@@ -626,7 +627,7 @@ namespace Comforthuse.Database
             catch (SqlException sqlE)
             {
                 throw new Exception(sqlE.Message);
-                isSuccessful = false;
+                //isSuccessful = false;
             }
             finally
             {
@@ -635,8 +636,6 @@ namespace Comforthuse.Database
                     conn.Close();
                 }
             }
-
-
             return isSuccessful;
         }
 

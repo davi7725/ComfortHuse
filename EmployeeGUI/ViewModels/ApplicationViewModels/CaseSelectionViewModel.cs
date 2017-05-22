@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace EmployeeGUI.ViewModels
 {
-    public class CaseSelectionViewModel
+    public class CaseSelectionViewModel : ObservableObject
     {
         private ICommand _getCasesCommand;
         private ICommand _createCaseCommand;
@@ -69,12 +69,10 @@ namespace EmployeeGUI.ViewModels
             try
             {
                 _cases.Clear();
-                /*  foreach (ICase c in _facade.GetAllCases())
-                  {
-                      _cases.Add(c);
-                  }
-                  */
-
+                foreach (ICase c in _facade.GetAllCases())
+                {
+                    _cases.Add(c);
+                }
             }
             catch (Exception e)
             {
