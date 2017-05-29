@@ -8,7 +8,10 @@ namespace Comforthuse.Models
     public class Case : ObservableObject, ICase
     {
 
+
+        private bool _isSold = true;
         private Dictionary<Category, IExpenseCategory> _expenseCategories;
+
         public Case(Dictionary<Category, IExpenseCategory> categories)
         {
             _expenseCategories = categories;
@@ -19,14 +22,6 @@ namespace Comforthuse.Models
         {
             Plot = ObjectFactory.Instance.CreatePlot();
         }
-
-        public IExpenseCategory GetExpenseCategory(Category category)
-        {
-
-            return _expenseCategories[category];
-        }
-
-        private bool _isSold = true;
 
         public string Title
         {
@@ -40,9 +35,9 @@ namespace Comforthuse.Models
         public DateTime? ConstructionStartDate { get; set; }
 
         public DateTime? MoveInDate { get; set; }
+        public int AmountOfRevisions { get; set; }
 
         public string Description { get; set; }
-        public int AmountOfRevisions { get; set; }
         public int CaseNumber { get; set; }
         public IMoneyInstitute MoneyInstitute { get; set; }
         public IPlot Plot { get; set; }
@@ -79,12 +74,18 @@ namespace Comforthuse.Models
             AmountOfRevisions = AmountOfRevisions++;
             DateOfLastRevision = DateTime.Now;
         }
+        public IExpenseCategory GetExpenseCategory(Category category)
+        {
+
+            return _expenseCategories[category];
+        }
+
         public override string ToString()
         {
             return string.Format($"CaseNumber: {CaseNumber}");
         }
 
-        /*public override bool Equals(object o)
+        public override bool Equals(object o)
         {
             bool isEqual = false;
             Case thisCase = (Case)o;
@@ -93,7 +94,7 @@ namespace Comforthuse.Models
                 isEqual = true;
             }
             return isEqual;
-        }*/
+        }
 
         public override int GetHashCode()
         {

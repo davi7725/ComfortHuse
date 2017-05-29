@@ -626,8 +626,7 @@ namespace Comforthuse.Database
             }
             catch (SqlException sqlE)
             {
-                throw new Exception(sqlE.Message);
-                //isSuccessful = false;
+                isSuccessful = false;
             }
             finally
             {
