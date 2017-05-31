@@ -22,5 +22,7 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
         public virtual List<ProductType> ListOfProductTypes { get; set; }
 
         public virtual decimal Price { get; }
+        public List<IProductType> ProductTypes { get; set; }
+
     }
 }

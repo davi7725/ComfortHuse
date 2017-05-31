@@ -1,7 +1,5 @@
-﻿using Comforthuse.Models.SpecificationDerivatives;
-using Comforthuse.Utility;
+﻿using Comforthuse.Interfaces;
 using System.Collections.Generic;
-using Comforthuse.Interfaces;
 
 namespace Comforthuse.Models
 {
@@ -10,7 +8,8 @@ namespace Comforthuse.Models
         Category Category { get; }
         decimal Price { get; }
         List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
+        List<IProductType> ProductTypes { get; set; }
         List<IExtraExpenseSpecification> ExtraExpenses { get; set; }
-        List<ProductType> ListOfProductTypes { get; set; }
     }
+
 }

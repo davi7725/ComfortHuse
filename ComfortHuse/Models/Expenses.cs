@@ -1,19 +1,12 @@
-using Comforthuse.Models;
-using Comforthuse.Models.SpecificationDerivatives;
 using Comforthuse.Interfaces;
+using Comforthuse.Models;
 using System.Collections.Generic;
 
 namespace Comforthuse.Utility
 {
-
-
-    public interface IExpenseSpecification
-    {
-    }
-
     public abstract class Expenses : IExpenseCategory
     {
-        public abstract decimal Price { get;}
+        public abstract decimal Price { get; }
         public Category Category { get; }
 
         public List<IExtraExpenseSpecification> ExtraExpenses
@@ -23,8 +16,6 @@ namespace Comforthuse.Utility
         }
 
         public List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
-
-        public List<ProductType> ListOfProductTypes { get; set; }
 
         public decimal PriceExtraExpenses
         {
@@ -42,5 +33,11 @@ namespace Comforthuse.Utility
         protected List<IExtraExpenseSpecification> _extras;
 
         protected List<ITechnicalSpecification> _tecnSpecifications;
+        public List<IProductOption> ProductOptions { get; set; }
+
+        public List<IProductType> ProductTypes
+        {
+            get; set;
+        }
     }
 }

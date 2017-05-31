@@ -1,8 +1,9 @@
-﻿using Comforthuse.Utility;
+﻿using Comforthuse.Interfaces;
+using Comforthuse.Utility;
 
 namespace Comforthuse.Models
 {
-    public class ProductOption
+    public class ProductOption : IProductOption
     {
 
         public ProductOption(int productOptionId, string name, decimal priceF, decimal priceS, string unit, bool isStandard, int productType)

@@ -1,3 +1,6 @@
+using Comforthuse.Models;
+using System.Collections.Generic;
+
 namespace Comforthuse.Utility
 {
     public class CarportGarageExpenses : Expenses, ICarportGarageExpenses
@@ -13,5 +16,6 @@ namespace Comforthuse.Utility
                 return price;
             }
         }
+
     }
 }

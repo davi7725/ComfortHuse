@@ -46,6 +46,9 @@
     <Compile Include="Interfaces\ICarportGarageExpenses.cs" />
     <Compile Include="Interfaces\IPlotExpenses.cs" />
     <Compile Include="Interfaces\IMaterialOutsideExpenses.cs" />
+    <Compile Include="Interfaces\IProductExpenseSpecification.cs" />
+    <Compile Include="Interfaces\IProductOption.cs" />
+    <Compile Include="Interfaces\IProductType.cs" />
     <Compile Include="Models\ExpensesDerivatives\MaterialsOutsideExpenses.cs" />
     <Compile Include="Models\ExpensesDerivatives\PlotExpenses.cs" />
     <Compile Include="Models\Image.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="Models\SpecificationDerivatives\ExtraExpenseSpecification.cs" />
     <Compile Include="Interfaces\IExtraExpenseSpecification.cs" />
     <Compile Include="Interfaces\ISpecification.cs" />
+    <Compile Include="Models\SpecificationDerivatives\ProductExpenseSpecification.cs" />
     <Compile Include="Models\SpecificationDerivatives\Specification.cs" />
     <Compile Include="Types\Category.cs" />
     <Compile Include="Database\DatabaseController.cs" />
