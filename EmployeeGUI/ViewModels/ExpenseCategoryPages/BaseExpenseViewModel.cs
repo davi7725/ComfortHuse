@@ -19,10 +19,8 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
 
         public virtual List<ITechnicalSpecification> TechnicalSpecifications { get; set; }
 
-        public virtual List<ProductType> ListOfProductTypes { get; set; }
-
         public virtual decimal Price { get; }
-        public List<IProductType> ProductTypes { get; set; }
+        public virtual List<IProductType> ProductTypes { get; set; }
 
     }
 }

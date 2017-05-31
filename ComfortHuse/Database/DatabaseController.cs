@@ -629,7 +629,7 @@ namespace Comforthuse.Database
                 InsertHouseType(c, c.DateOfCreation.Year, c.CaseNumber);
 
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             {
                 isSuccessful = false;
             }
@@ -685,7 +685,7 @@ namespace Comforthuse.Database
             {
                 foreach (ProductType pt in iec.ProductTypes)
                 {
-                    foreach (ProductOption po in pt.ListOfProductOption)
+                    foreach (ProductOption po in pt.ListOfProductOptions)
                     {
                         if (po.Selected == true)
                         {

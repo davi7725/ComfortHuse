@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Comforthuse.Interfaces;
+using System.Collections.Generic;
 
 namespace Comforthuse.Models
 {
@@ -7,6 +8,6 @@ namespace Comforthuse.Models
         int ProductTypeId { get; set; }
         Category Category { get; set; }
         string Name { get; set; }
-        List<ProductOption> ListOfProductOption { get; }
+        List<IProductOption> ListOfProductOptions { get; }
     }
 }

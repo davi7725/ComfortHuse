@@ -1,4 +1,5 @@
-﻿using Comforthuse.Utility;
+﻿using Comforthuse.Interfaces;
+using Comforthuse.Utility;
 using System;
 using System.Collections.Generic;
 
@@ -8,30 +9,30 @@ namespace Comforthuse.Models
     public class ProductType : IProductType
 #pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
-        private List<ProductOption> _listOfProductOption;
+        private List<IProductOption> _listOfProductOptions;
 
         public ProductType(int productTypeId, string name, string productCategoryName)
         {
             ProductTypeId = productTypeId;
             Name = name;
             Category = (Category)Enum.Parse(typeof(Category), productCategoryName);
-            _listOfProductOption = new List<ProductOption>();
+            _listOfProductOptions = new List<IProductOption>();
         }
 
         public int ProductTypeId { get; set; }
         public Category Category { get; set; }
         public string Name { get; set; }
-        public List<ProductOption> ListOfProductOption
+        public List<IProductOption> ListOfProductOptions
         {
             get
             {
-                return _listOfProductOption;
+                return _listOfProductOptions;
             }
-            set { _listOfProductOption = value; }
+            set { _listOfProductOptions = value; }
         }
 
 
-        public List<ProductOption> GetListOfProductOptions()
+        public List<IProductOption> GetListOfProductOptions()
         {
             Dictionary<int, ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
 
@@ -39,11 +40,11 @@ namespace Comforthuse.Models
             {
                 if (po.ProductType.Equals(this))
                 {
-                    _listOfProductOption.Add(po);
+                    _listOfProductOptions.Add(po);
                 }
             }
 
-            return _listOfProductOption;
+            return _listOfProductOptions;
         }
 
         public override bool Equals(object obj)

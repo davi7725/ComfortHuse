@@ -1,10 +1,11 @@
-using Comforthuse.Models;
-using System.Collections.Generic;
-
 namespace Comforthuse.Utility
 {
     public class CarportGarageExpenses : Expenses, ICarportGarageExpenses
     {
+        public CarportGarageExpenses()
+        {
+
+        }
         public override decimal Price
         {
             get

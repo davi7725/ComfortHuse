@@ -1,5 +1,4 @@
 ﻿using Comforthuse.Interfaces;
-using Comforthuse.Utility;
 
 namespace Comforthuse.Models
 {
@@ -14,7 +13,7 @@ namespace Comforthuse.Models
             PriceSjaelland = priceS;
             UnitType = unit;
             Standard = isStandard;
-            ProductType = ProductTypeRepository.Instance.Load(productType);
+            //ProductType = ProductTypeRepository.Instance.Load(productType);
             Selected = false;
         }
 
@@ -26,7 +25,7 @@ namespace Comforthuse.Models
         public decimal PriceSjaelland { get; set; }
         public string UnitType { get; set; }
         public bool Standard { get; set; }
-        public ProductType ProductType { get; set; }
+        public IProductType ProductType { get; set; }
         public bool Selected { get; set; }
         public bool Special { get; set; }
         public decimal SpecialPrice

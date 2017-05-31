@@ -14,8 +14,8 @@
             <RowDefinition Height="800" />
             <RowDefinition Height="40" />
             <RowDefinition Height="180" />
-                <RowDefinition Height="30" />
-            <RowDefinition Height="15" />
+             <RowDefinition Height="30" />
+            <RowDefinition Height="150" />
             <RowDefinition Height="15" />
          </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -28,26 +28,34 @@
 
             <Label Grid.Column="1" Grid.Row="3" Content="Technical Information" FontWeight="Bold" ></Label>
             <Label Grid.Column="1" Grid.Row="5" Content="Other Expenses" FontWeight="Bold" ></Label>
+            <Label Grid.Column="1" HorizontalAlignment="Stretch" Content="FUCK" />
 
             <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding ProductTypes}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="145" />
+                                <ColumnDefinition Width="145" />
+                                <ColumnDefinition Width="75" />
                                 <ColumnDefinition Width="90*" />
-                                <ColumnDefinition Width="90*" />
-                                <ColumnDefinition Width="90*" />
-                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="71*" />
+                                <ColumnDefinition Width="86*" />
+                                <ColumnDefinition Width="45*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Content="FUCK" />
-                            <ComboBox Name="SelectProductOptionCombobox" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="3" SelectedValue="{Binding }" ItemsSource="{Binding ProductOptions}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="42"/>
+                                <RowDefinition Height="10*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="0" Content="{Binding Name}" />
+                            <ComboBox Name="SelectProductOptionCombobox"  Grid.Column="1" ItemsSource="{Binding ListOfProductOptions}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Width="200" Text="{Binding Name}"/>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
+                            
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
@@ -75,7 +83,7 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="24" ItemsSource="{Binding ExtraExpenses}">
+            <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="6" ItemsSource="{Binding ExtraExpenses}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
