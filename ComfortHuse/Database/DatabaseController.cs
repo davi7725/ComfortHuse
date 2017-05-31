@@ -631,8 +631,7 @@ namespace Comforthuse.Database
             }
             catch (SqlException sqlE)
             {
-                throw new Exception(sqlE.Message);
-                //isSuccessful = false;
+                isSuccessful = false;
             }
             finally
             {
@@ -742,7 +741,7 @@ namespace Comforthuse.Database
 
         private void InsertTechnicalSpecification(string description, bool editAble, int caseNumber, int caseYear)
         {
-            SqlCommand command = new SqlCommand("CH_SP_InsertOrReturnTechnicalSpecificationId", conn);
+            SqlCommand command = new SqlCommand("CH_SP_InsertTechnicalSpecification", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@TechnicalSpDescription", description));
             command.Parameters.Add(new SqlParameter("@IsTicked", editAble));
