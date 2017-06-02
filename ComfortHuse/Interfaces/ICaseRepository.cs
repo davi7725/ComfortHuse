@@ -1,5 +1,6 @@
 ﻿using Comforthuse.Models;
 using System.Collections.Generic;
+using Comforthuse.Interfaces;
 
 namespace Comforthuse.Utility
 {

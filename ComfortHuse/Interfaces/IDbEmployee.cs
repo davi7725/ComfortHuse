@@ -1,4 +1,4 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse.Interfaces;
 using System.Collections.Generic;
 
 namespace Comforthuse.Database

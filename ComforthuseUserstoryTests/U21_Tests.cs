@@ -1,10 +1,10 @@
-﻿using System;
-using Comforthuse.Models;
-using Comforthuse.Utility;
+﻿using Comforthuse;
 using Comforthuse.Database;
 using Comforthuse.Interfaces;
+using Comforthuse.Models;
+using Comforthuse.Utility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Comforthuse;
+using System;
 using System.Collections.Generic;
 
 namespace ComforthuseUserstoryTests
@@ -91,10 +91,10 @@ namespace ComforthuseUserstoryTests
             case1.GetExpenseCategory(Category.HouseType).TechnicalSpecifications[0].Description = "I don't know how to write technical jk";
             case1.GetExpenseCategory(Category.Plot).TechnicalSpecifications[0].Editable = false;
             case1.GetExpenseCategory(Category.Plot).TechnicalSpecifications[0].Description = "I don't know how to write";
-            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOptions[1].Selected = true;
-            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOptions[1].Amount = 30;
-            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOptions[1].SpecialPrice = 19.99M;
-            
+            case1.GetExpenseCategory(Category.CarportGarage).ProductTypes[0].ListOfProductOptions[1].Selected = true;
+            case1.GetExpenseCategory(Category.CarportGarage).ProductTypes[0].ListOfProductOptions[1].Amount = 30;
+            case1.GetExpenseCategory(Category.CarportGarage).ProductTypes[0].ListOfProductOptions[1].SpecialPrice = 19.99M;
+
             IHouseTypeExpenses houseEx = (IHouseTypeExpenses)case1.GetExpenseCategory(Category.HouseType);
             houseEx.HouseType = new HouseType();
             houseEx.HouseType.TotalPrice = 123654;

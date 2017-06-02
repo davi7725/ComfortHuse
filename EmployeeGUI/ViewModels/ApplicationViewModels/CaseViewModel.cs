@@ -1,5 +1,5 @@
 ﻿using Comforthuse;
-using Comforthuse.Facade;
+using Comforthuse.Interfaces;
 using Comforthuse.Models;
 using Comforthuse.Utility;
 using EmployeeGUI.Helpers;

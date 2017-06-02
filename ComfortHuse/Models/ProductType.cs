@@ -52,6 +52,22 @@ namespace Comforthuse.Models
         public override bool Equals(object obj)
         {
             bool areEqual = false;
+            if (Object.ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (Object.ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+
+            }
+
             ProductType po = (ProductType)obj;
 
             if (ProductTypeId == po.ProductTypeId)
@@ -61,6 +77,7 @@ namespace Comforthuse.Models
 
             return areEqual;
         }
+
     }
 
 }
