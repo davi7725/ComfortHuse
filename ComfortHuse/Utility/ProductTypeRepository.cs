@@ -36,6 +36,7 @@ namespace Comforthuse.Utility
                 {
                     listOfProductTypesFromCategory.Add(pt);
                     pt.GetListOfProductOptions();
+                    
                 }
             }
             return listOfProductTypesFromCategory;

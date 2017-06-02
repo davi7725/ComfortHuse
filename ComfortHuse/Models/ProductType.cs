@@ -4,45 +4,44 @@ using System.Collections.Generic;
 
 namespace Comforthuse.Models
 {
-#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     public class ProductType
-#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
-        private List<ProductOption> _listOfProductOption;
 
         public ProductType(int productTypeId, string name, string productCategoryName)
         {
             ProductTypeId = productTypeId;
             Name = name;
             Category = (Category)Enum.Parse(typeof(Category), productCategoryName);
-            _listOfProductOption = new List<ProductOption>();
+            _listOfProductOptions = new List<ProductOption>();
         }
+
+        private List<ProductOption> _listOfProductOptions;
 
         public int ProductTypeId { get; set; }
         public Category Category { get; set; }
         public string Name { get; set; }
-        public List<ProductOption> ListOfProductOption
+        public List<ProductOption> ListOfProductOptions
         {
             get
             {
-                return _listOfProductOption;
+                return _listOfProductOptions;
             }
         }
 
 
         public List<ProductOption> GetListOfProductOptions()
         {
+            _listOfProductOptions.Clear();
             Dictionary<int, ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
-
+            
             foreach (ProductOption po in listOfProductOptions.Values)
             {
                 if (po.ProductType.Equals(this))
                 {
-                    _listOfProductOption.Add(po);
+                    _listOfProductOptions.Add(po);
                 }
             }
-
-            return _listOfProductOption;
+            return _listOfProductOptions;
         }
 
         public override bool Equals(object obj)

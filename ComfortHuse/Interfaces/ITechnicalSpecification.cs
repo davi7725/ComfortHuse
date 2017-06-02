@@ -3,6 +3,6 @@
     public interface ITechnicalSpecification
     {
         string Description { get; set; }
-        bool EditAble { get; set; }
+        bool Editable { get; set; }
     }
 }

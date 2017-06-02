@@ -41,7 +41,7 @@ namespace Comforthuse.Utility
             List<ITechnicalSpecification> techSpec = new List<ITechnicalSpecification>();
             foreach (var spec in presetSpecifications)
             {
-                techSpec.Add(new TechnicalSpecification() { Description = spec, EditAble = false });
+                techSpec.Add(new TechnicalSpecification() { Description = spec, Editable = false });
             }
 
             for (int i = 0; i <= totalAmount; i++)

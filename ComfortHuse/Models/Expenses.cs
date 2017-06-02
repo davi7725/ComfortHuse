@@ -13,6 +13,11 @@ namespace Comforthuse.Utility
 
     public abstract class Expenses : IExpenseCategory
     {
+
+        protected List<IExtraExpenseSpecification> _extras;
+
+        protected List<ITechnicalSpecification> _tecnSpecifications;
+
         public abstract decimal Price { get;}
         public Category Category { get; }
 
@@ -38,9 +43,5 @@ namespace Comforthuse.Utility
                 return price;
             }
         }
-
-        protected List<IExtraExpenseSpecification> _extras;
-
-        protected List<ITechnicalSpecification> _tecnSpecifications;
     }
 }

@@ -1,10 +1,18 @@
 ﻿namespace Comforthuse
 {
-#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     public class Employee : IEmployee
-#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
+        public Employee(string firstName, string lastName, string email, string phoneNb)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNumber = phoneNb;
+        }
+
         public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string DisplayName
         {
@@ -14,7 +22,6 @@
             }
         }
 
-        public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
 
@@ -23,7 +30,7 @@
             return $"[FirstName={FirstName},LastName={LastName},PhoneNumber={PhoneNumber},Email={Email}]";
         }
 
-        /* public override bool Equals(object obj)
+        public override bool Equals(object obj)
          {
              bool areEqual = false;
              Employee otherEmployee = (Employee)obj;
@@ -34,13 +41,5 @@
 
              return areEqual;
          }
-         */
-        public Employee(string firstName, string lastName, string email, string phoneNb)
-        {
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.Email = email;
-            this.PhoneNumber = phoneNb;
-        }
     }
 }
