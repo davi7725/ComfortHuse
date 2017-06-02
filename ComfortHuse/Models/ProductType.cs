@@ -34,6 +34,8 @@ namespace Comforthuse.Models
 
         public List<IProductOption> GetListOfProductOptions()
         {
+            _listOfProductOptions.Clear();
+
             Dictionary<int, ProductOption> listOfProductOptions = ProductOptionRepository.Instance.GetProductOptions();
 
             foreach (ProductOption po in listOfProductOptions.Values)

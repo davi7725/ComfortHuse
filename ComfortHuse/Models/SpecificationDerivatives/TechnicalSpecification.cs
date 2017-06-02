@@ -4,11 +4,11 @@
     {
         public string Description { get; set; }
 
-        public bool EditAble { get; set; }
+        public bool Editable { get; set; }
 
         public TechnicalSpecification()
         {
-            EditAble = true;
+            Editable = true;
         }
 
         public TechnicalSpecification(string description)

@@ -1,5 +1,6 @@
 ﻿using Comforthuse.Interfaces;
 using Comforthuse.Models;
+using Comforthuse.Models.SpecificationDerivatives;
 using Comforthuse.Utility;
 using System;
 using System.Collections.Generic;
@@ -281,6 +282,115 @@ namespace Comforthuse.Database
                 ihte.HouseType = GetHouseType(tc);
 
                 tc.Case.Employee = EmployeeRepository.Instance.Load(tc.EmployeeEmail);
+
+                GetAllTechnicalSpecificationForCase(tc.Case);
+                GetAllExtraExpenseForCase(tc.Case);
+            }
+        }
+
+        private void GetAllExtraExpenseForCase(Case @case)
+        {
+            Dictionary<IExtraExpenseSpecification, Category> listOfExtraExpenses = new Dictionary<IExtraExpenseSpecification, Category>();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetAllExtraExpensesForCase", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@CaseYear", @case.DateOfCreation.Year));
+                command.Parameters.Add(new SqlParameter("@CaseNumber", @case.CaseNumber));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string name = reader.GetString(0);
+                        int amount = reader.GetInt32(1);
+                        decimal price = reader.GetDecimal(2);
+                        string title = reader.GetString(3);
+                        int categoryId = reader.GetInt32(4) - 1;
+
+                        IExtraExpenseSpecification iExpSpec = new ExtraExpenseSpecification();
+                        iExpSpec.Title = title;
+                        iExpSpec.Description = name;
+                        iExpSpec.Amount = amount;
+                        iExpSpec.PricePerUnit = price;
+
+                        listOfExtraExpenses.Add(iExpSpec, (Category)categoryId);
+                    }
+
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            foreach (KeyValuePair<IExtraExpenseSpecification, Category> kvp in listOfExtraExpenses)
+            {
+                @case.GetExpenseCategory(kvp.Value).ExtraExpenses.Add(kvp.Key);
+            }
+        }
+
+        private void GetAllTechnicalSpecificationForCase(Case @case)
+        {
+            Dictionary<ITechnicalSpecification, Category> listOfTechnicalSpecifications = new Dictionary<ITechnicalSpecification, Category>();
+
+            try
+            {
+                conn.Open();
+
+                SqlCommand command = new SqlCommand("CH_SP_GetAllTechnicalSpecificationOfACase", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@CaseYear", @case.DateOfCreation.Year));
+                command.Parameters.Add(new SqlParameter("@CaseNumber", @case.CaseNumber));
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string description = reader.GetString(0);
+                        bool isTicked = reader.GetBoolean(1);
+                        int categoryId = reader.GetInt32(2) - 1;
+
+                        ITechnicalSpecification iTechSpec = new TechnicalSpecification();
+                        iTechSpec.Description = description;
+                        iTechSpec.Editable = isTicked;
+
+                        listOfTechnicalSpecifications.Add(iTechSpec, (Category)categoryId);
+                    }
+
+                }
+                reader.Close();
+                reader.Dispose();
+
+            }
+            catch (SqlException)
+            { }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            foreach (KeyValuePair<ITechnicalSpecification, Category> kvp in listOfTechnicalSpecifications)
+            {
+                @case.GetExpenseCategory(kvp.Value).TechnicalSpecifications.Add(kvp.Key);
             }
         }
 
@@ -734,19 +844,20 @@ namespace Comforthuse.Database
             int caseNumber)
         {
             DeleteCaseTechnicalSpecifications(caseYear, caseNumber);
-            foreach (IExpenseCategory iec in dictionary.Values)
+            foreach (KeyValuePair<Category,IExpenseCategory> kvp in dictionary)
             {
+                IExpenseCategory iec = kvp.Value;
                 foreach (ITechnicalSpecification iees in iec.TechnicalSpecifications)
                 {
                     if (iees.Description != null)
                     {
-                        InsertTechnicalSpecification(iees.Description, iees.EditAble, caseNumber, caseYear);
+                        InsertTechnicalSpecification(iees.Description, iees.Editable, caseNumber, caseYear, kvp.Key.ToString());
                     }
                 }
             }
         }
 
-        private void InsertTechnicalSpecification(string description, bool editAble, int caseNumber, int caseYear)
+        private void InsertTechnicalSpecification(string description, bool editAble, int caseNumber, int caseYear, string categoryName)
         {
             SqlCommand command = new SqlCommand("CH_SP_InsertTechnicalSpecification", conn);
             command.CommandType = CommandType.StoredProcedure;
@@ -754,6 +865,7 @@ namespace Comforthuse.Database
             command.Parameters.Add(new SqlParameter("@IsTicked", editAble));
             command.Parameters.Add(new SqlParameter("@CaseNumber", caseNumber));
             command.Parameters.Add(new SqlParameter("@CaseYear", caseYear));
+            command.Parameters.Add(new SqlParameter("@CategoryName", categoryName));
 
             command.ExecuteNonQuery();
 
@@ -776,10 +888,10 @@ namespace Comforthuse.Database
             int caseNumber)
         {
             DeleteCaseExtraExpenses(caseYear, caseNumber);
-            foreach (KeyValuePair<Category, IExpenseCategory> kpv in expenseCategories)
+            foreach (KeyValuePair<Category, IExpenseCategory> kvp in expenseCategories)
             {
-                IExpenseCategory iec = kpv.Value;
-                string category = kpv.Key.ToString();
+                IExpenseCategory iec = kvp.Value;
+                string category = kvp.Key.ToString();
                 foreach (IExtraExpenseSpecification iees in iec.ExtraExpenses)
                 {
                     if (iees.Title != "" && iees.Description != "" && iees.Amount != 0)
@@ -792,7 +904,7 @@ namespace Comforthuse.Database
         private void InsertExtraExpense(string description, int amount, decimal pricePerUnit, int caseNumber,
             int caseYear, string title, string category)
         {
-            SqlCommand command = new SqlCommand("CH_SP_InsertOrReturnProductExpenseId", conn);
+            SqlCommand command = new SqlCommand("CH_SP_InsertAndReturnProductExpenseId", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@ProductExpenseName", description));
             command.Parameters.Add(new SqlParameter("@Amount", amount));
@@ -841,7 +953,6 @@ namespace Comforthuse.Database
             command.Parameters.Add(new SqlParameter("@EmployeeEmail", employeeEmail));
             command.Parameters.Add(new SqlParameter("@PlotId", plotId));
             command.Parameters.Add(new SqlParameter("@ImageId", imageId));
-
             SqlParameter returnParameter = command.Parameters.Add("@CaseNumber", SqlDbType.Int);
             returnParameter.Direction = ParameterDirection.ReturnValue;
 

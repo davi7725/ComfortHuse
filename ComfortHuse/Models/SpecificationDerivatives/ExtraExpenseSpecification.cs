@@ -13,6 +13,7 @@ namespace Comforthuse.Models.SpecificationDerivatives
         public string Description { get; set; }
         public int Amount { get; set; }
         public decimal PricePerUnit { get; set; }
+
         public decimal TotalPrice => Amount * PricePerUnit;
     }
 }

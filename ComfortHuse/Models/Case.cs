@@ -85,10 +85,10 @@ namespace Comforthuse.Models
             return string.Format($"CaseNumber: {CaseNumber}");
         }
 
-        public override bool Equals(object o)
+        public override bool Equals(object obj)
         {
             bool isEqual = false;
-            Case thisCase = (Case)o;
+            Case thisCase = (Case)obj;
             if (thisCase.CaseNumber == CaseNumber)
             {
                 isEqual = true;
