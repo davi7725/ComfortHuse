@@ -329,10 +329,7 @@ namespace EmployeeGUI.ViewModels
         public void InjectExpenseCategories()
         {
             PageViewModels[0].ExpenseCategory = _activeCase.GetExpenseCategory(Category.HouseType);
-
-            ICarportGarageExpenses cpExpenses = (ICarportGarageExpenses)_activeCase.GetExpenseCategory(Category.CarportGarage);
-            PageViewModels[1].TechnicalSpecifications = cpExpenses.TechnicalSpecifications;
-            PageViewModels[1].ExtraExpenses = cpExpenses.ExtraExpenses;
+            PageViewModels[1].ExpenseCategory = _activeCase.GetExpenseCategory(Category.CarportGarage);
 
             IPlotExpenses plExpenses = (IPlotExpenses)_activeCase.GetExpenseCategory(Category.Plot);
             PageViewModels[2].TechnicalSpecifications = plExpenses.TechnicalSpecifications;

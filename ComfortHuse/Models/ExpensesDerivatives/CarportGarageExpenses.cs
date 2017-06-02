@@ -2,6 +2,10 @@ namespace Comforthuse.Utility
 {
     public class CarportGarageExpenses : Expenses, ICarportGarageExpenses
     {
+        public CarportGarageExpenses()
+        {
+
+        }
         public override decimal Price
         {
             get
@@ -13,5 +17,6 @@ namespace Comforthuse.Utility
                 return price;
             }
         }
+
     }
 }

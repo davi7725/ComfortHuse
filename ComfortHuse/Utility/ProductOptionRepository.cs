@@ -1,6 +1,6 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse.Database;
+using Comforthuse.Models;
 using System.Collections.Generic;
-using Comforthuse.Database;
 
 namespace Comforthuse.Utility
 {
@@ -11,9 +11,9 @@ namespace Comforthuse.Utility
 
         private Dictionary<int, ProductOption> listOfProductOptions = new Dictionary<int, ProductOption>();
 
-        public Dictionary<int,ProductOption> GetProductOptions()
+        public Dictionary<int, ProductOption> GetProductOptions()
         {
-            if(listOfProductOptions.Count == 0)
+            if (listOfProductOptions.Count == 0)
             {
                 listOfProductOptions = DatabaseController.Instance.GetAllProductOptions();
             }
@@ -25,7 +25,7 @@ namespace Comforthuse.Utility
         {
             get
             {
-                if(_instance == null)
+                if (_instance == null)
                 {
                     _instance = new ProductOptionRepository();
                 }
@@ -38,5 +38,9 @@ namespace Comforthuse.Utility
 
         }
 
+        public ProductOption GetProductOption(int productTypeId)
+        {
+            return listOfProductOptions[productTypeId];
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
             }
             set
             {
-                 _houseTypeExpensesModel.HouseType.Description = value;
+                _houseTypeExpensesModel.HouseType.Description = value;
             }
 
         }
@@ -38,13 +38,13 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
         {
             get
             {
-                if(_houseTypeExpensesModel.HouseType.TotalPrice == null)
+                if (_houseTypeExpensesModel.HouseType.TotalPrice == null)
                 {
                     return "";
                 }
                 else
                 {
-                return _houseTypeExpensesModel.HouseType.TotalPrice.ToString();
+                    return _houseTypeExpensesModel.HouseType.TotalPrice.ToString();
                 }
             }
             set

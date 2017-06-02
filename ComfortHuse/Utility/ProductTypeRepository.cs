@@ -1,7 +1,6 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse.Database;
+using Comforthuse.Models;
 using System.Collections.Generic;
-using Comforthuse.Database;
-using System;
 
 namespace Comforthuse.Utility
 {
@@ -26,11 +25,16 @@ namespace Comforthuse.Utility
             return listOfProductTypes[productTypeId];
         }
 
-        public List<ProductType> Load(Category category)
+        public ProductType GetProductType(int productTypeId)
         {
-            List<ProductType> listOfProductTypesFromCategory = new List<ProductType>();
+            return listOfProductTypes[productTypeId];
+        }
 
-            foreach(ProductType pt in listOfProductTypes.Values)
+        public List<IProductType> Load(Category category)
+        {
+            List<IProductType> listOfProductTypesFromCategory = new List<IProductType>();
+
+            foreach (ProductType pt in listOfProductTypes.Values)
             {
                 if (pt.Category == category)
                 {

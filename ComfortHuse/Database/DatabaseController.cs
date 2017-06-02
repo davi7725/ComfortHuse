@@ -30,6 +30,11 @@ namespace Comforthuse.Database
             }
         }
 
+        internal Dictionary<int, ProductOption> GetAllProductExpenseSpecification()
+        {
+            throw new NotImplementedException();
+        }
+
         public Dictionary<int, ProductType> GetAllProductTypes()
         {
             Dictionary<int, ProductType> listOfProductTypes = new Dictionary<int, ProductType>();
@@ -734,7 +739,7 @@ namespace Comforthuse.Database
                 InsertHouseType(c, c.DateOfCreation.Year, c.CaseNumber);
 
             }
-            catch (SqlException sqlE)
+            catch (SqlException)
             {
                 isSuccessful = false;
             }
@@ -788,7 +793,7 @@ namespace Comforthuse.Database
 
             foreach (IExpenseCategory iec in dictionary.Values)
             {
-                foreach (ProductType pt in iec.ListOfProductTypes)
+                foreach (ProductType pt in iec.ProductTypes)
                 {
                     foreach (ProductOption po in pt.ListOfProductOptions)
                     {
