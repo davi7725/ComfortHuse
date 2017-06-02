@@ -14,7 +14,9 @@ namespace Comforthuse.Database
         private static DatabaseController _instance = null;
         private SqlConnection conn;
 
-        private DatabaseController() { }
+        private DatabaseController()
+        {
+        }
 
         public static DatabaseController Instance
         {
@@ -23,16 +25,14 @@ namespace Comforthuse.Database
                 if (_instance == null)
                 {
                     _instance = new DatabaseController();
-                    _instance.conn = new SqlConnection("Server=ealdb1.eal.local;Database=EJL62_DB;User ID=ejl62_usr;Password=Baz1nga62");
+                    _instance.conn =
+                        new SqlConnection(
+                            "Server=ealdb1.eal.local;Database=EJL62_DB;User ID=ejl62_usr;Password=Baz1nga62");
                 }
                 return _instance;
             }
         }
 
-        internal Dictionary<int, ProductOption> GetAllProductExpenseSpecification()
-        {
-            throw new NotImplementedException();
-        }
 
         public Dictionary<int, ProductType> GetAllProductTypes()
         {
@@ -103,7 +103,8 @@ namespace Comforthuse.Database
                         bool isStandard = reader.GetBoolean(5);
                         int productType = reader.GetInt32(6);
 
-                        ProductOption po = new ProductOption(productOptionId, name, priceF, priceS, unit, isStandard, productType);
+                        ProductOption po = new ProductOption(productOptionId, name, priceF, priceS, unit, isStandard,
+                            productType);
                         listOfProductOptions.Add(productOptionId, po);
                     }
                 }
@@ -111,7 +112,8 @@ namespace Comforthuse.Database
                 reader.Dispose();
             }
             catch (SqlException)
-            { }
+            {
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -211,7 +213,7 @@ namespace Comforthuse.Database
                         }
 
 
-                        Case caseObj = (Case)ObjectFactory.Instance.CreateNewCase();
+                        Case caseObj = (Case) ObjectFactory.Instance.CreateNewCase();
                         caseObj.CaseNumber = caseNumber;
                         caseObj.ConstructionStartDate = constructionStartDate;
                         caseObj.MoveInDate = moveInDate;
@@ -221,7 +223,8 @@ namespace Comforthuse.Database
                         caseObj.DateOfLastRevision = dateOfLastRevision;
                         caseObj.Sold = sold;
 
-                        TempCase tempCase = new TempCase(caseObj, customerEmail, moneyInstituteId, employeeEmail, plotId, imageId);
+                        TempCase tempCase = new TempCase(caseObj, customerEmail, moneyInstituteId, employeeEmail, plotId,
+                            imageId);
 
                         tempCases.Add(tempCase);
 
@@ -274,7 +277,7 @@ namespace Comforthuse.Database
                     tc.Case.Image = GetImageById(Convert.ToInt32(tc.ImageId));
 
                 IExpenseCategory iec = tc.Case.GetExpenseCategory(Category.HouseType);
-                IHouseTypeExpenses ihte = (IHouseTypeExpenses)iec;
+                IHouseTypeExpenses ihte = (IHouseTypeExpenses) iec;
                 ihte.HouseType = GetHouseType(tc);
 
                 tc.Case.Employee = EmployeeRepository.Instance.Load(tc.EmployeeEmail);
@@ -349,7 +352,8 @@ namespace Comforthuse.Database
 
             }
             catch (SqlException)
-            { }
+            {
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -432,7 +436,8 @@ namespace Comforthuse.Database
 
             }
             catch (SqlException)
-            { }
+            {
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -488,7 +493,8 @@ namespace Comforthuse.Database
                 reader.Dispose();
             }
             catch (SqlException)
-            { }
+            {
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -528,7 +534,8 @@ namespace Comforthuse.Database
 
             }
             catch (SqlException)
-            { }
+            {
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -586,7 +593,8 @@ namespace Comforthuse.Database
 
             }
             catch (SqlException)
-            { }
+            {
+            }
             finally
             {
                 if (conn.State == ConnectionState.Open)
@@ -604,10 +612,6 @@ namespace Comforthuse.Database
 
         }
 
-        public ICase GetCase(int caseId)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public bool SaveCase(ICase c)
         {
@@ -647,7 +651,7 @@ namespace Comforthuse.Database
         {
             DeleteHouseType(year, caseNumber);
 
-            IHouseTypeExpenses houseTypeEx = (IHouseTypeExpenses)c.GetExpenseCategory(Category.HouseType);
+            IHouseTypeExpenses houseTypeEx = (IHouseTypeExpenses) c.GetExpenseCategory(Category.HouseType);
             SqlCommand command = new SqlCommand("CH_SP_InsertHouseType", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@Name", houseTypeEx.HouseType.Name));
@@ -689,14 +693,16 @@ namespace Comforthuse.Database
                     {
                         if (po.Selected == true)
                         {
-                            InsertCaseProductOption(po.ProductId, caseNumber, caseYear, po.Amount, po.SpecialPrice, po.Special);
+                            InsertCaseProductOption(po.ProductId, caseNumber, caseYear, po.Amount, po.SpecialPrice,
+                                po.Special);
                         }
                     }
                 }
             }
         }
 
-        private void InsertCaseProductOption(int productId, int caseNumber, int caseYear, int amount, decimal specialPrice, bool special)
+        private void InsertCaseProductOption(int productId, int caseNumber, int caseYear, int amount,
+            decimal specialPrice, bool special)
         {
             SqlCommand command = new SqlCommand("CH_SP_InsertCaseProduct", conn);
             command.CommandType = CommandType.StoredProcedure;
@@ -724,7 +730,8 @@ namespace Comforthuse.Database
             command.Dispose();
         }
 
-        private void InsertTechnicalSpecifications(Dictionary<Category, IExpenseCategory> dictionary, int caseYear, int caseNumber)
+        private void InsertTechnicalSpecifications(Dictionary<Category, IExpenseCategory> dictionary, int caseYear,
+            int caseNumber)
         {
             DeleteCaseTechnicalSpecifications(caseYear, caseNumber);
             foreach (IExpenseCategory iec in dictionary.Values)
@@ -765,7 +772,8 @@ namespace Comforthuse.Database
             command.Dispose();
         }
 
-        private void InsertExtraExpenses(Dictionary<Category, IExpenseCategory> expenseCategories, int caseYear, int caseNumber)
+        private void InsertExtraExpenses(Dictionary<Category, IExpenseCategory> expenseCategories, int caseYear,
+            int caseNumber)
         {
             DeleteCaseExtraExpenses(caseYear, caseNumber);
             foreach (KeyValuePair<Category, IExpenseCategory> kpv in expenseCategories)
@@ -775,12 +783,14 @@ namespace Comforthuse.Database
                 foreach (IExtraExpenseSpecification iees in iec.ExtraExpenses)
                 {
                     if (iees.Title != "" && iees.Description != "" && iees.Amount != 0)
-                        InsertExtraExpense(iees.Description, iees.Amount, iees.PricePerUnit, caseNumber, caseYear, iees.Title, category);
+                        InsertExtraExpense(iees.Description, iees.Amount, iees.PricePerUnit, caseNumber, caseYear,
+                            iees.Title, category);
                 }
             }
         }
 
-        private void InsertExtraExpense(string description, int amount, decimal pricePerUnit, int caseNumber, int caseYear, string title, string category)
+        private void InsertExtraExpense(string description, int amount, decimal pricePerUnit, int caseNumber,
+            int caseYear, string title, string category)
         {
             SqlCommand command = new SqlCommand("CH_SP_InsertOrReturnProductExpenseId", conn);
             command.CommandType = CommandType.StoredProcedure;
@@ -810,7 +820,8 @@ namespace Comforthuse.Database
             command.Dispose();
         }
 
-        public int InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int? imageId)
+        public int InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId,
+            int? imageId)
         {
             int caseNumber = c.CaseNumber;
             int caseYear = c.DateOfCreation.Year;
@@ -931,16 +942,6 @@ namespace Comforthuse.Database
             command.Dispose();
 
             return customer.Email;
-        }
-
-        public List<ICustomer> GetAllCustomersByName()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SearchForCustomer(string query)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -33,6 +33,11 @@ namespace Comforthuse.Facade
         {
             ProductOptionRepository.Instance.GetProductOptions();
         }
+
+        public List<IProductType> LoadProductType(Category category)
+        {
+            return ProductTypeRepository.Instance.Load(category);
+        }
     }
 
     public interface IAdministratorFacade
@@ -43,6 +48,7 @@ namespace Comforthuse.Facade
     {
         ICase CreateCase();
         void GetAllProductOptions();
+        List<IProductType> LoadProductType(Category category);
         List<ICase> GetAllCases();
         List<IEmployee> GetAllEmployees();
         void GetAllProductTypes();

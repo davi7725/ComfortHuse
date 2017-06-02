@@ -1,4 +1,5 @@
 ﻿using Comforthuse.Interfaces;
+using Comforthuse.Utility;
 
 namespace Comforthuse.Models
 {
@@ -13,7 +14,7 @@ namespace Comforthuse.Models
             PriceSjaelland = priceS;
             UnitType = unit;
             Standard = isStandard;
-            //ProductType = ProductTypeRepository.Instance.Load(productType);
+            ProductType = ProductTypeRepository.Instance.Load(productType);
             Selected = false;
         }
 

@@ -100,8 +100,10 @@ namespace EmployeeGUI.ViewModels
         }
         public IEmployeeFacade Facade
         {
+            get { return _facade; }
             set { _facade = value; }
         }
+
         public ICommand ChangePageCommand
         {
             get
@@ -329,6 +331,7 @@ namespace EmployeeGUI.ViewModels
         public void InjectExpenseCategories()
         {
             PageViewModels[0].ExpenseCategory = _activeCase.GetExpenseCategory(Category.HouseType);
+
             PageViewModels[1].ExpenseCategory = _activeCase.GetExpenseCategory(Category.CarportGarage);
 
             IPlotExpenses plExpenses = (IPlotExpenses)_activeCase.GetExpenseCategory(Category.Plot);

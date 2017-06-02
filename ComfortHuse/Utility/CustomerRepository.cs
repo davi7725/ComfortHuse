@@ -1,18 +1,10 @@
 ﻿using Comforthuse.Database;
 using System;
 using System.Collections.Generic;
+using Comforthuse.Interfaces;
 
 namespace Comforthuse.Models
 {
-    public interface ICustomerRepository
-    {
-        void Clear();
-        List<ICustomer> GetAllCustomersByName();
-        List<ICustomer> Search(string query);
-        ICustomer Load(string phoneNb);
-        ICustomer Create(string firstName, string lastName, string email, string city, string address, string zipcode, string phoneNb1, string phoneNb2);
-        void Save(ICustomer customer);
-    }
 
     public class CustomerRepository : ICustomerRepository
     {
@@ -50,10 +42,6 @@ namespace Comforthuse.Models
             return newCustomer;
         }
 
-        public List<ICustomer> GetAllCustomersByName()
-        {
-            return _dbController.GetAllCustomersByName();
-        }
 
         public List<ICustomer> Search(string query)
         {

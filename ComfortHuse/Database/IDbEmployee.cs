@@ -8,10 +8,7 @@ namespace Comforthuse.Database
         int InsertCase(ICase c, string customerEmail, int moneyInstituteId, string employeeEmail, int plotId, int? imageId);
         List<ICase> GetAllCases();
         int GetNextCaseId();
-        ICase GetCase(int caseId);
         bool SaveCase(ICase @case);
-        List<ICustomer> GetAllCustomersByName();
-        void SearchForCustomer(string query);
         List<IEmployee> GetAllEmployees();
     }
 }

@@ -52,7 +52,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EmployeeRepositoryTests.cs" />
     <Compile Include="ProductExpenseSpecificationsTest.cs" />
     <Compile Include="TechnicalSpecificationsTest.cs" />
     <Compile Include="TechnicalSpecificationViewModelTest.cs" />
