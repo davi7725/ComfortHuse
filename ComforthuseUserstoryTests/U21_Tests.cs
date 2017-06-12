@@ -39,7 +39,7 @@ namespace ComforthuseUserstoryTests
             case1.Customer.PhoneNb2 = "31854331";
 
             case1.Employee = new Employee("Alan", "Boje", "ab@comforthuse.dk", "24813540");
-
+            
             Assert.IsTrue(DatabaseController.Instance.SaveCase(case1));
         }
 
@@ -91,9 +91,9 @@ namespace ComforthuseUserstoryTests
             case1.GetExpenseCategory(Category.HouseType).TechnicalSpecifications[0].Description = "I don't know how to write technical jk";
             case1.GetExpenseCategory(Category.Plot).TechnicalSpecifications[0].Editable = false;
             case1.GetExpenseCategory(Category.Plot).TechnicalSpecifications[0].Description = "I don't know how to write";
-            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOptions[1].Selected = true;
-            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOptions[1].Amount = 30;
-            case1.GetExpenseCategory(Category.CarportGarage).ListOfProductTypes[0].ListOfProductOptions[1].SpecialPrice = 19.99M;
+            /*case1.GetExpenseCategory(Category.CarportGarage).ProductTypes[0].ListOfProductOptions[1].Selected = true;
+            case1.GetExpenseCategory(Category.CarportGarage).ProductTypes[0].ListOfProductOptions[1].Amount = 30;
+            case1.GetExpenseCategory(Category.CarportGarage).ProductTypes[0].ListOfProductOptions[1].SpecialPrice = 19.99M;*/
             
             IHouseTypeExpenses houseEx = (IHouseTypeExpenses)case1.GetExpenseCategory(Category.HouseType);
             houseEx.HouseType = new HouseType();
