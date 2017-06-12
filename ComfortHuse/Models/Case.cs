@@ -1,4 +1,5 @@
-﻿using Comforthuse.Utility;
+﻿using Comforthuse.Interfaces;
+using Comforthuse.Utility;
 using EmployeeGUI.Helpers;
 using System;
 using System.Collections.Generic;
@@ -88,6 +89,21 @@ namespace Comforthuse.Models
         public override bool Equals(object obj)
         {
             bool isEqual = false;
+            if (Object.ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (Object.ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+
+            }
             Case thisCase = (Case)obj;
             if (thisCase.CaseNumber == CaseNumber)
             {
@@ -105,30 +121,5 @@ namespace Comforthuse.Models
         {
             return _expenseCategories;
         }
-    }
-
-    public interface ICase
-    {
-        string Title { get; }
-        bool Sold { get; set; }
-        int CaseNumber { get; set; }
-        decimal Price { get; }
-        int AmountOfRevisions { get; }
-
-        DateTime? ConstructionStartDate { get; set; }
-
-        DateTime? MoveInDate { get; set; }
-
-        string Description { get; set; }
-        ICustomer Customer { get; set; }
-        IExpenseCategory GetExpenseCategory(Category category);
-        DateTime DateOfLastRevision { get; }
-        DateTime DateOfCreation { get; set; }
-        IEmployee Employee { get; set; }
-        IMoneyInstitute MoneyInstitute { get; set; }
-        IPlot Plot { get; set; }
-        IImage Image { get; set; }
-        void RegisterRevision();
-        Dictionary<Category, IExpenseCategory> GetAllCategories();
     }
 }

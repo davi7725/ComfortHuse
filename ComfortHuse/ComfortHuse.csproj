@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IAdminFacade.cs" />
+    <Compile Include="Interfaces\ICase.cs" />
     <Compile Include="Interfaces\ICustomerRepository.cs" />
+    <Compile Include="Interfaces\IEmployeeFacade.cs" />
     <Compile Include="Interfaces\IHouseTypeExpenses.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />
     <Compile Include="Interfaces\ICarportGarageExpenses.cs" />
@@ -67,7 +70,7 @@
     <Compile Include="Types\Category.cs" />
     <Compile Include="Database\DatabaseController.cs" />
     <Compile Include="Database\IDbAdmin.cs" />
-    <Compile Include="Database\IDbEmployee.cs" />
+    <Compile Include="Interfaces\IDbEmployee.cs" />
     <Compile Include="Facade\DomainFacade.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Models\Customer.cs" />

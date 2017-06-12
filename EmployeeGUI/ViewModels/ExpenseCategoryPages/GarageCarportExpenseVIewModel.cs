@@ -22,7 +22,5 @@ namespace EmployeeGUI.ViewModels.ExpenseCategoryPages
                 ProductTypes = _carportGarageExpenses.ProductTypes;
             }
         }
-
-
     }
 }

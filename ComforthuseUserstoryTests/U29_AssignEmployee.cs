@@ -5,6 +5,7 @@ using Comforthuse.Utility;
 using EmployeeGUI.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Comforthuse.Interfaces;
 
 namespace ComforthuseUserstoryTests
 {
@@ -86,6 +87,7 @@ namespace ComforthuseUserstoryTests
             ICase c = ObjectFactory.Instance.CreateNewCase();
             CaseViewModel vm = new CaseViewModel();
             vm.Facade = new DomainFacade();
+
             vm.Case = c;
 
             //When

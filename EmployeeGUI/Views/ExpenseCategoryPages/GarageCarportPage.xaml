@@ -28,7 +28,7 @@
 
             <Label Grid.Column="1" Grid.Row="3" Content="Technical Information" FontWeight="Bold" ></Label>
             <Label Grid.Column="1" Grid.Row="5" Content="Other Expenses" FontWeight="Bold" ></Label>
-            <Label Grid.Column="1" HorizontalAlignment="Stretch" Content="FUCK" />
+            
 
             <ItemsControl Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding ProductTypes}">
                 <ItemsControl.ItemTemplate>

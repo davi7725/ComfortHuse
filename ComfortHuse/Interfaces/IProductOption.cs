@@ -8,5 +8,8 @@
         decimal PriceSjaelland { get; set; }
         string UnitType { get; set; }
         bool Standard { get; set; }
+        bool Selected { get; set; }
+        int Amount { get; set; }
+        decimal SpecialPrice { get; set; }
     }
 }

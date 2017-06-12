@@ -1,4 +1,5 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse.Interfaces;
+using Comforthuse.Models;
 using Comforthuse.Utility;
 using System.Collections.Generic;
 
@@ -40,17 +41,4 @@ namespace Comforthuse.Facade
         }
     }
 
-    public interface IAdministratorFacade
-    {
-    }
-
-    public interface IEmployeeFacade
-    {
-        ICase CreateCase();
-        void GetAllProductOptions();
-        List<IProductType> LoadProductType(Category category);
-        List<ICase> GetAllCases();
-        List<IEmployee> GetAllEmployees();
-        void GetAllProductTypes();
-    }
 }

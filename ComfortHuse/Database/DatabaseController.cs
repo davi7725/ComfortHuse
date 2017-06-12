@@ -214,7 +214,7 @@ namespace Comforthuse.Database
                         }
 
 
-                        Case caseObj = (Case) ObjectFactory.Instance.CreateNewCase();
+                        Case caseObj = (Case)ObjectFactory.Instance.CreateNewCase();
                         caseObj.CaseNumber = caseNumber;
                         caseObj.ConstructionStartDate = constructionStartDate;
                         caseObj.MoveInDate = moveInDate;
@@ -278,7 +278,7 @@ namespace Comforthuse.Database
                     tc.Case.Image = GetImageById(Convert.ToInt32(tc.ImageId));
 
                 IExpenseCategory iec = tc.Case.GetExpenseCategory(Category.HouseType);
-                IHouseTypeExpenses ihte = (IHouseTypeExpenses) iec;
+                IHouseTypeExpenses ihte = (IHouseTypeExpenses)iec;
                 ihte.HouseType = GetHouseType(tc);
 
                 tc.Case.Employee = EmployeeRepository.Instance.Load(tc.EmployeeEmail);
@@ -761,7 +761,7 @@ namespace Comforthuse.Database
         {
             DeleteHouseType(year, caseNumber);
 
-            IHouseTypeExpenses houseTypeEx = (IHouseTypeExpenses) c.GetExpenseCategory(Category.HouseType);
+            IHouseTypeExpenses houseTypeEx = (IHouseTypeExpenses)c.GetExpenseCategory(Category.HouseType);
             SqlCommand command = new SqlCommand("CH_SP_InsertHouseType", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add(new SqlParameter("@Name", houseTypeEx.HouseType.Name));
@@ -844,7 +844,7 @@ namespace Comforthuse.Database
             int caseNumber)
         {
             DeleteCaseTechnicalSpecifications(caseYear, caseNumber);
-            foreach (KeyValuePair<Category,IExpenseCategory> kvp in dictionary)
+            foreach (KeyValuePair<Category, IExpenseCategory> kvp in dictionary)
             {
                 IExpenseCategory iec = kvp.Value;
                 foreach (ITechnicalSpecification iees in iec.TechnicalSpecifications)

@@ -1,5 +1,5 @@
 ﻿using Comforthuse.Facade;
-using Comforthuse.Models;
+using Comforthuse.Interfaces;
 using EmployeeGUI.Helpers;
 using System;
 using System.Collections.ObjectModel;
@@ -20,10 +20,10 @@ namespace EmployeeGUI.ViewModels
             {
                 if (_cases == null)
                 {
-                    _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
                     _facade.GetAllProductTypes();
                     _facade.GetAllProductOptions();
                     _facade.GetAllEmployees();
+                    _cases = new ObservableCollection<ICase>(_facade.GetAllCases());
                 }
                 return _cases;
             }

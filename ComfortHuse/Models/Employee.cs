@@ -1,4 +1,6 @@
-﻿namespace Comforthuse
+﻿using System;
+
+namespace Comforthuse
 {
     public class Employee : IEmployee
     {
@@ -31,15 +33,31 @@
         }
 
         public override bool Equals(object obj)
-         {
-             bool areEqual = false;
-             Employee otherEmployee = (Employee)obj;
-             if (otherEmployee.FirstName == this.FirstName && otherEmployee.LastName == this.LastName && otherEmployee.Email == this.Email)
-             {
-                 areEqual = true;
-             }
+        {
+            bool areEqual = false;
+            if (Object.ReferenceEquals(null, obj))
+            {
+                return false;
+            }
 
-             return areEqual;
-         }
+            if (Object.ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+
+            }
+            Employee otherEmployee = (Employee)obj;
+            if (otherEmployee.FirstName == this.FirstName && otherEmployee.LastName == this.LastName && otherEmployee.Email == this.Email)
+            {
+                areEqual = true;
+            }
+
+            return areEqual;
+        }
+
     }
 }

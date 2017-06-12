@@ -1,4 +1,4 @@
-﻿using Comforthuse.Models;
+﻿using Comforthuse.Interfaces;
 using Comforthuse.Utility;
 using EmployeeGUI.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,7 +8,7 @@ namespace ComforthuseUserstoryTests
     [TestClass]
     public class U27_Tests
     {
-       
+
         [TestMethod]
         public void ShouldUpdateExtraExpenseAmount()
         {
