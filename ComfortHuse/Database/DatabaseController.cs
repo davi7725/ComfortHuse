@@ -948,6 +948,10 @@ namespace Comforthuse.Database
             command.Parameters.Add(new SqlParameter("@ConstructionStartDate", constructionStartDate));
             command.Parameters.Add(new SqlParameter("@MoveInDate", moveInDate));
             command.Parameters.Add(new SqlParameter("@CaseDescription", caseDescription));
+            command.Parameters.Add(new SqlParameter("@AmountOfRevisions", c.AmountOfRevisions));
+            command.Parameters.Add(new SqlParameter("@DateOfCreation", c.DateOfCreation));
+            command.Parameters.Add(new SqlParameter("@DateOfLastRevision", c.DateOfLastRevision));
+            command.Parameters.Add(new SqlParameter("@Sold", c.Sold));
             command.Parameters.Add(new SqlParameter("@CustomerEmail", customerEmail));
             command.Parameters.Add(new SqlParameter("@MoneyInstituteId", moneyInstituteId));
             command.Parameters.Add(new SqlParameter("@EmployeeEmail", employeeEmail));
