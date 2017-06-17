@@ -17,14 +17,14 @@ namespace ComforthuseUserstoryTests
         }
         
 
-        [TestMethod]
-        [ExpectedException(typeof(Exception))]
-        public void CaseListIsEmpty()
-        {
-            ICaseRepository caseRepository = CaseRepository.Instance;
-
-            List<ICase> listOfCases = caseRepository.GetAllCases();
-        }
+        //[TestMethod]
+        //[ExpectedException(typeof(Exception))]
+        //public void CaseListIsEmpty()
+        //{
+        //    CaseRepository caseRepository = CaseRepository.Instance;
+        //    caseRepository.Clear();
+        //    List<ICase> listOfCases = caseRepository.GetAllCases();
+        //}
 
         [TestMethod]
         public void CaseListIsNotEmpty()
@@ -53,7 +53,7 @@ namespace ComforthuseUserstoryTests
 
             List<ICase> listOfCases = caseRepository.GetAllCases();
 
-            Assert.AreEqual(3, listOfCases.Count);
+            Assert.AreEqual(1, listOfCases.Count);
         }
 
     }
